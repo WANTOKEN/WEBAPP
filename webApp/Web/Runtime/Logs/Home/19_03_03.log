@@ -1,0 +1,32 @@
+[ 2019-03-03T22:57:06+08:00 ] 113.105.12.153 /webApp/GetUserSportAsc
+ERR: 1046:No database selected
+ [ SQL语句 ] : SELECT * FROM webapp.sport INNER JOIN user  WHERE `sportTime` = '2019-03-03' ORDER BY footStep desc LIMIT 10  
+
+[ 2019-03-03T22:57:32+08:00 ] 113.105.12.153 /webApp/GetUserSportAsc
+ERR: 1046:No database selected
+ [ SQL语句 ] : SELECT * FROM webapp.sport INNER JOIN user  ORDER BY footStep desc LIMIT 10  
+
+[ 2019-03-03T22:58:18+08:00 ] 113.105.12.153 /webApp/GetUserSportAsc
+ERR: 1146:Table 'webapp.user' doesn't exist
+ [ SQL语句 ] : SHOW COLUMNS FROM `user`
+ERR: 1146:Table 'webapp.user' doesn't exist
+ [ SQL语句 ] : SHOW COLUMNS FROM `user`
+
+[ 2019-03-03T23:02:00+08:00 ] 113.105.12.153 /webApp/GetUserSportAsc
+ERR: 1146:Table 'webapp.user' doesn't exist
+ [ SQL语句 ] : select * from user as a,sport as b where a.userId=b.sport_uId 
+ERR: 1146:Table 'webapp.user' doesn't exist
+ [ SQL语句 ] : select * from user as a,sport as b where a.userId=b.sport_uId 
+
+[ 2019-03-03T23:58:43+08:00 ] 113.105.12.153 /webApp/GetUserSportAsc
+ERR: 1064:You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'where b.sportTime='2019-03-03'' at line 1
+ [ SQL语句 ] : select a.userName,a.userImage,b.* from users as a,sport as b where a.userId=b.sport_uId where b.sportTime='2019-03-03'
+ERR: 1064:You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'where b.sportTime='2019-03-03'' at line 1
+ [ SQL语句 ] : select a.userName,a.userImage,b.* from users as a,sport as b where a.userId=b.sport_uId where b.sportTime='2019-03-03'
+
+[ 2019-03-03T23:58:54+08:00 ] 113.105.12.153 /webApp/GetUserSportAsc
+ERR: 1064:You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'where b.sportTime=2019-03-03' at line 1
+ [ SQL语句 ] : select a.userName,a.userImage,b.* from users as a,sport as b where a.userId=b.sport_uId where b.sportTime=2019-03-03
+ERR: 1064:You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'where b.sportTime=2019-03-03' at line 1
+ [ SQL语句 ] : select a.userName,a.userImage,b.* from users as a,sport as b where a.userId=b.sport_uId where b.sportTime=2019-03-03
+

@@ -1,0 +1,28 @@
+[ 2019-02-23T14:25:47+08:00 ] 120.239.19.72 /webApp/WSerachById?openid=o6nWZ5Y7zRlBAqIf7QUWQSDqLSsU
+ERR: 1054:Unknown column 'o6nWZ5Y7zRlBAqIf7QUWQSDqLSsU' in 'where clause'
+ [ SQL语句 ] : SELECT * FROM webapp.users WHERE ( openid=o6nWZ5Y7zRlBAqIf7QUWQSDqLSsU ) 
+
+[ 2019-02-23T14:26:00+08:00 ] 116.29.244.25 /webApp/WSerachById?openid=dasda
+ERR: 1054:Unknown column 'dasda' in 'where clause'
+ [ SQL语句 ] : SELECT * FROM webapp.users WHERE ( openid=dasda ) 
+
+[ 2019-02-23T14:29:33+08:00 ] 120.239.19.55 /webApp/WSerachById?openid=o6nWZ5Y7zRlBAqIf7QUWQSDqLSsU
+ERR: 1054:Unknown column 'o6nWZ5Y7zRlBAqIf7QUWQSDqLSsU' in 'where clause'
+ [ SQL语句 ] : SELECT * FROM webapp.users WHERE ( openid=o6nWZ5Y7zRlBAqIf7QUWQSDqLSsU ) 
+
+[ 2019-02-23T14:37:16+08:00 ] 120.239.19.72 /webApp/WRegister?openid=o6nWZ5Y7zRlBAqIf7QUWQSDqLSsU&nickname=%E6%9C%B1%E6%AF%93%E5%B7%9D&avatarurl=https://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83eqV2dmfg36wJjezrmVoMx09yVfcnQIwBGNocG0UDOLd3gXvfswC4r1tNDFIOcvvNqshaqJkQtbqibQ/132
+ERR: 1054:Unknown column 'o6nWZ5Y7zRlBAqIf7QUWQSDqLSsU' in 'where clause'
+ [ SQL语句 ] : SELECT COUNT(*) AS tp_count FROM webapp.users WHERE ( openid=o6nWZ5Y7zRlBAqIf7QUWQSDqLSsU ) LIMIT 1  
+
+[ 2019-02-23T14:39:22+08:00 ] 120.239.19.72 /webApp/WRegister?openid=o6nWZ5Y7zRlBAqIf7QUWQSDqLSsU&nickname=%E6%9C%B1%E6%AF%93%E5%B7%9D&avatarurl=https://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83eqV2dmfg36wJjezrmVoMx09yVfcnQIwBGNocG0UDOLd3gXvfswC4r1tNDFIOcvvNqshaqJkQtbqibQ/132
+ERR: 1054:Unknown column 'o6nWZ5Y7zRlBAqIf7QUWQSDqLSsU' in 'where clause'
+ [ SQL语句 ] : SELECT COUNT(*) AS tp_count FROM webapp.users WHERE ( openid=o6nWZ5Y7zRlBAqIf7QUWQSDqLSsU ) LIMIT 1  
+
+[ 2019-02-23T14:59:27+08:00 ] 120.239.19.55 /webApp/WRegister?openid=o6nWZ5Y7zRlBAqIf7QUWQSDqLSsU&nickname=%E6%9C%B1%E6%AF%93%E5%B7%9D&avatarurl=https://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83eqV2dmfg36wJjezrmVoMx09yVfcnQIwBGNocG0UDOLd3gXvfswC4r1tNDFIOcvvNqshaqJkQtbqibQ/132
+ERR: 1054:Unknown column 'o6nWZ5Y7zRlBAqIf7QUWQSDqLSsU' in 'where clause'
+ [ SQL语句 ] : SELECT COUNT(*) AS tp_count FROM webapp.users WHERE ( openid=o6nWZ5Y7zRlBAqIf7QUWQSDqLSsU ) LIMIT 1  
+
+[ 2019-02-23T15:11:37+08:00 ] 120.239.19.55 /webApp/WRegister?openid=o6nWZ5Y7zRlBAqIf7QUWQSDqLSsU&nickname=%E6%9C%B1%E6%AF%93%E5%B7%9D&avatarurl=https://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83eqV2dmfg36wJjezrmVoMx09yVfcnQIwBGNocG0UDOLd3gXvfswC4r1tNDFIOcvvNqshaqJkQtbqibQ/132
+ERR: 1054:Unknown column 'o6nWZ5Y7zRlBAqIf7QUWQSDqLSsU' in 'where clause'
+ [ SQL语句 ] : SELECT COUNT(*) AS tp_count FROM webapp.users WHERE ( openid=o6nWZ5Y7zRlBAqIf7QUWQSDqLSsU ) LIMIT 1  
+

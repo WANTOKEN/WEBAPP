@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+
+</head>
+
+<body>
+
+<!-- Aside Start-->
+<include file="aside"/>
+<!-- Aside Ends-->
+
+<!--Main Content Start -->
+<section class="content">
+
+    <!-- Header -->
+    <include file="header"/>
+    <!-- Header Ends -->
+
+    <!-- Page Content Start -->
+    <!-- ================== -->
+
+    <div class="wraper container-fluid">
+
+        <div class="page-title">
+            <h3 class="title">异常订单数据</h3>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">所有订单</h3>
+                    </div>
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-md-12 col-sm-12 col-xs-12">
+                                <table id="datatable" class="table table-striped table-bordered">
+                                    <thead>
+                                    <tr>
+                                        <th style="text-align: center;">订单编号</th>
+                                        <th style="text-align: center;">用户编号</th>
+                                        <th style="text-align: center;">支付方式</th>
+                                        <th style="text-align: center;">下单时间</th>
+                                        <th style="text-align: center;">实际支付</th>
+                                        <th style="text-align: center;">状态</th>
+                                        <th style="text-align: center;">操作</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody id="data-row" style="text-align: center;">
+                                    </tbody>
+                                </table>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <!--订单详细-->
+        <div id="orderdetail-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+             aria-hidden="true" style="display: none;">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                        <h4 class="modal-title">订单详细</h4>
+                    </div>
+                    <div class="modal-body" id="orderdetail">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <p>订单编号:&nbsp;&nbsp;{{item.ordernumber}}</p>
+
+                                <p>用户ID:&nbsp;&nbsp;{{item.userid}}</p>
+
+                                <p>支付方式:&nbsp;&nbsp;{{item.orderpayway}}</p>
+
+                                <p>付款:&nbsp;&nbsp;{{item.totalpay}}</p>
+
+                                <p>折扣:&nbsp;&nbsp;{{item.discountpay}}</p>
+
+                                <p>实付:&nbsp;&nbsp;{{item.realpay}}</p>
+
+                                <p>订单状态:&nbsp;&nbsp;{{item.orderstatus}}</p>
+
+                                <p>订单状态码:&nbsp;&nbsp;{{item.orderstatuscode}}</p>
+
+                            </div>
+                            <div class="col-md-6">
+                                <p>收件人:&nbsp;&nbsp;{{item.order_name}}</p>
+
+                                <p>联系电话:&nbsp;&nbsp;{{item.order_tel}}</p>
+
+                                <p>配送地址:&nbsp;&nbsp;{{item.order_address}}</p>
+
+                                <p>下单时间:&nbsp;&nbsp;{{item.ordertime}}</p>
+
+                                <p>要求时间:&nbsp;&nbsp;{{item.comtime}}</p>
+
+                                <p>到达时间:&nbsp;&nbsp;{{item.arrtime}}</p>
+
+                                <p>取餐柜:&nbsp;&nbsp;{{item.order_box}}</p>
+
+                                <p>取餐码:&nbsp;&nbsp;{{item.ordercode}}</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6" v-for="dataitems in dataitems">
+                                <div class="panel">
+                                    <h5 class="panel-title">编号：&nbsp;&nbsp;{{dataitems.goodsid}}</h5>
+
+                                    <div class="panel-body">
+                                        <p>商品名称：&nbsp;&nbsp;{{dataitems.goods_name}}</p>
+
+                                        <p>商品单价：&nbsp;&nbsp;{{dataitems.goods_price}}</p>
+
+                                        <p>商品数量：&nbsp;&nbsp;{{dataitems.goods_quantity}}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-info" data-dismiss="modal">关闭</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /.modal -->
+
+        </div>
+        <!-- End Row -->
+
+        <!-- Footer Start -->
+        <include file="footer"/>
+        <!-- Footer Ends -->
+    </div>
+</section>
+<!-- Main Content Ends -->
+
+<!-- js placed at the end of the document so the pages load faster -->
+<script>
+    $(document).ready(function(){
+        $('.pageC').addClass("active");
+        $('.page6').addClass("active");
+    });
+
+</script>
+
+<script type="text/javascript">
+    function getDatas() {
+        var table;
+        table = $('#datatable');
+        table.dataTable({
+            /*"bProcessing": true,*/
+            lengthMenu: [
+                [10, 25, 50, -1],
+                [10, 25, 50, "全部"]
+            ],
+            searching: true, //是否显示查询
+            lengthChange: true, //是否使用下位列表选择分页大小
+            //ordering:false,//全部禁止排序
+            paginationType: "full_numbers", //分页按钮：有精简和全功能几种选项
+            //语言国际化设置，默认是英文的
+            language: {
+                lengthMenu: "显示 _MENU_ 记录", //[[10, 25, 50, -1], [10, 25, 50, "All"]], //"显示 _MENU_ 记录",
+                zeroRecords: "没有找到记录",
+                info: "每页显示 10 条 当前显示 _START_ 到 _END_ 条，第 <span style='color:red'>_PAGE_</span> 页 ( 总共 _PAGES_ 页 ) 共 _TOTAL_ 条记录",
+                infoEmpty: "没有找到记录",
+                infoFiltered: "(从 _MAX_ 条记录过滤)",
+                paginate: {
+                    first: "首页",
+                    previous: " 上一页",
+                    next: " 下一页 ",
+                    last: " 尾页 "
+                },
+                search: "模糊查询：" //查询按钮显示的文本
+            },
+            "ajax": {
+                "url": SERVER_URL + 'ADGetFailOrdersData',
+                dataSrc: ""
+            },
+            /*"sAjaxSource": SERVER_URL + 'GoodsData',*/
+            "columns": [
+                {"data": "ordernumber"},
+                {"data": "userid"},
+                {"data": "orderpayway"},
+                {"data": "ordertime"},
+                {"data": "realpay"},
+                {"data": "orderstatus"},
+                {
+                    "data": null,
+                    "render": function (data, type, row, meta) {
+                        var html = '<button type="button" class="btn btn-success look" data-goodsid="' + row.ordernumber + '" data-toggle="modal" data-target="#orderdetail-modal">查看详情</button>';
+                        html += '&nbsp;&nbsp;';
+                        if (row.orderstatus == "请求取消中...") {
+                            html += '<button type="button" class="btn btn-info change" data-goodsid="' + row.ordernumber + '" data-status="确认取消">确认取消</button>';
+                        } else if (row.orderstatus == "请求恢复中...") {
+                            html += '<button type="button" class="btn btn-purple change" data-goodsid="' + row.ordernumber + '" data-status="恢复订单">恢复订单</button>';
+                        } else if (row.orderstatus == "订单已删除") {
+                            html += '<button type="button" class="btn btn-danger change" data-goodsid="' + row.ordernumber + '" data-status="删除订单">删除订单</button>';
+                        }
+
+                        return html;
+                    }
+                },
+            ],
+            'aoColumnDefs': [{ //去掉排序
+                'bSortable': false,
+                'aTargets': [-1] /* 1st one, start by the right */
+            }]
+
+        });
+    }
+    $(document).ready(function () {
+        getDatas();
+    });
+</script>
+<script>
+    var ordervue = new Vue({
+        el: '#orderdetail',
+        data: {
+            item: "",
+            dataitems: ""
+        }
+
+    })
+    //查看详情
+    $(document).on("click", ".look", function () {
+        var goodsid = $(this).attr('data-goodsid').toString();
+        console.log(goodsid);
+        $.ajax({
+            type: "post",
+            data: {
+                ordernum: goodsid
+            },
+            url: SERVER_URL + 'ADGetOneOrderDetail',
+            dataType: "json",
+            success: function (data) {
+                /*		console.log(JSON.stringify(data));*/
+                ordervue.item = data.data[0];
+                /*	console.log(JSON.stringify(ordervue.item));*/
+                ordervue.dataitems = data.item;
+                /*console.log(data.item);*/
+                console.log(JSON.stringify(ordervue.dataitems));
+            }
+        });
+    });
+    //更改
+    $(document).on("click", ".change", function () {
+        var goodsid = $(this).attr('data-goodsid').toString();
+
+        var status = $(this).attr('data-status').toString();
+        console.log(status + goodsid);
+        $.ajax({
+            type: "post",
+            data: {
+                ordernum: goodsid,
+                status: status
+            },
+            url: SERVER_URL + 'ADHandleOrders',
+            dataType: "json",
+            success: function (data) {
+                console.log(JSON.stringify(data));
+                swal(data.msg);
+            }
+        });
+
+    });
+
+</script>
+</body>
+
+</html>

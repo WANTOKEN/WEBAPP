@@ -1,0 +1,128 @@
+[ 2019-03-06T12:45:31+08:00 ] 117.136.41.78 /webApp/GetOrderMsg?account=15920350015
+ERR: 无法加载控制器:GetOrderMsg
+
+[ 2019-03-06T12:46:32+08:00 ] 117.136.41.78 /webApp/GetOrderMsg?account=15920350015
+ERR: 无法加载控制器:GetOrderMsg
+
+[ 2019-03-06T12:47:32+08:00 ] 117.136.41.78 /webApp/GetOrderMsg?account=15920350015
+ERR: 无法加载控制器:GetOrderMsg
+
+[ 2019-03-06T12:48:32+08:00 ] 117.136.41.78 /webApp/GetOrderMsg?account=15920350015
+ERR: 无法加载控制器:GetOrderMsg
+
+[ 2019-03-06T12:49:32+08:00 ] 117.136.41.78 /webApp/GetOrderMsg?account=15920350015
+ERR: 无法加载控制器:GetOrderMsg
+
+[ 2019-03-06T12:50:33+08:00 ] 117.136.41.78 /webApp/GetOrderMsg?account=15920350015
+ERR: 无法加载控制器:GetOrderMsg
+
+[ 2019-03-06T12:51:33+08:00 ] 117.136.41.78 /webApp/GetOrderMsg?account=15920350015
+ERR: 无法加载控制器:GetOrderMsg
+
+[ 2019-03-06T12:52:33+08:00 ] 117.136.41.78 /webApp/GetOrderMsg?account=15920350015
+ERR: 无法加载控制器:GetOrderMsg
+
+[ 2019-03-06T13:26:04+08:00 ] 117.136.41.78 /webApp/GetOrderMsg?account=15920350015
+ERR: 无法加载控制器:GetOrderMsg
+
+[ 2019-03-06T13:26:36+08:00 ] 117.136.41.78 /webApp/GetOrderMsg?account=15920350015
+ERR: 无法加载控制器:GetOrderMsg
+
+[ 2019-03-06T13:27:04+08:00 ] 117.136.41.78 /webApp/GetOrderMsg?account=15920350015
+ERR: 无法加载控制器:GetOrderMsg
+
+[ 2019-03-06T13:27:36+08:00 ] 117.136.41.78 /webApp/GetOrderMsg?account=15920350015
+ERR: 无法加载控制器:GetOrderMsg
+
+[ 2019-03-06T13:28:04+08:00 ] 117.136.41.78 /webApp/GetOrderMsg?account=15920350015
+ERR: 无法加载控制器:GetOrderMsg
+
+[ 2019-03-06T13:28:36+08:00 ] 117.136.41.78 /webApp/GetOrderMsg?account=15920350015
+ERR: 无法加载控制器:GetOrderMsg
+
+[ 2019-03-06T13:29:04+08:00 ] 117.136.41.78 /webApp/GetOrderMsg?account=15920350015
+ERR: 无法加载控制器:GetOrderMsg
+
+[ 2019-03-06T13:29:37+08:00 ] 117.136.41.78 /webApp/GetOrderMsg?account=15920350015
+ERR: 无法加载控制器:GetOrderMsg
+
+[ 2019-03-06T13:30:05+08:00 ] 117.136.41.78 /webApp/GetOrderMsg?account=15920350015
+ERR: 无法加载控制器:GetOrderMsg
+
+[ 2019-03-06T13:30:37+08:00 ] 117.136.41.78 /webApp/GetOrderMsg?account=15920350015
+ERR: 无法加载控制器:GetOrderMsg
+
+[ 2019-03-06T13:31:05+08:00 ] 117.136.41.78 /webApp/GetOrderMsg?account=15920350015
+ERR: 无法加载控制器:GetOrderMsg
+
+[ 2019-03-06T13:31:37+08:00 ] 117.136.41.78 /webApp/GetOrderMsg?account=15920350015
+ERR: 无法加载控制器:GetOrderMsg
+
+[ 2019-03-06T13:32:05+08:00 ] 117.136.41.78 /webApp/GetOrderMsg?account=15920350015
+ERR: 无法加载控制器:GetOrderMsg
+
+[ 2019-03-06T13:32:37+08:00 ] 117.136.41.78 /webApp/GetOrderMsg?account=15920350015
+ERR: 无法加载控制器:GetOrderMsg
+
+[ 2019-03-06T13:33:05+08:00 ] 117.136.41.78 /webApp/GetOrderMsg?account=15920350015
+ERR: 无法加载控制器:GetOrderMsg
+
+[ 2019-03-06T13:33:37+08:00 ] 117.136.41.78 /webApp/GetOrderMsg?account=15920350015
+ERR: 无法加载控制器:GetOrderMsg
+
+[ 2019-03-06T13:34:05+08:00 ] 117.136.41.78 /webApp/GetOrderMsg?account=15920350015
+ERR: 无法加载控制器:GetOrderMsg
+
+[ 2019-03-06T13:34:37+08:00 ] 117.136.41.78 /webApp/GetOrderMsg?account=15920350015
+ERR: 无法加载控制器:GetOrderMsg
+
+[ 2019-03-06T13:35:05+08:00 ] 117.136.41.78 /webApp/GetOrderMsg?account=15920350015
+ERR: 无法加载控制器:GetOrderMsg
+
+[ 2019-03-06T13:35:37+08:00 ] 117.136.41.78 /webApp/GetOrderMsg?account=15920350015
+ERR: 无法加载控制器:GetOrderMsg
+
+[ 2019-03-06T13:36:06+08:00 ] 117.136.41.78 /webApp/GetOrderMsg?account=15920350015
+ERR: 无法加载控制器:GetOrderMsg
+
+[ 2019-03-06T14:56:07+08:00 ] 117.136.41.78 /webApp/RegInfo
+ERR: 1366:Incorrect string value: '\xF0\x9F\x90\x94' for column 'userName' at row 1
+ [ SQL语句 ] : UPDATE webapp.users SET `userName`='小姐姐爱吃🐔' WHERE `userId` = '18318565452'
+
+[ 2019-03-06T18:47:10+08:00 ] 112.96.66.130 /webApp/https://wx.qlogo.cn/mmopen/vi_32/SRRFZYxuJdLQndPhQ6Mnprnv75aSrmjkT2ia37aCuqZzqDMy816WAc20umPQvo76GQQTN0A1gcMGeF4gCJz45gQ/132
+ERR: 无法加载控制器:Https:
+
+[ 2019-03-06T18:47:33+08:00 ] 112.96.66.130 /webApp/https://wx.qlogo.cn/mmopen/vi_32/SRRFZYxuJdLQndPhQ6Mnprnv75aSrmjkT2ia37aCuqZzqDMy816WAc20umPQvo76GQQTN0A1gcMGeF4gCJz45gQ/132
+ERR: 无法加载控制器:Https:
+
+[ 2019-03-06T19:42:36+08:00 ] 113.105.12.154 /webApp/AddOrderItem?account=o6nWZ5Y7zRlBAqIf7QUWQSDqLSsU&goodsidlist=GD20181028134322%2CGD20181028140601&goodsnumlist=1%2C1&payway=%E4%BD%99%E9%A2%9D%E6%94%AF%E4%BB%98&comtime=2019%2F3%2F7%2011%3A30-12%3A00&name=%E6%9C%B1%E6%AF%93%E5%B7%9D&tel=15915888888&address=%E5%B9%BF%E4%B8%9C%E7%9C%81%E5%B9%BF%E5%B7%9E%E5%B8%82%E4%BB%8E%E5%8C%96%E5%8C%BA%E6%96%B0%E5%9F%8E%E4%B8%9C%E8%B7%AF99%E5%8F%B7&box=1%E5%8F%B7&real=8.5&discount=0&total=8.5&apppaycode=123456
+ERR: 1452:Cannot add or update a child row: a foreign key constraint fails (`webapp`.`users_point`, CONSTRAINT `point_userid` FOREIGN KEY (`point_userid`) REFERENCES `users` (`userId`) ON DELETE CASCADE ON UPDATE CASCADE)
+ [ SQL语句 ] : INSERT INTO webapp.users_point (`pointNumber`,`pointCost`,`pointTime`,`ways`,`point_userid`) VALUES ('9420190306194236','0','2019-03-06 19:42:36','购物抵用','o6nWZ5Y7zRlBAqIf7QUWQSDqLSsU')
+ERR: 1452:Cannot add or update a child row: a foreign key constraint fails (`webapp`.`users_blance`, CONSTRAINT `user_id` FOREIGN KEY (`user_id`) REFERENCES `users` (`userId`) ON DELETE CASCADE ON UPDATE CASCADE)
+ [ SQL语句 ] : INSERT INTO webapp.users_blance (`blanceNumber`,`blanceCost`,`blanceTime`,`blanceWays`,`user_id`) VALUES ('8120190306194236','8.5','2019-03-06 19:42:36','购物抵用','o6nWZ5Y7zRlBAqIf7QUWQSDqLSsU')
+
+[ 2019-03-06T19:43:27+08:00 ] 112.96.115.230 /webApp/https://wx.qlogo.cn/mmopen/vi_32/SRRFZYxuJdLQndPhQ6Mnprnv75aSrmjkT2ia37aCuqZzqDMy816WAc20umPQvo76GQQTN0A1gcMGeF4gCJz45gQ/132
+ERR: 无法加载控制器:Https:
+
+[ 2019-03-06T19:43:43+08:00 ] 112.96.115.230 /webApp/https://wx.qlogo.cn/mmopen/vi_32/SRRFZYxuJdLQndPhQ6Mnprnv75aSrmjkT2ia37aCuqZzqDMy816WAc20umPQvo76GQQTN0A1gcMGeF4gCJz45gQ/132
+ERR: 无法加载控制器:Https:
+
+[ 2019-03-06T19:43:47+08:00 ] 112.96.115.230 /webApp/https://wx.qlogo.cn/mmopen/vi_32/SRRFZYxuJdLQndPhQ6Mnprnv75aSrmjkT2ia37aCuqZzqDMy816WAc20umPQvo76GQQTN0A1gcMGeF4gCJz45gQ/132
+ERR: 无法加载控制器:Https:
+
+[ 2019-03-06T20:44:38+08:00 ] 112.96.115.230 /webApp/SendShare
+ERR: 1062:Duplicate entry '98' for key 'PRIMARY'
+ [ SQL语句 ] : INSERT INTO webapp.share (`share_userid`,`share_id`,`share_content`,`share_time`) VALUES ('18318565452','SD20190306204438','再来一波<img src=\" ../../face/12.gif \">','2019-03-06 20:44:38')
+ERR: 1452:Cannot add or update a child row: a foreign key constraint fails (`webapp`.`share_img`, CONSTRAINT `shareid` FOREIGN KEY (`share_for_id`) REFERENCES `share` (`share_id`) ON DELETE CASCADE ON UPDATE CASCADE)
+ [ SQL语句 ] : INSERT INTO webapp.share_img (`share_img_url`,`share_for_id`) VALUES ('Uploads/UsersShare/18318565452/5c7fc0b619c7c.jpg','SD20190306204438')
+ERR: 1452:Cannot add or update a child row: a foreign key constraint fails (`webapp`.`share_img`, CONSTRAINT `shareid` FOREIGN KEY (`share_for_id`) REFERENCES `share` (`share_id`) ON DELETE CASCADE ON UPDATE CASCADE)
+ [ SQL语句 ] : INSERT INTO webapp.share_img (`share_img_url`,`share_for_id`) VALUES ('Uploads/UsersShare/18318565452/5c7fc0b61a219.jpg','SD20190306204438')
+ERR: 1452:Cannot add or update a child row: a foreign key constraint fails (`webapp`.`share_img`, CONSTRAINT `shareid` FOREIGN KEY (`share_for_id`) REFERENCES `share` (`share_id`) ON DELETE CASCADE ON UPDATE CASCADE)
+ [ SQL语句 ] : INSERT INTO webapp.share_img (`share_img_url`,`share_for_id`) VALUES ('Uploads/UsersShare/18318565452/5c7fc0b61a826.jpg','SD20190306204438')
+ERR: 1452:Cannot add or update a child row: a foreign key constraint fails (`webapp`.`share_img`, CONSTRAINT `shareid` FOREIGN KEY (`share_for_id`) REFERENCES `share` (`share_id`) ON DELETE CASCADE ON UPDATE CASCADE)
+ [ SQL语句 ] : INSERT INTO webapp.share_img (`share_img_url`,`share_for_id`) VALUES ('Uploads/UsersShare/18318565452/5c7fc0b61ac10.jpg','SD20190306204438')
+ERR: 1452:Cannot add or update a child row: a foreign key constraint fails (`webapp`.`share_img`, CONSTRAINT `shareid` FOREIGN KEY (`share_for_id`) REFERENCES `share` (`share_id`) ON DELETE CASCADE ON UPDATE CASCADE)
+ [ SQL语句 ] : INSERT INTO webapp.share_img (`share_img_url`,`share_for_id`) VALUES ('Uploads/UsersShare/18318565452/5c7fc0b61b034.jpg','SD20190306204438')
+ERR: 1452:Cannot add or update a child row: a foreign key constraint fails (`webapp`.`share_img`, CONSTRAINT `shareid` FOREIGN KEY (`share_for_id`) REFERENCES `share` (`share_id`) ON DELETE CASCADE ON UPDATE CASCADE)
+ [ SQL语句 ] : INSERT INTO webapp.share_img (`share_img_url`,`share_for_id`) VALUES ('Uploads/UsersShare/18318565452/5c7fc0b61b341.jpg','SD20190306204438')
+

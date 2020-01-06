@@ -1,0 +1,53 @@
+[ 2019-03-04T00:00:06+08:00 ] 113.105.12.153 /webApp/GetUserSportAsc
+ERR: 1064:You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ''2019-03-04''' at line 1
+ [ SQL语句 ] : select a.userName,a.userImage,b.* from users as a,sport as b where a.userId=b.sport_uId and b.sportTime='2019-03-04''
+ERR: 1064:You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ''2019-03-04''' at line 1
+ [ SQL语句 ] : select a.userName,a.userImage,b.* from users as a,sport as b where a.userId=b.sport_uId and b.sportTime='2019-03-04''
+
+[ 2019-03-04T11:51:17+08:00 ] 113.105.12.153 /webApp/GetUserSportAsc
+ERR: 1064:You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'b.footStep' at line 1
+ [ SQL语句 ] : select a.userName,a.userImage,b.* from users as a,sport as b where a.userId=b.sport_uId and b.sportTime='2019-03-04' order b.footStep
+ERR: 1064:You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'b.footStep' at line 1
+ [ SQL语句 ] : select a.userName,a.userImage,b.* from users as a,sport as b where a.userId=b.sport_uId and b.sportTime='2019-03-04' order b.footStep
+
+[ 2019-03-04T11:51:36+08:00 ] 113.105.12.153 /webApp/GetUserSportAsc
+ERR: 1064:You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'orderby b.footStep' at line 1
+ [ SQL语句 ] : select a.userName,a.userImage,b.* from users as a,sport as b where a.userId=b.sport_uId and b.sportTime='2019-03-04' orderby b.footStep
+ERR: 1064:You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'orderby b.footStep' at line 1
+ [ SQL语句 ] : select a.userName,a.userImage,b.* from users as a,sport as b where a.userId=b.sport_uId and b.sportTime='2019-03-04' orderby b.footStep
+
+[ 2019-03-04T16:44:32+08:00 ] 113.105.12.153 /webApp/https://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83eqV2dmfg36wJjezrmVoMx09yVfcnQIwBGNocG0UDOLd3gXvfswC4r1tNDFIOcvvNqshaqJkQtbqibQ/132
+ERR: 无法加载控制器:Https:
+
+[ 2019-03-04T16:44:37+08:00 ] 113.105.12.153 /webApp/https://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83eqV2dmfg36wJjezrmVoMx09yVfcnQIwBGNocG0UDOLd3gXvfswC4r1tNDFIOcvvNqshaqJkQtbqibQ/132
+ERR: 无法加载控制器:Https:
+
+[ 2019-03-04T22:12:20+08:00 ] 113.105.12.154 /webApp/Searchgoodsdata?search=%E9%A5%BA%E5%AD%90
+ERR: 1452:Cannot add or update a child row: a foreign key constraint fails (`webapp`.`search`, CONSTRAINT `search_uid` FOREIGN KEY (`user_id`) REFERENCES `users` (`userId`) ON DELETE SET NULL ON UPDATE SET NULL)
+ [ SQL语句 ] : INSERT INTO webapp.search (`searchtext`,`searchflag`,`user_id`) VALUES ('饺子','1','')
+
+[ 2019-03-04T22:14:25+08:00 ] 113.105.12.154 /webApp/Searchgoodsdata?search=%E9%A5%BA
+ERR: 1452:Cannot add or update a child row: a foreign key constraint fails (`webapp`.`search`, CONSTRAINT `search_uid` FOREIGN KEY (`user_id`) REFERENCES `users` (`userId`) ON DELETE SET NULL ON UPDATE SET NULL)
+ [ SQL语句 ] : INSERT INTO webapp.search (`searchtext`,`searchflag`,`user_id`) VALUES ('饺','1','')
+
+[ 2019-03-04T22:19:28+08:00 ] 113.105.12.154 /webApp/AddOrderItem?account=o6nWZ5Y7zRlBAqIf7QUWQSDqLSsU&goodsidlist=GD20181028134919&goodsnumlist=1&payway=%E4%BD%99%E9%A2%9D%E6%94%AF%E4%BB%98&comtime=2019%2F3%2F4%2017%3A30-18%3A00&name=%E5%95%A6%E5%95%A6%E5%95%A6&tel=15666666666&address=%E5%B9%BF%E4%B8%9C%E7%9C%81%E5%B9%BF%E5%B7%9E%E5%B8%82%E7%99%BD%E4%BA%91%E5%8C%BA%E5%B9%BF%E5%9B%AD%E4%B8%AD%E8%B7%AF238%E5%8F%B7&box=%E5%8F%96%E9%A4%90%E6%9F%9C%E4%BA%94%E5%8F%B7&real=3.5&discount=0&total=3.5&apppaycode=123456
+ERR: 1452:Cannot add or update a child row: a foreign key constraint fails (`webapp`.`users_point`, CONSTRAINT `point_userid` FOREIGN KEY (`point_userid`) REFERENCES `users` (`userId`) ON DELETE CASCADE ON UPDATE CASCADE)
+ [ SQL语句 ] : INSERT INTO webapp.users_point (`pointNumber`,`pointCost`,`pointTime`,`ways`,`point_userid`) VALUES ('9820190304221928','0','2019-03-04 22:19:28','购物抵用','o6nWZ5Y7zRlBAqIf7QUWQSDqLSsU')
+ERR: 1452:Cannot add or update a child row: a foreign key constraint fails (`webapp`.`users_blance`, CONSTRAINT `user_id` FOREIGN KEY (`user_id`) REFERENCES `users` (`userId`) ON DELETE CASCADE ON UPDATE CASCADE)
+ [ SQL语句 ] : INSERT INTO webapp.users_blance (`blanceNumber`,`blanceCost`,`blanceTime`,`blanceWays`,`user_id`) VALUES ('8720190304221928','3.5','2019-03-04 22:19:28','购物抵用','o6nWZ5Y7zRlBAqIf7QUWQSDqLSsU')
+
+[ 2019-03-04T22:46:01+08:00 ] 117.136.41.81 /webApp/WAddOrderItem?account=o6nWZ5Y7zRlBAqIf7QUWQSDqLSsU&goodsidlist=GD20181028134653&goodsnumlist=2&payway=%E4%BD%99%E9%A2%9D%E6%94%AF%E4%BB%98&comtime=2019-3-4%2020%3A30-21%3A00&name=%E5%95%A6%E5%95%A6%E5%95%A6&tel=15666666666&address=%E5%B9%BF%E4%B8%9C%E7%9C%81%E5%B9%BF%E5%B7%9E%E5%B8%82%E7%99%BD%E4%BA%91%E5%8C%BA%E5%B9%BF%E5%9B%AD%E4%B8%AD%E8%B7%AF238%E5%8F%B7&box=%E5%8F%96%E9%A4%90%E6%9F%9C%E4%BA%94%E5%8F%B7&real=8&discount=5&total=3
+ERR: 1452:Cannot add or update a child row: a foreign key constraint fails (`webapp`.`users_point`, CONSTRAINT `point_userid` FOREIGN KEY (`point_userid`) REFERENCES `users` (`userId`) ON DELETE CASCADE ON UPDATE CASCADE)
+ [ SQL语句 ] : INSERT INTO webapp.users_point (`pointNumber`,`pointCost`,`pointTime`,`ways`,`point_userid`) VALUES ('9220190304224601','5','2019-03-04 22:46:01','购物抵用','o6nWZ5Y7zRlBAqIf7QUWQSDqLSsU')
+ERR: 1452:Cannot add or update a child row: a foreign key constraint fails (`webapp`.`users_blance`, CONSTRAINT `user_id` FOREIGN KEY (`user_id`) REFERENCES `users` (`userId`) ON DELETE CASCADE ON UPDATE CASCADE)
+ [ SQL语句 ] : INSERT INTO webapp.users_blance (`blanceNumber`,`blanceCost`,`blanceTime`,`blanceWays`,`user_id`) VALUES ('8920190304224601','8','2019-03-04 22:46:01','购物抵用','o6nWZ5Y7zRlBAqIf7QUWQSDqLSsU')
+
+[ 2019-03-04T22:47:35+08:00 ] 113.105.12.152 /webApp/webAdmin
+ERR: 无法加载控制器:WebAdmin
+
+[ 2019-03-04T22:51:52+08:00 ] 117.136.41.81 /webApp/WAddOrderItem?account=o6nWZ5Y7zRlBAqIf7QUWQSDqLSsU&goodsidlist=GD20181028134125%2CGD20181028134653&goodsnumlist=3%2C2&payway=%E4%BD%99%E9%A2%9D%E6%94%AF%E4%BB%98&comtime=2019-3-4%2020%3A30-21%3A00&name=%E6%9C%B1%E6%AF%93%E5%B7%9D&tel=17999999999&address=%E5%B9%BF%E4%B8%9C%E7%9C%81%E5%B9%BF%E5%B7%9E%E5%B8%82%E7%99%BD%E4%BA%91%E5%8C%BA%E5%B9%BF%E5%9B%AD%E4%B8%AD%E8%B7%AF238%E5%8F%B7&box=%E5%8F%96%E9%A4%90%E6%9F%9C%E4%B8%80%E7%99%BE%E5%8F%B7&real=18.5&discount=5&total=13.5
+ERR: 1452:Cannot add or update a child row: a foreign key constraint fails (`webapp`.`users_point`, CONSTRAINT `point_userid` FOREIGN KEY (`point_userid`) REFERENCES `users` (`userId`) ON DELETE CASCADE ON UPDATE CASCADE)
+ [ SQL语句 ] : INSERT INTO webapp.users_point (`pointNumber`,`pointCost`,`pointTime`,`ways`,`point_userid`) VALUES ('9720190304225152','5','2019-03-04 22:51:52','购物抵用','o6nWZ5Y7zRlBAqIf7QUWQSDqLSsU')
+ERR: 1452:Cannot add or update a child row: a foreign key constraint fails (`webapp`.`users_blance`, CONSTRAINT `user_id` FOREIGN KEY (`user_id`) REFERENCES `users` (`userId`) ON DELETE CASCADE ON UPDATE CASCADE)
+ [ SQL语句 ] : INSERT INTO webapp.users_blance (`blanceNumber`,`blanceCost`,`blanceTime`,`blanceWays`,`user_id`) VALUES ('8620190304225152','18.5','2019-03-04 22:51:52','购物抵用','o6nWZ5Y7zRlBAqIf7QUWQSDqLSsU')
+

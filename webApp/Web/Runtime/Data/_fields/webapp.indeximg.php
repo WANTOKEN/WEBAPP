@@ -1,0 +1,1 @@
+a:8:{i:0;s:7:"indexid";i:1;s:11:"indexnumber";i:2;s:8:"indeximg";i:3;s:10:"indextitle";i:4;s:12:"indexcontent";i:5;s:7:"comTime";s:3:"_pk";s:7:"indexid";s:5:"_type";a:6:{s:7:"indexid";s:7:"int(11)";s:11:"indexnumber";s:12:"varchar(255)";s:8:"indeximg";s:12:"varchar(255)";s:10:"indextitle";s:12:"varchar(255)";s:12:"indexcontent";s:8:"longtext";s:7:"comTime";s:8:"datetime";}}

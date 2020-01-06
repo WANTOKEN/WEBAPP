@@ -1,0 +1,30 @@
+[ 2019-02-26T23:08:27+08:00 ] 61.140.114.176 /webApp/GetOrderMsg?account=15988888888
+ERR: 无法加载控制器:GetOrderMsg
+
+[ 2019-02-26T23:25:09+08:00 ] 61.140.114.176 /webApp/AddAddress?account=o6nWZ5Y7zRlBAqIf7QUWQSDqLSsU
+ERR: 1452:Cannot add or update a child row: a foreign key constraint fails (`webapp`.`address`, CONSTRAINT `userAccount` FOREIGN KEY (`userAccount`) REFERENCES `users` (`userId`) ON DELETE CASCADE ON UPDATE CASCADE)
+ [ SQL语句 ] : INSERT INTO webapp.address (`userAccount`,`deliverName`,`deliverTel`,`address`,`deliverBox`) VALUES ('o6nWZ5Y7zRlBAqIf7QUWQSDqLSsU','','','','')
+
+[ 2019-02-26T23:25:31+08:00 ] 61.140.114.176 /webApp/AddAddress?account=o6nWZ5Y7zRlBAqIf7QUWQSDqLSsU&rec_name=1&rec_tel=13809298888
+ERR: 1452:Cannot add or update a child row: a foreign key constraint fails (`webapp`.`address`, CONSTRAINT `userAccount` FOREIGN KEY (`userAccount`) REFERENCES `users` (`userId`) ON DELETE CASCADE ON UPDATE CASCADE)
+ [ SQL语句 ] : INSERT INTO webapp.address (`userAccount`,`deliverName`,`deliverTel`,`address`,`deliverBox`) VALUES ('o6nWZ5Y7zRlBAqIf7QUWQSDqLSsU','1','13809298888','','')
+
+[ 2019-02-26T23:25:42+08:00 ] 61.140.114.176 /webApp/AddAddress?account=o6nWZ5Y7zRlBAqIf7QUWQSDqLSsU&rec_name=1&rec_tel=13809298888&rec_address=1&rec_box=1
+ERR: 1452:Cannot add or update a child row: a foreign key constraint fails (`webapp`.`address`, CONSTRAINT `userAccount` FOREIGN KEY (`userAccount`) REFERENCES `users` (`userId`) ON DELETE CASCADE ON UPDATE CASCADE)
+ [ SQL语句 ] : INSERT INTO webapp.address (`userAccount`,`deliverName`,`deliverTel`,`address`,`deliverBox`) VALUES ('o6nWZ5Y7zRlBAqIf7QUWQSDqLSsU','1','13809298888','1','1')
+
+[ 2019-02-26T23:38:15+08:00 ] 61.140.114.176 /webApp/AddAddress?account=o6nWZ5Y7zRlBAqIf7QUWQSDqLSsU&rec_name=1&rec_tel=13809298888&rec_address=1&rec_box=1
+ERR: 1452:Cannot add or update a child row: a foreign key constraint fails (`webapp`.`address`, CONSTRAINT `userAccount` FOREIGN KEY (`userAccount`) REFERENCES `users` (`userId`) ON DELETE CASCADE ON UPDATE CASCADE)
+ [ SQL语句 ] : INSERT INTO webapp.address (`userAccount`,`deliverName`,`deliverTel`,`address`,`deliverBox`) VALUES ('o6nWZ5Y7zRlBAqIf7QUWQSDqLSsU','1','13809298888','1','1')
+
+[ 2019-02-26T23:40:31+08:00 ] 61.140.114.176 /webApp/AddAddress?account=o6nWZ5Y7zRlBAqIf7QUWQSDqLSsU&rec_name=%E6%9C%B1%E6%AF%93%E5%B7%9D&rec_tel=13809298888&rec_address=%E5%B9%BF%E5%B7%9E%E5%B8%82%E8%8A%B1%E9%83%BD%E5%8C%BA&rec_box=%E5%8F%96%E9%A4%90%E6%9F%9C1%E5%8F%B7
+ERR: 1452:Cannot add or update a child row: a foreign key constraint fails (`webapp`.`address`, CONSTRAINT `userAccount` FOREIGN KEY (`userAccount`) REFERENCES `users` (`userId`) ON DELETE CASCADE ON UPDATE CASCADE)
+ [ SQL语句 ] : INSERT INTO webapp.address (`userAccount`,`deliverName`,`deliverTel`,`address`,`deliverBox`) VALUES ('o6nWZ5Y7zRlBAqIf7QUWQSDqLSsU','朱毓川','13809298888','广州市花都区','取餐柜1号')
+
+[ 2019-02-26T23:43:13+08:00 ] 61.140.114.176 /webApp/AddAddress?account=o6nWZ5Y7zRlBAqIf7QUWQSDqLSsU&rec_name=%E6%9C%B1%E6%AF%93%E5%B7%9D&rec_tel=13809298888&rec_address=%E5%B9%BF%E5%B7%9E%E5%B8%82%E8%8A%B1%E9%83%BD%E5%8C%BA&rec_box=%E5%8F%96%E9%A4%90%E6%9F%9C1%E5%8F%B7
+ERR: 1452:Cannot add or update a child row: a foreign key constraint fails (`webapp`.`address`, CONSTRAINT `userAccount` FOREIGN KEY (`userAccount`) REFERENCES `users` (`userId`) ON DELETE CASCADE ON UPDATE CASCADE)
+ [ SQL语句 ] : INSERT INTO webapp.address (`userAccount`,`deliverName`,`deliverTel`,`address`,`deliverBox`) VALUES ('o6nWZ5Y7zRlBAqIf7QUWQSDqLSsU','朱毓川','13809298888','广州市花都区','取餐柜1号')
+
+[ 2019-02-26T23:58:24+08:00 ] 61.140.114.176 /webApp/GetOrderMsg?account=15988888888
+ERR: 无法加载控制器:GetOrderMsg
+

@@ -1,0 +1,67 @@
+[ 2019-03-02T01:12:41+08:00 ] 58.62.234.234 /webApp/WAddOrderItem?account=o6nWZ5Y7zRlBAqIf7QUWQSDqLSsU&goodsidlist=GD20181022233528,GD20181028134919&goodsnumlist=2,1&payway=%E4%BD%99%E9%A2%9D%E6%94%AF%E4%BB%98&comtime=2019/3/2%C2%A0%C2%A020:30~21:00&name=%E6%9C%B1%E6%AF%93%E5%B7%9D&tel=13809299999&address=%E5%B9%BF%E5%B7%9E%E5%B8%82&box=123&real=10&discount=3&total=7
+ERR: 1452:Cannot add or update a child row: a foreign key constraint fails (`webapp`.`users_point`, CONSTRAINT `point_userid` FOREIGN KEY (`point_userid`) REFERENCES `users` (`userId`) ON DELETE CASCADE ON UPDATE CASCADE)
+ [ SQL语句 ] : INSERT INTO webapp.users_point (`pointNumber`,`pointCost`,`pointTime`,`ways`,`point_userid`) VALUES ('9720190302011241','3','2019-03-02 01:12:41','购物抵用','o6nWZ5Y7zRlBAqIf7QUWQSDqLSsU')
+ERR: 1452:Cannot add or update a child row: a foreign key constraint fails (`webapp`.`users_blance`, CONSTRAINT `user_id` FOREIGN KEY (`user_id`) REFERENCES `users` (`userId`) ON DELETE CASCADE ON UPDATE CASCADE)
+ [ SQL语句 ] : INSERT INTO webapp.users_blance (`blanceNumber`,`blanceCost`,`blanceTime`,`blanceWays`,`user_id`) VALUES ('8420190302011241','10','2019-03-02 01:12:41','购物抵用','o6nWZ5Y7zRlBAqIf7QUWQSDqLSsU')
+
+[ 2019-03-02T01:20:38+08:00 ] 117.136.79.23 /webApp/WAddOrderItem?account=o6nWZ5Y7zRlBAqIf7QUWQSDqLSsU&goodsidlist=GD20181028135047%2CGD20181023215313&goodsnumlist=3%2C1&payway=%E4%BD%99%E9%A2%9D%E6%94%AF%E4%BB%98&comtime=2019-3-3%2020%3A30-21%3A00&name=%E6%9C%B1%E6%AF%93%E5%B7%9D&tel=17999999999&address=%E5%B9%BF%E4%B8%9C%E7%9C%81%E5%B9%BF%E5%B7%9E%E5%B8%82%E7%99%BD%E4%BA%91%E5%8C%BA%E5%B9%BF%E5%9B%AD%E4%B8%AD%E8%B7%AF238%E5%8F%B7&box=%E5%8F%96%E9%A4%90%E6%9F%9C%E4%B8%80%E7%99%BE%E5%8F%B7&real=14.5&discount=5&total=9.5
+ERR: 1452:Cannot add or update a child row: a foreign key constraint fails (`webapp`.`users_point`, CONSTRAINT `point_userid` FOREIGN KEY (`point_userid`) REFERENCES `users` (`userId`) ON DELETE CASCADE ON UPDATE CASCADE)
+ [ SQL语句 ] : INSERT INTO webapp.users_point (`pointNumber`,`pointCost`,`pointTime`,`ways`,`point_userid`) VALUES ('9820190302012038','5','2019-03-02 01:20:38','购物抵用','o6nWZ5Y7zRlBAqIf7QUWQSDqLSsU')
+ERR: 1452:Cannot add or update a child row: a foreign key constraint fails (`webapp`.`users_blance`, CONSTRAINT `user_id` FOREIGN KEY (`user_id`) REFERENCES `users` (`userId`) ON DELETE CASCADE ON UPDATE CASCADE)
+ [ SQL语句 ] : INSERT INTO webapp.users_blance (`blanceNumber`,`blanceCost`,`blanceTime`,`blanceWays`,`user_id`) VALUES ('8120190302012038','14.5','2019-03-02 01:20:38','购物抵用','o6nWZ5Y7zRlBAqIf7QUWQSDqLSsU')
+
+[ 2019-03-02T01:35:29+08:00 ] 58.62.234.234 /webApp/GetOneOrder?order_num=5620190302012038
+ERR: 1064:You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ')' at line 1
+ [ SQL语句 ] : SELECT `goodsid`,`goods_name`,`goods_price`,`goods_quantity` FROM webapp.order_goods WHERE ( orderid=  ) 
+
+[ 2019-03-02T01:39:58+08:00 ] 58.62.234.234 /webApp/GetOneOrder?order_num=5620190302012038
+ERR: 1064:You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ')' at line 1
+ [ SQL语句 ] : SELECT `goodsid`,`goods_name`,`goods_price`,`goods_quantity` FROM webapp.order_goods WHERE ( orderid=  ) 
+
+[ 2019-03-02T01:41:10+08:00 ] 58.62.234.234 /webApp/GetOneOrder?order_num=5620190302012038
+ERR: 1064:You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ')' at line 1
+ [ SQL语句 ] : SELECT `goodsid`,`goods_name`,`goods_price`,`goods_quantity` FROM webapp.order_goods WHERE ( orderid=  ) 
+
+[ 2019-03-02T01:42:59+08:00 ] 58.62.234.234 /webApp/GetOneOrder?order_num=5620190302012038
+ERR: 1064:You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ')' at line 1
+ [ SQL语句 ] : SELECT `goodsid`,`goods_name`,`goods_price`,`goods_quantity` FROM webapp.order_goods WHERE ( orderid=  ) 
+
+[ 2019-03-02T11:07:52+08:00 ] 61.140.135.191 /webApp/getUsersData
+ERR: 无法加载控制器:GetUsersData
+
+[ 2019-03-02T16:56:06+08:00 ] 113.105.12.153 /webApp/app.apk
+ERR: 无法加载控制器:App.apk
+
+[ 2019-03-02T16:56:36+08:00 ] 113.105.12.153 /webApp/app.apk
+ERR: 无法加载控制器:App.apk
+
+[ 2019-03-02T16:56:55+08:00 ] 113.105.12.153 /webApp/app.apk
+ERR: 无法加载控制器:App.apk
+
+[ 2019-03-02T16:57:36+08:00 ] 113.105.12.153 /webApp/app.apk
+ERR: 无法加载控制器:App.apk
+
+[ 2019-03-02T17:21:50+08:00 ] 113.105.12.153 /webApp/download/app.apk
+ERR: 无法加载控制器:Download
+
+[ 2019-03-02T17:22:20+08:00 ] 113.105.12.153 /webApp/download/app.apk
+ERR: 无法加载控制器:Download
+
+[ 2019-03-02T17:23:20+08:00 ] 113.105.12.153 /webApp/download/app.apk
+ERR: 无法加载控制器:Download
+
+[ 2019-03-02T17:23:43+08:00 ] 113.105.12.153 /webApp/download/app.apk
+ERR: 无法加载控制器:Download
+
+[ 2019-03-02T17:23:50+08:00 ] 113.105.12.153 /webApp/download/app.apk
+ERR: 无法加载控制器:Download
+
+[ 2019-03-02T17:23:50+08:00 ] 113.105.12.153 /webApp/download/app.apk
+ERR: 无法加载控制器:Download
+
+[ 2019-03-02T18:05:50+08:00 ] 113.105.12.153 /webApp/webApp
+ERR: 无法加载控制器:WebApp
+
+[ 2019-03-02T19:19:35+08:00 ] 113.105.12.153 /webApp/chechuodate
+ERR: 无法加载控制器:Chechuodate
+

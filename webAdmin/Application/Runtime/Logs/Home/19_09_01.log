@@ -1,0 +1,21 @@
+[ 2019-09-01T10:31:22+08:00 ] 101.132.106.111 /webAdmin/
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000009s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000062s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000038s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000083s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000032s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000058s ]
+NOTIC: [8] Undefined variable: js /alidata/www/default/webAdmin/Application/Runtime/Cache/Home/ccea6a400660ce54d68cab67b9f68781.php 第 81 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.001494s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.001518s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000026s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000045s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000023s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000042s ]
+

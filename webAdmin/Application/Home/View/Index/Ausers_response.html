@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+
+
+	</head>
+
+	<body>
+
+		<!-- Aside Start-->
+        <include file="aside"/>
+		<!-- Aside Ends-->
+
+		<!--Main Content Start -->
+		<section class="content">
+
+			<!-- Header -->
+            <include file="header"/>
+			<!-- Header Ends -->
+
+			<!-- Page Content Start -->
+			<!-- ================== -->
+
+			<div class="wraper container-fluid">
+
+				<div class="page-title">
+					<h3 class="title">反馈记录</h3>
+				</div>
+				<!--Widget-4 -->
+				<div class="row">
+					<div class="col-md-3">
+						<div class="mini-stat clearfix">
+							<span class="mini-stat-icon bg-info"><i class="fa fa-user"></i></span>
+							<div class="mini-stat-info text-right">
+								<span class="resp_total">665</span> 反馈总数
+							</div>
+						</div>
+					</div>
+					<div class="col-md-3">
+						<div class="mini-stat clearfix">
+							<span class="mini-stat-icon bg-success"><i class="fa fa-bell"></i></span>
+							<div class="mini-stat-info text-right">
+								<span class="resp_today text-info">16</span> 今日收到反馈
+							</div>
+						</div>
+					</div>
+					<div class="col-md-3">
+						<div class="mini-stat clearfix">
+							<span class="mini-stat-icon bg-primary"><i class="fa fa-bell"></i></span>
+							<div class="mini-stat-info text-right">
+								<span class="resp_success">664</span> 已处理反馈
+							</div>
+						</div>
+					</div>
+					<div class="col-md-3">
+						<div class="mini-stat clearfix">
+							<span class="mini-stat-icon bg-inverse"><i class="fa fa-plug"></i></span>
+							<div class="mini-stat-info text-right">
+								<span class="resp_fail">1</span> 未处理反馈
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- End row-->
+				<div class="row">
+					<div class="col-md-12">
+						<div class="panel panel-default">
+							<div class="panel-heading">
+								<h3 class="panel-title">数据列表</h3>
+							</div>
+							<div class="panel-body">
+								<div class="row">
+									<div class="col-md-12 col-sm-12 col-xs-12">
+										<table id="datatable" class="table table-striped table-bordered">
+											<thead>
+												<tr>
+													<th style="text-align: center;">记录编号</th>
+													<th style="text-align: center;">用户编号</th>
+													<!--<th style="text-align: center;">用户密码(加密)</th>-->
+													<th style="text-align: center;">用户平台</th>
+													<th style="text-align: center;">反馈时间</th>
+													<th style="text-align: center;">状态</th>
+													<th style="text-align: center;">反馈内容</th>
+													<!--<th style="text-align: center;">支付密码(加密)</th>-->
+													<th style="text-align: center;">操作</th>
+												</tr>
+											</thead>
+											<tbody id="data-row" style="text-align: center;">
+											</tbody>
+										</table>
+
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+				</div>
+				<!-- End Row -->
+
+				<div id="response-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+					<div class="modal-dialog">
+						<div class="modal-content">
+							<div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+								<h4 class="modal-title">反馈信息</h4>
+							</div>
+							<div class="modal-body" id="responsedetail">
+								<div class="row">
+									<div class="col-md-4">
+										<div class="form-group">
+											<label  class="control-label">记录编号</label>
+											<input type="text" class="form-control" id="responseid" disabled="" placeholder="" v-model="item.respnum">
+										</div>
+									</div>
+									<div class="col-md-4">
+										<div class="form-group">
+											<label  class="control-label">用户编号</label>
+											<input type="text" class="form-control" id="userid" disabled="" placeholder="" v-model="item.resp_userid">
+										</div>
+									</div>
+									<div class="col-md-4">
+										<div class="form-group">
+											<label  class="control-label">用户设备</label>
+											<input type="text" class="form-control"  disabled="" placeholder="" v-model="item.media">
+										</div>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-md-4">
+										<div class="form-group">
+											<label  class="control-label">联系方式</label>
+											<input type="text" class="form-control" disabled="" placeholder="" v-model="item.respcontact">
+										</div>
+									</div>
+									<div class="col-md-8">
+										<div class="form-group">
+											<label  class="control-label">IMEI</label>
+											<input type="text" class="form-control" disabled="" placeholder="" v-model="item.imei">
+										</div>
+									</div>
+
+								</div>
+								<div class="row">
+									<div class="col-md-12">
+										<div class="form-group no-margin">
+											<label for="field-7" class="control-label">反馈内容</label>
+											<textarea class="form-control autogrow" id="field-7" placeholder="" style="overflow: hidden; word-wrap: break-word; resize: horizontal; height: 31px;" v-model="item.respquestion"></textarea>
+										</div>
+									</div>
+								</div>
+								<div class="row" id="respImg">
+
+								</div>
+
+								<div class="modal-footer">
+									<button type="button" class="btn btn-white" data-dismiss="modal">关闭</button>
+									<button type="button" class="btn btn-primary dealbtn">处理完成</button>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- /.modal -->
+
+					<!-- End Row -->
+
+				</div>
+				<!-- Page Content Ends -->
+				<!-- ================== -->
+
+				<!-- Footer Start -->
+                <include file="footer"/>
+				<!-- Footer Ends -->
+
+		</div>
+        </section>
+		<!-- Main Content Ends -->
+        <script>
+            $(document).ready(function(){
+                $('.pageD').addClass("active");
+                $('.page8').addClass("active");
+            });
+
+        </script>
+
+
+		<script type="text/javascript">
+			function getInfo() {
+				$.ajax({
+					type: "get",
+					url: SERVER_URL + 'ADGetResponseInfo',
+					dataType: "json",
+					success: function(data) {
+						/*	console.log(JSON.stringify(data));*/
+						$('.resp_total').html(data.resptotal);
+						$('.resp_today').html(data.resptoday);
+						$('.resp_success').html(data.respsuccess);
+						$('.resp_fail').html(data.respfail);
+					}
+				});
+
+			}
+
+			function getDatas() {
+				var table;
+				table = $('#datatable');
+				table.dataTable({
+					/*"bProcessing": true,*/
+					lengthMenu: [
+						[10, 25, 50, -1],
+						[10, 25, 50, "全部"]
+					],
+					searching: true, //是否显示查询
+					lengthChange: true, //是否使用下位列表选择分页大小
+					//ordering:false,//全部禁止排序
+					paginationType: "full_numbers", //分页按钮：有精简和全功能几种选项
+					//语言国际化设置，默认是英文的
+					language: {
+						lengthMenu: "显示 _MENU_ 记录", //[[10, 25, 50, -1], [10, 25, 50, "All"]], //"显示 _MENU_ 记录",
+						zeroRecords: "没有找到记录",
+						info: "每页显示 10 条 当前显示 _START_ 到 _END_ 条，第 <span style='color:red'>_PAGE_</span> 页 ( 总共 _PAGES_ 页 ) 共 _TOTAL_ 条记录",
+						infoEmpty: "没有找到记录",
+						infoFiltered: "(从 _MAX_ 条记录过滤)",
+						paginate: {
+							first: "首页",
+							previous: " 上一页",
+							next: " 下一页 ",
+							last: " 尾页 "
+						},
+						search: "模糊查询：" //查询按钮显示的文本
+					},
+					"ajax": {
+						"url": SERVER_URL + 'ADGetResponseData',
+						dataSrc: ""
+					},
+					/*"sAjaxSource": SERVER_URL + 'GoodsData',*/
+					"columns": [
+						{ "data": "respid" },
+						{ "data": "resp_userid" },
+						{ "data": "platform" },
+						{ "data": "resptime" },
+						{ "data": "respstatus" },
+						{ "data": "respquestion" },
+						{
+							"data": null,
+							"render": function(data, type, row, meta) {
+								var html = '<button type="button" class="btn btn-info look" data-respid="' + row.respnum + '" data-toggle="modal" data-target="#response-modal">查看反馈</button>';
+								html += '&nbsp;&nbsp;';
+								if(row.respstatus == '已处理') {
+									html += '<button type="button" class="btn btn-danger delbtn" data-respid="' + row.respnum + '">删除</button>';
+								} else {
+									html += '<button type="button" class="btn btn-purple ignorebtn" data-respid="' + row.respnum + '">忽略</button>';
+								}
+								return html;
+							}
+						},
+					],
+					'aoColumnDefs': [{ //去掉排序
+						'bSortable': false,
+						'aTargets': [-1] /* 1st one, start by the right */
+					}]
+
+				});
+			}
+			$(document).ready(function() {
+				getInfo(); //简要信息
+				getDatas();
+			});
+			var respvue = new Vue({
+				el: '#responsedetail',
+				data: {
+					item: ""
+
+				}
+
+			})
+			//查看详情
+			//查看详情
+			$(document).on("click", ".look", function() {
+				var resp_id = $(this).attr('data-respid').toString();
+				/*				console.log(resp_id);*/
+				$.ajax({
+					type: "post",
+					data: {
+						resp_id: resp_id
+					},
+					url: SERVER_URL + 'ADgetResponseDetail',
+					dataType: "json",
+					success: function(data) {
+						console.log(JSON.stringify(data));
+						respvue.item = data.data[0];
+						console.log(data.imgdata);
+						if(data.imgdata == "null") {
+							$('#respImg').html('');
+							/*console.log('2');*/
+						} else {
+							/*							console.log('1');*/
+							$('#respImg').html('');
+							$('#respImg').append(getImgHtml(data.imgdata));
+						}
+					}
+				});
+			});
+
+			$(document).on("click", ".delbtn", function() {
+				var resp_id = $(this).attr('data-respid').toString();
+				$.ajax({
+					type: "post",
+					data: {
+						resp_id: resp_id
+					},
+					url: SERVER_URL + 'ADDelResponse',
+					dataType: "json",
+					success: function(data) {
+						console.log(JSON.stringify(data));
+						swal(data.msg);
+						window.location.reload();
+					}
+				});
+			});
+			//忽略
+			$(document).on("click", ".ignorebtn", function() {
+				$(this).parent().parent().remove();
+			});
+			$(document).on("click", ".dealbtn", function() {
+				var resp_id = $('#responseid').val();
+				var user_id = $('#userid').val();
+				console.log(resp_id + user_id);
+				$.ajax({
+					type: "post",
+					data: {
+						resp_id: resp_id,
+						user_id: user_id
+					},
+					url: SERVER_URL + 'ADDealResponse',
+					dataType: "json",
+					success: function(data) {
+						console.log(JSON.stringify(data));
+						swal(data.msg);
+						window.location.reload();
+					}
+				});
+			});
+
+			function getImgHtml($data) {
+				var html = '';
+				$.each($data, function(index, item) {
+					html += '<div class="col-md-6">';
+					html += '<div class="form-group no-margin">';
+					html += '<img class="img-thumbnail" src="' + SERVER_RESOURCE + item.respimg + '">';
+					html += '</div>';
+					html += '</div>';
+				});
+
+				return html;
+			}
+		</script>
+
+	</body>
+
+</html>

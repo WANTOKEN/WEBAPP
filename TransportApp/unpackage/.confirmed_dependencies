@@ -1,0 +1,26 @@
+{
+  "index.html": {
+    "resources": [
+      "js/mui.min.js",
+      "js/jquery-3.1.1.js",
+      "fonts/mui.ttf",
+      "css/mui.min.css",
+      "css/icons-extra.css",
+      "fonts/mui-icons-extra.ttf",
+      "js/config.js",
+      "js/vue/vue-resource.min.js",
+      "js/vue/vue.min.js"
+    ],
+    "refer": [
+      "QRcode2.html"
+    ]
+  },
+  "QRcode2.html": {
+    "resources": [
+      "js/mui.min.js",
+      "fonts/mui.ttf",
+      "css/mui.min.css"
+    ],
+    "refer": []
+  }
+}

@@ -1,0 +1,23 @@
+[ 2019-02-18T14:00:29+08:00 ] 180.163.220.66 /webAdmin/DoLogin
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000009s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000062s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000026s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000044s ]
+NOTIC: [8] Undefined index: db_name /alidata/www/default/webAdmin/ThinkPHP/Library/Think/Db.class.php 第 68 行.
+SQL: SHOW COLUMNS FROM `webapp`.`admin` [ RunTime:0.0021s ]
+SQL: SELECT COUNT(*) AS tp_count FROM webapp.admin WHERE `adminAccount` = '' LIMIT 1   [ RunTime:0.0017s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000033s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000056s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.001271s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.001295s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000026s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000040s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000034s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000049s ]
+

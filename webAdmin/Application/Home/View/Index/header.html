@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <link rel="shortcut icon" href="__PUBLIC__/img/favicon_1.ico">
+
+    <title>管理后台</title>
+
+
+    <!-- Bootstrap core CSS -->
+    <link href="__PUBLIC__/css/bootstrap.min.css" rel="stylesheet">
+    <link href="__PUBLIC__/css/bootstrap-reset.css" rel="stylesheet">
+
+    <!--Animation css-->
+    <link href="__PUBLIC__/css/animate.css" rel="stylesheet">
+
+    <!--Icon-fonts css-->
+    <link href="__PUBLIC__/assets/font-awesome/css/font-awesome.css" rel="stylesheet"/>
+    <link href="__PUBLIC__/assets/ionicon/css/ionicons.min.css" rel="stylesheet"/>
+
+    <!--Morris Chart CSS -->
+    <link rel="stylesheet" href="__PUBLIC__/assets/morris/morris.css">
+    <link href="__PUBLIC__/assets/sweet-alert/sweet-alert.min.css" rel="stylesheet">
+    <link href="__PUBLIC__/css/style.css" rel="stylesheet">
+    <link href="__PUBLIC__/css/helper.css" rel="stylesheet">
+    <link href="__PUBLIC__/css/style-responsive.css" rel="stylesheet"/>
+
+    <style>
+        [v-cloak] {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<!-- Header -->
+<header class="top-head container-fluid">
+    <button type="button" class="navbar-toggle pull-left">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+    </button>
+
+    <!-- Search -->
+    <form role="search" class="navbar-left app-search pull-left hidden-xs">
+        <input type="text" placeholder="搜索..." class="form-control">
+    </form>
+
+
+
+    <!-- Right navbar -->
+    <ul class="list-inline navbar-right top-menu top-right-menu">
+
+        <!-- mesages -->
+        <li class="dropdown">
+            <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                <i class="fa fa-envelope-o "></i>
+                <span class="badge badge-sm up bg-purple count">1</span>
+            </a>
+            <ul class="dropdown-menu extended fadeInUp animated nicescroll" tabindex="5001">
+                <li>
+                    <p>消息</p>
+                </li>
+
+                <li>
+                    <a href="#">
+                        <span class="pull-left"><i class="fa fa-bell-o fa-2x text-danger"></i></span>
+                        <span>有新商品需要审核！<br><small class="text-muted">>1小时 前</small></span>
+                    </a>
+                </li>
+                <li>
+                    <p>
+                        <a href="#" class="text-right">查看所有消息</a>
+                    </p>
+                </li>
+            </ul>
+        </li>
+        <!-- /messages -->
+
+        <!-- /Notification -->
+        <!-- user login dropdown start-->
+        <li class="dropdown text-center">
+            <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                <img alt="" src="__PUBLIC__/img/avatar-2.jpg" class="img-circle profile-img thumb-sm">
+                <span class="username">{$Think.session.name} </span> <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu extended pro-menu fadeInUp animated" tabindex="5003" style="overflow: hidden; outline: none;">
+                <li>
+                    <a href="#"><i class="fa fa-briefcase"></i>个人信息</a>
+                </li>
+                <li>
+                    <a href="#"><i class="fa fa-cog"></i>设置</a>
+                </li>
+                <li>
+                    <a href="cancelpage"><i class="fa fa-sign-out"></i> 注销</a>
+                </li>
+            </ul>
+        </li>
+        <!-- user login dropdown end -->
+    </ul>
+    <!-- End right navbar -->
+
+</header>
+</body>
+</html>

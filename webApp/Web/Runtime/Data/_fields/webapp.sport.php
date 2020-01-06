@@ -1,0 +1,1 @@
+a:9:{i:0;s:7:"sportId";i:1;s:9:"sportTime";i:2;s:8:"footStep";i:3;s:5:"point";i:4;s:8:"consumer";i:5;s:4:"mile";i:6;s:9:"sport_uId";s:3:"_pk";s:7:"sportId";s:5:"_type";a:7:{s:7:"sportId";s:7:"int(11)";s:9:"sportTime";s:4:"date";s:8:"footStep";s:7:"int(11)";s:5:"point";s:7:"int(11)";s:8:"consumer";s:7:"int(11)";s:4:"mile";s:12:"double(20,2)";s:9:"sport_uId";s:12:"varchar(255)";}}

@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+		<link rel="stylesheet" href="css/mui.min.css">
+		<link rel="stylesheet" type="text/css" href="css/icons-extra.css" />
+		<style>
+			html,
+			body {
+				background-color: #F5F5F5;
+				height: 100%;
+			}
+			
+			.mui-bar-nav-bg {
+				background-color: #FFCC33;
+				color: #FFFFFF;
+			}
+			
+			.mui-icon {
+				color: #FFFFFF;
+			}
+			
+			.mui-title {
+				color: #FFFFFF;
+			}
+			
+			.input-row {
+				margin-top: 20px;
+			}
+			
+			.order-input {
+				height: 60px;
+				width: 100%;
+				background-color: #FFFFFF;
+			}
+			
+			.order-input input {
+				height: 60px;
+				border: 0px;
+				width: 80%;
+			}
+			
+			.order-input span {
+				height: 60px;
+				float: right;
+				border: 0px;
+				padding-right: 20px;
+				line-height: 60px;
+				font-size: 30px;
+				color: rgb(156, 156, 156);
+			}
+			
+			.order-input span:active {
+				color: rgb(66, 66, 66);
+			}
+			
+			.status-input {
+				height: 62px;
+				width: 100%;
+				background-color: #FFFFFF;
+			}
+			
+			.status-input label {
+				height: 60px;
+				border: 0px;
+				width: 30%;
+				float: left;
+				line-height: 60px;
+				padding-left: 20px;
+				color: rgb(156, 156, 156);
+			}
+			
+			.status-input select {
+				height: 60px;
+				border: 0px;
+				width: 70%;
+				float: left;
+			}
+			
+			.status-input span {
+				color: rgb(156, 156, 156);
+				height: 60px;
+				position: absolute;
+				right: 20px;
+				line-height: 60px;
+				font-size: 30px;
+			}
+			
+			.mui-btn-block {
+				width: 50%;
+				margin-left: 25%;
+				border-radius: 5px;
+			}
+			
+			.mui-content {}
+		</style>
+
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav mui-bar-nav-bg">
+			<a id="icon-menu" class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<a class="mui-action-back mui-icon mui-icon-home mui-pull-right mui-a-color"></a>
+			<h1 class="mui-title">送餐</h1>
+		</header>
+		<div class="mui-content">
+
+			<form action="">
+				<div class="input-row">
+					<div class="order-input">
+						<input type="number" placeholder="请输入订单号" id="order_num">
+						<span class="mui-icon-extra mui-icon-extra-sweep" id="scan-order"></span>
+					</div>
+				</div>
+				<div class="input-row">
+
+					<div class="status-input">
+						<label for="status">餐品状态</label>
+						<select name="status" id="status">
+							<option value="2">已送达</option>
+							<option value="1">开始配送</option>
+
+						</select>
+						<span class="mui-icon mui-icon-arrowdown"></span>
+					</div>
+
+				</div>
+
+				<div class="input-row">
+					<div class="order-input">
+						<input type="number" placeholder="请获取取餐码" id="order_code" required="required">
+						<span class="mui-icon mui-icon-reload" id="scan-code"></span>
+
+					</div>
+				</div>
+
+				<div class="" style="background-color: #F5F5F5;">
+					<span style="color: #DD524D; padding-left: 10px; line-height: 50px;" id="response"> 
+					
+					</span>
+				</div>
+
+			</form>
+
+		</div>
+		<div>
+			<ul class="mui-table-view mui-grid-view mui-grid-9">
+				<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+					<a href="#">
+						<div class="numbox">1号柜</div>
+					</a>
+				</li>
+				<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+					<a href="#">
+						<div class="numbox">2号柜</div>
+					</a>
+				</li>
+				<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+					<a href="#">
+						<div class="numbox">3号柜</div>
+					</a>
+				</li>
+				<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+					<a href="#">
+						<div class="numbox">4号柜</div>
+					</a>
+				</li>
+				<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+					<a href="#">
+						<div class="numbox">5号柜</div>
+					</a>
+				</li>
+				<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+					<a href="#">
+						<div class="numbox">6号柜</div>
+					</a>
+				</li>
+				<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+					<a href="#">
+						<div class="numbox">7号柜</div>
+					</a>
+				</li>
+				<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+					<a href="#">
+						<div class="numbox">8号柜</div>
+					</a>
+				</li>
+				<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+					<a href="#">
+						<div class="numbox">9号柜</div>
+					</a>
+				</li>
+				<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+					<a href="#">
+						<div class="numbox">10号柜</div>
+					</a>
+				</li>
+				<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+					<a href="#">
+						<div class="numbox">11号柜</div>
+					</a>
+				</li>
+				<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+					<a href="#">
+						<div class="numbox">12号柜</div>
+					</a>
+				</li>
+			</ul>
+		</div>
+		<div style="height: 10px;"></div>
+		<button class="mui-btn-block mui-btn-danger" id="ensure-btn">确认</button>
+	</body>
+	<script src="js/mui.min.js "></script>
+	<script type="text/javascript" src="js/config.js"></script>
+	<script type="text/javascript" src="js/jquery-3.1.1.js"></script>
+	<script>
+		mui.init();
+		mui.plusReady(function() {
+			var ws=null;//定义websocket对象
+			$('#scan-order').on('tap', function() {
+				console.log('open-scan');
+				mui.openWindow({
+					id: "QRcode2.html", //id
+					url: 'QRcode2.html',
+					show: {
+						aniShow: "zoom-fade-out", //页面显示动画，默认为”slide-in-right“；
+						duration: 300, //页面动画持续时间，Android平台默认100毫秒，iOS平台默认200毫秒
+						autoShow: true //页面loaded事件发生后自动显示，默认为true
+					},
+					extras: {
+						//自定义扩展参数，可以用来处理页面间传值
+					},
+					waiting: {
+						//title: '正在玩命搜索...' //等待对话框上显示的提示内容
+					}
+				});
+
+			});
+
+			var numbox;
+			function sendFoodsBox($ordernum,$status,$code,$numbox){
+				$.ajax({
+					url: SERVER_URL + 'SendFoods', //后台提供的接口
+					type: "post", //请求方式是post
+					data: {
+						ordernum: $ordernum, //订单号
+						status: $status, //订单状态
+						code: $code, //取餐码
+						numbox: $numbox
+					},
+					dataType: "json", //数据类型是json型
+					success: function(data) {
+						console.log(JSON.stringify(data));
+						//成功时返回的data值，注意这个data是后台返回的值，上面的data是你要传给后台的值
+						if(data.code == 200) {
+							mui.alert(data.msg)
+						} else {
+							$('#response').html('当前订单状态：' + data.resp);
+							mui.alert(data.msg)
+
+						}
+					},
+					error: function() {},
+					complete: function() {}
+
+				});
+			}
+			$(document).on('click', '#ensure-btn', function() {
+				if(!numbox) {
+					console.log("请选择柜号！");
+					mui.alert('请选择柜号！');
+					return;
+				}
+				console.log(numbox);
+				var status = $('#status').val();
+				var ordernum = $('#order_num').val();
+				var code = $('#order_code').val();
+				console.log(status + code + numbox);
+				if(status == 2 && (code == null || code == '')) {
+					mui.alert('取餐码不能为空！');
+					return;
+				}
+				console.log(ordernum + status);
+				sendFoodsBox(ordernum,status,code,numbox);
+				/*if(ws!==null){
+					var senddata = 3820181128150951;
+					ws.send(senddata); //发送当前用户ID
+					mui.toast('已通知用户取餐');
+				}*/
+
+			});
+
+			$('#scan-code').on('tap', function() {
+				$(this).css("color", "#FFCC33");
+				var code = Math.random();
+				$('#order_code').val(code.toString().substring(2, 8));
+
+			});
+			$(document).on('click', '.numbox', function() {
+				
+				numbox = $(this).text();
+				console.log(numbox);
+				$('#ensure-btn').html(numbox + " 确认");
+			});
+
+			window.addEventListener("changeOrder", function(e) {
+				/*	console.log(e.detail.orderNum);*/
+				$('#order_num').val(e.detail.orderNum);
+				$('#response').html('');
+				$('#order_code').val('');
+			});
+			/*if("WebSocket" in window) {
+				console.log("您的浏览器支持 WebSocket!");
+				// 打开一个 web socket
+				ws = new WebSocket("ws://47.106.253.201:9503");
+				ws.onopen = function() {
+					// Web Socket 已连接上，使用 send() 方法发送数据
+					setTimeout(function() {
+						ws.send("18318565453"); //发送当前用户ID
+					}, 500);
+
+				};
+				ws.onmessage = function(evt) {
+					var received_msg = evt.data;
+					mui.toast(received_msg);
+				};
+				ws.onclose = function() {
+					// 关闭 websocket
+					mui.alert("推送连接已关闭...");
+				};
+			} else {
+				// 浏览器不支持 WebSocket
+				mui.toast("您的浏览器不支持 WebSocket!");
+			}*/
+		});
+	</script>
+	<script type="text/javascript">
+	</script>
+
+</html>

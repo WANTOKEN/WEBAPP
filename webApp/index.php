@@ -18,8 +18,8 @@
 define('APP_DEBUG',false);
 //本地数据库连接
 define('MY_DB_HOST', '47.106.253.201');
-define('MY_DB_USER', 'root');
-define('MY_DB_PWD', 'ztking97');
+define('MY_DB_USER', '');
+define('MY_DB_PWD', '');
 define('MY_DB_NAME', 'webapp');
 define('MY_DB_PORT', '3306');
 //解决Nginx的U方法

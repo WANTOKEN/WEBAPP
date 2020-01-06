@@ -1,0 +1,35 @@
+ <!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<link href="css/mui.min.css" rel="stylesheet" />
+	</head>
+	<body>
+		<body>
+		</body>
+		<script type="text/javascript" src="js/mui.min.js"></script>
+		<script type="text/javascript" src="js/app.js"></script>
+		<script type="text/javascript" charset="utf-8">
+			mui.init();
+			mui.plusReady(function() {
+				var settings = app.getSettings();
+				var state = app.getState();
+				console.log('index.html:本地配置信息' + JSON.stringify(settings));
+				if(settings.autoLogin) {
+					var w = plus.webview.create("app/main.html");
+					w.show('zoom-fade-out'); // 显示窗口
+					plus.webview.currentWebview().close('zoom-in');
+				} else {
+					var w = plus.webview.create("app/user/login.html");
+					w.show('zoom-fade-out'); // 显示窗口
+					plus.webview.currentWebview().close('zoom-in');
+				}
+
+			})
+		</script>
+	</body>
+
+</html>

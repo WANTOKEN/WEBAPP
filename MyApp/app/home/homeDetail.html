@@ -1,0 +1,103 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../../css/mui.min.css" rel="stylesheet" />
+		<link href="../../css/style.css" rel="stylesheet" />
+		<link rel="stylesheet" href="../../css/preimg.css" />
+		<style>
+			.title {
+				font-size: 20px;
+				padding: 8px 10px;
+				color: #000000;
+			}
+			
+			.content {
+				height: 100%;
+				width: 100%;
+				/*text-indent: 2em;*/
+				padding: 2px 10px;
+				/*color: rgba(156, 156, 156, 0.8);*/
+			}
+			
+			.content img {
+				width: 100%;
+				max-height: 300px;
+			}
+		</style>
+	</head>
+
+	<body style="background-color:#FFFFFF;width: 100%;height: 100%;">
+		<header class="mui-bar mui-bar-nav">
+			<span class="mui-action-back mui-icon mui-icon-arrowleft mui-pull-left" style="color: #FFFFFF;"></span>
+			<span class="title-text mui-action-back"></span>
+		</header>
+		<div class="mui-content" style="background-color: #FFFFFF;width: 100%;height: 100%;">
+
+			<div class="title"></div>
+
+			<div class="content">
+			</div>
+
+		</div>
+		<script src="../../js/mui.min.js"></script>
+		<!--vue-->
+		<script src="../../js/jquery-3.1.1.js"></script>
+		<script type="text/javascript" src="../../js/config.js"></script>
+		<script src="../../js/mui.zoom.js"></script>
+		<script src="../../js/mui.previewimage.js"></script>
+		<script type="text/javascript">
+			mui.init();
+			mui.plusReady(function() {
+				//获取当前窗体对象
+				$('.title-text').html('');
+				$('.title').html('');
+				$('.content').html('');
+				var page = plus.webview.currentWebview();
+				//接受上一页面传过来的值；
+				var indexid = page.indexid;
+				console.log(indexid);
+				var wt = plus.nativeUI.showWaiting();
+				$.ajax({
+					url: SERVER_URL + 'AppIndexDetail', //后台提供的接口
+					type: "get", //请求方式是post
+					data: {
+						indexid: indexid
+					},
+					dataType: "json", //数据类型是json型
+					success: function(data) {
+						console.log(JSON.stringify(data));
+						if(data.code == 200) {
+							var titletext = data.data[0].indextitle;
+							var contenrtext = data.data[0].indexcontent;
+							$('.title-text').html(titletext);
+							$('.title').html(titletext);
+							$('.content').html(contenrtext);
+							$('img').css("width", "100%");
+							$('img').css("height", "100%");
+							wt.close();
+						}
+						//成功时返回的data值，注意这个data是后台返回的值，上面的data是你要传给后台的值
+						$(document).find("img").each(function() {
+							$(this).attr("data-preview-src", "");
+							$(this).attr("data-preview-group", "1");
+						});
+					},
+
+					error: function() {
+						mui.alert("网络访问异常！");
+						wt.close();
+					},
+					complete: function() {}
+
+				});
+
+			});
+		</script>
+
+	</body>
+
+</html>

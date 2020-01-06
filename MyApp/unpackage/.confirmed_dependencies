@@ -1,0 +1,1790 @@
+{
+  "index.html": {
+    "resources": [
+      "js/app.js",
+      "js/jquery-3.1.1.js",
+      "js/mui.min.js",
+      "css/mui.min.css",
+      "img/icon/smile.png",
+      "images/logo.png",
+      "css/common.css",
+      "js/shortcut.js",
+      "js/immersed.js"
+    ],
+    "refer": [
+      "login.html",
+      "guide.html",
+      "main.html",
+      "app/main.html",
+      "app/user/login.html"
+    ]
+  },
+  "login.html": {
+    "resources": [
+      "css/style.css",
+      "js/mui.enterfocus.js",
+      "images/qq.png",
+      "js/app.js",
+      "js/mui.min.js",
+      "css/mui.min.css",
+      "img/icon/phone.png",
+      "img/icon/password.png",
+      "js/immersed.js",
+      "plugins/layui/font/iconfont.woff",
+      "plugins/layui/css/layui.css",
+      "img/appicon/appicon.png"
+    ],
+    "refer": [
+      "main.html",
+      "reg.html",
+      "forget_password.html",
+      "app/HomePage.html"
+    ]
+  },
+  "main.html": {
+    "resources": [
+      "fonts/mui.ttf",
+      "app/HomePage.html",
+      "js/mui.min.js",
+      "css/mui.min.css",
+      "plugins/layui/css/layui.css",
+      "css/iconfont.css",
+      "fonts/iconfont.ttf",
+      "js/config.js",
+      "js/jquery-3.1.1.js"
+    ],
+    "refer": [
+      "app/SportPage.html",
+      "app/InfoPage.html",
+      "app/HomePage.html",
+      "app/ShareAreaPage.html"
+    ]
+  },
+  "app/OrderPage.html": {
+    "refer": [
+      "app/goodsDetail.html",
+      "app/cartDetail.html"
+    ],
+    "resources": [
+      "images/muwu.jpg",
+      "images/cbd.jpg",
+      "js/jquery-3.1.1.js",
+      "images/yuantiao.jpg",
+      "js/mui.min.js",
+      "fonts/mui.ttf",
+      "css/mui.min.css",
+      "images/shuijiao.jpg",
+      "js/config.js",
+      "js/mui.pullToRefresh.js",
+      "js/mui.pullToRefresh.material.js",
+      "images/logo.png",
+      "css/pulldown.css",
+      "js/pulldown.js",
+      "resource/recom3.jpg",
+      "resource/recom4.jpg",
+      "resource/recom2.jpg",
+      "resource/recom1.jpg",
+      "plugins/vue/vue.min.js",
+      "plugins/vue/vue-resource.min.js",
+      "img/101240744421191554.jpg",
+      "img/apppay/logo3.png"
+    ]
+  },
+  "app/goodsDetail.html": {
+    "resources": [
+      "libs/echarts-all.js",
+      "js/jquery-3.1.1.js",
+      "js/mui.min.js",
+      "fonts/mui.ttf",
+      "css/mui.min.css",
+      "img/icon/search.png",
+      "js/config.js",
+      "css/style.css",
+      "plugins/vue/vue.min.js",
+      "plugins/vue/vue-resource.min.js",
+      "img/apppay/logo3.png",
+      "resource/recom3.jpg",
+      "resource/1.jpg",
+      "img/index/index_3.png",
+      "js/mui.zoom.js",
+      "js/mui.previewimage.js",
+      "css/preimg.css"
+    ],
+    "refer": [
+      "app/cartDetail.html"
+    ]
+  },
+  "app/HomePage.html": {
+    "resources": [
+      "img/icon/location.png",
+      "img/icon/search.png",
+      "js/config.js",
+      "img/icon/scancode-1.png",
+      "images/cbd.jpg",
+      "images/logo.png",
+      "js/jquery-3.1.1.js",
+      "js/mui.min.js",
+      "css/mui.min.css",
+      "fonts/mui.ttf",
+      "images/yuantiao.jpg",
+      "js/pulldown.js",
+      "js/mui.pullToRefresh.js",
+      "js/mui.pullToRefresh.material.js",
+      "css/pulldown.css",
+      "css/iconfont.css",
+      "fonts/iconfont.ttf",
+      "img/apppay/logo3.png",
+      "img/index/index_us.png",
+      "img/index/index_1.png",
+      "img/index/index_2.png",
+      "img/index/index_3.png",
+      "resource/1.jpg",
+      "resource/2.jpg",
+      "resource/3.jpg",
+      "resource/4.jpg",
+      "resource/ad.png",
+      "css/hui.css",
+      "img/icon/spiker.png",
+      "js/app.js",
+      "plugins/vue/vue.min.js",
+      "plugins/vue/vue-resource.min.js"
+    ],
+    "refer": [
+      "app/OrderPage.html",
+      "app/map.html",
+      "app/barcode_scan.html",
+      "app/barcode_scan2.html",
+      "app/bc.html",
+      "app/QRcode.html",
+      "app/search.html",
+      "app/SendOrders.html",
+      "app/goodsDetail.html",
+      "app/homeDetail.html"
+    ]
+  },
+  "app/cartDetail.html": {
+    "resources": [
+      "js/mui.picker.js",
+      "img/wxpay/weixin.png",
+      "js/mui.poppicker.js",
+      "img/icon/close.png",
+      "img/alipay/36x36.png",
+      "css/mui.poppicker.css",
+      "css/mui.picker.css",
+      "js/app.js",
+      "js/jquery-3.1.1.js",
+      "images/logo.png",
+      "js/mui.min.js",
+      "fonts/mui.ttf",
+      "css/mui.min.css",
+      "js/config.js",
+      "img/icon/address.png",
+      "css/style.css",
+      "img/appicon/appicon.png",
+      "appjs/cartDetail.js",
+      "plugins/vue/vue.min.js",
+      "plugins/vue/vue-resource.min.js"
+    ],
+    "refer": [
+      "app/payment_success.html",
+      "app/selectAddress.html",
+      "app/myAddress.html",
+      "app/myAddress_add.html"
+    ]
+  },
+  "app/myAddress.html": {
+    "refer": [
+      "app/myAddress_reg.html",
+      "app/myAddress_add.html"
+    ],
+    "resources": [
+      "js/app.js",
+      "js/jquery-3.1.1.js",
+      "js/mui.min.js",
+      "fonts/mui.ttf",
+      "css/mui.min.css",
+      "js/config.js",
+      "css/pulldown.css",
+      "js/mui.pullToRefresh.js",
+      "js/pulldown.js",
+      "js/mui.pullToRefresh.material.js",
+      "css/style.css"
+    ]
+  },
+  "app/my_InfoDefalt.html": {
+    "resources": [
+      "js/mui.view.js"
+    ],
+    "refer": [
+      "app/cutimg.html"
+    ]
+  },
+  "app/InfoPage.html": {
+    "refer": [
+      "app/myOrders.html",
+      "app/myAddress.html",
+      "app/my_InfoDefalt.html",
+      "app/payment.html",
+      "app/myInfoDetail.html",
+      "app/webview_pullhead_custom.html",
+      "app/user_balance.html",
+      "app/user_point.html",
+      "login.html",
+      "app/setting.html",
+      "app/feedback.html",
+      "app/ResponsePage.html",
+      "app/SportPage.html"
+    ],
+    "resources": [
+      "images/cbd.jpg",
+      "js/app.js",
+      "js/jquery-3.1.1.js",
+      "js/mui.min.js",
+      "fonts/mui.ttf",
+      "css/mui.min.css",
+      "img/icon/address.png",
+      "img/icon/point.png",
+      "img/icon/balance.png",
+      "img/icon/clock.png",
+      "img/icon/comment.png",
+      "img/icon/atm.png",
+      "img/icon/sport.png",
+      "img/icon/walk.png",
+      "img/icon/point1.png",
+      "img/icon/blance.png",
+      "js/mui.pullToRefresh.js",
+      "js/pulldown.js",
+      "js/mui.pullToRefresh.material.js",
+      "css/pulldown.css",
+      "css/style.css",
+      "img/appicon/appicon.png"
+    ]
+  },
+  "reg.html": {
+    "resources": [
+      "img/icon/password.png",
+      "img/icon/phone.png",
+      "fonts/mui.ttf",
+      "js/app.js",
+      "js/mui.min.js",
+      "css/mui.min.css",
+      "css/style.css",
+      "js/jquery-3.1.1.js"
+    ],
+    "refer": [
+      "login.html",
+      "app/Disclaimer.html"
+    ]
+  },
+  "forget_password.html": {
+    "resources": [
+      "img/icon/password.png",
+      "js/app.js",
+      "js/mui.min.js",
+      "img/icon/phone.png",
+      "fonts/mui.ttf",
+      "css/mui.min.css",
+      "css/style.css",
+      "plugins/layui/css/layui.css",
+      "forget_password.html",
+      "js/jquery-3.1.1.js",
+      "js/config.js"
+    ],
+    "refer": [
+      "forget_password.html"
+    ]
+  },
+  "app/SportPage.html": {
+    "resources": [
+      "images/yuantiao.jpg",
+      "images/shuijiao.jpg",
+      "js/jquery-3.1.1.js",
+      "js/mui.min.js",
+      "css/mui.min.css",
+      "js/app.js",
+      "js/config.js",
+      "js/mui.pullToRefresh.js",
+      "js/pulldown.js",
+      "js/mui.pullToRefresh.material.js",
+      "css/pulldown.css",
+      "plugins/vue/vue.min.js",
+      "plugins/vue/vue-resource.min.js"
+    ],
+    "refer": [
+      "app/run.html",
+      "app/SportPage_regInfo.html",
+      "app/SportPageDetail.html"
+    ]
+  },
+  "app/payment_success.html": {
+    "resources": [
+      "img/icon/happy.png",
+      "js/jquery-3.1.1.js",
+      "js/mui.min.js",
+      "fonts/mui.ttf",
+      "css/mui.min.css"
+    ],
+    "refer": [
+      "app/ordersDetail.html",
+      "app/myOrders.html",
+      "app/OrderPage.html"
+    ]
+  },
+  "app/ordersDetail.html": {
+    "resources": [
+      "images/logo.png",
+      "img/icon/person.png",
+      "img/icon/page.png",
+      "js/mui.min.js",
+      "fonts/mui.ttf",
+      "css/mui.min.css",
+      "js/jquery-3.1.1.js",
+      "js/app.js",
+      "js/config.js",
+      "img/apppay/logo3.png",
+      "css/style.css",
+      "plugins/vue/vue.min.js",
+      "plugins/vue/vue-resource.min.js"
+    ],
+    "refer": [
+      "app/goodsDetail.html"
+    ]
+  },
+  "app/myOrders.html": {
+    "resources": [
+      "js/jquery-3.1.1.js",
+      "js/mui.min.js",
+      "fonts/mui.ttf",
+      "css/mui.min.css",
+      "js/app.js",
+      "js/config.js",
+      "js/mui.pullToRefresh.js",
+      "js/pulldown.js",
+      "js/mui.pullToRefresh.material.js",
+      "css/pulldown.css",
+      "css/style.css",
+      "plugins/vue/vue.min.js",
+      "plugins/vue/vue-resource.min.js"
+    ],
+    "refer": [
+      "app/ordersDetail.html",
+      "app/goodsDetail.html"
+    ]
+  },
+  "guide.html": {
+    "refer": [
+      "login.html"
+    ],
+    "resources": [
+      "js/mui.min.js",
+      "css/mui.min.css"
+    ]
+  },
+  "app/selectAddress.html": {
+    "resources": [
+      "js/app.js",
+      "js/jquery-3.1.1.js",
+      "js/mui.min.js",
+      "fonts/mui.ttf",
+      "css/mui.min.css",
+      "js/config.js",
+      "js/mui.pullToRefresh.js",
+      "js/pulldown.js",
+      "js/mui.pullToRefresh.material.js",
+      "css/pulldown.css",
+      "css/style.css"
+    ],
+    "refer": [
+      "app/myAddress_add.html",
+      "app/myAddress_reg.html"
+    ]
+  },
+  "app/myInfoDetail.html": {
+    "resources": [
+      "js/mui.view.js",
+      "js/jquery-3.1.1.js",
+      "js/app.js",
+      "js/mui.min.js",
+      "fonts/mui.ttf",
+      "css/mui.min.css",
+      "images/cbd.jpg",
+      "images/logo.png",
+      "plugins/layui/css/layui.css",
+      "js/config.js",
+      "css/style.css",
+      "js/mui.pullToRefresh.js",
+      "js/pulldown.js",
+      "js/mui.pullToRefresh.material.js",
+      "css/pulldown.css",
+      "img/appicon/appicon.png"
+    ],
+    "refer": [
+      "app/cutimg.html",
+      "app/myInfo_name_reg.html",
+      "app/myInfo_pay_reg.html",
+      "app/myInfo_pass_reg.html",
+      "app/userimgDetail.html"
+    ]
+  },
+  "app/cutimg.html": {
+    "resources": [
+      "plugins/exif/exif.js",
+      "plugins/cropper/cropper.min.js",
+      "plugins/cropper/cropper.css",
+      "plugins/fastclick/fastclick.js",
+      "js/app.js",
+      "js/jquery-3.1.1.js",
+      "js/mui.min.js",
+      "fonts/mui.ttf",
+      "css/mui.min.css",
+      "plugins/fastclick/fastclick.min.js",
+      "plugins/exif/exif.min.js",
+      "appjs/cutimg.js",
+      "js/config.js",
+      "plugins/cropper/cropper.js"
+    ],
+    "refer": []
+  },
+  "app/map.html": {
+    "resources": [
+      "images/logo.png",
+      "img/icon/user_locate.png",
+      "fonts/mui.ttf",
+      "css/mui.min.css",
+      "css/common.css",
+      "js/jquery-3.1.1.js",
+      "js/app.js",
+      "js/mui.min.js",
+      "plugins/vue/vue.min.js",
+      "plugins/vue/vue-resource.min.js",
+      "css/iconfont.css"
+    ],
+    "refer": []
+  },
+  "app/myInfo_name_reg.html": {
+    "resources": [
+      "js/jquery-3.1.1.js",
+      "js/app.js",
+      "js/mui.min.js",
+      "fonts/mui.ttf",
+      "css/mui.min.css",
+      "js/config.js",
+      "css/style.css"
+    ],
+    "refer": []
+  },
+  "app/myInfo_pass_reg.html": {
+    "resources": [
+      "js/jquery-3.1.1.js",
+      "js/app.js",
+      "js/mui.min.js",
+      "fonts/mui.ttf",
+      "css/mui.min.css",
+      "js/config.js",
+      "css/style.css"
+    ],
+    "refer": []
+  },
+  "app/myInfo_pay_reg.html": {
+    "resources": [
+      "js/jquery-3.1.1.js",
+      "js/app.js",
+      "js/mui.min.js",
+      "fonts/mui.ttf",
+      "css/mui.min.css",
+      "img/icon/close.png",
+      "js/config.js",
+      "css/style.css"
+    ],
+    "refer": []
+  },
+  "app/webview_pullhead_custom.html": {
+    "resources": [
+      "css/common.css",
+      "js/immersed.js",
+      "img/pull_fresh.png"
+    ],
+    "refer": []
+  },
+  "app/myAddress_reg.html": {
+    "resources": [
+      "js/jquery-3.1.1.js",
+      "js/app.js",
+      "js/mui.min.js",
+      "css/mui.min.css",
+      "js/config.js",
+      "fonts/mui.ttf",
+      "css/style.css"
+    ],
+    "refer": [
+      "app/myAddress.html"
+    ]
+  },
+  "app/user_balance.html": {
+    "resources": [
+      "img/wxpay/weixin.png",
+      "img/alipay/36x36.png",
+      "js/jquery-3.1.1.js",
+      "images/logo.png",
+      "js/mui.min.js",
+      "fonts/mui.ttf",
+      "css/mui.min.css",
+      "js/app.js",
+      "js/config.js",
+      "js/mui.pullToRefresh.js",
+      "js/pulldown.js",
+      "js/mui.pullToRefresh.material.js",
+      "css/pulldown.css",
+      "img/apppay/logo3.png",
+      "css/style.css"
+    ],
+    "refer": [
+      "app/myAddress_add.html",
+      "app/user_balance_detail.html"
+    ]
+  },
+  "app/myAddress_add.html": {
+    "resources": [
+      "js/app.js",
+      "js/jquery-3.1.1.js",
+      "js/mui.min.js",
+      "fonts/mui.ttf",
+      "css/mui.min.css",
+      "js/config.js",
+      "img/icon/address.png",
+      "css/style.css",
+      "css/iconfont.css"
+    ],
+    "refer": [
+      "app/map.html"
+    ]
+  },
+  "app/user_balance_detail.html": {
+    "resources": [
+      "js/app.js",
+      "js/jquery-3.1.1.js",
+      "js/mui.min.js",
+      "fonts/mui.ttf",
+      "css/mui.min.css",
+      "js/config.js",
+      "js/mui.pullToRefresh.js",
+      "js/mui.pullToRefresh.material.js",
+      "images/cbd.jpg",
+      "js/pulldown.js",
+      "css/pulldown.css",
+      "css/style.css",
+      "resource/cd.jpg"
+    ],
+    "refer": []
+  },
+  "app/barcode_scan.html": {
+    "resources": [
+      "css/common.css",
+      "js/common.js"
+    ],
+    "refer": []
+  },
+  "app/barcode_scan2.html": {
+    "resources": [
+      "js/common.js",
+      "css/common.css",
+      "js/mui.min.js",
+      "fonts/mui.ttf",
+      "css/mui.min.css",
+      "img/icon/scancode2.png",
+      "img/icon/close2.png",
+      "js/jquery-3.1.1.js",
+      "img/icon/flash.png",
+      "img/icon/pic.png"
+    ],
+    "refer": []
+  },
+  "app/QRcode.html": {
+    "resources": [
+      "img/icon/flash.png",
+      "img/icon/pic.png",
+      "js/mui.min.js",
+      "fonts/mui.ttf",
+      "css/mui.min.css",
+      "js/app.js",
+      "js/config.js",
+      "css/iconfont.css",
+      "js/jquery-3.1.1.js"
+    ],
+    "refer": []
+  },
+  "app/search.html": {
+    "resources": [
+      "js/mui.min.js",
+      "fonts/mui.ttf",
+      "css/mui.min.css",
+      "img/icon/location.png",
+      "img/icon/search.png",
+      "img/icon/scancode-1.png",
+      "img/icon/arrowleft.png",
+      "js/jquery-3.1.1.js",
+      "js/config.js",
+      "css/iconfont.css",
+      "js/app.js",
+      "plugins/vue/vue.min.js",
+      "plugins/vue/vue-resource.min.js"
+    ],
+    "refer": [
+      "app/goodsDetail.html",
+      "app/cartDetail.html"
+    ]
+  },
+  "app/user_point.html": {
+    "resources": [
+      "js/app.js",
+      "js/jquery-3.1.1.js",
+      "js/mui.min.js",
+      "fonts/mui.ttf",
+      "css/mui.min.css",
+      "js/config.js",
+      "js/mui.pullToRefresh.js",
+      "js/pulldown.js",
+      "js/mui.pullToRefresh.material.js",
+      "css/pulldown.css",
+      "css/style.css"
+    ],
+    "refer": []
+  },
+  "app/setting.html": {
+    "resources": [
+      "js/mui.view.js",
+      "js/app.js",
+      "js/mui.min.js",
+      "fonts/mui.ttf",
+      "css/mui.min.css",
+      "css/style.css",
+      "js/config.js",
+      "img/appicon/appicon.png",
+      "js/jquery-3.1.1.js"
+    ],
+    "refer": [
+      "login.html",
+      "app/setting_appupdate.html"
+    ]
+  },
+  "app/run.html": {
+    "resources": [
+      "fonts/mui.ttf",
+      "css/mui.min.css",
+      "js/mui.min.js",
+      "js/jquery-3.1.1.js"
+    ],
+    "refer": []
+  },
+  "app/SportPage_regInfo.html": {
+    "resources": [
+      "js/app.js",
+      "js/jquery-3.1.1.js",
+      "js/mui.min.js",
+      "css/mui.min.css"
+    ],
+    "refer": []
+  },
+  "app/SendOrders.html": {
+    "resources": [
+      "js/app.js",
+      "fonts/mui.ttf",
+      "js/mui.min.js",
+      "css/mui.min.css",
+      "js/jquery-3.1.1.js",
+      "css/icons-extra.css",
+      "fonts/mui-icons-extra.ttf",
+      "app/SendOrders.html",
+      "js/config.js"
+    ],
+    "refer": [
+      "app/SendOrders.html",
+      "app/QRcode2.html"
+    ]
+  },
+  "app/QRcode2.html": {
+    "resources": [
+      "js/app.js",
+      "js/mui.min.js",
+      "fonts/mui.ttf",
+      "css/mui.min.css"
+    ],
+    "refer": []
+  },
+  "app/feedback.html": {
+    "resources": [
+      "css/feedback.css",
+      "js/feedback.js",
+      "js/mui.min.js",
+      "fonts/mui.ttf",
+      "css/mui.min.css"
+    ],
+    "refer": []
+  },
+  "app/ResponsePage.html": {
+    "resources": [
+      "css/feedback.css",
+      "js/feedback.js",
+      "js/mui.min.js",
+      "fonts/mui.ttf",
+      "css/mui.min.css",
+      "js/app.js",
+      "js/config.js",
+      "css/style.css"
+    ],
+    "refer": []
+  },
+  "app/homeDetail.html": {
+    "resources": [
+      "plugins/vue/vue.min.js",
+      "plugins/vue/vue-resource.min.js",
+      "js/jquery-3.1.1.js",
+      "js/mui.min.js",
+      "fonts/mui.ttf",
+      "css/mui.min.css",
+      "css/style.css",
+      "js/config.js",
+      "resource/1.jpg",
+      "js/mui.zoom.js",
+      "js/mui.previewimage.js",
+      "css/preimg.css"
+    ],
+    "refer": []
+  },
+  "app/SportPageDetail.html": {
+    "resources": [
+      "js/mui.pullToRefresh.js",
+      "js/app.js",
+      "js/jquery-3.1.1.js",
+      "js/mui.min.js",
+      "js/pulldown.js",
+      "js/mui.pullToRefresh.material.js",
+      "css/mui.min.css",
+      "css/pulldown.css",
+      "libs/echarts-all.js",
+      "js/config.js",
+      "fonts/mui.ttf",
+      "plugins/vue/vue.min.js",
+      "plugins/vue/vue-resource.min.js"
+    ],
+    "refer": []
+  },
+  "app/Disclaimer.html": {
+    "resources": [
+      "js/config.js",
+      "js/jquery-3.1.1.js",
+      "js/mui.min.js",
+      "fonts/mui.ttf",
+      "css/mui.min.css",
+      "css/style.css"
+    ],
+    "refer": []
+  },
+  "app/userimgDetail.html": {
+    "resources": [
+      "img/apppay/logo3.png",
+      "js/mui.pullToRefresh.js",
+      "js/app.js",
+      "js/jquery-3.1.1.js",
+      "js/mui.pullToRefresh.material.js",
+      "js/pulldown.js",
+      "fonts/mui.ttf",
+      "css/style.css",
+      "css/pulldown.css",
+      "js/mui.min.js",
+      "css/iconfont.css",
+      "css/mui.min.css",
+      "js/config.js",
+      "img/appicon/appicon.png"
+    ],
+    "refer": [
+      "app/cutimg.html"
+    ]
+  },
+  "app/ShareAreaPage.html": {
+    "resources": [
+      "img/apppay/logo3.png",
+      "img/alipay/36x36.png",
+      "js/mui.pullToRefresh.js",
+      "js/app.js",
+      "js/jquery-3.1.1.js",
+      "js/mui.min.js",
+      "js/pulldown.js",
+      "js/mui.pullToRefresh.material.js",
+      "css/iconfont.css",
+      "css/mui.min.css",
+      "css/pulldown.css",
+      "js/config.js",
+      "img/icon/comment.png",
+      "img/icon/address.png",
+      "fonts/mui.ttf",
+      "css/preimg.css",
+      "js/mui.zoom.js",
+      "js/mui.previewimage.js",
+      "plugins/vue/vue.min.js",
+      "plugins/vue/vue-resource.min.js",
+      "public/image/shengbing.gif",
+      "public/image/taikaixin.gif",
+      "public/image/baiyan.gif",
+      "public/image/sikao.gif",
+      "public/image/youhengheng.gif",
+      "js/mui.lazyload.js",
+      "js/mui.lazyload.img.js",
+      "public/image/yiwen.gif",
+      "public/image/chanzui.gif",
+      "public/image/baibai.gif",
+      "public/image/han.gif",
+      "public/image/shuai.gif",
+      "public/image/guzhang.gif",
+      "public/image/heng.gif",
+      "public/image/touxiao.gif",
+      "public/image/zuohengheng.gif",
+      "public/image/haixiu.gif",
+      "public/image/nu.gif",
+      "public/image/beishang.gif",
+      "public/image/keai.gif",
+      "public/image/yun.gif",
+      "public/image/bishi.gif",
+      "face/16.gif",
+      "face/26.gif",
+      "face/68.gif",
+      "face/75.gif",
+      "face/55.gif",
+      "face/69.gif",
+      "face/66.gif",
+      "face/56.gif",
+      "face/60.gif",
+      "face/47.gif",
+      "face/67.gif",
+      "face/59.gif",
+      "face/63.gif",
+      "face/70.gif",
+      "face/58.gif",
+      "face/65.gif",
+      "face/57.gif",
+      "face/12.gif",
+      "face/6.gif",
+      "face/34.gif",
+      "face/9.gif",
+      "face/11.gif",
+      "face/33.gif",
+      "face/3.gif",
+      "face/17.gif",
+      "face/5.gif",
+      "face/2.gif",
+      "face/10.gif",
+      "face/1.gif",
+      "face/28.gif",
+      "face/15.gif",
+      "face/13.gif",
+      "face/62.gif"
+    ],
+    "refer": [
+      "app/ShareAreaSend.html",
+      "app/ShareContentDetail.html"
+    ]
+  },
+  "app/ShareAreaSend.html": {
+    "resources": [
+      "css/style.css",
+      "js/app.js",
+      "js/mui.min.js",
+      "fonts/mui.ttf",
+      "css/mui.min.css",
+      "js/config.js",
+      "js/jquery-3.1.1.js",
+      "img/alipay/36x36.png",
+      "img/apppay/logo3.png",
+      "public/image/aini.gif",
+      "public/image/weixiao.gif",
+      "public/image/zhu.gif",
+      "public/image/tu.gif",
+      "public/image/shudaizi.gif",
+      "public/image/ganmao.gif",
+      "public/image/wabi.gif",
+      "public/image/shui.gif",
+      "public/image/shiwang.gif",
+      "public/image/lazhu.gif",
+      "public/image/ku.gif",
+      "public/image/zhuakuang.gif",
+      "public/image/jiong.gif",
+      "public/image/tuzi.gif",
+      "public/image/shenma.gif",
+      "public/image/hufen.gif",
+      "public/image/geili.gif",
+      "public/image/haixiu.gif",
+      "public/image/dangao.gif",
+      "public/image/jiyan.gif",
+      "public/image/xu.gif",
+      "public/image/xiongmao.gif",
+      "public/image/chanzui.gif",
+      "public/image/se.gif",
+      "public/image/lai.gif",
+      "public/image/baobao.gif",
+      "public/image/baiyan.gif",
+      "public/image/ok.gif",
+      "public/image/chijing.gif",
+      "public/image/shuai.gif",
+      "public/image/good.gif",
+      "public/image/ye.gif",
+      "public/image/xixi.gif",
+      "public/image/guzhang.gif",
+      "public/image/shangxin.gif",
+      "public/image/numa.gif",
+      "public/image/heng.gif",
+      "public/image/shengbing.gif",
+      "public/image/yiwen.gif",
+      "public/image/weiguan.gif",
+      "public/image/ruo.gif",
+      "public/image/lei.gif",
+      "public/image/han.gif",
+      "public/image/caonima.gif",
+      "public/image/no.gif",
+      "public/image/fennu.gif",
+      "public/image/weiwu.gif",
+      "public/image/yinxian.gif",
+      "public/image/touxiao.gif",
+      "public/image/kun.gif",
+      "public/image/baibai.gif",
+      "public/image/zuohengheng.gif",
+      "public/image/fuyun.gif",
+      "public/image/nu.gif",
+      "public/image/heixian.gif",
+      "public/image/kelian.gif",
+      "public/image/beishang.gif",
+      "public/image/taikaixin.gif",
+      "public/image/keai.gif",
+      "public/image/zan.gif",
+      "public/image/qinqin.gif",
+      "public/image/xin.gif",
+      "public/image/sikao.gif",
+      "public/image/yun.gif",
+      "public/image/bizui.gif",
+      "public/image/youhengheng.gif",
+      "public/image/haqian.gif",
+      "public/image/huatong.gif",
+      "public/image/haha.gif",
+      "public/image/fahongbao.gif",
+      "public/image/bishi.gif",
+      "public/image/qian.gif",
+      "css/iconfont.css",
+      "css/preimg.css",
+      "js/mui.zoom.js",
+      "js/mui.previewimage.js",
+      "face/49.gif",
+      "face/12.gif",
+      "face/71.gif",
+      "face/29.gif",
+      "face/7.gif",
+      "face/4.gif",
+      "face/34.gif",
+      "face/18.gif",
+      "face/39.gif",
+      "face/69.gif",
+      "face/56.gif",
+      "face/67.gif",
+      "face/41.gif",
+      "face/23.gif",
+      "face/3.gif",
+      "face/48.gif",
+      "face/17.gif",
+      "face/74.gif",
+      "face/65.gif",
+      "face/2.gif",
+      "face/72.gif",
+      "face/68.gif",
+      "face/10.gif",
+      "face/75.gif",
+      "face/15.gif",
+      "face/50.gif",
+      "face/20.gif",
+      "face/32.gif",
+      "face/52.gif",
+      "face/35.gif",
+      "face/66.gif",
+      "face/44.gif",
+      "face/62.gif",
+      "face/46.gif",
+      "face/51.gif",
+      "face/73.gif",
+      "face/27.gif",
+      "face/59.gif",
+      "face/70.gif",
+      "face/61.gif",
+      "face/57.gif",
+      "face/38.gif",
+      "face/6.gif",
+      "face/45.gif",
+      "face/55.gif",
+      "face/11.gif",
+      "face/9.gif",
+      "face/33.gif",
+      "face/64.gif",
+      "face/43.gif",
+      "face/8.gif",
+      "face/24.gif",
+      "face/60.gif",
+      "face/47.gif",
+      "face/22.gif",
+      "face/36.gif",
+      "face/63.gif",
+      "face/37.gif",
+      "face/58.gif",
+      "face/5.gif",
+      "face/42.gif",
+      "face/30.gif",
+      "face/1.gif",
+      "face/53.gif",
+      "face/54.gif",
+      "face/40.gif",
+      "face/21.gif",
+      "face/31.gif",
+      "face/16.gif",
+      "face/26.gif",
+      "face/19.gif",
+      "face/25.gif",
+      "face/28.gif",
+      "face/14.gif",
+      "face/13.gif",
+      "img/icon/close.png",
+      "img/icon/remove.png",
+      "face/dangao.gif",
+      "face/geili.gif",
+      "face/zhu.gif",
+      "face/xiongmao.gif",
+      "face/shenma.gif",
+      "face/caonima.gif",
+      "face/tuzi.gif",
+      "face/fahongbao.gif",
+      "face/fuyun.gif"
+    ],
+    "refer": [
+      "app/de.html",
+      "app/map.html",
+      "app/map2.html"
+    ]
+  },
+  "app/de.html": {
+    "resources": [
+      "js/jquery-3.1.1.js",
+      "js/mui.min.js",
+      "fonts/mui.ttf",
+      "css/mui.min.css"
+    ],
+    "refer": []
+  },
+  "app/ShareContentDetail.html": {
+    "resources": [
+      "js/mui.min.js",
+      "plugins/vue/vue.min.js",
+      "plugins/vue/vue-resource.min.js",
+      "css/iconfont.css",
+      "css/mui.min.css",
+      "css/pulldown.css",
+      "css/preimg.css",
+      "js/mui.pullToRefresh.js",
+      "js/app.js",
+      "js/jquery-3.1.1.js",
+      "public/image/taikaixin.gif",
+      "js/mui.zoom.js",
+      "public/image/sikao.gif",
+      "js/pulldown.js",
+      "js/mui.pullToRefresh.material.js",
+      "js/mui.previewimage.js",
+      "public/image/youhengheng.gif",
+      "public/image/baiyan.gif",
+      "js/config.js",
+      "public/image/shengbing.gif",
+      "fonts/mui.ttf",
+      "img/apppay/logo3.png",
+      "public/image/yiwen.gif",
+      "public/image/chanzui.gif",
+      "img/alipay/36x36.png",
+      "public/image/baibai.gif",
+      "public/image/han.gif",
+      "face/16.gif",
+      "face/26.gif",
+      "face/13.gif"
+    ],
+    "refer": []
+  },
+  "app/map2.html": {
+    "resources": [
+      "js/app.js",
+      "js/jquery-3.1.1.js",
+      "js/mui.min.js",
+      "fonts/mui.ttf",
+      "css/iconfont.css",
+      "css/mui.min.css"
+    ],
+    "refer": []
+  },
+  "app/setting_appupdate.html": {
+    "resources": [
+      "js/app.js",
+      "js/mui.min.js",
+      "fonts/mui.ttf",
+      "css/mui.min.css",
+      "img/appicon/appicon.png",
+      "css/style.css",
+      "js/config.js",
+      "js/jquery-3.1.1.js"
+    ],
+    "refer": []
+  },
+  "app/main.html": {
+    "resources": [
+      "js/jquery-3.1.1.js",
+      "css/iconfont.css",
+      "js/mui.min.js",
+      "css/mui.min.css",
+      "app/home/HomePage.html"
+    ],
+    "refer": [
+      "app/home/HomePage.html",
+      "app/sport/SportPage.html",
+      "app/user/InfoPage.html",
+      "app/share/ShareAreaPage.html"
+    ]
+  },
+  "app/home/HomePage.html": {
+    "resources": [
+      "css/mui.min.css",
+      "css/pulldown.css",
+      "css/iconfont.css",
+      "resource/3.jpg",
+      "resource/1.jpg",
+      "resource/2.jpg",
+      "resource/4.jpg",
+      "img/index/index_1.png",
+      "img/index/index_3.png",
+      "img/index/index_2.png",
+      "img/index/index_us.png",
+      "img/icon/spiker.png",
+      "js/app.js",
+      "js/jquery-3.1.1.js",
+      "js/mui.min.js",
+      "plugins/vue/vue.min.js",
+      "plugins/vue/vue-resource.min.js",
+      "js/config.js",
+      "resource/ad.png",
+      "js/mui.pullToRefresh.js",
+      "js/mui.pullToRefresh.material.js"
+    ],
+    "refer": [
+      "app/goods/search.html",
+      "app/home/homeDetail.html",
+      "app/other/QRcode.html",
+      "app/goods/goodsDetail.html",
+      "app/goods/OrderPage.html"
+    ]
+  },
+  "app/home/homeDetail.html": {
+    "resources": [
+      "js/jquery-3.1.1.js",
+      "js/mui.zoom.js",
+      "js/mui.min.js",
+      "fonts/mui.ttf",
+      "css/mui.min.css",
+      "js/mui.previewimage.js",
+      "css/style.css",
+      "css/preimg.css",
+      "js/config.js"
+    ]
+  },
+  "app/goods/search.html": {
+    "resources": [
+      "js/app.js",
+      "js/jquery-3.1.1.js",
+      "js/mui.min.js",
+      "plugins/vue/vue.min.js",
+      "plugins/vue/vue-resource.min.js",
+      "css/iconfont.css",
+      "css/mui.min.css",
+      "js/config.js"
+    ],
+    "refer": [
+      "app/goods/goodsDetail.html",
+      "app/order/cartDetail.html"
+    ]
+  },
+  "app/other/QRcode.html": {
+    "resources": [
+      "fonts/mui.ttf",
+      "css/iconfont.css",
+      "css/mui.min.css",
+      "js/app.js",
+      "js/jquery-3.1.1.js",
+      "js/mui.min.js",
+      "js/config.js"
+    ]
+  },
+  "app/other/map.html": {
+    "resources": [
+      "css/iconfont.css",
+      "fonts/mui.ttf",
+      "css/mui.min.css",
+      "js/app.js",
+      "js/jquery-3.1.1.js",
+      "js/mui.min.js"
+    ]
+  },
+  "app/goods/goodsDetail.html": {
+    "resources": [
+      "js/jquery-3.1.1.js",
+      "js/mui.zoom.js",
+      "js/mui.min.js",
+      "plugins/vue/vue.min.js",
+      "fonts/mui.ttf",
+      "plugins/vue/vue-resource.min.js",
+      "css/mui.min.css",
+      "js/mui.previewimage.js",
+      "css/style.css",
+      "libs/echarts-all.js",
+      "css/preimg.css",
+      "js/config.js"
+    ],
+    "refer": [
+      "app/order/cartDetail.html"
+    ]
+  },
+  "app/goods/OrderPage.html": {
+    "resources": [
+      "js/mui.pullToRefresh.js",
+      "js/jquery-3.1.1.js",
+      "js/mui.min.js",
+      "js/mui.pullToRefresh.material.js",
+      "plugins/vue/vue.min.js",
+      "fonts/mui.ttf",
+      "plugins/vue/vue-resource.min.js",
+      "css/mui.min.css",
+      "css/pulldown.css",
+      "js/config.js"
+    ],
+    "refer": [
+      "app/order/cartDetail.html"
+    ]
+  },
+  "app/order/cartDetail.html": {
+    "resources": [
+      "js/jquery-3.1.1.js",
+      "js/app.js",
+      "js/mui.picker.js",
+      "fonts/mui.ttf",
+      "css/style.css",
+      "css/mui.picker.css",
+      "js/mui.min.js",
+      "plugins/vue/vue.min.js",
+      "js/mui.poppicker.js",
+      "plugins/vue/vue-resource.min.js",
+      "css/mui.min.css",
+      "css/mui.poppicker.css",
+      "js/config.js",
+      "img/alipay/36x36.png",
+      "img/wxpay/weixin.png",
+      "img/appicon/appicon.png",
+      "img/icon/address.png",
+      "img/icon/close.png"
+    ],
+    "refer": [
+      "app/order/payment_success.html"
+    ]
+  },
+  "app/order/payment_success.html": {
+    "resources": [
+      "css/mui.min.css",
+      "js/jquery-3.1.1.js",
+      "js/mui.min.js",
+      "img/icon/happy.png"
+    ],
+    "refer": [
+      "app/order/myOrders.html"
+    ]
+  },
+  "app/order/myOrders.html": {
+    "resources": [
+      "js/app.js",
+      "js/jquery-3.1.1.js",
+      "js/mui.min.js",
+      "plugins/vue/vue.min.js",
+      "fonts/mui.ttf",
+      "plugins/vue/vue-resource.min.js",
+      "css/mui.min.css",
+      "css/style.css",
+      "css/pulldown.css",
+      "js/config.js",
+      "js/mui.pullToRefresh.js",
+      "js/mui.pullToRefresh.material.js"
+    ],
+    "refer": [
+      "app/goods/goodsDetail.html",
+      "app/order/ordersDetail.html"
+    ]
+  },
+  "app/order/ordersDetail.html": {
+    "resources": [
+      "fonts/mui.ttf",
+      "css/mui.min.css",
+      "css/style.css",
+      "img/icon/person.png",
+      "img/icon/page.png",
+      "img/apppay/logo3.png",
+      "js/jquery-3.1.1.js",
+      "js/app.js",
+      "js/mui.min.js",
+      "plugins/vue/vue.min.js",
+      "plugins/vue/vue-resource.min.js",
+      "js/config.js",
+      "js/qrcode/jquery.qrcode.min.js",
+      "css/hui.css",
+      "js/hui.js",
+      "css/iconfont.css"
+    ],
+    "refer": [
+      "app/goods/goodsDetail.html"
+    ]
+  },
+  "app/sport/SportPage.html": {
+    "resources": [
+      "js/app.js",
+      "js/jquery-3.1.1.js",
+      "js/mui.min.js",
+      "plugins/vue/vue.min.js",
+      "plugins/vue/vue-resource.min.js",
+      "css/mui.min.css",
+      "css/pulldown.css",
+      "js/config.js",
+      "js/mui.pullToRefresh.js",
+      "js/pulldown.js",
+      "js/mui.pullToRefresh.material.js"
+    ],
+    "refer": [
+      "app/sport/SportPageDetail.html"
+    ]
+  },
+  "app/sport/SportPageDetail.html": {
+    "resources": [
+      "js/mui.pullToRefresh.js",
+      "js/jquery-3.1.1.js",
+      "js/app.js",
+      "js/mui.pullToRefresh.material.js",
+      "js/pulldown.js",
+      "fonts/mui.ttf",
+      "css/pulldown.css",
+      "libs/echarts-all.js",
+      "js/mui.min.js",
+      "plugins/vue/vue.min.js",
+      "plugins/vue/vue-resource.min.js",
+      "css/mui.min.css",
+      "js/config.js"
+    ]
+  },
+  "app/share/ShareAreaPage.html": {
+    "resources": [
+      "js/app.js",
+      "js/jquery-3.1.1.js",
+      "js/mui.zoom.js",
+      "js/mui.min.js",
+      "plugins/vue/vue.min.js",
+      "plugins/vue/vue-resource.min.js",
+      "css/iconfont.css",
+      "css/mui.min.css",
+      "js/mui.previewimage.js",
+      "css/pulldown.css",
+      "css/preimg.css",
+      "js/config.js",
+      "js/mui.pullToRefresh.js",
+      "js/mui.pullToRefresh.material.js",
+      "face/3.gif",
+      "face/71.gif"
+    ],
+    "refer": [
+      "app/share/ShareContentDetail.html",
+      "app/share/ShareAreaSend.html"
+    ]
+  },
+  "app/share/ShareContentDetail.html": {
+    "resources": [
+      "js/app.js",
+      "js/jquery-3.1.1.js",
+      "js/mui.zoom.js",
+      "js/mui.min.js",
+      "plugins/vue/vue.min.js",
+      "plugins/vue/vue-resource.min.js",
+      "css/iconfont.css",
+      "js/mui.previewimage.js",
+      "css/pulldown.css",
+      "css/preimg.css",
+      "js/config.js",
+      "js/mui.pullToRefresh.js",
+      "js/mui.pullToRefresh.material.js",
+      "fonts/mui.ttf",
+      "css/mui.min.css"
+    ]
+  },
+  "app/share/ShareAreaSend.html": {
+    "resources": [
+      "fonts/mui.ttf",
+      "css/iconfont.css",
+      "css/mui.min.css",
+      "css/style.css",
+      "js/app.js",
+      "js/jquery-3.1.1.js",
+      "js/mui.min.js",
+      "js/config.js",
+      "face/49.gif",
+      "face/12.gif",
+      "face/71.gif",
+      "face/29.gif",
+      "face/7.gif",
+      "face/4.gif",
+      "face/34.gif",
+      "face/18.gif",
+      "face/39.gif",
+      "face/69.gif",
+      "face/56.gif",
+      "face/zhu.gif",
+      "face/67.gif",
+      "face/41.gif",
+      "face/23.gif",
+      "face/xiongmao.gif",
+      "face/3.gif",
+      "face/48.gif",
+      "face/17.gif",
+      "face/74.gif",
+      "face/65.gif",
+      "face/2.gif",
+      "face/72.gif",
+      "face/68.gif",
+      "face/10.gif",
+      "face/shenma.gif",
+      "face/75.gif",
+      "face/15.gif",
+      "face/50.gif",
+      "face/caonima.gif",
+      "face/20.gif",
+      "face/32.gif",
+      "face/52.gif",
+      "face/dangao.gif",
+      "face/35.gif",
+      "face/66.gif",
+      "face/44.gif",
+      "face/62.gif",
+      "face/46.gif",
+      "face/51.gif",
+      "face/73.gif",
+      "face/27.gif",
+      "face/59.gif",
+      "face/70.gif",
+      "face/61.gif",
+      "face/57.gif",
+      "face/38.gif",
+      "face/6.gif",
+      "face/45.gif",
+      "face/55.gif",
+      "face/11.gif",
+      "face/9.gif",
+      "face/33.gif",
+      "face/64.gif",
+      "face/8.gif",
+      "face/43.gif",
+      "face/24.gif",
+      "face/tuzi.gif",
+      "face/60.gif",
+      "face/47.gif",
+      "face/22.gif",
+      "face/36.gif",
+      "face/63.gif",
+      "face/37.gif",
+      "face/58.gif",
+      "face/5.gif",
+      "face/42.gif",
+      "face/30.gif",
+      "face/geili.gif",
+      "face/fahongbao.gif",
+      "face/1.gif",
+      "face/53.gif",
+      "face/fuyun.gif",
+      "face/54.gif",
+      "face/40.gif",
+      "face/21.gif",
+      "face/31.gif",
+      "face/16.gif",
+      "face/26.gif",
+      "face/19.gif",
+      "face/25.gif",
+      "face/28.gif",
+      "face/14.gif",
+      "face/13.gif"
+    ],
+    "refer": [
+      "app/other/map2.html"
+    ]
+  },
+  "app/user/InfoPage.html": {
+    "resources": [
+      "js/mui.pullToRefresh.js",
+      "js/app.js",
+      "js/jquery-3.1.1.js",
+      "img/icon/walk.png",
+      "img/icon/point1.png",
+      "img/icon/comment.png",
+      "css/style.css",
+      "css/pulldown.css",
+      "js/mui.min.js",
+      "css/mui.min.css",
+      "img/appicon/appicon.png",
+      "img/icon/clock.png",
+      "img/icon/blance.png",
+      "img/icon/address.png",
+      "js/pulldown.js",
+      "js/mui.pullToRefresh.material.js",
+      "fonts/mui.ttf"
+    ],
+    "refer": [
+      "app/order/myOrders.html",
+      "app/other/setting.html",
+      "app/user/myInfoDetail.html",
+      "app/user/user_balance.html",
+      "app/user/user_point.html",
+      "app/user/ResponsePage.html",
+      "app/sport/SportPage.html",
+      "app/user/myAddress.html"
+    ]
+  },
+  "app/other/setting.html": {
+    "resources": [
+      "fonts/mui.ttf",
+      "css/mui.min.css",
+      "css/style.css",
+      "js/jquery-3.1.1.js",
+      "js/app.js",
+      "js/mui.min.js",
+      "js/config.js"
+    ]
+  },
+  "app/user/login.html": {
+    "resources": [
+      "img/icon/password.png",
+      "img/icon/phone.png",
+      "img/appicon/appicon.png",
+      "js/mui.enterfocus.js",
+      "js/app.js",
+      "js/mui.min.js",
+      "css/mui.min.css"
+    ],
+    "refer": [
+      "app/user/reg.html",
+      "app/user/forget_password.html",
+      "app/main.html"
+    ]
+  },
+  "app/user/reg.html": {
+    "resources": [
+      "img/icon/password.png",
+      "js/app.js",
+      "js/jquery-3.1.1.js",
+      "js/mui.min.js",
+      "img/icon/phone.png",
+      "fonts/mui.ttf",
+      "css/mui.min.css",
+      "css/style.css"
+    ],
+    "refer": [
+      "app/user/Disclaimer.html"
+    ]
+  },
+  "app/user/Disclaimer.html": {
+    "resources": [
+      "js/config.js"
+    ]
+  },
+  "app/user/forget_password.html": {
+    "resources": [
+      "img/icon/password.png",
+      "js/app.js",
+      "js/jquery-3.1.1.js",
+      "js/mui.min.js",
+      "img/icon/phone.png",
+      "fonts/mui.ttf",
+      "css/mui.min.css",
+      "css/style.css",
+      "js/config.js"
+    ]
+  },
+  "app/user/user_balance.html": {
+    "resources": [
+      "js/mui.pullToRefresh.js",
+      "js/jquery-3.1.1.js",
+      "js/app.js",
+      "js/pulldown.js",
+      "js/mui.pullToRefresh.material.js",
+      "fonts/mui.ttf",
+      "css/style.css",
+      "css/pulldown.css",
+      "img/alipay/36x36.png",
+      "img/wxpay/weixin.png",
+      "js/mui.min.js",
+      "css/mui.min.css",
+      "img/apppay/logo3.png",
+      "js/config.js"
+    ],
+    "refer": [
+      "app/user/user_balance_detail.html"
+    ]
+  },
+  "app/user/user_balance_detail.html": {
+    "resources": [
+      "js/mui.pullToRefresh.js",
+      "js/app.js",
+      "js/jquery-3.1.1.js",
+      "js/mui.min.js",
+      "resource/cd.jpg",
+      "js/pulldown.js",
+      "js/mui.pullToRefresh.material.js",
+      "fonts/mui.ttf",
+      "css/mui.min.css",
+      "css/style.css",
+      "css/pulldown.css",
+      "js/config.js"
+    ]
+  },
+  "app/user/myAddress.html": {
+    "resources": [
+      "js/mui.pullToRefresh.js",
+      "js/app.js",
+      "js/jquery-3.1.1.js",
+      "js/mui.min.js",
+      "js/pulldown.js",
+      "js/mui.pullToRefresh.material.js",
+      "fonts/mui.ttf",
+      "css/mui.min.css",
+      "css/style.css",
+      "css/pulldown.css",
+      "js/config.js"
+    ],
+    "refer": [
+      "app/user/myAddress_reg.html",
+      "app/user/myAddress_add.html"
+    ]
+  },
+  "app/user/myAddress_reg.html": {
+    "resources": [
+      "js/jquery-3.1.1.js",
+      "js/app.js",
+      "js/mui.min.js",
+      "fonts/mui.ttf",
+      "css/mui.min.css",
+      "css/style.css",
+      "js/config.js"
+    ],
+    "refer": [
+      "app/user/myAddress.html"
+    ]
+  },
+  "app/user/myAddress_add.html": {
+    "resources": [
+      "js/app.js",
+      "js/jquery-3.1.1.js",
+      "js/mui.min.js",
+      "fonts/mui.ttf",
+      "css/iconfont.css",
+      "css/mui.min.css",
+      "css/style.css",
+      "js/config.js"
+    ]
+  },
+  "app/user/myInfoDetail.html": {
+    "resources": [
+      "js/mui.pullToRefresh.js",
+      "js/jquery-3.1.1.js",
+      "js/app.js",
+      "js/mui.min.js",
+      "js/pulldown.js",
+      "js/mui.pullToRefresh.material.js",
+      "fonts/mui.ttf",
+      "css/mui.min.css",
+      "img/appicon/appicon.png",
+      "css/style.css",
+      "css/pulldown.css",
+      "js/config.js"
+    ],
+    "refer": [
+      "app/user/userimgDetail.html",
+      "app/user/myInfo_name_reg.html",
+      "app/user/myInfo_pass_reg.html"
+    ]
+  },
+  "app/user/userimgDetail.html": {
+    "resources": [
+      "css/iconfont.css",
+      "fonts/mui.ttf",
+      "img/appicon/appicon.png",
+      "css/style.css",
+      "js/jquery-3.1.1.js",
+      "js/app.js",
+      "js/mui.min.js",
+      "css/mui.min.css",
+      "js/config.js"
+    ],
+    "refer": [
+      "app/user/cutimg.html"
+    ]
+  },
+  "app/user/cutimg.html": {
+    "resources": [
+      "plugins/exif/exif.js",
+      "fonts/mui.ttf",
+      "plugins/fastclick/fastclick.min.js",
+      "plugins/cropper/cropper.css",
+      "plugins/cropper/cropper.js"
+    ]
+  },
+  "app/user/myInfo_name_reg.html": {
+    "resources": [
+      "js/jquery-3.1.1.js",
+      "js/app.js",
+      "js/mui.min.js",
+      "fonts/mui.ttf",
+      "css/mui.min.css",
+      "css/style.css",
+      "js/config.js"
+    ]
+  },
+  "app/user/myInfo_pass_reg.html": {
+    "resources": [
+      "js/jquery-3.1.1.js",
+      "js/app.js",
+      "js/mui.min.js",
+      "fonts/mui.ttf",
+      "css/mui.min.css",
+      "css/style.css",
+      "js/config.js"
+    ]
+  },
+  "app/user/user_point.html": {
+    "resources": [
+      "js/mui.pullToRefresh.js",
+      "js/app.js",
+      "js/jquery-3.1.1.js",
+      "js/mui.min.js",
+      "js/pulldown.js",
+      "js/mui.pullToRefresh.material.js",
+      "fonts/mui.ttf",
+      "css/mui.min.css",
+      "css/style.css",
+      "css/pulldown.css",
+      "js/config.js"
+    ]
+  },
+  "app/other/map2.html": {
+    "resources": [
+      "js/app.js",
+      "js/jquery-3.1.1.js",
+      "js/mui.min.js",
+      "fonts/mui.ttf",
+      "css/iconfont.css",
+      "css/mui.min.css"
+    ]
+  }
+}

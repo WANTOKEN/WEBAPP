@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link rel="stylesheet" href="../../css/mui.min.css" />
+		<link rel="stylesheet" href="../../plugins/cropper/cropper.css" />
+		<style type="text/css">
+			body {
+				background-color: #000000;
+			}
+			
+			#cropper-example-1 {
+				background-color: #000000;
+				height: 100%;
+				width: 100%;
+				position: absolute;
+			}
+			
+			.divbut {
+				width: 100%;
+				text-align: center;
+				position: fixed;
+				z-index: 2;
+				bottom: 20px;
+				background-color: #000000;
+				height: 50px;
+			}
+			
+			.divbut>div:first-child {
+				float: left;
+				width: 50px;
+				height: 50px;
+				border-radius: 50px;
+				background: #fff;
+				margin-left: 40px;
+			}
+			
+			.divbut>div:last-child {
+				float: right;
+				width: 50px;
+				height: 50px;
+				border-radius: 50px;
+				background: #fff;
+				margin-right: 40px;
+			}
+			
+			span.mui-icon {
+				font-size: 30px;
+				line-height: 50px;
+			}
+			
+			img#im {
+				height: 100%;
+				width: 100%;
+			}
+		</style>
+	</head>
+
+	<body>
+
+		<div id="cropper-example-1" class="mui-hidden">
+			<img id="im" alt="Picture" />
+		</div>
+
+		<div class="divbut">
+			<div>
+				<span id="quxiao" class="mui-icon mui-icon-closeempty"></span>
+			</div>
+			<div>
+				<span id="xuanqu" class="mui-icon mui-icon-checkmarkempty"></span>
+			</div>
+		</div>
+		<img src="" alt="" class="mui-hidden" id="im_exif" />
+
+		<script type="text/javascript" src="../../js/mui.min.js"></script>
+		<script type="text/javascript" src="../../js/jquery-3.1.1.js"></script>
+		<script type="text/javascript" src="../../plugins/exif/exif.js"></script>
+		<script type="text/javascript" src="../../plugins/cropper/cropper.js"></script>
+		<script type="text/javascript" src="../../plugins/fastclick/fastclick.min.js"></script>
+		<script>
+            $(function() {
+                //尽量用一下fastclick
+                FastClick.attach(document.body);
+                ! function() {
+                    var i = {
+                        aspectRatio: 1 / 1
+                    };
+                }()
+            });
+
+            (function(c) {
+                var Cro = function() {}
+                c.extend(Cro.prototype, {
+                    orientation: null,
+                    urldata: null,
+                    view: null,
+                    num: 0,
+                    sbx: null,
+                    sby: null,
+                    n: 0,
+                    onReady: function() {
+                        var that = this;
+                        mui.init();
+                        that.bindEvent();
+                        that.view = plus.webview.currentWebview();
+
+                        var img = document.getElementById("im_exif");
+                        //获取传入的图片路径
+                        img.src = that.view.path;
+                        img.addEventListener("load", function() {
+                            //exif调整图片的横竖
+                            EXIF.getData(this, function() {
+                                var orientation = EXIF.getAllTags(this).Orientation;
+                                $("#im").attr("src", that.loadcopyImg(img, orientation));
+                                document.getElementById("cropper-example-1").classList.remove("mui-hidden"); //显示裁剪区域
+                                that.cropperImg();
+                            });
+                        })
+                    },
+                    cropperImg: function() {
+                        var that = this;
+                        $('#cropper-example-1 > img').cropper({
+                            aspectRatio: 1 / 1,
+                            autoCropArea: 1,
+                            strict: true,
+                            background: false,
+                            guides: false,
+                            highlight: false,
+                            dragCrop: false,
+                            movable: false,
+                            resizable: false,
+                            crop: function(data) {
+                                that.urldata = that.base64(data);
+                            }
+                        });
+                    },
+                    loadcopyImg: function(img, opt) {
+                        var that = this;
+                        var canvas = document.createElement("canvas");
+                        var square = 500;
+                        var imageWidth, imageHeight;
+                        if(img.width > img.height) {
+                            imageHeight = square;
+                            imageWidth = Math.round(square * img.width / img.height);
+                        } else {
+                            imageHeight = square; //this.width;
+                            imageWidth = Math.round(square * img.width / img.height);
+                        }
+                        canvas.height = imageHeight;
+                        canvas.width = imageWidth;
+                        if(opt == 6) {
+                            that.num = 90;
+                        } else if(opt == 3) {
+                            that.num = 180;
+                        } else if(opt == 8) {
+                            that.num = 270;
+                        }
+                        if(that.num == 360) {
+                            that.num = 0;
+                        }
+
+                        var ctx = canvas.getContext("2d");
+                        ctx.translate(imageWidth / 2, imageHeight / 2);
+                        ctx.rotate(that.num * Math.PI / 180);
+                        ctx.translate(-imageWidth / 2, -imageHeight / 2);
+                        ctx.drawImage(img, 0, 0, imageWidth, imageHeight);
+                        var dataURL = canvas.toDataURL("image/jpeg", 1);
+                        return dataURL;
+                    },
+                    bindEvent: function() {
+                        var that = this;
+                        document.getElementById("quxiao").addEventListener("tap", function() {
+                            mui.back(); //取消就直接返回
+                        });
+                        document.getElementById("xuanqu").addEventListener("tap", function() {
+                            //触发上一个页面刷新图片事件
+                            var preView = plus.webview.getWebviewById('userimgDetail.html');
+                            mui.fire(preView, 'updateHeadImg', {
+                                'img': that.urldata
+                            }); //不能保存图片，需要判断上传性，所以选择传值的方式，传递图片,格式为json
+                            mui.back();
+                        });
+                    },
+                    base64: function(data) {
+                        var that = this;
+                        var img = document.getElementById("im");
+
+                        var canvas = document.createElement("canvas");
+                        //像素
+                        canvas.height = 400;
+                        canvas.width = 400;
+                        var bx = data.x;
+                        var by = data.y;
+                        var ctx = canvas.getContext("2d");
+                        ctx.drawImage(img, bx, by, data.width, data.height, 0, 0, 400, 400);
+                        var dataURL = canvas.toDataURL("image/jpeg", 0.5); //第二个参数是质量
+                        return dataURL;
+                    }
+                });
+
+                var cro = new Cro();
+
+                c.plusReady(function() {
+                    cro.onReady();
+                })
+            })(mui)
+		</script>
+	</body>
+
+</html>

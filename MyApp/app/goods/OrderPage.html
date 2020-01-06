@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link rel="stylesheet" href="../../css/mui.min.css">
+		<link rel="stylesheet" href="../../css/pulldown.css" />
+
+		<style>
+			html,
+			body {
+				background-color: #DDDDDD;
+				font-family: "微软雅黑";
+			}
+			
+			.mui-bar-nav {
+				background-color: #FFCC33;
+			}
+			
+			.title-text {
+				color: white;
+				float: left;
+				font-size: 16px;
+				height: 100%;
+				line-height: 45px;
+			}
+			
+			.Type-Box-type {
+				width: 100%;
+				background-color: #FFFFFF;
+				height: 50px;
+				text-align: center;
+				/*color: #797979;*/
+				padding-left: 10px;
+				padding-top: 5px;
+				line-height: 30px;
+				display: -webkit-box;
+				overflow-x: auto;
+				-webkit-overflow-scrolling: touch;
+				padding-right: 100px;
+				position: fixed;
+				z-index: 5;
+				top: 44px;
+			}
+			/*去掉滚动条 */
+			
+			::-webkit-scrollbar {
+				width: 0px;
+			}
+			
+			.type-text {
+				width: 100px;
+				text-align: center;
+				border-radius: 15px;
+				padding: 3px 8px;
+				margin-right: 3px;
+				height: 35px;
+				/*	border: 1px solid #FFCC00;*/
+				color: #797979;
+			}
+			
+			.type-text:active {
+				background-color: #FFCC00;
+				border-radius: 15px;
+				color: white;
+				font-weight: bold;
+			}
+			
+			.type-text-active {
+				background-color: #FFCC00;
+				border-radius: 15px;
+				color: white;
+				font-weight: bold;
+			}
+			
+			.type-top {
+				background-color: #F2F2F2;
+				padding: 5px 5px;
+			}
+			
+			.Goods-content {
+				padding-top: 55px;
+				padding-bottom: 50px;
+			}
+			
+			.Goods-Box-Content {
+				margin-top: 5px;
+				width: 100%;
+				height: 140px;
+				padding-top: 2%;
+				padding-left: 2%;
+				text-align: center;
+				border-radius: 15px;
+				box-shadow: 1px 2px 3px 1px rgba(0, 0, 0, 0.35);
+			}
+			
+			.Goods-Box-Content .Goods-Box-Content-img {
+				width: 43%;
+				float: left;
+			}
+			
+			.Goods-Box-Content .Goods-Box-Content-img img {
+				width: 100%;
+				height: 120px;
+				border-radius: 10px;
+			}
+			
+			.Goods-Box-Content-text {
+				padding-top: 2%;
+				padding-left: 4%;
+				text-align: left;
+				width: 55%;
+				float: left;
+			}
+			
+			.order-btn-group {
+				text-align: center;
+				font-size: 20px;
+				width: 100px;
+				height: 40px;
+				line-height: 20px;
+				position: absolute;
+				bottom: 15px;
+				right: 20px;
+				color: white;
+				float: right;
+				border: 0px;
+			}
+			
+			.order-btn-group i {
+				font-size: 14px;
+				color: #666666;
+				display: none;
+				text-align: center;
+				font-style: normal;
+				vertical-align: middle;
+				line-height: 30px;
+			}
+			
+			.price {
+				display: none;
+			}
+			
+			.add {
+				text-align: center;
+				width: 35px;
+				height: 35px;
+				border-radius: 35px;
+				background-color: #FFCC00;
+				color: white;
+				border: 0px;
+			}
+			
+			.minus {
+				text-align: center;
+				display: none;
+				width: 35px;
+				height: 35px;
+				border-color: #DDDDDD;
+				border-radius: 35px;
+				color: #999999;
+			}
+			
+			.money-text {
+				position: absolute;
+				bottom: 20px;
+				color: #FF9900;
+			}
+			
+			.Box-table-view {
+				position: relative;
+				margin-top: 0;
+				margin-bottom: 0;
+				padding-left: 0;
+				list-style: none;
+				background-color: #fff;
+				border-bottom: 380px solid transparent;
+			}
+			
+			.Box-table-view-cell {
+				position: relative;
+				overflow: hidden;
+				padding: 10px 15px;
+				-webkit-touch-callout: none;
+				background-color: #fff;
+			}
+			
+			.type-zhanwei {
+				margin: -100px 0 0;
+				border-top: 100px solid transparent;
+			}
+			
+			.goods-type {
+				width: 100%;
+				height: 30px;
+				/*background-color: #FFCC99;*/
+				text-align: left;
+				padding-left: 15px;
+				line-height: 30px;
+			}
+			
+			.icon-left {
+				float: left;
+				width: 10px;
+				height: 30px;
+				padding-top: 10px;
+				margin-right: 10px;
+			}
+			
+			.icon-circle {
+				width: 10px;
+				height: 10px;
+				background-color: #FF9900;
+				border-radius: 8px;
+			}
+			
+			.icon-text {
+				padding-top: 1px;
+				color: #666666;
+				height: 30px;
+				float: left;
+			}
+			
+			.footer {
+				display: block;
+				position: fixed;
+				width: 100%;
+				z-index: 3;
+				bottom: 0px;
+				color: #FF9900;
+				background: #fff;
+				line-height: 35px;
+				font-size: 15px;
+				border-top: 1px solid #e2e2e2;
+			}
+			
+			.list {
+				width: 100%;
+				display: none;
+			}
+			
+			.cartid {
+				display: none;
+				color: #000000;
+				width: 22px;
+				text-align: center;
+				font-style: normal;
+				vertical-align: center;
+				margin-right: 20px;
+			}
+			
+			.cartname {
+				color: #666666;
+				width: 22px;
+				text-align: center;
+				font-style: normal;
+				vertical-align: center;
+				margin-right: 20px;
+			}
+			
+			.cartprice-icon {
+				color: #FF9900;
+				text-align: left;
+				font-style: normal;
+				vertical-align: center;
+			}
+			
+			.cartprice {
+				color: #FF9900;
+				width: 22px;
+				text-align: left;
+				font-style: normal;
+				vertical-align: center;
+				margin-right: 20px;
+			}
+			
+			.cartenergy {
+				color: #666666;
+				width: 22px;
+				font-style: normal;
+				vertical-align: center;
+			}
+			
+			.cartenergy-icon {
+				color: #666666;
+				width: 22px;
+				font-style: normal;
+				vertical-align: center;
+				margin-right: 20px;
+			}
+			
+			.cartnum {
+				color: #666666;
+				width: 22px;
+				text-align: center;
+				font-style: normal;
+				vertical-align: center;
+			}
+			
+			.cartnum-icon {
+				color: #666666;
+				width: 22px;
+				text-align: center;
+				font-style: normal;
+				vertical-align: center;
+				margin-right: 20px;
+			}
+			
+			.footer .left {
+				float: left;
+				margin: 5px 10px;
+			}
+			
+			.footer .right {
+				float: right;
+			}
+			
+			.footer .right .disable {
+				background: #dbdbdb;
+			}
+			
+			.footer .xhlbtn {
+				display: block;
+				text-align: center;
+				line-height: 45px;
+				background-color: #FFA447;
+				padding: 0 15px;
+				color: #fff;
+				font-weight: bold;
+			}
+			
+			.float-right {
+				float: right;
+				margin-right: 10px;
+			}
+			
+			#slider .mui-slider-item {
+				width: 50%;
+			}
+		</style>
+		<style>
+			[v-cloak] {
+				display: none;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<span class="mui-action-back mui-icon mui-icon-arrowleft mui-pull-left" style="color: #FFFFFF;"></span>
+			<span class="title-text mui-action-back">点餐</span>
+		</header>
+		<div class="mui-content" id="Goods-Box" v-cloak>
+			<div class="Type-Box-type">
+				<a class="diwei" v-bind:href="index" v-bind:data-dwid="index" v-cloak v-for="(item,index) in items">
+					<div class="type-text">{{item.type}}</div>
+				</a>
+			</div>
+			<div class="Goods-content">
+				<ul class="Box-table-view">
+					<div v-cloak v-for="(item,index) in items">
+						<div class="type-zhanwei" v-bind:id="index">
+							<div class="goods-type">
+								<div class="icon-left">
+									<div class="icon-circle"></div>
+								</div>
+								<div class="icon-text">
+									<font class="goods-type-text">{{item.type}}</font>
+								</div>
+							</div>
+						</div>
+						<li class="Box-table-view-cell" id="GoodsContent" v-for="(goodsitem,index) in item.data">
+							<div class="Goods-Box-Content">
+								<div class="Goods-Box-Content-img" v-bind:data-id="goodsitem.goodsid">
+									<img id="goodsImage" v-bind:src="surl+goodsitem.goodsimage" />
+								</div>
+								<div class="Goods-Box-Content-text">
+									<p id="goodsName" style="color: #666666;font-size: 18px;">{{goodsitem.goodsname}}</p>
+									<p id="goodsEnName">{{goodsitem.goodsenname}}</p>
+									<p id="goodsEnergy">能量：{{goodsitem.goodsenergy}}千卡</p>
+									<h4 id="goodsPrice" class="money-text">￥{{goodsitem.goodsprice}}</h4>
+									<div class="order-btn-group">
+										<button class="minus" v-bind:data-gid="goodsitem.goodsid" v-bind:data-gimg="goodsitem.goodsimage" v-bind:data-gname="goodsitem.goodsname" v-bind:data-gprice="goodsitem.goodsprice" v-bind:data-genergy="goodsitem.goodsenergy">
+										<strong>-</strong>
+										</button>
+										<i>0</i>
+										<button class="add" v-bind:data-gid="goodsitem.goodsid" v-bind:data-gimg="goodsitem.goodsimage" v-bind:data-gname="goodsitem.goodsname" v-bind:data-gprice="goodsitem.goodsprice" v-bind:data-genergy="goodsitem.goodsenergy">
+										<strong>+</strong>
+										</button>
+										<i class="price">{{goodsitem.goodsprice}}</i></div>
+								</div>
+							</div>
+						</li>
+					</div>
+				</ul>
+			</div>
+			<div class="footer" id="lay">
+				<div class="list">
+					<!--<li id="">
+						<i class="cartid"></i>
+						<img src="../img/apppay/logo3.png" style="width: 20px;height: 20px;vertical-align:text-bottom;">
+						<i class="cartname">三明治类</i>
+						<span class="float-right">
+							<i class="cartprice-icon">￥</i>
+							<i class="cartprice"></i>
+							<i class="cartenergy"></i>
+							<i class="cartenergy-icon">KJ</i>
+							<i class="cartnum">num</i>
+							<i class="cartnum-icon">件</i>
+						</span>
+					</li>-->
+				</div>
+
+				<div class="left">已选：
+					<span id="cartN">
+			<span id="totalcountshow">0</span>份　总计：￥<span id="totalpriceshow">0</span></span>元
+
+				</div>
+				<div class="right">
+					<a id="btnselect" class="xhlbtn disable">去结算</a>
+				</div>
+			</div>
+		</div>
+
+		<script src="../../js/mui.min.js"></script>
+		<!--vue-->
+		<script type="text/javascript" src="../../plugins/vue/vue.min.js"></script>
+		<script type="text/javascript" src="../../plugins/vue/vue-resource.min.js"></script>
+		<script type="text/javascript" src="../../js/jquery-3.1.1.js"></script>
+		<script type="text/javascript" src="../../js/config.js"></script>
+		<script src="../../js/mui.pullToRefresh.js"></script>
+		<script src="../../js/mui.pullToRefresh.material.js"></script>
+		<script>
+			mui.init();
+			var GoodsBox = new Vue({
+				el: '#Goods-Box',
+				data: {
+					items: "",
+					surl: SERVER_URL,
+				}
+			});
+			var GoodsCartBox = new Vue({
+				el: '#Goods-Cart-Box',
+				data: {
+					items: "",
+					surl: SERVER_URL,
+				}
+			});
+			getGoodsdata();
+
+			function getGoodsdata() {
+				$.ajax(SERVER_URL + 'Getgoodsdata', {
+					data: {},
+					dataType: 'json', //服务器返回json格式数据
+					type: 'get', //HTTP请求类型
+					timeout: 10000, //超时时间设置为10秒；
+					headers: { 'Content-Type': 'application/json' },
+					success: function(data) {
+						//服务器返回响应，根据响应结果，分析是否登录成功；
+						console.log(JSON.stringify(data));
+						GoodsBox.items = data;
+						/*console.log(data.length);*/
+						/*getHtml(data); //传入数据*/
+					},
+					error: function(xhr, type, errorThrown) {
+						//异常处理；
+					}
+				});
+			}
+			mui.plusReady(function() {
+				mui.back = function() {
+					plus.webview.currentWebview().hide();
+					return false;
+				}
+				var cartJson = []; //定义购物出JSON数据
+				var order_idList = new Array(); //订单列表
+				var jsFlag = 0; //结算标志
+				var listVisiable = 0; //列表显示标志
+				$(document).on('click', '.mui-slider-item img', function() {
+					console.log($(this).attr('data-id'));
+					mui.openWindow({
+						id: 'goodsDetail.html',
+						url: 'goodsDetail.html',
+						show: {
+							aniShow: "slide-in-right", //页面显示动画，默认为”slide-in-right“；
+							duration: 300, //页面动画持续时间，Android平台默认100毫秒，iOS平台默认200毫秒
+							autoShow: true //页面loaded事件发生后自动显示，默认为true
+						},
+						extras: {
+							'goods_id': $(this).attr('data-id').toString(),
+						},
+						waiting: {
+							autoShow: true,
+							title: '正在加载...', //等待对话框上显示的提示内容
+						}
+					});
+
+				});
+				$(document).on('click', '.Goods-Box-Content-img', function() {
+					console.log($(this).attr('data-id').toString());
+					mui.openWindow({
+						id: 'goodsDetail.html',
+						url: 'goodsDetail.html',
+						show: {
+							aniShow: "slide-in-right", //页面显示动画，默认为”slide-in-right“；
+							duration: 300, //页面动画持续时间，Android平台默认100毫秒，iOS平台默认200毫秒
+							autoShow: true //页面loaded事件发生后自动显示，默认为true
+						},
+						extras: {
+							'goods_id': $(this).attr('data-id').toString(),
+						},
+						waiting: {
+							autoShow: true,
+							title: '正在加载...', //等待对话框上显示的提示内容
+						}
+					});
+
+				});
+
+				function jss() {
+					var m = $("#totalcountshow").html();
+					if(m > 0) {
+						$(".right").find("a").removeClass("disable");
+						jsFlag = 1;
+					} else {
+						$(".right").find("a").addClass("disable");
+						jsFlag = 0;
+					}
+				};
+				//餐品加减操作
+				mui(document).on('tap', '.add', function() {
+					$(this).prevAll().css("display", "inline-block");
+					var n = $(this).prev().text();
+					var num = parseInt(n) + 1;
+					if(num == 0) { return; }
+					$(this).prev().text(num);
+					var danjia = $(this).next().text(); //获取单价
+					var listxt = '';
+					listxt += '<li id="' + $(this).attr("data-gid") + '"><i class="cartid" ></i><img src="' + SERVER_URL + $(this).attr("data-gimg") + '" style="width: 20px;height: 20px;vertical-align:text-bottom;"><i class="cartname"></i><span class="float-right"><i class="cartprice-icon">￥</i><i class="cartprice"></i><i class="cartenergy"></i><i class="cartenergy-icon">KJ</i><i class="cartnum">num</i><i class="cartnum-icon">件</i></span></li>';
+					if(num == 1) { //不存在则新建
+						$('.list').append(listxt);
+						$('#' + $(this).attr("data-gid") + '').find('.cartid').html($(this).attr("data-gid"));
+						$('#' + $(this).attr("data-gid") + '').find('.cartname').html($(this).attr("data-gname"));
+						$('#' + $(this).attr("data-gid") + '').find('.cartprice').html($(this).attr("data-gprice"));
+						$('#' + $(this).attr("data-gid") + '').find('.cartenergy').html($(this).attr("data-genergy"));
+						$('#' + $(this).attr("data-gid") + '').find('.cartnum').html(num);
+						order_idList.push($(this).attr("data-gid"));
+
+					} else {
+						$('#' + $(this).attr("data-gid") + '').find('.cartnum').html(num);
+					}
+
+					var a = $("#totalpriceshow").html(); //获取当前所选总价  
+					$("#totalpriceshow").html((a * 1 + danjia * 1).toFixed(2)); //计算当前所选总价  
+
+					var nm = $("#totalcountshow").html(); //获取数量  
+					$("#totalcountshow").html(nm * 1 + 1);
+					jss();
+				});
+				//减的效果 
+				mui(document).on('tap', '.minus', function() {
+					var n = $(this).next().text();
+					var num = parseInt(n) - 1;
+					$(this).next().text(num); //减1  
+					if(num <= 0) {
+						var index = order_idList.indexOf($(this).attr("data-gid"));
+						/*	console.log(index);*/
+						order_idList.splice(index, 1);
+						/*console.log(order_idList);*/
+						$('#' + $(this).attr("data-gid") + '').remove();
+					} else {
+						$('#' + $(this).attr("data-gid") + '').find('.cartnum').html(num);
+					}
+					var danjia = $(this).nextAll(".price").text(); //获取单价  
+					var a = $("#totalpriceshow").html(); //获取当前所选总价  
+					$("#totalpriceshow").html((a * 1 - danjia * 1).toFixed(2)); //计算当前所选总价  
+					var nm = $("#totalcountshow").html(); //获取数量  
+					$("#totalcountshow").html(nm * 1 - 1);
+					//如果数量小于或等于0则隐藏减号和数量  
+					if(num <= 0) {
+						$(this).next().css("display", "none");
+						$(this).css("display", "none");
+						jss(); //改变按钮样式  
+						return
+					}
+				});
+				mui(document).on('tap', '#btnselect', function() {
+
+					if(jsFlag == 1) {
+						var order_priceList = new Array();
+						var order_nameList = new Array();
+						var order_numList = new Array();
+						var order_energyList = new Array();
+						for(var i = 0; i < order_idList.length; i++) {
+							var cartimg = $('#' + order_idList[i] + '').find('img').attr('src');
+							var cartname = $('#' + order_idList[i] + '').find('.cartname').text();
+							var cartprice = $('#' + order_idList[i] + '').find('.cartprice').text();
+							var cartenergy = $('#' + order_idList[i] + '').find('.cartenergy').text();
+							var cartnum = $('#' + order_idList[i] + '').find('.cartnum').text();
+							order_nameList.push(cartname);
+							order_priceList.push(cartprice);
+							order_energyList.push(cartenergy);
+							order_numList.push(cartnum);
+							cartJson.push({
+								'goodsid': order_idList[i], //ID
+								'goodsimg':cartimg,
+								'goodsname': cartname, //名称
+								'goodsprice': cartprice, //单价
+								'goodsenergy': cartenergy, //能量
+								'goodsnum': cartnum, //数量
+							});
+/*							console.log(JSON.stringify(cartJson));*/
+						}
+						mui.openWindow({
+							id: 'cartDetail.html',
+							url: '../order/cartDetail.html',
+							show: {
+								aniShow: "slide-in-right", //页面显示动画，默认为”slide-in-right“；
+								duration: 300, //页面动画持续时间，Android平台默认100毫秒，iOS平台默认200毫秒
+								autoShow: true //页面loaded事件发生后自动显示，默认为true
+							},
+							extras: {
+								'order_idList': order_idList,
+								'order_priceList': order_priceList,
+								'order_energyList': order_energyList,
+								'order_numList': order_numList,
+								'cartJson':cartJson
+							},
+							waiting: {
+								autoShow: true,
+								title: '正在加载...', //等待对话框上显示的提示内容
+							}
+						});
+
+					}
+					cartJson = [];
+				});
+
+				mui(document).on('tap', '.left', function() {
+					if(listVisiable == 0) {
+						$('.list').show();
+						listVisiable = 1;
+					} else {
+						$('.list').hide();
+						listVisiable = 0;
+					}
+
+				});
+				$(document).find('.type-text').first().addClass('type-text-active');
+				/*类型定位*/
+				$(document).on('click', '.diwei', function() {
+					$('.type-text').removeClass('type-text-active');
+					$(this).find('.type-text').addClass('type-text-active');
+					var dwid = $(this).attr('data-dwid');
+					var target_top = $('#' + dwid).offset().top;
+					$("html,body").animate({ scrollTop: target_top }, 1000); //带滑动效果的跳转
+					$("html,body").scrollTop(target_top);
+					/*console.log($(this).attr('data-dwid'));*/
+				});
+				mui.each(document.querySelectorAll('.mui-content'), function(index, pullRefreshEl) {
+					mui(pullRefreshEl).pullToRefresh({
+						down: {
+							callback: function() {
+								var self = this;
+								getGoodsdata();
+								setTimeout(function() {
+									self.endPullDownToRefresh();
+									self.refresh(true); //重新加载上拉
+								}, 1000);
+							}
+						}
+
+					});
+				});
+			});
+		</script>
+
+	</body>
+
+</html>

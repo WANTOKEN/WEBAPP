@@ -1,0 +1,374 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../../css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" href="../../css/pulldown.css" />
+		<link href="../../css/style.css" rel="stylesheet" />
+		<style>
+			html,
+			body {
+				background-color: #FFFFFF;
+			}
+			
+			.top-box {
+				/*background-color: #169BD5;*/
+				/*background-color: #EFEFF4;*/
+				background-color: #FFCC33;
+				margin-top: 0px;
+				width: 100%;
+				height: 150px;
+				border-bottom: 1px solid #EEEEEE;
+				color: #ffffff;
+			}
+			
+			.top-box:active {
+				background: #FFCC77;
+			}
+			
+			.text-hint {
+				width: 100%;
+				font-size: 15px;
+				padding-left: 10px;
+				height: 50px;
+			}
+			
+			.balance {
+				padding-top: 20px;
+				padding-left: 25px;
+				padding-bottom: 20px;
+			}
+			
+			.teb-box {
+				margin-top: 10px;
+				background: #ffffff;
+			}
+			
+			.teb-item {
+				height: 50px;
+				border-bottom: 1px solid #EEEEEE;
+			}
+			
+			.teb-item:active {
+				background: #eee;
+			}
+			
+			.icon-left {
+				float: left;
+				width: 10px;
+				height: 50px;
+				padding-top: 18px;
+				margin-right: 10px;
+			}
+			
+			.icon-circle {
+				width: 12px;
+				height: 12px;
+				background-color: #ffffff;
+				border-radius: 8px;
+			}
+			
+			.icon-text {
+				color: #ffffff;
+				font-weight: bold;
+				height: 50px;
+				float: left;
+				line-height: 50px;
+				font-size: 20px;
+				color: rgba(156, 56, 156);
+			}
+			
+			.mui-btn-yellow {
+				width: 150px;
+				height: 40px;
+				font-size: 18px;
+				line-height: 25px;
+				text-align: center;
+				border-radius: 5px;
+				/*background-color: #169BD5;
+				border-color: #169BD5;*/
+			}
+			
+			.btn-group {
+				text-align: center;
+			}
+			
+			.recharge {
+				background-color: #ffffff;
+				height: 60px;
+				padding: 5px 5px;
+				text-align: center;
+			}
+			
+			.money {
+				width: 80%;
+				font-size: 18px;
+				border-radius: 5px;
+				height: 50px;
+				border: 1px solid #FFCC33;
+				color: #FFCC33;
+				text-align: center;
+				line-height: 50px;
+				margin: 0 auto;
+			}
+			
+			.money:active {
+				border: 1px solid #FFCC77;
+				color: #ffffff;
+				background-color: #FFCC77;
+			}
+			
+			.money-select {
+				border: 1px solid #FFCC77;
+				color: #ffffff;
+				background-color: #FFCC77;
+			}
+			
+			.count {
+				padding-top: 2px;
+				padding-left: 10px;
+				line-height: 20px;
+			}
+			
+			.del {
+				border-radius: 5px;
+				margin: 5px;
+				float: right;
+				padding: 5px 10px;
+				color: #FFCC99;
+				border: solid #FFCC77 1px;
+			}
+			
+			.del:active {
+				background-color: #FFCC77;
+				color: #FFF;
+			}
+			
+			#detail {
+				color: #ffffff;
+				font-size: 16px;
+				height: 100%;
+				line-height: 45px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<span class="mui-action-back mui-icon mui-icon-arrowleft mui-pull-left" style="color: #FFFFFF;"></span>
+			<span class="title-text mui-action-back">余额</span>
+			<span id="detail" class="mui-pull-right">明细</span>
+		</header>
+		<div class="mui-content" style="background-color: #FFFFFF;">
+
+			<div class="top-box">
+				<div class="balance-box">
+					<div class="text-hint">
+						<div class="icon-left">
+							<div class="icon-circle"></div>
+						</div>
+						<div class="icon-text">当前余额</div>
+					</div>
+					<div class="balance">
+						<h1 class="mui-h1">
+					<span class="user-balance">0.00</span>
+				</h1>
+					</div>
+				</div>
+			</div>
+			<!--充值-->
+			<div class="mui-row recharge">
+				<div class="mui-col-xs-4 mui-col-sm-4">
+					<div class="money">30.00</div>
+
+				</div>
+				<div class="mui-col-xs-4 mui-col-sm-4">
+					<div class="money">50.00</div>
+
+				</div>
+				<div class="mui-col-xs-4 mui-col-sm-4">
+					<div class="money">100.00</div>
+
+				</div>
+
+			</div>
+			<div class="mui-row recharge">
+				<div class="mui-col-xs-4 mui-col-sm-4">
+					<div class="money">200.00</div>
+				</div>
+				<div class="mui-col-xs-4 mui-col-sm-4">
+					<div class="money">300.00</div>
+				</div>
+				<div class="mui-col-xs-4 mui-col-sm-4">
+					<div class="money">500.00</div>
+
+				</div>
+
+			</div>
+
+			<div class="mui-row">
+				<div class="mui-col-xs-4 mui-col-sm-4">
+					<div class="count">
+						<p style="line-height: 40px;">充值金额：<span class="cost">0.00</span></p>
+					</div>
+				</div>
+				<div class="mui-text-right">
+					<div class="del">清除</div>
+				</div>
+			</div>
+			<ul class="mui-table-view mui-table-view-radio">
+				<li id="radio-select" class="mui-table-view-cell mui-media  ">
+					<a class="mui-navigate-right" pay-data="1">
+						<img class="mui-media-object mui-pull-left" src="../../img/wxpay/weixin.png">
+						<div class="mui-media-body">
+							<b class="payway">微信</b>
+							<p class='mui-ellipsis'>推荐微信用户使用</p>
+						</div>
+					</a>
+				</li>
+				<li id="radio-select" class="mui-table-view-cell mui-media ">
+					<a class="mui-navigate-right" pay-data="2">
+						<img class="mui-media-object mui-pull-left" src="../../img/alipay/36x36.png">
+						<div class="mui-media-body">
+							<b class="payway">支付宝</b>
+							<p class='mui-ellipsis'>推荐支付宝用户使用</p>
+						</div>
+
+					</a>
+				</li>
+				<li id="radio-select" class="mui-table-view-cell mui-media mui-selected">
+					<a class="mui-navigate-right" pay-data="0">
+						<img class="mui-media-object mui-pull-left" src="../../img/apppay/logo3.png">
+						<div class="mui-media-body">
+							<b class="payway">银行卡</b>
+							<p class='mui-ellipsis'>使用银行卡支付</p>
+						</div>
+
+					</a>
+				</li>
+
+			</ul>
+
+			<div class="teb-box"></div>
+			<div class="btn-group">
+				<button class="mui-btn mui-btn-yellow chongzhi">充值</button>
+			</div>
+		</div>
+		<script src="../../js/mui.min.js"></script>
+		<script src="../../js/jquery-3.1.1.js"></script>
+		<script type="text/javascript" src="../../js/app.js"></script>
+		<script type="text/javascript" src="../../js/config.js"></script>
+		<script type="text/javascript">
+			mui.init();
+			mui.plusReady(function() {
+				var state;
+				state = app.getState();
+				getUserBlance();
+
+				function getUserBlance() {
+					$.ajax(SERVER_URL + 'GetUserBlance', {
+						data: {
+							account: state.Account,
+						},
+						dataType: 'json', //服务器返回json格式数据
+						type: 'get', //HTTP请求类型
+						timeout: 10000, //超时时间设置为10秒；
+						headers: { 'Content-Type': 'application/json' },
+						success: function(data) {
+							console.log(JSON.stringify(data));
+							if(data.code == 200) {
+								$('.user-balance').html(data.data);
+							} else {
+								mui.toast('获取失败！');
+							}
+						},
+						error: function(xhr, type, errorThrown) {
+							mui.toast('请检查网络！');
+							$('.user-balance').html('0.00');
+						}
+					});
+				}
+
+				function setUserBlance($type, $count) {
+					$.ajax(SERVER_URL + 'SetUserBlance', {
+						data: {
+							account: state.Account,
+							type: $type,
+							blance: $count,
+						},
+						dataType: 'json', //服务器返回json格式数据
+						type: 'get', //HTTP请求类型
+						timeout: 10000, //超时时间设置为10秒；
+						headers: { 'Content-Type': 'application/json' },
+						success: function(data) {
+							console.log(JSON.stringify(data));
+							if(data.code == 200) {
+								$('.user-balance').html(data.data);
+								//本地数据存储
+								state.userblance = (parseFloat(state.userblance) + parseFloat($count)).toFixed(2);
+								app.setState(state);
+								mui.toast(data.msg);
+							} else {
+								mui.toast(data.msg);
+							}
+						},
+						error: function(xhr, type, errorThrown) {
+							mui.toast('请检查网络！');
+
+						}
+					});
+				}
+				var count = 0;
+				var PAY_WAYS = '充值';
+				$('.money').on('tap', function(event) {
+					count += parseFloat($(this).text());
+					$('.cost').html(count + '.00');
+				});
+				$('.del').on('tap', function(event) {
+					count = 0;
+					$('.cost').html(count + '.00');
+				});
+				$('.mui-table-view-cell').on('tap', function(event) {
+					PAY_WAYS = $(this).find('.payway').text() + '充值';
+					console.log(PAY_WAYS);
+
+				});
+
+				$('.chongzhi').on('tap', function(event) {
+					/*
+					 * 充值
+					 */
+					console.log(count);
+					setUserBlance(PAY_WAYS, count);
+					count = 0;
+					$('.cost').html(count + '.00');
+				});
+				$('#detail').on('tap', function(event) {
+					mui.openWindow({
+						url: "user_balance_detail.html", //跳转地址
+						id: "user_balance_detail", //id
+						show: {
+							aniShow: "slide-in-right", //页面显示动画，默认为”slide-in-right“；
+							duration: 300, //页面动画持续时间，Android平台默认100毫秒，iOS平台默认200毫秒
+							autoShow: true //页面loaded事件发生后自动显示，默认为true
+						},
+						extras: {
+							//自定义扩展参数，可以用来处理页面间传值
+						},
+						waiting: {
+							//title: '正在玩命搜索...' //等待对话框上显示的提示内容
+						}
+					});
+
+				});
+			});
+		</script>
+		<script src="../../js/mui.pullToRefresh.js"></script>
+		<script src="../../js/mui.pullToRefresh.material.js"></script>
+		<script type="text/javascript" src="../../js/pulldown.js"></script>
+	</body>
+
+</html>

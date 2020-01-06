@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html class="ui-page-login">
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<title></title>
+		<link href="../../css/mui.min.css" rel="stylesheet" />
+
+		<style>
+			html,
+			body {
+				background-color: #FFFFFF;
+				font-family: "微软雅黑";
+			}
+			
+			.top-box {
+				height: 350px;
+				background-color: #FFCC33;
+				padding: 50px;
+				color: white;
+				text-align: center;
+			}
+			
+			.img img {
+				width: 150px;
+				height: 150px;
+			}
+			
+			.box-left {
+				float: left;
+				font-size: 18px;
+				padding-top: 10px;
+			}
+			
+			.box-right {
+				font-size: 18px;
+				float: right;
+				padding-top: 10px;
+			}
+		</style>
+
+	</head>
+
+	<body>
+		<div class="mui-content">
+
+			<div class="top-box">
+				<div class="img">
+					<img src="../../img/icon/happy.png" />
+				</div>
+				<h2 class="mui-h2"><span class="real"></span></h2>
+				<h1>支付成功!</h1>
+				<div class="box-left">
+					<span class=""><<</span> 返回
+				</div>
+				<div class="box-right">查看订单<span class="">>></span></div>
+			</div>
+		</div>
+
+		<script src="../../js/mui.min.js"></script>
+		<script type="text/javascript" src="../../js/jquery-3.1.1.js"></script>
+		<script>
+			mui.init();
+			mui.plusReady(function() {
+				var page = plus.webview.currentWebview();
+				//接受上一页面传过来的值；
+				var a = page.real == undefined ? 0 : page.real;
+				$('.real').html('￥' + a);
+				console.log(a);
+				$('.box-left').click(function() {
+					var preView2 = plus.webview.getWebviewById('cartDetail.html');
+					if(preView2 !== null) {
+						preView2.close();
+
+					}
+					var ws = plus.webview.currentWebview(); //获取当前页面所属的Webview窗口对象
+					ws.hide();
+
+				});
+				$('.box-right').click(function() {
+
+					mui.openWindow({
+						url: "myOrders.html", //跳转地址
+						id: "myOrders.html", //id
+						show: {
+							aniShow: "slide-in-right", //页面显示动画，默认为”slide-in-right“；
+							duration: 300, //页面动画持续时间，Android平台默认100毫秒，iOS平台默认200毫秒
+							autoShow: true //页面loaded事件发生后自动显示，默认为true
+						},
+						extras: {
+							//自定义扩展参数，可以用来处理页面间传值
+						},
+						waiting: {
+							//title: '正在玩命搜索...' //等待对话框上显示的提示内容
+						}
+					});
+					//获取当前窗体对象
+					setTimeout(function() {
+						var ws = plus.webview.currentWebview(); //获取当前页面所属的Webview窗口对象
+						ws.hide();
+					}, 300);
+
+				});
+
+			});
+		</script>
+	</body>
+
+</html>

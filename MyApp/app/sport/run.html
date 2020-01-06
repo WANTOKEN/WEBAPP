@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+		<link rel="stylesheet" href="../../css/mui.min.css">
+		<title>Accelerometer Example</title>
+		<html>
+
+		<body>
+			<header class="mui-bar mui-bar-nav">
+				<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+				<h1 class="stop mui-title" style="display: none;">停止</h1>
+				<h1 class="start mui-title">开始</h1>
+				<a class="mui-pull-right mui-text-center clear" style="line-height: 44px;">
+					清除
+				</a>
+			</header>
+			<div class="mui-content">
+				<p id="acc"></p>
+			</div>
+		</body>
+
+		</html>
+		<script type="text/javascript" src="../../js/mui.min.js"></script>
+		<script type="text/javascript" src="../../js/jquery-3.1.1.js"></script>
+		<script type="text/javascript">
+			// 监听plusready事件  
+			var aid = null;
+			document.addEventListener("plusready", function() {
+				// 扩展API加载完毕，现在可以正常调用扩展API
+				var FRE_TIME = 600; //步伐的频率 0.6秒
+				var FOOT_WEIGHT = 60; //每步的步长为60m
+				//阈值范围
+				/*静止状态
+				 * 手机平放：x:0-1,y:0-1,z:9-10, step:9-11;
+				 * 手机平放（翻）：x:0-1,y:0-1,z:9-10,step:10-12;
+				 * 手机平放（倒）：x:0-1,y:0-1,z:9-10,step:10-12;
+				 * 手机正常拿起:x:0-1,y:4-9,z:7-9,step:12-15;
+				 * 手机侧放（右）：x:6-9,y:3-5,z:3-5,step:15-17;
+				 * 手机侧放（左）：x:4-8,y:0-2,z:7-9,step:13-16;
+				 * 手机竖放（正）：x:0-1,y:9-10,z:1-5,step:14-14;
+				 * 手机竖放（倒）：x:0-1,y:9-10,z:0-2,step:10-12;
+				 */
+				/*摇动状态
+				 * 左右晃动：x:13-17,y:3-8,z:5-10, step:14-40;
+				 * 上下摇动：x:6-9,y:2-7,z:4-8,step:16-25;
+				 * 摆动：x:0-2,y:3-8,z:4-14,step:10-18;
+				 */
+				/*走路状态
+				 * 手持手机：x:0-3,y:2-6,z:5-10, step:12-16;
+				 * 放置口袋：x:0-4,y:8-12,z:1-8,step:7-14;
+				 * 手持手机下楼梯：x:0-3,y:2-6,z:6-11,step:9-14;
+				 * 手持手机上楼梯：x:0-3,y:2-6,z:6-11,step:9-14;
+				 * 放置口袋上楼梯：x:0-4,y:8-12,z:1-4,step:10-17;
+				 * 放置口袋下楼梯：x:0-4,y:8-12,z:1-4,step:10-17;
+				 */
+				/*
+				 * x:2-4;y:2-6\8-12;z:1-4\6-11; step:7-17
+				 */
+				var foot = 0;
+
+				function watchAcc() {
+					if(aid) {
+						return;
+					}
+					aid = plus.accelerometer.watchAcceleration(function(a) {
+						var x = Math.abs(a.xAxis);
+						var y = Math.abs(a.yAxis);
+						var z = Math.abs(a.zAxis);
+						/*$("#acc").append("x:" + a.xAxis + "\ny:" + a.yAxis + "\nz:" + a.zAxis);*/
+						var step = x+y+z;
+						if(step >= 7 && step < 17) {
+							if((x >= 0 && x <= 4) && ((y >= 2 && y <= 12) || (y >= 8 && y <= 12)) && ((z >= 1 && z <= 4) || (z >= 6 && y <= 11))) {
+								foot++;
+								$("#acc").append(foot + '步--   x:' + Math.abs(a.xAxis) + '   y:' + Math.abs(a.yAxis) + '  z:' + Math.abs(a.zAxis) +
+									' step:' + step + '</br>');
+							}
+							//平均阈值在7-17
+
+						}
+					}, function(e) {
+						alert("Acceleration error: " + e.message);
+					}, {
+						frequency: 600 //5秒10步计算
+
+					}, false);
+				}
+
+				$('.stop').on('tap', function() {
+					$('.stop').css('display', 'none');
+					$('.start').css('display', 'block');
+					console.log('tingzhi');
+					plus.accelerometer.clearWatch(aid);
+					aid = null;
+				});
+				$('.start').on('tap', function() {
+					$('.start').css('display', 'none');
+					$('.stop').css('display', 'block');
+					console.log('kaishi');
+					watchAcc();
+				});
+				$('.clear').on('tap', function() {
+					$("#acc").html('');
+				});
+			});
+		</script>

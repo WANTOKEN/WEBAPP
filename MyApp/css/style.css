@@ -1,0 +1,25 @@
+html,
+body {
+	background-color: #EFEFF4;
+	font-family: "微软雅黑";
+}
+
+::-webkit-scrollbar {
+	display: none;
+}
+
+.mui-content {
+	height: 100%;
+}
+
+.mui-bar-nav {
+	background-color: #FFCC33;
+}
+
+.title-text {
+	color: #FFFFFF;
+	float: left;
+	font-size: 16px;
+	height: 100%;
+	line-height: 45px;
+}

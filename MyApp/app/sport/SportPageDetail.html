@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+		<link rel="stylesheet" href="../../css/mui.min.css">
+		<link rel="stylesheet" href="../../css/pulldown.css" />
+		<style>
+			html,
+			body {
+				background-color: #F5F5F5;
+				font-family: "微软雅黑";
+			}
+			
+			.head-bar-zhanwei {
+				height: 5px;
+			}
+			.Sport-Box-top-center {
+				position: relative;
+				/*height: 250px;*/
+				background-color: #FFFFFF;
+				margin: 0px 10px;
+				border-radius: 5px;
+				padding-top: 25px;
+				border-bottom: 1px solid #EEEEEE;
+				padding-bottom: 25px;
+			}
+			
+			.hint-text {
+				padding-top: 10px;
+				color: rgb(156, 156, 156);
+				text-align: center;
+				font-size: 12px;
+			}
+			
+			.Sport-Box-record {
+				background-color: white;
+				margin-top: 10px;
+			}
+			
+			.Sport-Box-record-title {
+				text-align: left;
+				height: 45px;
+				line-height: 40px;
+				font-size: 20px;
+				color: #666666;
+				border-bottom: 1px solid #DDDDDD;
+				padding-top: 5px;
+				padding-left: 10px;
+			}
+			.Cal-table-view {
+				position: relative;
+				margin-top: 0;
+				margin-bottom: 0;
+				padding-left: 0;
+				list-style: none;
+				background-color: #fff;
+				border-bottom: 100px solid #F5F5F5;
+			}
+			.Cal-table-view-cell {
+				position: relative;
+				overflow: hidden;
+				-webkit-touch-callout: none;
+				border-bottom: 1px solid #DDDDDD;
+			}
+			
+			.record-item {
+				height: 80px;
+				background-color: white;
+				text-align: center;
+				padding-top: 10px;
+				color: #666666;
+			}
+			
+			.foot-sum {
+				padding-top: 10px;
+				color: #2AC845;
+			}
+			
+			.consume-sum {
+				padding-top: 10px;
+				color: #8A6DE9;
+			}
+			
+			.point-sum {
+				padding-top: 10px;
+				color: #EC971F;
+			}
+			
+			.cell-icon-left {
+				float: left;
+				width: 22px;
+				height: 80px;
+				padding-left: 10px;
+				padding-top: 34px;
+			}
+			
+			.cell-icon-circle {
+				margin: 0px auto;
+				width: 12px;
+				height: 12px;
+				background-color: #F0AD4E;
+				border-radius: 8px;
+			}
+			
+			.cell-icon-right {
+				float: left;
+				padding-left: 10px;
+				height: 80px;
+				padding-top: 30px;
+				color: #666666;
+			}
+			
+			.mui-bar-nav {
+				background-color: #FFCC33;
+			}
+			
+			.chart {
+				height: 200px;
+				margin: 0px;
+				padding: 0px;
+			}
+		</style>
+		<style>
+			[v-cloak] {
+				display: none;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<span class="mui-action-back mui-icon mui-icon-arrowleft mui-pull-left" style="color: #FFFFFF;"></span>
+			<h1 class="mui-title" style="color: #FFFFFF;">时膳运动</h1>
+		</header>
+		<div class="mui-content">
+			<div class="head-bar-zhanwei">
+				<!--占位-->
+			</div>
+
+			<div class="Sport-Box-top">
+				<div class="chart" id="lineChart"></div>
+			</div>
+			<div class="Sport-Box-record" id="Sport-Box" v-cloak>
+				<div class="Sport-Box-record-title">
+					运动记录
+				</div>
+				<ul class="Cal-table-view">
+					<li class="Cal-table-view-cell mui-row" v-cloak v-for="(item,index) in items">
+						<div class="mui-col-sm-3 mui-col-xs-3">
+							<div>
+								<div class="cell-icon-left">
+									<div class="cell-icon-circle">
+									</div>
+								</div>
+								<div class="cell-icon-right">
+									{{item.sporttime.substr(5)}}
+								</div>
+							</div>
+						</div>
+						<div class="record-item mui-col-sm-3 mui-col-xs-3">
+							<div>步数</div>
+							<div class="foot-sum">{{item.footstep}}步</div>
+						</div>
+						<div class="record-item mui-col-sm-3 mui-col-xs-3">
+							<div>消耗</div>
+							<div class="consume-sum">{{item.consumer}}千卡</div>
+						</div>
+						<div class="record-item mui-col-sm-3 mui-col-xs-3">
+							<div>获得积分</div>
+							<div class="point-sum">{{item.point}}</div>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</body>
+	<script src="../../js/mui.min.js"></script>
+	<!--vue-->
+	<script type="text/javascript" src="../../plugins/vue/vue.min.js"></script>
+	<script type="text/javascript" src="../../plugins/vue/vue-resource.min.js"></script>
+	<script type="text/javascript" src="../../js/jquery-3.1.1.js"></script>
+	<script src="../../js/app.js"></script>
+	<script type="text/javascript" src="../../js/config.js"></script>
+	<script src="../../libs/echarts-all.js"></script>
+	<script>
+		mui.init({
+			swipeBack: true //启用右滑关闭功能
+		});
+
+		mui.plusReady(function() {
+			var state;
+			state = app.getState();
+			var userid = state.Account;
+			var sprotBox = new Vue({
+				el: '#Sport-Box',
+				data: {
+					items: "",
+					surl: SERVER_URL,
+				},
+
+			});
+			
+			getData(userid);
+			var linedata; //折线数据
+			/*
+			 * 获取数据
+			 */
+			function getData(val1) {
+				var wt = plus.nativeUI.showWaiting();
+				$.ajax({
+					url: SERVER_URL + 'GetSport',
+					type: "post",
+					data: {
+						account: val1,
+					},
+					dataType: "json",
+					success: function(data) {
+						console.log(JSON.stringify(data));
+						if(data.code == 200) {
+							/*mui.alert(data.msg);*/
+							sprotBox.items = data.info;
+							/*$('.Cal-table-view').html(getSportHtml(data.info));*/
+							setbarChart(data.linedata);
+						} else {
+							mui.toast(data.msg);
+						}
+						wt.close();
+					},
+					error: function() {
+						mui.alert("网络访问异常！");
+						wt.close();
+					},
+					complete: function() {}
+				});
+			}
+			/*
+			 * 记录模板
+			 */
+
+			function setbarChart(jsonData) {
+				console.log(jsonData);
+				var name = jsonData.spdate;
+				var spfoot = jsonData.spfoot;
+				var spcal = jsonData.spcal;
+				var spmeter = jsonData.spmeter;
+				var pieChart = echarts.init(document.getElementById('lineChart'));
+				var option = {
+					legend: {
+						data: ['步数(步)', '消耗(千卡)', '距离(米)']
+					},
+					grid: {
+						x: 35,
+						x2: 10,
+						y: 30,
+						y2: 25
+					},
+					toolbox: {
+						show: false,
+						feature: {
+							mark: {
+								show: true
+							},
+							dataView: {
+								show: true,
+								readOnly: false
+							},
+							magicType: {
+								show: true,
+								type: 'line'
+							},
+							restore: {
+								show: true
+							},
+							saveAsImage: {
+								show: true
+							}
+						}
+					},
+					calculable: false,
+					xAxis: [{
+						type: 'category',
+						data: name
+					}],
+					yAxis: [{
+						type: 'value',
+						splitArea: {
+							show: true
+						}
+					}],
+					series: [{
+						name: '步数(步)',
+						type: 'line',
+						data: spfoot
+					}, {
+						name: '消耗(千卡)',
+						type: 'line',
+						data: spcal
+					}, {
+						name: '距离(米)',
+						type: 'line',
+						data: spmeter
+					}]
+				};
+				pieChart.setOption(option);
+			}
+		});
+	</script>
+	<script src="../../js/mui.pullToRefresh.js"></script>
+	<script src="../../js/mui.pullToRefresh.material.js"></script>
+	<script type="text/javascript" src="../../js/pulldown.js"></script>
+
+</html>

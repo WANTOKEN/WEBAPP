@@ -1,0 +1,366 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../../css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" href="../../css/pulldown.css" />
+		<link href="../../css/style.css" rel="stylesheet" />
+		<style>
+			.top-box {
+				background-color: #FFCC33;
+				text-align: center;
+				width: 100%;
+				height: 180px;
+				border-bottom: 1px solid #EEEEEE;
+				color: #FFFFFF;
+			}
+			
+			.top-box:active {
+				background: #FFA447;
+			}
+			
+			.text-hint {
+				width: 100%;
+				font-size: 15px;
+				height: 50px;
+				padding-left: 10px;
+			}
+			
+			.balance {
+				padding-top: 10px;
+				padding-bottom: 20px;
+			}
+			
+			.teb-box {
+				margin-top: 10px;
+				background: white;
+			}
+			
+			.teb-item {
+				height: 50px;
+				border-bottom: 1px solid #EEEEEE;
+			}
+			
+			.teb-item:active {
+				background: #eee;
+			}
+			
+			.icon-left {
+				float: left;
+				width: 10px;
+				height: 50px;
+				padding-top: 18px;
+				margin-right: 10px;
+			}
+			
+			.icon-circle {
+				width: 12px;
+				height: 12px;
+				background-color: #FFCC33;
+				border-radius: 8px;
+			}
+			
+			.icon-text {
+				font-weight: bold;
+				height: 50px;
+				float: left;
+				line-height: 50px;
+				font-size: 20px;
+				color: rgba(156, 56, 156);
+			}
+			
+			.count {
+				padding-top: 2px;
+				padding-left: 10px;
+				line-height: 20px;
+			}
+			
+			.Outline-box {
+				position: absolute;
+				background-color: #FFFFFF;
+				height: 80px;
+				width: 90%;
+				top: 200px;
+				margin: 0 5%;
+				border-radius: 5px;
+				box-shadow: 1px 1px 3px 0px rgba(0, 0, 0, 0.3);
+				padding: 5px 0px;
+			}
+			
+			.point-item {
+				float: left;
+				width: 33.3%;
+				text-align: center;
+				padding: 5px;
+			}
+			
+			.point-item-title {
+				color: #999999;
+			}
+			
+			.point-item-content {
+				color: #5e5e5e;
+				padding: 5px 0px;
+			}
+			
+			.point-zhaiwei {
+				height: 80px;
+				background-color: white;
+				border-bottom: 1px solid #DDDDDD;
+			}
+			
+			.Point-table-view {
+				position: relative;
+				margin-top: 0;
+				margin-bottom: 0;
+				padding-left: 0;
+				list-style: none;
+				background-color: #fff;
+				border-bottom: 380px solid transparent;
+			}
+			
+			.Point-table-view-cell {
+				position: relative;
+				overflow: hidden;
+				-webkit-touch-callout: none;
+			}
+			
+			.teb-item-left {
+				float: left;
+				width: 30px;
+				height: 50px;
+				text-align: center;
+			}
+			
+			.teb-item-icon-circle {
+				margin: 0px auto;
+				width: 12px;
+				height: 12px;
+				background-color: #FFCC33;
+				border-radius: 8px;
+			}
+			
+			.icon-1 {
+				margin: 0px auto;
+				background-color: #DDDDDD;
+				height: 40%;
+				width: 1px;
+			}
+			
+			.teb-item-time {
+				float: left;
+				height: 50px;
+				width: 50px;
+				font-size: 12px;
+				color: #999999;
+				text-align: center;
+			}
+			
+			.teb-item-time div:nth-child(1) {
+				padding-top: 8px;
+			}
+			
+			.teb-item-time div:nth-child(2) {}
+			
+			.teb-item-content {
+				float: left;
+				height: 50px;
+				border-bottom: 1px solid #DDDDDD;
+			}
+			
+			.teb-item-content div:nth-child(1) {
+				float: left;
+				line-height: 50px;
+				padding-left: 30px;
+				color: #666666;
+			}
+			
+			.teb-item-content div:nth-child(2) {
+				float: right;
+				line-height: 50px;
+				padding-right: 20px;
+				color: #FFAB19;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<span class="mui-action-back mui-icon mui-icon-arrowleft mui-pull-left" style="color: #FFFFFF;"></span>
+			<span class="title-text mui-action-back">积分</span>
+			
+		</header>
+		<div class="mui-content">
+		<!--<div class="head-bar-zhanwei" style="height: 2px;"> -->
+			<!--占位-->
+		<!--</div>-->
+			<div class="top-box">
+				<div class="balance-box">
+					<div class="text-hint">
+						<div class="icon-left">
+							<div class="icon-circle"></div>
+						</div>
+						<div class="icon-text">当前积分</div>
+					</div>
+					<div class="balance">
+						<h1 class="mui-h1">
+					<span class="user-point">0</span>
+				</h1>
+					<br />
+						<p style="color: white;">Tip:积分可通过充值、购买、运动等方式获取</p>
+					</div>
+				</div>
+			</div>
+
+			<div class="Outline-box">
+				<div class="point-item">
+					<div class="point-item-title">
+						花费
+					</div>
+					<div class="point-item-content">
+						<span class="Cost">0</span>
+					</div>
+				</div>
+				<div class="point-item">
+					<div class="point-item-title">
+						获得
+					</div>
+					<div class="point-item-content">
+						<span class="Obtain">0</span>
+					</div>
+				</div>
+				<div class="point-item">
+					<div class="point-item-title">
+						积分达人
+					</div>
+					<div class="point-item-content">
+						7级
+					</div>
+				</div>
+
+			</div>
+			<div class="point-zhaiwei">
+
+			</div>
+			<div class="count">
+				<p>积分明细<span class="cost"></span></p>
+			</div>
+			<ul class="Point-table-view">
+				<!--<li class="Point-table-view-cell">
+				<div class="teb-item-left">
+					<div class="icon-1"></div>
+					<div class="teb-item-icon-circle"></div>
+					<div class="icon-1"></div>
+				</div>
+				<div class="teb-item-time">
+					<div>今天</div>
+					<div>19：00</div>
+				</div>
+
+				<div class="teb-item-content">
+					<div>运动</div>
+					<div>+600</div>
+				</div>
+			</li>-->
+
+			</ul>
+		</div>
+		<script src="../../js/mui.min.js"></script>
+		<script src="../../js/jquery-3.1.1.js"></script>
+		<script type="text/javascript" src="../../js/app.js"></script>
+		<script type="text/javascript" src="../../js/config.js"></script>
+		<script type="text/javascript">
+			setInterval(function() {
+				$('.teb-item-content').css('width', ($('.Point-table-view-cell').width() - 80) + 'px');
+			}, 1);
+			mui.init();
+			mui.plusReady(function() {
+				var state;
+				state = app.getState();
+				getUserBlance();
+				getUserBlanceDetail();
+
+				function getUserBlance() {
+					$.ajax(SERVER_URL + 'GetUserPoint', {
+						data: {
+							account: state.Account,
+						},
+						dataType: 'json', //服务器返回json格式数据
+						type: 'get', //HTTP请求类型
+						timeout: 10000, //超时时间设置为10秒；
+						headers: { 'Content-Type': 'application/json' },
+						success: function(data) {
+							console.log(JSON.stringify(data));
+							if(data.code == 200) {
+								$('.user-point').html(data.data);
+							} else {
+								mui.toast('获取失败！');
+							}
+						},
+						error: function(xhr, type, errorThrown) {
+							mui.toast('请检查网络！');
+							$('.user-point').html('0.00');
+						}
+					});
+				}
+
+				function getUserBlanceDetail() {
+					$.ajax(SERVER_URL + 'GetUserPointDetail', {
+						data: {
+							account: state.Account,
+						},
+						dataType: 'json', //服务器返回json格式数据
+						type: 'get', //HTTP请求类型
+						timeout: 10000, //超时时间设置为10秒；
+						headers: { 'Content-Type': 'application/json' },
+						success: function(data) {
+							console.log(JSON.stringify(data));
+							if(data.code == 200) {
+								$('.Cost').html(data.cost.cost);
+								$('.Obtain').html(data.cost.count);
+
+								mui.each(data.data, function(index, item) {
+									var html = '';
+									html += '<li class="Point-table-view-cell">';
+									html += '<div class="teb-item-left">';
+									html += '<div class="icon-1"></div>';
+									html += '<div class="teb-item-icon-circle"></div>';
+									html += '<div class="icon-1"></div>';
+									html += '</div>';
+									html += '<div class="teb-item-time">';
+									html += '<div>' + item.date + '</div>';
+									html += '<div>' + item.time + '</div>';
+									html += '</div>';
+									html += '<div class="teb-item-content">';
+									html += '<div>' + item.ways + '</div>';
+									if(item.pointcount == 0) {
+										html += '<div>-' + item.pointcost + '</div>';
+									} else {
+										html += '<div>+' + item.pointcount + '</div>';
+									}
+									html += '</div>';
+									html += '</li>';
+									$('.Point-table-view').append(html);
+								});
+							} else {
+								mui.toast('获取失败！');
+							}
+
+						},
+						error: function(xhr, type, errorThrown) {
+							mui.toast('请检查网络！');
+							$('.user-point').html('0.00');
+						}
+					});
+				}
+
+			});
+		</script>
+		<script src="../../js/mui.pullToRefresh.js"></script>
+		<script src="../../js/mui.pullToRefresh.material.js"></script>
+		<script type="text/javascript" src="../../js/pulldown.js"></script>
+	</body>
+</html>

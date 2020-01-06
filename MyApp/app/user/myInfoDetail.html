@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+		<link rel="stylesheet" href="../../css/mui.min.css">
+		<link rel="stylesheet" href="../../css/pulldown.css" />
+		<link href="../../css/style.css" rel="stylesheet" />
+
+		<style>
+			.Info-group {
+				margin-bottom: 10px;
+				width: 100%;
+				background: white;
+			}
+			
+			.Info-group .info-row:nth-last-child(1) .info-item {
+				border-bottom: 0px solid #fff;
+			}
+			
+			.info-row {
+				width: 100%;
+				height: 50px;
+				padding: 0 15px;
+				color: #333333;
+			}
+			
+			.info-head-row {
+				height: 80px;
+			}
+			
+			.info-row:active {
+				background: #eee;
+			}
+			
+			.info-item {
+				height: 50px;
+				line-height: 50px;
+				width: 100%;
+				border-bottom: 1px solid #eee;
+				color: #333333;
+			}
+			
+			.info-head {
+				height: 80px !important;
+				line-height: 80px !important;
+			}
+			
+			.info-item img {
+				width: 60px;
+				float: right;
+				margin-top: 10px;
+			}
+			
+			.info-item span {
+				float: right;
+				color: rgb(156, 156, 156);
+				line-height: 50px;
+			}
+			
+			.mui-bar-nav {
+				background-color: #FFCC33;
+			}
+			
+			.head-bar-zhanwei {
+				height: 8px;
+			}
+			
+			#headimg {
+				border-radius: 5px;
+			}
+		</style>
+
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<span class="mui-action-back mui-icon mui-icon-arrowleft mui-pull-left" style="color: #FFFFFF;"></span>
+			<span class="title-text mui-action-back">个人信息</span>
+
+		</header>
+		<div class="mui-content">
+
+			<div class="head-bar-zhanwei">
+				<!--占位-->
+			</div>
+			<div class="Info-group">
+				<div class="info-row info-head-row">
+					<div class="info-item info-head">
+						头像<img id="headimg" src="../../img/appicon/appicon.png" />
+					</div>
+				</div>
+				<div class="info-row">
+					<div class="info-item">
+						账号<span class="account">123</span>
+					</div>
+				</div>
+				<div class="info-row" id="reg_name">
+					<a href="#">
+						<div class="info-item">
+							用户名<span class="name">123</span>
+						</div>
+					</a>
+				</div>
+			</div>
+
+			<div class="Info-group">
+				<div class="info-row" id="reg_pass">
+					<a href="#">
+						<div class="info-item">
+							登录密码
+							<span class="mui-icon mui-icon-arrowright"></span>
+						</div>
+					</a>
+				</div>
+				<div class="info-row" id="reg_pay">
+					<a href="#">
+						<div class="info-item">
+							支付密码
+							<span class="mui-icon mui-icon-arrowright"></span>
+						</div>
+					</a>
+				</div>
+				<div class="info-row">
+					<a href="#">
+						<div class="info-item">
+							设置手势
+							<span class="mui-icon mui-icon-arrowright"></span>
+						</div>
+					</a>
+				</div>
+
+			</div>
+		</div>
+		<script src="../../js/mui.min.js "></script>
+		<script src="../../js/app.js"></script>
+		<script type="text/javascript" src="../../js/jquery-3.1.1.js"></script>
+		<script type="text/javascript" src="../../js/config.js"></script>
+
+		<script>
+			mui.init({
+				swipeBack: false
+			});
+			mui.plusReady(function() {
+				var state;
+
+				function refashInfo() {
+					state = app.getState();
+					console.log(state.head);
+					$('.account').html(state.Account);
+					$('.name').html(state.Name);
+					$('#headimg').attr('src', state.head);
+				}
+				refashInfo();
+
+				function openPageWindow(window_url) {
+					mui.openWindow({
+						id: window_url, //id
+						url: window_url, //跳转地址
+						show: {
+							aniShow: "slide-in-right", //页面显示动画，默认为”slide-in-right“；
+							duration: 300, //页面动画持续时间，Android平台默认100毫秒，iOS平台默认200毫秒
+							autoShow: true //页面loaded事件发生后自动显示，默认为true
+						},
+						extras: {
+
+						},
+						waiting: {
+
+						}
+					});
+				}
+
+				$('#reg_name').on('tap', function() {
+					openPageWindow('myInfo_name_reg.html');
+
+				});
+				$('#reg_pass').on('tap', function() {
+					openPageWindow('myInfo_pass_reg.html');
+
+				});
+				$('#reg_pay').on('tap', function() {
+					openPageWindow('myInfo_pay_reg.html');
+
+				});
+				$('.info-head-row').click(function() {
+					openPageWindow('userimgDetail.html');
+				});
+				
+				
+				window.addEventListener("refashInfo", refashInfo);
+			});
+		</script>
+		<script src="../../js/mui.pullToRefresh.js"></script>
+		<script src="../../js/mui.pullToRefresh.material.js"></script>
+		<script type="text/javascript" src="../../js/pulldown.js"></script>
+	</body>
+
+</html>

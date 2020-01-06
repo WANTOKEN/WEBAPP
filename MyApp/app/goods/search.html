@@ -1,0 +1,779 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link rel="stylesheet" href="../../css/iconfont.css" />
+		<link rel="stylesheet" href="../../css/mui.min.css">
+
+		<style>
+			html,
+			body {
+				font-family: "微软雅黑";
+				background-color: #FFFFFF;
+			}
+			
+			.mui-bar-nav {
+				background-color: #FFCC33;
+			}
+			
+			.head-bar-center {
+				float: left;
+				width: 65%;
+				padding-right: 5px;
+				height: 100%;
+				padding-left: 5px;
+				padding-bottom: 5px;
+				line-height: 45px;
+				line-height: 45px;
+				position: relative;
+			}
+			
+			.head-bar-input {
+				position: absolute;
+				background-color: #FFFFFF;
+				border-radius: 5px;
+				height: 30px;
+				width: 100%;
+				bottom: 7px;
+				left: 10px;
+			}
+			
+			.head-bar-input i {
+				font-size: 16px;
+				color: #FFCC33;
+				position: absolute;
+				bottom: 7px;
+				left: 5px;
+			}
+			
+			.head-bar-input input {
+				width: 80%;
+				height: 28px;
+				float: left;
+				border: 0px;
+				font-size: 14px;
+				color: #666666;
+			}
+			
+			.hint-text {
+				line-height: 30px;
+				vertical-align: top;
+				font-size: 14px;
+				color: #dadada;
+			}
+			
+			input::-webkit-input-placeholder {
+				font-size: 14px;
+				color: #dadada;
+			}
+			
+			input:-moz-placeholder {
+				/* Mozilla Firefox 4 to 18 */
+				font-size: 14px;
+				color: #dadada;
+			}
+			
+			input::-moz-placeholder {
+				/* Mozilla Firefox 19+ */
+				font-size: 14px;
+				color: #dadada;
+			}
+			
+			input:-ms-input-placeholder {
+				/* Internet Explorer 10+ */
+				font-size: 14px;
+				color: #dadada;
+			}
+			
+			.mui-content {
+				background-color: #FFFFFF;
+			}
+			
+			.Goods-content {
+				padding-bottom: 50px;
+			}
+			
+			.Goods-Box-Content {
+				position: relative;
+				margin-top: 10px;
+				width: 100%;
+				height: 150px;
+				padding-top: 2%;
+				padding-left: 2%;
+				text-align: center;
+				border-radius: 15px;
+				box-shadow: 1px 2px 3px 1px rgba(0, 0, 0, 0.35);
+			}
+			
+			.Goods-Box-Content .Goods-Box-Content-img {
+				width: 43%;
+				float: left;
+			}
+			
+			.Goods-Box-Content .Goods-Box-Content-img img {
+				width: 100%;
+				height: 130px;
+				border-radius: 10px;
+			}
+			
+			.Goods-Box-Content-text {
+				padding-top: 2%;
+				padding-left: 4%;
+				text-align: left;
+				width: 55%;
+				float: left;
+			}
+			
+			.order-btn-group {
+				text-align: center;
+				font-size: 20px;
+				width: 100px;
+				height: 40px;
+				line-height: 20px;
+				position: absolute;
+				bottom: 15px;
+				right: 20px;
+				color: white;
+				float: right;
+				border: 0px;
+			}
+			
+			.order-btn-group i {
+				font-size: 14px;
+				color: #666666;
+				display: none;
+				text-align: center;
+				font-style: normal;
+				vertical-align: middle;
+				line-height: 30px;
+			}
+			
+			.price {
+				display: none;
+			}
+			
+			.add {
+				text-align: center;
+				width: 35px;
+				height: 35px;
+				border-radius: 35px;
+				background-color: #FFCC00;
+				color: white;
+				border: 0px;
+			}
+			
+			.minus {
+				text-align: center;
+				display: none;
+				width: 35px;
+				height: 35px;
+				border-color: #DDDDDD;
+				border-radius: 35px;
+				color: #999999;
+			}
+			
+			.money-text {
+				position: absolute;
+				bottom: 20px;
+				color: #FF9900;
+			}
+			
+			.Box-table-view {
+				position: relative;
+				margin-top: 0;
+				margin-bottom: 0;
+				padding-left: 0;
+				list-style: none;
+				background-color: #fff;
+				border-bottom: 380px solid transparent;
+			}
+			
+			.Box-table-view-cell {
+				position: relative;
+				overflow: hidden;
+				padding: 10px 15px;
+				-webkit-touch-callout: none;
+				background-color: #fff;
+			}
+			
+			.footer {
+				display: none;
+				position: fixed;
+				width: 100%;
+				z-index: 3;
+				bottom: 0px;
+				color: #FF9900;
+				background: #fff;
+				line-height: 35px;
+				font-size: 15px;
+				border-top: 1px solid #e2e2e2;
+			}
+			
+			.list {
+				width: 100%;
+				display: none;
+			}
+			
+			.cartid {
+				display: none;
+				color: #000000;
+				width: 22px;
+				text-align: center;
+				font-style: normal;
+				vertical-align: center;
+				margin-right: 20px;
+			}
+			
+			.cartname {
+				color: #666666;
+				width: 22px;
+				text-align: center;
+				font-style: normal;
+				vertical-align: center;
+				margin-right: 20px;
+			}
+			
+			.cartprice-icon {
+				color: #FF9900;
+				text-align: left;
+				font-style: normal;
+				vertical-align: center;
+			}
+			
+			.cartprice {
+				color: #FF9900;
+				width: 22px;
+				text-align: left;
+				font-style: normal;
+				vertical-align: center;
+				margin-right: 20px;
+			}
+			
+			.cartenergy {
+				color: #666666;
+				width: 22px;
+				font-style: normal;
+				vertical-align: center;
+			}
+			
+			.cartenergy-icon {
+				color: #666666;
+				width: 22px;
+				font-style: normal;
+				vertical-align: center;
+				margin-right: 20px;
+			}
+			
+			.cartnum {
+				color: #666666;
+				width: 22px;
+				text-align: center;
+				font-style: normal;
+				vertical-align: center;
+			}
+			
+			.cartnum-icon {
+				color: #666666;
+				width: 22px;
+				text-align: center;
+				font-style: normal;
+				vertical-align: center;
+				margin-right: 20px;
+			}
+			
+			.footer .left {
+				float: left;
+				margin: 5px 10px;
+			}
+			
+			.footer .right {
+				float: right;
+			}
+			
+			.footer .right .disable {
+				background: #dbdbdb;
+			}
+			
+			.footer .xhlbtn {
+				display: block;
+				text-align: center;
+				line-height: 45px;
+				background-color: #FFCC33;
+				padding: 0 15px;
+				color: #fff;
+				font-weight: bold;
+			}
+			
+			.float-right {
+				float: right;
+				margin-right: 10px;
+			}
+			
+			.icon-yuyin {
+				text-align: center;
+				font-size: 40px;
+				color: #FFFFFF;
+			}
+			
+			.Search-hot-box {
+				display: block;
+				background: #FFFFFF;
+				padding: 12px;
+				min-height: 160px;
+			}
+			
+			.search-title {
+				line-height: 38px;
+				font-size: 15px;
+				font-weight: 700;
+			}
+			
+			.search-content,
+			.search-content1,
+			.search-content2 {
+				padding-top: 8px;
+			}
+			
+			.search-content span,
+			.search-content1 span,
+			.search-content2 span {
+				display: block;
+				border-radius: 5px;
+				float: left;
+				margin: 0 8px 10px 0px;
+				padding: 6px 10px;
+				line-height: 20px;
+				font-size: 13px;
+				background: #EFF3F6;
+			}
+			
+			.search-content span:active,
+			.search-content1 span:active,
+			.search-content2 span:active {
+				background-color: #EEEEEE;
+			}
+		</style>
+		<style>
+			[v-cloak] {
+				display: none;
+			}
+		</style>
+
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<span class="mui-icon iconfont icon-xiangzuo mui-pull-left mui-action-back" style="color: #FFFFFF;"></span>
+			<span class="head-bar-center">
+				<span class="head-bar-input">
+				<i class="mui-icon iconfont icon-31sousuo mui-pull-left"></i>	
+				<input type="text" id="search" placeholder="营养套餐、特色餐点" value=""/>
+				</span>
+			</span>
+			<span class="mui-pull-left" id="startspeech" style="color: #FFFFFF;line-height: 45px;padding-left: 10px;">
+			<i class="mui-icon iconfont icon-yuyin"></i>
+			</span>
+			<span class="mui-pull-right" id="search-btn" style="color: #FFFFFF;line-height: 45px;padding-left: 10px;padding-right: 5px;">
+			搜索
+			</span>
+
+		</header>
+		<div class="mui-content">
+			<div class="SearchBox"></div>
+			<div class="Goods-content" id="Goods-Box" v-cloak>
+
+				<ul class="Box-table-view">
+					<li class="Box-table-view-cell" id="GoodsContent" v-for="(goodsitem,index) in items">
+						<div class="Goods-Box-Content">
+							<div class="Goods-Box-Content-img" v-bind:data-id="goodsitem.goodsid">
+								<img id="goodsImage" v-bind:src="surl+goodsitem.goodsimage" />
+							</div>
+							<div class="Goods-Box-Content-text">
+								<p id="goodsName" style="color: #666666;font-size: 18px;">{{goodsitem.goodsname}}</p>
+								<p id="goodsEnName">{{goodsitem.goodsenname}}</p>
+								<p id="goodsEnergy">能量：{{goodsitem.goodsenergy}}千卡</p>
+								<h4 id="goodsPrice" class="money-text">￥{{goodsitem.goodsprice}}</h4>
+								<div class="order-btn-group">
+									<button class="minus" v-bind:data-gid="goodsitem.goodsid" v-bind:data-gimg="goodsitem.goodsimage" v-bind:data-gname="goodsitem.goodsname" v-bind:data-gprice="goodsitem.goodsprice" v-bind:data-genergy="goodsitem.goodsenergy">
+										<strong>-</strong>
+										</button>
+									<i>0</i>
+									<button class="add" v-bind:data-gid="goodsitem.goodsid" v-bind:data-gimg="goodsitem.goodsimage" v-bind:data-gname="goodsitem.goodsname" v-bind:data-gprice="goodsitem.goodsprice" v-bind:data-genergy="goodsitem.goodsenergy">
+										<strong>+</strong>
+										</button>
+									<i class="price">{{goodsitem.goodsprice}}</i></div>
+							</div>
+						</div>
+					</li>
+				</ul>
+			</div>
+
+			<div class="footer">
+				<div class="list">
+
+				</div>
+
+				<div class="left">已选：
+					<span id="cartN">
+			<span id="totalcountshow">0</span>份　总计：￥<span id="totalpriceshow">0</span></span>元
+
+				</div>
+				<div class="right">
+					<a id="btnselect" class="xhlbtn disable">去结算</a>
+				</div>
+			</div>
+		</div>
+	</body>
+
+</html>
+<script type="text/javascript" src="../../js/mui.min.js"></script>
+<!--vue-->
+<script type="text/javascript" src="../../plugins/vue/vue.min.js"></script>
+<script type="text/javascript" src="../../plugins/vue/vue-resource.min.js"></script>
+<script type="text/javascript" src="../../js/jquery-3.1.1.js"></script>
+<script type="text/javascript" src="../../js/app.js"></script>
+<script type="text/javascript" src="../../js/config.js"></script>
+<script type="text/javascript">
+	mui.init()
+	mui.plusReady(function() {
+		var GoodsBox = new Vue({
+			el: '#Goods-Box',
+			data: {
+				items: "",
+				surl: SERVER_URL,
+			}
+		});
+		var state;
+		state = app.getState();
+		//获取搜索关键词
+		getKeyWord();
+
+		var text = null;
+
+		function startRecognize() {
+			var options = {};
+			options.engine = 'iFly';
+			options.punctuation = false; // 是否需要标点符号
+			text = "";
+			console.log("开始语音识别：");
+			plus.speech.startRecognize(options, function(s) {
+				console.log(s);
+				text += s;
+				document.getElementById('search').value = text;
+				search(text);
+			}, function(e) {
+				console.log("语音识别失败：" + e.message);
+				alert("语音识别失败：" + e.message);
+			});
+			setTimeout(stopRecognize, 10000);
+		}
+		//  停止语音输入
+		function stopRecognize() {
+			plus.speech.stopRecognize();
+		}
+
+		function getKeyWord() {
+			$.ajax(SERVER_URL + 'GetSearchKey', {
+				data: {
+					account: state.Account,
+				},
+				dataType: 'json', //服务器返回json格式数据
+				type: 'get', //HTTP请求类型
+				timeout: 10000, //超时时间设置为10秒；
+				headers: { 'Content-Type': 'application/json' },
+				success: function(data) {
+					//console.log(JSON.stringify(data));
+					if(data.code == 201) {
+						var html = '';
+						html += '<div class="Search-hot-box">';
+						html += '<div class="search-title">' + data.title + '</div>';
+						html += '<div class="search-content">';
+						mui.each(data.data, function(index, item) {
+							html += '<span>' + item.searchtext + '</span>';
+
+						});
+						html += '</div>';
+						html += '</div>';
+						$('.SearchBox').html(html);
+					} else if(data.code == 200) {
+						var html = '';
+						html += '<div class="Search-hot-box">';
+						html += '<div class="search-title">热搜</div>';
+						html += '<div class="search-content">';
+						mui.each(data.hotdata, function(index, item) {
+							html += '<span>' + item.searchtext + '</span>';
+
+						});
+						html += '</div>';
+						html += '</div>';
+						html += '</br>';
+						html += '<div class="Search-hot-box">';
+						html += '<div class="search-title">历史</div>';
+						html += '<div class="search-content">';
+						mui.each(data.historydata, function(index, item) {
+							html += '<span>' + item.searchtext + '</span>';
+
+						});
+						html += '</div>';
+						html += '</div>';
+						html += '</br>';
+						$('.SearchBox').html(html);
+					}
+				},
+				error: function(xhr, type, errorThrown) {
+					//异常处理；
+				}
+			});
+		}
+
+		function search(val) {
+			var wt = plus.nativeUI.showWaiting();
+			$.ajax(SERVER_URL + 'Searchgoodsdata', {
+				data: {
+					search: val,
+					account: state.Account,
+				},
+				dataType: 'json', //服务器返回json格式数据
+				type: 'get', //HTTP请求类型
+				timeout: 10000, //超时时间设置为10秒；
+				headers: { 'Content-Type': 'application/json' },
+				success: function(data) {
+					$('.SearchBox').css("display", "none");
+					$('.Search-hot-box').css("display", "none");
+					$('.footer').css("display", "block");
+					console.log(JSON.stringify(data));
+					if(data.code == 200) {
+						GoodsBox.items = data.data;
+						
+					} else {
+						mui.toast('没有匹配的数据！');
+						GoodsBox.items = [];
+						$('.footer').css("display", "none");
+					}
+					wt.close();
+				},
+				error: function(xhr, type, errorThrown) {
+					//异常处理；
+					mui.alert('网络访问异常！');
+					wt.close();
+				}
+			});
+		}
+		$("input").focus(function() {
+			console.log('focus');
+			var val = document.getElementById('search').value;
+			$('#search').val('');
+			if(val == null || val == '') {
+				$('.SearchBox').css("display", "block");
+				$('.Search-hot-box').css("display", "block");
+				$('.footer').css("display", "none");
+			} else {
+				$('.SearchBox').css("display", "block");
+				$('.Search-hot-box').css("display", "block");
+				$('.footer').css("display", "none");
+				/*$('.Search-hot-box').css("display", "none");*/
+			}
+
+		});
+		$(document).on('click', '#startspeech', function() {
+			console.log('开始语音！！！');
+			startRecognize();
+		});
+		$("input").blur(function() {
+			console.log('blur');
+			$('.SearchBox').css("display", "block");
+			$('.Search-hot-box').css("display", "block");
+			$('.footer').css("display", "none");
+
+		});
+		$(document).on('click', '.SearchBox span', function() {
+			console.log($(this).text());
+			$('#search').val($(this).text());
+			search($(this).text());
+		});
+		$("#search-btn").on('tap', function() {
+			var val = document.getElementById('search').value;
+			console.log(val);
+			search(val);
+		});
+
+		var cartJson = []; //定义购物出JSON数据
+		var order_idList = new Array(); //订单列表
+		var jsFlag = 0; //结算标志
+		var listVisiable = 0; //列表显示标志
+		$(document).on('click', '.mui-slider-item img', function() {
+			console.log($(this).attr('data-id'));
+			mui.openWindow({
+				id: 'goodsDetail.html',
+				url: 'goodsDetail.html',
+				show: {
+					aniShow: "slide-in-right", //页面显示动画，默认为”slide-in-right“；
+					duration: 300, //页面动画持续时间，Android平台默认100毫秒，iOS平台默认200毫秒
+					autoShow: true //页面loaded事件发生后自动显示，默认为true
+				},
+				extras: {
+					'goods_id': $(this).attr('data-id').toString(),
+				},
+				waiting: {
+					autoShow: true,
+					title: '正在加载...', //等待对话框上显示的提示内容
+				}
+			});
+
+		});
+		$(document).on('click', '.Goods-Box-Content-img', function() {
+			console.log($(this).attr('data-id').toString());
+			mui.openWindow({
+				id: 'goodsDetail.html',
+				url: 'goodsDetail.html',
+				show: {
+					aniShow: "slide-in-right", //页面显示动画，默认为”slide-in-right“；
+					duration: 300, //页面动画持续时间，Android平台默认100毫秒，iOS平台默认200毫秒
+					autoShow: true //页面loaded事件发生后自动显示，默认为true
+				},
+				extras: {
+					'goods_id': $(this).attr('data-id').toString(),
+				},
+				waiting: {
+					autoShow: true,
+					title: '正在加载...', //等待对话框上显示的提示内容
+				}
+			});
+
+		});
+
+		function jss() {
+			var m = $("#totalcountshow").html();
+			if(m > 0) {
+				$(".right").find("a").removeClass("disable");
+				jsFlag = 1;
+			} else {
+				$(".right").find("a").addClass("disable");
+				jsFlag = 0;
+			}
+		};
+		//餐品加减操作
+		mui(document).on('tap', '.add', function() {
+			$(this).prevAll().css("display", "inline-block");
+			var n = $(this).prev().text();
+			var num = parseInt(n) + 1;
+			if(num == 0) { return; }
+			$(this).prev().text(num);
+			var danjia = $(this).next().text(); //获取单价
+			var listxt = '';
+			listxt += '<li id="' + $(this).attr("data-gid") + '"><i class="cartid" ></i><img src="' + SERVER_URL + $(this).attr("data-gimg") + '" style="width: 20px;height: 20px;vertical-align:text-bottom;"><i class="cartname"></i><span class="float-right"><i class="cartprice-icon">￥</i><i class="cartprice"></i><i class="cartenergy"></i><i class="cartenergy-icon">KJ</i><i class="cartnum">num</i><i class="cartnum-icon">件</i></span></li>';
+			if(num == 1) { //不存在则新建
+				$('.list').append(listxt);
+				$('#' + $(this).attr("data-gid") + '').find('.cartid').html($(this).attr("data-gid"));
+				$('#' + $(this).attr("data-gid") + '').find('.cartname').html($(this).attr("data-gname"));
+				$('#' + $(this).attr("data-gid") + '').find('.cartprice').html($(this).attr("data-gprice"));
+				$('#' + $(this).attr("data-gid") + '').find('.cartenergy').html($(this).attr("data-genergy"));
+				$('#' + $(this).attr("data-gid") + '').find('.cartnum').html(num);
+				order_idList.push($(this).attr("data-gid"));
+
+			} else {
+				$('#' + $(this).attr("data-gid") + '').find('.cartnum').html(num);
+			}
+
+			var a = $("#totalpriceshow").html(); //获取当前所选总价  
+			$("#totalpriceshow").html((a * 1 + danjia * 1).toFixed(2)); //计算当前所选总价  
+
+			var nm = $("#totalcountshow").html(); //获取数量  
+			$("#totalcountshow").html(nm * 1 + 1);
+			jss();
+		});
+		//减的效果 
+		mui(document).on('tap', '.minus', function() {
+			var n = $(this).next().text();
+			var num = parseInt(n) - 1;
+			$(this).next().text(num); //减1  
+			if(num <= 0) {
+				var index = order_idList.indexOf($(this).attr("data-gid"));
+				/*	console.log(index);*/
+				order_idList.splice(index, 1);
+				/*console.log(order_idList);*/
+				$('#' + $(this).attr("data-gid") + '').remove();
+			} else {
+				$('#' + $(this).attr("data-gid") + '').find('.cartnum').html(num);
+			}
+			var danjia = $(this).nextAll(".price").text(); //获取单价  
+			var a = $("#totalpriceshow").html(); //获取当前所选总价  
+			$("#totalpriceshow").html((a * 1 - danjia * 1).toFixed(2)); //计算当前所选总价  
+			var nm = $("#totalcountshow").html(); //获取数量  
+			$("#totalcountshow").html(nm * 1 - 1);
+			//如果数量小于或等于0则隐藏减号和数量  
+			if(num <= 0) {
+				$(this).next().css("display", "none");
+				$(this).css("display", "none");
+				jss(); //改变按钮样式  
+				return
+			}
+		});
+		mui(document).on('tap', '#btnselect', function() {
+
+			if(jsFlag == 1) {
+				var order_priceList = new Array();
+				var order_nameList = new Array();
+				var order_numList = new Array();
+				var order_energyList = new Array();
+				for(var i = 0; i < order_idList.length; i++) {
+					var cartimg = $('#' + order_idList[i] + '').find('img').attr('src');
+					var cartname = $('#' + order_idList[i] + '').find('.cartname').text();
+					var cartprice = $('#' + order_idList[i] + '').find('.cartprice').text();
+					var cartenergy = $('#' + order_idList[i] + '').find('.cartenergy').text();
+					var cartnum = $('#' + order_idList[i] + '').find('.cartnum').text();
+					order_nameList.push(cartname);
+					order_priceList.push(cartprice);
+					order_energyList.push(cartenergy);
+					order_numList.push(cartnum);
+					cartJson.push({
+						'goodsid': order_idList[i], //ID
+						'goodsimg': cartimg,
+						'goodsname': cartname, //名称
+						'goodsprice': cartprice, //单价
+						'goodsenergy': cartenergy, //能量
+						'goodsnum': cartnum, //数量
+					});
+					/*							console.log(JSON.stringify(cartJson));*/
+				}
+				mui.openWindow({
+					id: 'cartDetail.html',
+					url: '../order/cartDetail.html',
+					show: {
+						aniShow: "slide-in-right", //页面显示动画，默认为”slide-in-right“；
+						duration: 300, //页面动画持续时间，Android平台默认100毫秒，iOS平台默认200毫秒
+						autoShow: true //页面loaded事件发生后自动显示，默认为true
+					},
+					extras: {
+						'order_idList': order_idList,
+						'order_priceList': order_priceList,
+						'order_energyList': order_energyList,
+						'order_numList': order_numList,
+						'cartJson': cartJson
+					},
+					waiting: {
+						autoShow: true,
+						title: '正在加载...', //等待对话框上显示的提示内容
+					}
+				});
+
+			}
+			cartJson = [];
+		});
+
+		mui(document).on('tap', '.left', function() {
+			if(listVisiable == 0) {
+				$('.list').show();
+				listVisiable = 1;
+			} else {
+				$('.list').hide();
+				listVisiable = 0;
+			}
+
+		});
+	});
+</script>

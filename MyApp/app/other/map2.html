@@ -1,0 +1,202 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+
+		<link href="../../css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" href="../../css/iconfont.css" />
+
+		<style>
+			.select {
+				width: 100px;
+				height: 100px;
+				line-height: 80px;
+				border-radius: 100px;
+				border-width: 5px;
+				border-color: #ffffff;
+				margin-left: auto;
+				margin-right: auto;
+				background-color: #FFCC77;
+			}
+			
+			.select p {
+				font-size: 24px;
+				color: #ffffff;
+				line-height: 80px;
+			}
+			
+			#map {
+				min-height: 400px;
+				height: 80%;
+			}
+			/*.mui-bar-nav-bg {
+				background-color: transparent;
+				color: #000000;
+			}*/
+			
+			.mui-icon-left-nav {
+				color: #000000;
+			}
+			
+			.mui-bar-nav {
+				background-color: #FFCC33;
+			}
+			.located{
+				border: 0px;
+				background-color: #FFFFFF;
+			}
+		</style>
+
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left" style="	color: #FFFFFF;"></a>
+		</header>
+		<div class="mui-content" id="app">
+			<div class="mui-card-header" style="background-color: #FFCC77;color: #ffffff;">
+				<span style="">当前城市：</span>
+				<span style="margin-right: auto;" id="current_address">广州市从化区</span>
+
+			</div>
+			<div id='map'>
+
+			</div>
+
+		</div>
+
+		<div class="mui-card-header" style="background-color: #FFFFFF;">
+			<span>位置 : <input class="located"></input></span>
+			<span onclick="getUserLocation()" class="mui-icon iconfont icon-shouhuodizhi mui-pull-left" style="color:#FFCC99;font-size: 25px;"></span>
+
+		</div>
+		<div class="mui-card-footer" style="border-width:0px;">
+			<button class="mui-btn mui-btn-yellow select"><p>确定</p></button>
+		</div>
+		<script src="../../js/mui.min.js"></script>
+		<script type="text/javascript" src="../../js/jquery-3.1.1.js"></script>
+		<script src="../../js/app.js"></script>
+		<script type="text/javascript">
+			// 扩展API加载完毕后调用onPlusReady回调函数
+			document.addEventListener('plusready', onPlusReady, false);
+			var map = null;
+			var marker = null;
+
+			function onPlusReady() {
+				map = new plus.maps.Map("map");
+				// 使用百度地图地位模块获取位置信息
+				plus.geolocation.getCurrentPosition(function(p) {
+					console.log(JSON.stringify(p));
+					var gpsPoint = new plus.maps.Point(p.coords.longitude, p.coords.latitude);
+					map.centerAndZoom(gpsPoint, 17);
+					$("#current_address").html(p.address.city + p.address.district + p.address.street);
+					$('.located').val(p.address.city);
+				}, function(e) {
+					switch(e.code) {
+						case 10:
+							mui.alert('请开启应用的定位权限', '温馨提示', '确定', function() {}, 'div');
+							break;
+						case 9:
+							//mui.alert('请开启手机定位服务');
+							mui.alert('请开启手机定位服务', '温馨提示', '确定', function() {}, 'div');
+							break;
+						case 2:
+							if(e.message.indexOf("[geolocation:13]") > -1) {
+								//如果网络开启，定位失败，提示检查定位权限
+								mui.alert('请开启应用的定位权限', '温馨提示', '确定', function() {}, 'div');
+							}
+							if(e.message.indexOf("[geolocation:14]") > -1) {
+								//如果应用的权限开了，提示网络异常
+								mui.alert('请检查网络是否正常', '温馨提示', '确定', function() {}, 'div');
+							}
+							break;
+						case e.PERMISSION_DENIED:
+							mui.alert('请求定位被拒绝', '温馨提示', '确定', function() {}, 'div');
+							break;
+						case e.POSITION_UNAVAILABLE:
+							mui.alert("位置信息不可用", '温馨提示', '确定', function() {}, 'div');
+							break;
+						case e.TIMEOUT:
+							mui.alert("获取位置信息超时", '温馨提示', '确定', function() {}, 'div');
+							break;
+						case e.UNKNOWN_ERROR:
+							mui.alert("未知错误", '温馨提示', '确定', function() {}, 'div');
+							break;
+					}
+
+				}, { enableHighAccuracy: true, coordsType: 'bd09ll', timeout: 6000, maximumAge: 5000, provider: 'baidu' });
+				map.onclick = function(point) {
+					/*	console.log(JSON.stringify(point));*/
+
+					geo_code(point);
+				}
+			}
+
+			//坐标转化成位置信息
+			function geo_code(pos) {
+				map.clearOverlays();
+				plus.maps.Map.reverseGeocode(pos, {}, function(event) {
+
+					var address = event.address; // 转换后的地理位置
+					var coord = event.coord; // 转换后的坐标信息
+					var coordType = event.coordType; // 转换后的坐标系类型
+					var gpsPoint = new plus.maps.Point(coord.longitude, coord.latitude);
+					console.log(JSON.stringify(gpsPoint));
+					/*var posObj = new plus.maps.Position(gpsPoint);
+					console.log(JSON.stringify(posObj));
+					console.log(posObj.city);*/
+					map.centerAndZoom(gpsPoint, 17);
+					marker = new plus.maps.Marker(new plus.maps.Point(coord.longitude, coord.latitude));
+					marker.setIcon("../../img/icon/dingwei2.png");
+					marker.setLabel("选择位置");
+					var bubble = new plus.maps.Bubble(event.address);
+					marker.setBubble(bubble);
+					map.addOverlay(marker);
+					console.log(JSON.stringify(event));
+					$("#current_address").html(event.address);
+					
+					$('.located').val(event.address);
+
+				}, function(e) {
+					alert("Failed:" + JSON.stringify(e));
+				});
+			}
+
+			function getUserLocation() {
+				map.getUserLocation(function(state, point) {
+					if(0 == state) {
+						geo_code(point);
+					} else {
+						alert("获取失败,请检查网络!");
+					}
+
+				});
+			}
+			$(document).on('click', '.select', function() {
+				selectLocation();
+
+			});
+
+			function selectLocation() {
+				var selectLocate = $('.located').val().toString();
+				
+				if(selectLocate != null) {
+					var preView = plus.webview.currentWebview().opener();
+					console.log(preView);
+					/*  mui.fire(main,'changeOrder',{orderNum:result});
+                    //关闭子页面
+                    mui.back();*/
+					mui.fire(preView, 'relocate', { locate: selectLocate });
+					mui.back();
+				}
+				console.log(selectLocate);
+
+			}
+		</script>
+
+	</body>
+
+</html>

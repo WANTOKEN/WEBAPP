@@ -1,0 +1,169 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../../css/mui.min.css" rel="stylesheet" />
+		<link href="../../css/style.css" rel="stylesheet" />
+		<style>
+			html,
+			body {
+				font-family: "微软雅黑";
+				background-color: #FFFFFF;
+			}
+			
+			.Address-Box {
+				background-color: white;
+				margin-bottom: 20px;
+			}
+			
+			.saveAddress {
+				text-align: center;
+				border-radius: 5px;
+				height: 40px;
+				width: 200px;
+				border: 0px;
+				color: white;
+				background-color: #FFA447;
+			}
+			
+			.Address-Btn {
+				text-align: center;
+			}
+			/*.mui-bar-nav {
+				background-color: #FFFFFF;
+			}
+			
+			.title-text {
+				color: #000000;
+				float: left;
+				font-size: 16px;
+				height: 100%;
+				line-height: 45px;
+			}*/
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<span class="mui-action-back mui-icon mui-icon-arrowleft mui-pull-left" style="color: #FFFFFF;"></span>
+			<span class="title-text mui-action-back">编辑地址</span>
+		</header>
+		<div class="mui-content" style="background-color: #FFFFFF;">
+
+			<div class="Address-Box">
+				<form class="mui-input-group">
+					<div class="mui-input-row">
+						<label>联系人:</label>
+						<input id="name" type="text" value="">
+					</div>
+					<div class="mui-input-row">
+						<label>手机号:</label>
+						<input id="tel" type="tel">
+					</div>
+					<div class="mui-input-row">
+						<label>地址:</label>
+						<input id="address" type="text">
+					</div>
+					<div class="mui-input-row">
+						<label>取餐柜:</label>
+						<input id="box" type="text">
+					</div>
+
+			</div>
+			<div class="Address-Btn">
+				<button type="button" class="saveAddress">保存</button>
+
+			</div>
+		</div>
+		<script src="../../js/mui.min.js"></script>
+		<script type="text/javascript" src="../../js/app.js"></script>
+		<script type="text/javascript" src="../../js/config.js"></script>
+		<script type="text/javascript" src="../../js/jquery-3.1.1.js"></script>
+		<script type="text/javascript">
+			mui.init();
+			mui.plusReady(function() {
+				var state;
+				state = app.getState();
+				/*console.log(state.Account);*/
+				var id = '';
+
+				function showAddressDetail(e) {
+					//通过event.detail可获得传递过来的参数内容
+					id = event.detail.addressid;
+					var ad = event.detail.address;
+					var na = event.detail.name;
+					var te = event.detail.tel;
+					var bo = event.detail.box;
+					console.log(id + ad + na + te + bo);
+					$('#name').attr('value', na);
+					$('#tel').attr('value', te);
+					$('#address').attr('value', ad);
+					$('#box').attr('value', bo);
+
+				}
+				window.addEventListener('getDetail', showAddressDetail);
+				var myAddress = mui.preload({
+					"id": 'myAddress',
+					"url": 'myAddress.html'
+				});
+				$('.saveAddress').click(function() {
+					var adname = document.getElementById('name');
+					var adtel = document.getElementById('tel');
+					var adaddress = document.getElementById('address');
+					var adbox = document.getElementById('box');
+					var ph = /^1[3|5|7|8]\d{9}$/;
+					if(adname.value == '') {
+						mui.alert('请填写联系人！');
+					} else if(adtel.value == '') {
+						mui.alert('手机号不能为空！');
+					} else if(!ph.test(adtel.value)) {
+						mui.alert('手机号格式不正确！');
+					} else if(adaddress.value == '') {
+						mui.alert('请填写地址！');
+					} else {
+						$.ajax({
+							url: SERVER_URL + 'RegAddress',
+							type: "post",
+							data: {
+								account: state.Account,
+								adid: id,
+								rec_name: adname.value,
+								rec_tel: adtel.value,
+								rec_address: adaddress.value,
+								rec_box: adbox.value,
+							},
+							dataType: "json",
+							success: function(data) {
+								console.log(JSON.stringify(data));
+								console.log(data.code);
+								mui.alert(data.msg);
+								var preView = plus.webview.getWebviewById('selectAddress.html');
+								console.log(preView);
+								mui.fire(preView, 'refresh', {
+
+								});
+								var preView2 = plus.webview.getWebviewById('myAddress.html');
+								console.log(preView2);
+								mui.fire(preView, 'refresh', {
+
+								});
+								mui.back();
+								//回退
+
+							},
+							error: function() {
+
+							}
+
+						});
+					}
+				});
+
+			});
+		</script>
+	</body>
+
+</html>

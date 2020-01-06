@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+		<link rel="stylesheet" href="../../css/mui.min.css">
+		<link href="../../css/style.css" rel="stylesheet" />
+
+		<style>
+			
+			
+			.reg-input {
+				background-color: transparent;
+				background-color: white;
+				height: 50px;
+				line-height: 45px;
+				border-bottom: 1px solid #FFCC77;
+				padding: 2px;
+			}
+			
+			.reg-input input {
+				background-color: transparent;
+				font-size: 18px;
+				width: 100%;
+				border: 0px;
+			}
+			
+			#save{
+				color: #007AFF;
+				font-size: 16px;
+				height: 100%;
+				line-height: 45px;
+			}
+			.head-bar-zhanwei {
+				height: 8px;
+			}
+		</style>
+
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<span class="mui-action-back mui-icon mui-icon-arrowleft mui-pull-left" style="color: #FFFFFF;"></span>
+			<span class="title-text mui-action-back">修改用户名</span>
+
+			<span id="save" class="mui-pull-right" style="color: #FFFFFF;">保存</span>
+
+		</header>
+		<div class="mui-content">
+			<div class="head-bar-zhanwei">
+				<!--占位-->
+			</div>
+			<div class="reg-input">
+
+				<input id='re-name' type="text" class="" placeholder="请填写用户名">
+			</div>
+
+		</div>
+		</div>
+		<script src="../../js/mui.min.js "></script>
+		<script src="../../js/app.js"></script>
+		<script type="text/javascript" src="../../js/jquery-3.1.1.js"></script>
+		<script type="text/javascript" src="../../js/config.js"></script>
+
+		<script>
+			mui.init({
+				swipeBack: true
+			});
+			mui.plusReady(function() {
+				var state;
+				state = app.getState();
+				console.log(state.Account);
+				var rename = document.getElementById('re-name');
+				$('#save').on('tap', function() {
+					waiting = plus.nativeUI.showWaiting();
+					if(rename.value == '') {
+						waiting.close();
+						mui.alert('请填写用户名！');
+					} else {
+						console.log(state.Name);
+						$.ajax({
+							url: SERVER_URL + 'RegInfo',
+							type: "post",
+							data: {
+								account: state.Account,
+								reg_type: 'name',
+								reg_value: rename.value,
+							},
+							dataType: "json",
+							success: function(data) {
+								var preView = plus.webview.getWebviewById('myInfoDetail.html');
+								mui.fire(preView, 'refashInfo', {
+
+								});
+								var preView2 = plus.webview.getWebviewById('app/InfoPage.html');
+								console.log(preView2);
+								mui.fire(preView2, 'refashInfo', {
+
+								});
+								state.Name = rename.value;
+								app.setState(state);
+								setTimeout(function() {
+									waiting.close();
+									mui.alert(data.msg);
+									var ws = plus.webview.currentWebview(); //获取当前页面所属的Webview窗口对象
+									ws.close();
+								}, 500);
+							},
+							error: function() {
+								mui.alert('修改失败!请检查网络状态~');
+								waiting.close();
+							}
+
+						});
+					}
+				});
+			});
+		</script>
+	</body>
+
+</html>

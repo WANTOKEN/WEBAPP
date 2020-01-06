@@ -1,0 +1,908 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+		<link rel="stylesheet" href="../../css/mui.min.css">
+		<link rel="stylesheet" href="../../css/pulldown.css" />
+		<style>
+			html,
+			body {
+				background-color: #F5F5F5;
+				font-family: "微软雅黑";
+			}
+			
+			.head-bar-zhanwei {
+				height: 5px;
+			}
+			
+			.Sport-Box-top {}
+			
+			.circle {
+				margin: 0px auto;
+				width: 120px;
+				height: 120px;
+				position: relative;
+				border-radius: 50%;
+				background: #FFCC33;
+			}
+			
+			.pie_left,
+			.pie_right {
+				width: 120px;
+				height: 120px;
+				position: absolute;
+				top: 0px;
+				left: 0px;
+			}
+			
+			.left,
+			.right {
+				width: 120px;
+				height: 120px;
+				background: #FFF9EC;
+				border-radius: 50%;
+				position: absolute;
+				top: 0px;
+				left: 0px;
+			}
+			
+			.pie_right,
+			.right {
+				clip: rect(0, auto, auto, 60px);
+			}
+			
+			.pie_left,
+			.left {
+				clip: rect(0, 60px, auto, 0);
+			}
+			
+			.mask {
+				width: 110px;
+				height: 110px;
+				border-radius: 50%;
+				left: 5px;
+				top: 5px;
+				background: #FFFFFF;
+				position: relative;
+				text-align: center;
+			}
+			
+			.mask-text1 {
+				line-height: 50px;
+				margin-bottom: -30px;
+				height: 30px;
+				font-size: 14px;
+				color: #333;
+			}
+			
+			.mask-text {
+				color: #333;
+				line-height: 130px;
+				font-size: 20px;
+				font-weight: bold;
+			}
+			
+			.Sport-Box-top-center {
+				position: relative;
+				/*height: 250px;*/
+				background-color: #FFFFFF;
+				margin: 0px 10px;
+				border-radius: 5px;
+				padding-top: 25px;
+				border-bottom: 1px solid #EEEEEE;
+				padding-bottom: 25px;
+			}
+			
+			.hint-text {
+				padding-top: 10px;
+				color: rgb(156, 156, 156);
+				text-align: center;
+				font-size: 12px;
+			}
+			
+			.exchange-btn {
+				height: 30px;
+				line-height: 30px;
+				color: white;
+				text-align: center;
+				font-size: 12px;
+				background-color: #FFCC33;
+				margin: 0 30%;
+				border-radius: 30px;
+				border: 1px solid #FFCC33;
+			}
+			
+			.exchange-btn:active {
+				border: 1px solid #FFCC33;
+				background-color: #FFCC33;
+			}
+			
+			.Sport-Box-top-bot {
+				position: relative;
+				height: 100px;
+				background-color: #FFFFFF;
+				margin: 0px 10px;
+				border-radius: 5px;
+				padding-top: 25px;
+				border-bottom: 1px solid #EEEEEE;
+			}
+			
+			.items {
+				float: left;
+				width: 25%;
+				height: 100px;
+				text-align: center;
+			}
+			
+			.high {
+				padding-top: 5px;
+				color: #01AAED;
+			}
+			
+			.weight {
+				padding-top: 5px;
+				color: #6641E2;
+			}
+			
+			.bmi {
+				padding-top: 5px;
+				color: #93D1FF;
+			}
+			
+			.cal {
+				padding-top: 5px;
+				color: #F0AD4E;
+			}
+			
+			.Sport-Box-center {
+				height: 150px;
+				margin: 0px 10px 0px 10px;
+				background-color: white;
+				border-radius: 5px;
+			}
+			
+			.Sport-Box-center-item {
+				float: left;
+				width: 49.5%;
+				height: 120px;
+				text-align: center;
+			}
+			
+			.Sport-Box-center-item-1 {
+				float: left;
+				width: 1%;
+				background-color: #f5f5f5;
+				height: 120px;
+			}
+			
+			.mile {
+				line-height: 50px;
+				font-size: 30px;
+			}
+			
+			.consume {
+				line-height: 50px;
+				font-size: 30px;
+			}
+			
+			.Sport-Box-record {
+				background-color: #FFCC33;
+				margin-top: -5px;
+				-webkit-border-top-left-radius:10px;
+				-webkit-border-top-right-radius:10px;
+			}
+			
+			.Sport-Box-record-title {
+			/*	text-align: center;*/
+				height: 45px;
+				line-height: 40px;
+				font-size: 20px;
+				color: #FFFFFF;
+				border-bottom: 1px solid #DDDDDD;
+				/*padding-top: 5px;
+				padding-left: 10px;*/
+			}
+			
+			.Cal-table-view {
+				position: relative;
+				margin-top: 0;
+				margin-bottom: 0;
+				padding-left: 0;
+				list-style: none;
+				background-color: #fff;
+				border-bottom: 100px solid #F5F5F5;
+			}
+			
+			.Cal-table-view-cell {
+				position: relative;
+				overflow: hidden;
+				-webkit-touch-callout: none;
+				border-bottom: 1px solid #DDDDDD;
+				background-color:#FFFAEF;
+			}
+			
+			.record-item {
+				height: 80px;
+				background-color: transparent;
+				text-align: center;
+				padding-top: 10px;
+				color: #666666;
+			}
+			
+			.foot-sum {
+				padding-top: 10px;
+				color: #2AC845;
+			}
+			.foot-mile {
+				padding-top: 10px;
+				color: #666666;
+			}
+			
+			.consume-sum {
+				padding-top: 10px;
+				color: #8A6DE9;
+			}
+			
+			.point-sum {
+				padding-top: 10px;
+				color: #EC971F;
+			}
+			
+			.cell-icon-left {
+				float: left;
+				width: 22px;
+				height: 80px;
+				padding-left: 10px;
+				padding-top: 34px;
+			}
+			
+			.cell-icon-circle {
+				margin: 0px auto;
+				width: 12px;
+				height: 12px;
+				background-color: #F0AD4E;
+				border-radius: 8px;
+			}
+			
+			.cell-icon-right {
+				float: left;
+				padding-left: 10px;
+				height: 80px;
+				padding-top: 30px;
+				color: #666666;
+			}
+			
+			.InfoDiv {
+				height: 1000px;
+				z-index: 5;
+				position: fixed;
+				display: none;
+				width: 100%;
+			}
+			
+			.zw-box-1 {
+				height: 50px;
+				z-index: 4;
+				background: #000000;
+				filter: alpha(opacity=50);
+				-moz-opacity: 0.5;
+				-khtml-opacity: 0.5;
+				opacity: 0.5;
+				border: 0px;
+			}
+			
+			.zw-box-2 {
+				height: 300px;
+				z-index: 4;
+				background: #000000;
+				filter: alpha(opacity=50);
+				-moz-opacity: 0.5;
+				-khtml-opacity: 0.5;
+				opacity: 0.5;
+				border: 0px;
+			}
+			
+			.input-form {
+				background-color: white;
+				border-radius: 5px;
+				padding-top: 20px;
+			}
+			
+			.input-row {
+				height: 50px;
+				margin-bottom: 20px;
+			}
+			
+			.input-row label {
+				float: left;
+				line-height: 50px;
+				font-size: larger;
+				width: 30%;
+				padding-left: 10px;
+				color: #00CCCC;
+			}
+			
+			.input-row input {
+				float: left;
+				height: 50px;
+				color: #00CCCC;
+				width: 70%;
+				border: 0px;
+				border-bottom: 1px solid #EEEEEE;
+			}
+			
+			.input-row select {
+				float: left;
+				height: 50px;
+				color: #00CCCC;
+				width: 70%;
+				border: 0px;
+				border-bottom: 1px solid #EEEEEE;
+				font-size: larger;
+			}
+			
+			.btn-row {
+				height: 50px;
+			}
+			
+			.btn-row div {
+				float: left;
+				width: 50%;
+				text-align: center;
+			}
+			
+			.btn-row div:active {
+				color: #2AC845;
+			}
+			
+			.btn-row div:first-child {
+				border-right: 1px solid #EEEEEE;
+			}
+			
+			.mui-bar-nav {
+				background-color: #FFCC33;
+			}
+			
+			.user-img {
+				border-radius: 45px;
+				font-size: 0;
+				line-height: 0;
+				width: 45px;
+				height: 45px;
+			}
+		</style>
+		<style>
+			[v-cloak] {
+				display: none;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<h1 class="mui-title" style="color: #FFFFFF;">时膳运动</h1>
+		</header>
+		<div class="mui-content">
+			<div class="head-bar-zhanwei">
+				<!--占位-->
+			</div>
+			<div class="InfoDiv">
+				<div class="zw-box-1">
+				</div>
+				<div style="background-color: rgba(0,0,0,0.5); padding: 0px 10px;">
+					<div class="input-form">
+						<div class="input-row">
+							<label style="color: #EC971F;">年龄 </label>
+							<input type="number" id="re_age" style="color: #EC971F;" />
+						</div>
+						<div class="input-row">
+							<label style="color: #5FB878;">性别 </label>
+							<!--<input type="text" id="re_sex" style="color: #5FB878;" />-->
+							<select class="mui-btn" style="color: #5FB878;" id="re_sex">
+								<option value="男">男</option>
+								<option value="女">女</option>
+
+							</select>
+						</div>
+						<div class="input-row">
+							<label style="color: #01AAED;">身高 (cm) </label>
+							<input type="number" id="re_height" style="color: #01AAED;" />
+						</div>
+
+						<div class="input-row">
+							<label style="color: #6641E2;">体重 (kg) </label>
+							<input type="number" id="re_weight" style="color: #6641E2;" />
+						</div>
+						<div class="btn-row">
+							<div class="save">保存
+							</div>
+							<div class="cancle">取消</div>
+						</div>
+					</div>
+				</div>
+				<div class="zw-box-2">
+				</div>
+			</div>
+			<div class="Sport-Box-top">
+				<div class="Sport-Box-top-center">
+					<div class="circle" style="left:0">
+						<div class="pie_left">
+							<div class="left"></div>
+						</div>
+						<div class="pie_right">
+							<div class="right"></div>
+						</div>
+						<div class="mask">
+							<div class="mask-text1">今日步数</div>
+							<div class="mask-text">
+								<span class="foot-step">0</span>
+							</div>
+						</div>
+					</div>
+					<div class="hint-text">兑换积分</div>
+					<div class="exchange-btn">立即兑换</div>
+				</div>
+				<div class="Sport-Box-top-bot">
+					<div class="items">
+						<div>身高</div>
+						<div class="high">0cm</div>
+					</div>
+					<div class="items">
+						<div>体重</div>
+						<div class="weight">0kg</div>
+					</div>
+					<div class="items">
+						<div>BMI</div>
+						<div class="bmi">0</div>
+					</div>
+					<div class="items">
+						<div>基础消耗</div>
+						<div class="cal">0千卡</div>
+					</div>
+				</div>
+				<div class="Sport-Box-center">
+					<div class="Sport-Box-center-item">
+						<div>累计公里数</div>
+						<div style="color: rgb(156,156,156); font-size: 12px;">(公里)</div>
+						<div class="mile">0.0</div>
+					</div>
+					<div class="Sport-Box-center-item-1">
+					</div>
+					<div class="Sport-Box-center-item">
+						<div>卡路里消耗</div>
+						<div style="color: rgb(156,156,156); font-size: 12px;">(千卡)</div>
+						<div class="consume">0</div>
+					</div>
+				</div>
+			</div>
+			<div class="Sport-Box-record" id="Sport-Box" v-cloak>
+				<div class="Sport-Box-record-title">
+					<span class="mui-pull-left" style="padding-left: 10px;">运动排行</span><span class="mui-pull-right" style="padding-right: 10px;">{{today}}</span>
+				</div>
+				<ul class="Cal-table-view">
+					<li class="Cal-table-view-cell mui-row" v-cloak v-for="(item,index) in items">
+						<div class="mui-col-sm-1 mui-col-xs-1" style="line-height:60px;padding-left: 10px;">
+							<font style="font-size: 30px;color: #F9820D;">{{index+1}}</font>
+						</div>
+						<div class="mui-col-sm-3 mui-col-xs-3" style="padding-top: 3px;text-align: center;">
+							<div>
+								<img v-bind:src="surl+item.userimage" class="user-img" />
+							</div>
+							<div style="font-size: 14px;color: #F9820D;">
+								{{item.username}}
+							</div>
+						</div>
+						<div class="record-item mui-col-sm-2 mui-col-xs-2">
+							<div>步数</div>
+							<div class="foot-sum">{{item.footstep}}</div>
+						</div>
+						<div class="record-item mui-col-sm-2 mui-col-xs-2">
+							<div>里程</div>
+							<div class="foot-mile">{{item.mile}}</div>
+						</div>
+						<div class="record-item mui-col-sm-2 mui-col-xs-2">
+							<div>消耗</div>
+							<div class="consume-sum">{{item.consumer}}</div>
+						</div>
+						<div class="record-item mui-col-sm-2 mui-col-xs-2">
+							<div>积分</div>
+							<div class="point-sum">{{item.point}}</div>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</body>
+	<script src="../../js/mui.min.js"></script>
+	<!--vue-->
+	<script type="text/javascript" src="../../plugins/vue/vue.min.js"></script>
+	<script type="text/javascript" src="../../plugins/vue/vue-resource.min.js"></script>
+	<script type="text/javascript" src="../../js/jquery-3.1.1.js"></script>
+	<script src="../../js/app.js"></script>
+	<script type="text/javascript" src="../../js/config.js"></script>
+	<script>
+		mui.init({
+			swipeBack: true //启用右滑关闭功能
+		});
+		var sprotBox = new Vue({
+			el: '#Sport-Box',
+			data: {
+				items: "",
+				surl: SERVER_URL,
+				today:"",
+			},
+
+		});
+		var state;
+		state = app.getState();
+
+		function setPer(EIM_FOOT, foot) {
+			if(foot <= EIM_FOOT) {
+				$('.circle').each(function(index, el) {
+					var percentage = (foot / EIM_FOOT) * 100; //百分比
+					/*	console.log(percentage);*/
+					var num = parseInt(percentage * 3.6);
+					/*	console.log(num);*/
+					if(num <= 180) {
+						$(this).find('.right').css('transform', "rotate(" + num + "deg)");
+					} else {
+						$(this).find('.right').css('transform', "rotate( 180deg)");
+						$(this).find('.left').css('transform', "rotate(" + (num - 180) + "deg)");
+					};
+					$('.hint-text').html("还差" + (EIM_FOOT - foot) + "步,即可兑换100积分");
+					if(foot == EIM_FOOT) {
+						mui.alert('恭喜你完成了今日目标！');
+						$('.hint-text').html("你已完成今日目标！");
+					}
+				});
+			} else {
+				if(foot > EIM_FOOT) {
+					/*mui.alert('恭喜你完成了今日目标！');*/
+				}
+				$('.circle').find('.right').css('transform', "rotate(180deg)");
+				$('.circle').find('.left').css('transform', "rotate(180deg)");
+				$('.hint-text').html("你已完成今日目标！");
+			}
+		}
+		mui.plusReady(function() {
+
+			var html_age = localStorage.getItem(state.Account + 'age') == null ? 20 : localStorage.getItem(state.Account + 'age');
+			var html_sex = localStorage.getItem(state.Account + 'sex') == null ? '男' : localStorage.getItem(state.Account + 'sex');
+			var html_height = localStorage.getItem(state.Account + 'height') == null ? 170 : localStorage.getItem(state.Account + 'height');
+			var html_weight = localStorage.getItem(state.Account + 'weight') == null ? 60 : localStorage.getItem(state.Account + 'weight');
+			$('#re_age').val(html_age);
+			$('#re_sex').val(html_sex);
+			$('#re_height').val(html_height);
+			$('#re_weight').val(html_weight);
+
+			$('.high').html(html_height + 'cm');
+			$('.weight').html(html_weight + 'kg');
+			$('.bmi').html(getBMI(html_height, html_weight));
+			$('.cal').html(getBaseConsume(html_sex, html_age, html_weight));
+
+			$('.save').on('tap', function() {
+				var re_age = $('#re_age').val();
+				var re_sex = $('#re_sex').val();
+				var re_height = $('#re_height').val();
+				var re_weight = $('#re_weight').val();
+				if(re_age == null || re_age == '') {
+					mui.alert('请填写年龄！');
+				} else if(!(re_height >= 100 && re_height <= 220)) {
+					mui.alert('身高输入错误！');
+				} else if(!(re_weight >= 30 && re_weight <= 100)) {
+					mui.alert('体重输入错误！');
+				} else {
+					$('.high').html(re_height + 'cm');
+					$('.weight').html(re_weight + 'kg');
+					$('.bmi').html(getBMI(re_height, re_weight));
+					$('.cal').html(getBaseConsume(re_sex, re_age, re_weight));
+					//存在本地
+					localStorage.setItem(state.Account + 'age', re_age);
+					localStorage.setItem(state.Account + 'sex', re_sex);
+					localStorage.setItem(state.Account + 'high', re_height);
+					localStorage.setItem(state.Account + 'weight', re_weight);
+
+					$('.InfoDiv').css('display', 'none');
+				}
+
+			});
+			$('.cancle').on('tap', function() {
+				$('.InfoDiv').css('display', 'none');
+			});
+			$('.mask-text').on('tap', function() {
+				mui.openWindow({
+					url: "SportPageDetail.html", //跳转地址
+					id: "SportPageDetail", //id
+					show: {
+						aniShow: "slide-in-right", //页面显示动画，默认为”slide-in-right“；
+						duration: 300, //页面动画持续时间，Android平台默认100毫秒，iOS平台默认200毫秒
+						autoShow: true //页面loaded事件发生后自动显示，默认为true
+					},
+					extras: {
+						//自定义扩展参数，可以用来处理页面间传值
+					},
+					waiting: {
+						//title: '正在玩命搜索...' //等待对话框上显示的提示内容
+					}
+				});
+			});
+			$(document).on('click', '.Sport-Box-record', function() {
+				mui.openWindow({
+					url: "SportPageDetail.html", //跳转地址
+					id: "SportPageDetail", //id
+					show: {
+						aniShow: "slide-in-right", //页面显示动画，默认为”slide-in-right“；
+						duration: 300, //页面动画持续时间，Android平台默认100毫秒，iOS平台默认200毫秒
+						autoShow: true //页面loaded事件发生后自动显示，默认为true
+					},
+					extras: {
+						//自定义扩展参数，可以用来处理页面间传值
+					},
+					waiting: {
+						//title: '正在玩命搜索...' //等待对话框上显示的提示内容
+					}
+				});
+			});
+
+			$('.Sport-Box-top-bot').on('tap', function() {
+				$(".InfoDiv").css('display', 'block');
+			});
+			$('.exchange-btn').on('tap', function() {
+				var foots = $(".foot-step").text();
+				var consumers = $(".consume").text();
+				var miles = $(".mile").text();
+
+				if(foots > 50 && foots <5000) {
+					var btnArray = ['确定', '取消'];
+					mui.confirm('还差' + (5000 - foots) + '步就可以完成目标啦！', '确定兑换' + (foots * 0.02).toFixed(0) + '积分?', btnArray, function(e) {
+						if(e.index == 0) {
+							submitSport(state.Account, foots, consumers, miles);
+						} else {
+
+						}
+					});
+				} else if(foots<50) {
+					mui.alert('还不能满足兑换条件,需要大于50步才能兑换积分哦！');
+				}else{
+					var btnArray = ['确定', '取消'];
+					mui.confirm('恭喜你完成了'+foots+'步', '确定兑换' + 150 + '积分?', btnArray, function(e) {
+						if(e.index == 0) {
+							submitSport(state.Account, foots, consumers, miles);
+						} else {
+
+						}
+					});
+				}
+
+			});
+
+		});
+		/*
+		 * 提交数据
+		 */
+		function submitSport(val1, val2, val3, val4) {
+			$.ajax({
+				url: SERVER_URL + 'SubmitSport',
+				type: "post",
+				data: {
+					account: val1,
+					footstep: val2,
+					consumer: val3,
+					mile: val4,
+
+				},
+				dataType: "json",
+				success: function(data) {
+					console.log(JSON.stringify(data));
+					if(data.code == 200) {
+						mui.alert(data.msg);
+						/*$('.Cal-table-view').append(getSportHtml(data.info));*/
+						getData(state.Account);
+						//本地数据存储
+						state.userpoint = parseInt(state.userpoint) + parseInt(data.point);
+						app.setState(state);
+
+					} else {
+						mui.alert(data.msg);
+					}
+				},
+				error: function() {
+
+				},
+				complete: function() {}
+			});
+		}
+		getData(state.Account);
+		/*		console.log(state.Account);*/
+		/*
+		 * 获取数据
+		 */
+		function getData(val1) {
+			$.ajax({
+				url: SERVER_URL + 'getUserSportAsc',
+				type: "post",
+				data: {
+					account: val1,
+				},
+				dataType: "json",
+				success: function(data) {
+					console.log(JSON.stringify(data));
+					if(data.code == 200) {
+						/*mui.alert(data.msg);*/
+						sprotBox.items = data.info;
+						sprotBox.today = data.today;
+					} else {}
+				},
+				error: function() {
+
+				},
+				complete: function() {}
+			});
+		}
+		/*
+		 * 计算BMI值
+		 */
+		function getBMI(height, weight) {
+			//BMI值計算公式:    BMI = 體重(公斤) / 身高2(公尺2)
+			/*	console.log(height);*/
+			var bmiHeight = parseFloat(height) / 100;
+			/*	console.log(bmiHeight);*/
+			var BMI = (weight / (bmiHeight * bmiHeight)).toFixed(1);
+			return BMI;
+		}
+		/*
+		 * 基础消耗计算
+		 * 女子 
+		 *18- 30 岁 14.6 x 体重（公斤） + 450 
+		 *31- 60 岁 8.6 x 体重（公斤） + 830 
+		 *60岁以上 10.4 x 体重（公斤） + 600 
+		 * 男子 
+		 *18- 30 岁 15.2 x 体重（公斤）+ 680 
+		 *31- 60 岁 11.5 x 体重（公斤） + 830 
+		 *60岁以上 13.4 x 体重（公斤） + 490
+		 */
+		function getBaseConsume(sex, age, weight) {
+			var BASECONSUME;
+			/*console.log(sex+age+weight);*/
+			switch(true) {
+				case age >= 18 && age <= 30 && sex == '女':
+					BASECONSUME = 14.6 * weight + 450;
+					/*console.log(BASECONSUME);*/
+					break;
+				case age >= 31 && age <= 60 && sex == '女':
+					BASECONSUME = 8.6 * weight + 830;
+					/*console.log(BASECONSUME);*/
+					break;
+				case age >= 60 && sex == '女':
+					BASECONSUME = 10.4 * weight + 600;
+					/*console.log(BASECONSUME);*/
+					break;
+				case age >= 18 && age <= 30 && sex == '男':
+					BASECONSUME = 15.2 * weight + 680;
+					/*console.log(BASECONSUME);*/
+					break;
+				case age >= 31 && age <= 60 && sex == '男':
+					BASECONSUME = 11.5 * weight + 830;
+					console.log(BASECONSUME);
+					break;
+				case age >= 60 && sex == '男':
+					BASECONSUME = 13.4 * weight + 490;
+					console.log(BASECONSUME);
+					break;
+				default:
+					break;
+			}
+			return BASECONSUME;
+		}
+		/*
+		 * 卡路里计算
+		 * 跑步卡路里（kcal）＝体重（kg）×距离（公里）×1.036
+		 * 例如：体重60公斤的人，长跑8公里，那么消耗的热量＝60×8×1.036＝497.28 kcal(千卡)
+		 */
+		function getKcal(weight, footstep) {
+			//1米=0.001千米=0.001公里
+			var mile = ((footstep * 0.6) / 1000).toFixed(2);
+			/*	console.log(mile);*/
+			var kcal = (weight * 8 * mile).toFixed(0);
+			return kcal;
+		}
+
+		function getMile(footstep) {
+			//1米=0.001千米=0.001公里
+			var mile = ((footstep * 0.6) / 1000).toFixed(2);
+			/*console.log(mile);*/
+			return mile;
+		}
+
+		// 监听plusready事件  
+		document.addEventListener("plusready", function() {
+			document.addEventListener("pause", function() {
+				/*console.log("运动从前台切换到后台");*/
+				/*mui.toast('程序在后台运行');*/
+				watchAcc();
+			}, false);
+			document.addEventListener("resume", function() {
+				/*console.log("运动从后台切换到前台");*/
+				/*mui.toast('程序在前台运行');*/
+				window.location.reload();
+			}, false);
+			//判断今天是否存在记录，存在则继续记录，不存在就清除以往的记录数据
+			var foot_date = new Date().toLocaleDateString();
+			/*	console.log(foot_date);*/
+			var re_date = localStorage.getItem(state.Account + 'foot_date');
+			if(re_date == null || re_date != foot_date) {
+				//没有记录情况，清除以往记录或者提交数据
+				localStorage.setItem(state.Account + 'foot_date', foot_date);
+				console.log(re_date);
+				localStorage.getItem(state.Account + 'foot') == null ? 0 : localStorage.getItem(state.Account + 'foot');
+				localStorage.setItem(state.Account + 'foot', 0);
+			} else {
+				/*	console.log(foot_date);
+					console.log(re_date);*/
+					
+			}
+			var weight = localStorage.getItem(state.Account + 'weight') == null ? 60 : localStorage.getItem(state.Account + 'weight');
+			var value = localStorage.getItem(state.Account + 'foot') == null ? 0 : localStorage.getItem(state.Account + 'foot');
+
+			$(".foot-step").html(value);
+			$(".consume").html(getKcal(weight, value));
+			$(".mile").html(getMile(value));
+			setPer(5000, value);
+			// 扩展API加载完毕，现在可以正常调用扩展API
+			var foot = value;
+			//var foot = $(".foot-step").text();
+			var aid = null;
+			var FRE_TIME = 600; //步伐的频率 0.6秒
+			var FOOT_WEIGHT = 60; //每步的步长为60m
+			watchAcc();
+
+			function watchAcc() {
+				if(aid) {
+					return;
+				}
+				aid = plus.accelerometer.watchAcceleration(function(a) {
+					var x = Math.abs(a.xAxis);
+					var y = Math.abs(a.yAxis);
+					var z = Math.abs(a.zAxis);
+					var step = x + y + z;
+					if(step >= 7 && step < 17) {
+						if((x >= 1 && x <= 4) && ((y >= 2 && y <= 12) || (y >= 8 && y <= 12)) && ((z >= 1 && z <= 4) || (z >= 6 && y <= 11))) {
+							
+							foot++;
+							/*$(".foot-step").html(foot);
+							$(".consume").html(getKcal(weight, foot));
+							$(".mile").html(getMile(foot));*/
+							localStorage.setItem(state.Account + 'foot', foot);
+							//setPer(5000, foot);
+						}
+						//平均阈值在7-17
+						//开启本地存储
+					}
+					/*setInterval(function() {
+						$(".foot-step").html(foot);
+						$(".consume").html(getKcal(weight, foot));
+						$(".mile").html(getMile(foot));
+
+						setPer(5000, foot);
+					}, 5000);*/
+					/*	console.log(foot);*/
+
+				}, function(e) {
+					alert("抱歉加载出错~");
+				}, {
+					frequency: 600 //5秒10步计算
+				}, false);
+			}
+
+		});
+	</script>
+	<script src="../../js/mui.pullToRefresh.js"></script>
+	<script src="../../js/mui.pullToRefresh.material.js"></script>
+	<script type="text/javascript" src="../../js/pulldown.js"></script>
+
+</html>

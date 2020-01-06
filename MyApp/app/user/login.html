@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html class="ui-page-login">
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<link href="../../css/mui.min.css" rel="stylesheet" />
+		<style>
+			html,body{
+				background-color: #FFFFFF;
+			}
+			.link-area {
+				display: block;
+				margin-top: 25px;
+				text-align: center;
+			}
+			
+			.spliter {
+				color: #bbb;
+				padding: 0px 8px;
+			}
+			
+			
+			.Login-top-box {
+				height: 250px;
+				background-color: #FFCC33;
+				padding: 50px;
+			}
+			
+			.info-head {
+				margin: 0px auto;
+				width: 90px;
+				height: 90px;
+				background-color: #000000;
+				border: 3px solid #EEEEEE;
+				border-radius: 45px;
+				background: white;
+			}
+			
+			.head-img {
+				height: 100%;
+				width: 100%;
+				border-radius: 45px;
+			}
+			
+			.form-input {
+				border-radius: 10px;
+				margin: 0 3%;
+				width: 94%;
+				position: absolute;
+				height: 200px;
+				z-index: 999;
+				background-color: white;
+				top: 180px;
+				padding: 20px;
+			}
+			
+			.mui-input-row {
+				border: 0px;
+			}
+			
+			body {
+				background-color: white;
+			}
+			
+			.mui-content {
+				background-color: white;
+			}
+			
+			.login-input {
+				background-color: white;
+				margin-bottom: 20px;
+				border-radius: 10px;
+				height: 50px;
+				line-height: 45px;
+				border: 1px solid #DDDDDD;
+				padding: 2px;
+			}
+			
+			.login-input label {
+				height: 46px;
+				float: left;
+				width: 12%;
+				text-align: left;
+				padding-left: 10px;
+				padding-top: 6px;
+			}
+			
+			.login-input img {
+				width: 30px;
+				height: 30px;
+			}
+			
+			.login-input label {
+				height: 46px;
+				float: left;
+				width: 18%;
+				text-align: center;
+			}
+			
+			.login-input input {
+				font-size: 18px;
+				float: right;
+				width: 80%;
+				border: 0px;
+			}
+			
+			.Login-cont-box {
+				margin-top: 250px;
+				text-align: center;
+			}
+			
+			.login-btn {
+				border: 0px;
+				color: white;
+				margin: 0px;
+				width: 80%;
+				background-color: #FFCC33;
+				border-radius: 20px;
+				height: 40px;
+				font-size: 18px;
+			}
+		</style>
+
+	</head>
+
+	<body style="background-color: #FFFFFF;">
+
+		<div class="mui-content">
+			<div class="Login-top-box">
+				<div class="info-head">
+					<img class="head-img" src="../../img/appicon/appicon.png" />
+				</div>
+			</div>
+			<div class="form-input">
+				<form id='login-form' class="">
+					<div class="login-input">
+						<label><img src="../../img/icon/phone.png" /></label>
+						<input id='account' type="tel" class="" placeholder="请输入您的手机号">
+					</div>
+					<div class="login-input">
+						<label><img src="../../img/icon/password.png" /></label>
+						<input id='password' type="password" class="" placeholder="请输入您的密码">
+					</div>
+				</form>
+			</div>
+			<div class="Login-cont-box">
+				<div class="mui-content-padded">
+					<button id='login' class="mui-btn login-btn">登录</button>
+					<div class="link-area">
+						<a id='reg'>注册账号</a>
+						<span class="spliter">|</span>
+						<a id='forgetPassword'>忘记密码</a>
+					</div>
+				</div>
+
+			</div>
+
+		</div>
+		<script src="../../js/mui.min.js"></script>
+		<script src="../../js/mui.enterfocus.js"></script>
+
+		<script src="../../js/app.js"></script>
+		<script>
+			mui.init({
+				statusBarBackground: '#FFCC33'
+			});
+			mui.plusReady(function() {
+				/*console.log(localStorage.getItem('account'));*/
+				document.getElementById('account').value = localStorage.getItem('account');
+				var loginButton = document.getElementById('login');
+				var accountBox = document.getElementById('account');
+				var passwordBox = document.getElementById('password');
+
+				var regButton = document.getElementById('reg');
+				var forgetButton = document.getElementById('forgetPassword');
+				loginButton.addEventListener('tap', function(event) {
+					/*plus.nativeUI.toast('登录');*/
+					var loginInfo = {
+						account: accountBox.value,
+						password: passwordBox.value
+					};
+					app.login(loginInfo, function(err) {
+
+						if(err) {
+							plus.nativeUI.toast(err);
+							return;
+						}
+						localStorage.setItem('account', loginInfo.account);
+						mui.openWindow({
+							url: '../main.html',
+							id: 'main',
+							preload: true,
+							show: {
+								aniShow: 'pop-in'
+							},
+							styles: {
+								popGesture: 'hide'
+							},
+							waiting: {
+								autoShow: false
+							}
+						});
+					}, false);
+				});
+
+				mui.enterfocus('#login-form input', function() {
+					$.trigger(loginButton, 'tap');
+				});
+
+				regButton.addEventListener('tap', function(event) {
+					mui.openWindow({
+						url: 'reg.html',
+						id: 'reg',
+						preload: true,
+						show: {
+							aniShow: 'pop-in'
+						},
+						styles: {
+							popGesture: 'hide'
+						},
+						waiting: {
+							autoShow: false
+						}
+					});
+				}, false);
+				forgetButton.addEventListener('tap', function(event) {
+
+					mui.openWindow({
+						url: 'forget_password.html',
+						id: 'forget_password',
+						preload: true,
+						show: {
+							aniShow: 'pop-in'
+						},
+						styles: {
+							popGesture: 'hide'
+						},
+						waiting: {
+							autoShow: false
+						}
+					});
+				}, false);
+				//监听页面传输数据
+				window.addEventListener('refashInfo', refashInfo); //刷新
+				function refashInfo(){
+					console.log(localStorage.getItem('account'));
+					document.getElementById('account').value = localStorage.getItem('account');
+				}
+
+			});
+		</script>
+
+	</body>
+
+</html>

@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html class="ui-page-login">
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<link href="../../css/mui.min.css" rel="stylesheet" />
+		<link href="../../css/style.css" rel="stylesheet" />
+		<style>
+			html,
+			body {
+				background-color: #FFFFFF;
+			}
+			
+			.mui-content {
+				background-color: #FFFFFF;
+			}
+			
+			.Login-top-box {
+				height: 200px;
+				background-color: #FFCC33;
+				padding: 30px;
+			}
+			
+			.form-input {
+				border-radius: 10px;
+				margin: 0 3%;
+				width: 94%;
+				position: absolute;
+				height: 250px;
+				z-index: 999;
+				background-color: white;
+				top: 180px;
+				padding: 20px;
+			}
+			
+			.info-head {
+				margin: 0px auto;
+				width: 90px;
+				height: 90px;
+				background-color: #000000;
+				border: 3px solid #EEEEEE;
+				border-radius: 45px;
+				background: white;
+			}
+			
+			.login-input {
+				background-color: white;
+				margin-bottom: 20px;
+				border-radius: 10px;
+				height: 50px;
+				line-height: 45px;
+				border: 1px solid #DDDDDD;
+				padding: 2px;
+			}
+			
+			.login-input label {
+				height: 46px;
+				float: left;
+				width: 12%;
+				text-align: left;
+				padding-left: 10px;
+				padding-top: 6px;
+			}
+			
+			.login-input img {
+				width: 30px;
+				height: 30px;
+			}
+			
+			.login-input input {
+				font-size: 18px;
+				float: right;
+				width: 80%;
+				border: 0px;
+			}
+			
+			.login-input-right {
+				float: left;
+				width: 30%;
+				background-color: white;
+				height: 50px;
+				padding: 2px;
+				text-align: center;
+			}
+			
+			.code-input {
+				float: left;
+				width: 70%;
+				background-color: white;
+				margin-bottom: 20px;
+				border-radius: 10px;
+				height: 50px;
+				line-height: 45px;
+				border: 1px solid #DDDDDD;
+				padding: 2px;
+			}
+			
+			.code-input label {
+				height: 46px;
+				float: left;
+				width: 50px;
+				text-align: center;
+			}
+			
+			.code-input label i {
+				font-size: 30px;
+			}
+			
+			.code-input input {
+				font-size: 18px;
+				float: right;
+				width: 72%;
+				border: 0px;
+			}
+			
+			.code-input-right {
+				float: left;
+				width: 30%;
+				background-color: white;
+				height: 50px;
+				padding: 2px;
+				text-align: center;
+			}
+			
+			.getcode {
+				border: 0px;
+				color: white;
+				margin-top: 2px;
+				width: 80%;
+				background-color: #FFCC33;
+				border-radius: 3px;
+				height: 40px;
+				font-size: 18px;
+			}
+			
+			.Login-cont-box {
+				width: 100%;
+				margin-top: 200px;
+				text-align: center;
+			}
+			
+			.login-btn {
+				border: 0px;
+				color: white;
+				margin: 0px;
+				width: 80%;
+				background-color: #FFCC33;
+				border-radius: 20px;
+				height: 40px;
+				font-size: 18px;
+			}
+			
+			.mui-h1 {
+				color: white;
+			}
+			
+			.agreement {
+				margin: 0 auto;
+				text-align: center;
+				font-family: "微软雅黑";
+				padding-bottom: 10px;
+			}
+			
+			.mui-checkbox input[type=checkbox]:checked:before,
+			.mui-radio input[type=radio]:checked:before {
+				color: #FFB400;
+			}
+			.agree{
+				vertical-align:baseline;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<span class="mui-action-back mui-icon mui-icon-arrowleft mui-pull-left" style="color: #FFFFFF;"></span>
+			<span class="title-text mui-action-back">注册账号</span>
+
+		</header>
+		<div class="mui-content">
+
+			<div class="Login-top-box">
+				<h1 class="mui-h1">Hello !</h1>
+			</div>
+			<div class="form-input">
+				<form class="">
+					<div class="login-input">
+						<label><img src="../../img/icon/phone.png" /></label>
+						<input id='account' type="tel" class="mui-input-clear mui-input" placeholder="请输入您的手机号">
+					</div>
+					<div class="login-input">
+						<label><img src="../../img/icon/password.png" /></label>
+						<input id='password' type="password" class="mui-input-clear mui-input" placeholder="请输入您的密码">
+					</div>
+
+				</form>
+			</div>
+
+		</div>
+
+		<div class="Login-cont-box">
+			<div class="mui-pull-caption">
+				<div class="agreement mui-input-row mui-checkbox mui-left" style="float: left;">
+					<input type="checkbox" id="check" />
+					<label>&nbsp;</label>
+				</div>
+				<div style="float: left;vertical-align;padding-top: 7px;margin-left: -20px;">
+					我已阅读<a class="agree">《软件使用协议》</a></div>
+				
+			</div>
+			<div>
+				<button id="reg" class="mui-btn login-btn">同意并注册</button>
+
+			</div>
+		</div>
+
+		<script src="../../js/mui.min.js"></script>
+		<script type="text/javascript" src="../../js/jquery-3.1.1.js"></script>
+		<script src="../../js/app.js"></script>
+		<script>
+			mui.init();
+			mui.plusReady(function() {
+				var settings = app.getSettings();
+				var accountBox = document.getElementById('account');
+				var passwordBox = document.getElementById('password');
+
+				function aggree() {
+					mui.openWindow({
+						url: 'Disclaimer.html',
+						id: 'Disclaimer',
+						show: {
+							aniShow: "zoom-fade-out", //页面显示动画，默认为”slide-in-right“；
+							duration: 300, //页面动画持续时间，Android平台默认100毫秒，iOS平台默认200毫秒
+							autoShow: true //页面loaded事件发生后自动显示，默认为true
+						},
+						extras: {
+							//自定义扩展参数，可以用来处理页面间传值
+						},
+						waiting: {
+							//title: '正在玩命搜索...' //等待对话框上显示的提示内容
+						}
+					});
+				}
+				$(document).on('click', '.agree', function() {
+					aggree();
+
+				});
+
+				$(document).on('click', '#reg', function() {
+					var flag = $('#check').is(':checked');
+				/*	console.log(flag);*/
+					if(!flag) {
+						mui.alert('请同意该协议,方能使用该软件！');
+						return;
+					}
+					var regInfo = {
+						account: accountBox.value,
+						password: passwordBox.value,
+
+					};
+
+					app.reg(regInfo, function(err) {
+
+						if(err) {
+							plus.nativeUI.toast(err);
+							return;
+						}
+						plus.nativeUI.toast('注册成功!');
+						localStorage.setItem('account', accountBox.value);
+						var preView2 = plus.webview.getWebviewById('login');
+						mui.fire(preView2, 'refashInfo', {
+
+						});
+
+						mui.openWindow({
+							url: 'login.html',
+							id: 'login',
+							show: {
+								aniShow: "pop-in", //页面显示动画，默认为”slide-in-right“；
+								duration: 300, //页面动画持续时间，Android平台默认100毫秒，iOS平台默认200毫秒
+								autoShow: true //页面loaded事件发生后自动显示，默认为true
+							},
+							extras: {
+								//自定义扩展参数，可以用来处理页面间传值
+							},
+							waiting: {
+								//title: '正在玩命搜索...' //等待对话框上显示的提示内容
+							}
+						});
+					});
+				});
+			});
+		</script>
+	</body>
+
+</html>

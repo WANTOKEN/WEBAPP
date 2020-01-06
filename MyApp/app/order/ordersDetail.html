@@ -1,0 +1,345 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../../css/mui.min.css" rel="stylesheet" />
+		<link href="../../css/style.css" rel="stylesheet" />
+			<link href="../../css/iconfont.css" rel="stylesheet" />
+		<style>
+			.OrderDetail-Box-top {
+				background-color: #FFCC33;
+				height: 80px;
+			}
+			
+			.OrderDetail-Box-top span:nth-child(1) {
+				line-height: 80px;
+				margin-left: 20px;
+				color: white;
+			}
+			
+			.OrderDetail-Box-top span:nth-child(2) {
+				line-height: 80px;
+				float: right;
+				margin-right: 20px;
+				font-size: 20px;
+				font-family: "微软雅黑";
+				color: white;
+			}
+			
+			.OrderDetail-Box {
+				margin-bottom: 8px;
+				border: 0px;
+			}
+			
+			.business-box {}
+			
+			.business-name {
+				color: #333333;
+				font-family: "微软雅黑";
+				font-size: 16px;
+			}
+			
+			.goods-img-item {
+				width: 30px;
+				height: 30px;
+				border-radius: 5px;
+			}
+			
+			.goods-item {
+				border-bottom: 1px solid rgba(156, 156, 156, 0.6);
+				padding-top: 2px;
+			}
+			
+			.goods-item:active {
+				border-bottom: 1px solid #FFFFFF;
+			}
+		</style>
+		<style>
+			[v-cloak] {
+				display: none;
+			}
+		</style>
+		<style>
+			/* black mask */
+#hui-black-mask{width:100%; height:100%; background:rgba(0,0,0,0.85); position:fixed; z-index:990; left:0; top:0;}
+#hui-black-action{width:100%; height:50px;}
+#hui-black-close{float:right; width:50px; color:#FFFFFF; height:50px; line-height:50px; text-align:center; font-family:"微软雅黑";}
+#hui-black-mask-content{position:absolute; left:50%; top:50%; -webkit-transform:translate(-50%, -50%); transform:translate(-50%, -50%); -moz-transform:translate(50%, 50%); -o-transform:translate(50%, 50%); z-index:991;}
+
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<span class="mui-action-back mui-icon mui-icon-arrowleft mui-pull-left" style="color: #FFFFFF;"></span>
+			<span class="title-text mui-action-back">订单详情</span>
+		</header>
+		<div class="mui-content" id="Orders-Detail-Box" v-cloak>
+
+			<div class="OrderDetail-Box-top">
+				<span class="order-status">
+		    		{{item.orderstatus}}
+		    	</span>
+
+				<span class="order-box">
+		    	{{item.order_box}}
+		    	</span>
+			</div>
+			<div class="OrderDetail-Box">
+				<ul class="mui-table-view">
+					<li class="mui-table-view-cell mui-media">
+						<!--<a class="mui-navigate-right">-->
+						<img class="mui-media-object mui-pull-left" src="../../img/icon/page.png">
+						<div class="mui-media-body">
+							<p class='mui-ellipsis'>送达时间：
+								<span class="arrTime" v-if="item.arrtime==null">
+								暂无
+							</span>
+								<span class="arrTime" v-else>
+								{{item.arrtime}}
+							</span>
+							</p>
+							<p class='mui-ellipsis'>取餐码：
+								<span class="orderCode" v-if="item.ordercode==000000">
+								暂无
+							</span>
+								<span class="orderCode" v-else>
+								{{item.ordercode}}
+							</span>
+							</p>
+						</div>
+						<!--</a>-->
+					</li>
+					<li class="mui-table-view-cell mui-media">
+						<!--<a class="mui-navigate-right">-->
+						<img class="mui-media-object mui-pull-left" src="../../img/icon/person.png">
+						<div class="mui-media-body">
+							<p class='mui-ellipsis'>取餐人：
+								<span class="order-name">
+								{{item.order_name}}
+							</span> &nbsp;&nbsp;
+								<a class="order-tel">
+									{{item.order_tel}}
+								</a>
+							</p>
+							<p class='mui-ellipsis'>取餐地址：<span class="order-address">
+								{{item.order_address}}
+							</span> </p>
+						</div>
+						<!--</a>-->
+					</li>
+				</ul>
+			</div>
+
+			<div class="OrderDetail-Box">
+				<ul class="mui-table-view mui-table-view-striped mui-table-view-condensed mui-card">
+					<li class="mui-table-view-cell mui-media">
+						<a class="mui-navigate-right">
+							<img class="mui-media-object mui-pull-left" src="../../img/apppay/logo3.png">
+							<div class="business-box">
+								<span class="business-name">XX餐厅（xxxx店）</span>
+								<p class='mui-ellipsis'>位置：xxxxx6号</p>
+							</div>
+						</a>
+					</li>
+					<li class="mui-table-view-cell">
+						<div class="mui-table">
+							<div v-cloak v-for="(goodsitem,index) in goodsitem" style="height: 35px;" class="goods-item" v-bind:data-goodsid="goodsitem.goodsid">
+								<span class="mui-pull-left goods-img-item">
+														<img class="goods-img-item" v-bind:src="surl+goodsitem.goods_image">
+													</span>
+								<span style="line-height: 30px;color: #666;padding: 0 10px;">
+														{{goodsitem.goods_name}}
+													</span>
+								<span class="mui-pull-right" style="line-height: 30px;color: #666;padding: 0 10px;">
+														x{{goodsitem.goods_quantity}}
+													</span>
+								<span class="mui-pull-right" style="line-height: 30px;color: #666;padding: 0 10px;">
+														￥{{goodsitem.goods_price}}
+													</span>
+							</div>
+
+						</div>
+					</li>
+					<li class="mui-table-view-cell">
+						<div class="mui-table">
+
+							<div class="mui-table-cell mui-col-xs-6">
+								积分抵扣
+							</div>
+							<div class="mui-table-cell mui-col-xs-6 mui-text-right">
+								-￥<span class="order-discount">
+									{{item.discountpay}}
+								</span>
+							</div>
+
+						</div>
+					</li>
+					<li class="mui-table-view-cell">
+						<div class="mui-table">
+
+							<div class="mui-table-cell mui-col-xs-6">
+								联系店铺
+							</div>
+							<div class="mui-table-cell mui-col-xs-6 mui-text-right">
+								实付￥<span class="order-realpay">
+									{{item.realpay}}
+								</span>
+							</div>
+
+						</div>
+					</li>
+				</ul>
+			</div>
+			<div class="OrderDetail-Box">
+				<ul class="mui-table-view mui-card">
+					<li class="mui-table-view-cell">
+						订单信息
+					</li>
+					<li class="mui-table-view-cell" v-bind:data-oid=item.ordernumber id="order-number">
+						订单编号：<!--<span class="order-number">-->
+							{{item.ordernumber}}
+						<!--</span>-->
+					</li>
+					<li class="mui-table-view-cell">
+						支付方式：<span class="order-payway">
+							{{item.orderpayway}}
+						</span>
+					</li>
+					<li class="mui-table-view-cell">
+						要求时间：<span class="order-comtime">
+							{{item.comtime}}
+						</span>
+					</li>
+					<li class="mui-table-view-cell">
+						下单时间：<span class="order-ortime">
+							{{item.ordertime}}
+						</span>
+					</li>
+
+				</ul>
+			</div>
+
+		</div>
+		<div id="hui-black-mask" style="display: none;">
+	<!-- 演示消息内容 -->
+	<div id="hui-black-mask-content" >
+		<div id="hui-black-action">
+			<div id="hui-black-close">
+				<span class="mui-icon iconfont icon-guanbi"></span>
+			</div>
+		</div>
+		<div style="text-align:center;">
+			<div id="code" style="width: 100%;"></div>
+		</div>
+		<!--<div style="text-align:center; color:#FFFFFF; line-height:60px;">
+			一个演示广告
+		</div>-->
+	</div>
+</div>
+		<script src="../../js/mui.min.js"></script>
+		<!--vue-->
+		<script type="text/javascript" src="../../plugins/vue/vue.min.js"></script>
+		<script type="text/javascript" src="../../plugins/vue/vue-resource.min.js"></script>
+		<script type="text/javascript" src="../../js/app.js"></script>
+		<script type="text/javascript" src="../../js/config.js"></script>
+		<script type="text/javascript" src="../../js/jquery-3.1.1.js"></script>
+		<script type="text/javascript" src="../../js/qrcode/jquery.qrcode.min.js" ></script>
+		<script type="text/javascript">
+			mui.init();
+			mui.plusReady(function() {
+				var page = plus.webview.currentWebview();
+				//接受上一页面传过来的值；
+				var orderNum = page.ordernum;
+				console.log(orderNum);
+				var state;
+				state = app.getState();
+				var OrdersDetailBox = new Vue({
+					el: '#Orders-Detail-Box',
+					data: {
+						item: "",
+						surl: SERVER_URL,
+						goodsitem: ""
+					}
+				});
+				/*console.log(state.Account);*/
+				showOrderDetail();
+
+				function showOrderDetail() {
+					//获取当前窗体对象
+
+					$.ajax({
+						url: SERVER_URL + 'GetOneOrder',
+						type: "post",
+						data: {
+							account: state.Account,
+							order_num: orderNum
+						},
+						dataType: "json",
+						success: function(data) {
+							console.log(JSON.stringify(data));
+							if(data.code == 200) {
+								OrdersDetailBox.item = data.data[0];
+								OrdersDetailBox.goodsitem = data.item;
+								mui.each(data.data, function(index, item) {
+
+								});
+							} else {
+								mui.alert(data.msg);
+							}
+
+						},
+						error: function() {
+
+						},
+						complete: function() {}
+					});
+
+				}
+				$(document).on('click', '.goods-item', function() {
+					console.log($(this).attr('data-goodsid').toString());
+					mui.openWindow({
+						id: 'goodsDetail.html',
+						url: '../goods/goodsDetail.html',
+						show: {
+							aniShow: "slide-in-right", //页面显示动画，默认为”slide-in-right“；
+							duration: 300, //页面动画持续时间，Android平台默认100毫秒，iOS平台默认200毫秒
+							autoShow: true //页面loaded事件发生后自动显示，默认为true
+						},
+						extras: {
+							'goods_id': $(this).attr('data-goodsid').toString(),
+						},
+						waiting: {
+							autoShow: true,
+							title: '正在加载...', //等待对话框上显示的提示内容
+						}
+					});
+
+				});
+			    var width = window.innerWidth;
+				$(document).on('click', '#hui-black-close', function() {
+						$('#hui-black-mask').toggle();
+				});
+				$(document).on('click', '#order-number', function() {
+					var oid=$(this).attr('data-oid').toString();
+					console.log(oid);
+					$('#hui-black-mask').toggle();
+					$("#code").empty();				
+				   var str = oid;
+				   var qrwidth=width-30;
+				   $("#code").qrcode({
+					render: "table",
+					width: qrwidth,
+					height: qrwidth,
+					text: str
+				  });
+				});
+			});
+		</script>
+
+	</body>
+
+</html>

@@ -1,0 +1,1010 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../../css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" href="../../css/mui.picker.css" />
+		<link rel="stylesheet" href="../../css/mui.poppicker.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/style.css" />
+		<style>
+			.Cart-Box {
+				padding: 10px;
+				margin-bottom: 10px;
+				background-color: #FFFFFF;
+				box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.35);
+			}
+			
+			.Cart-Box-top {
+				color: #333333;
+				border-bottom: 1px #C0C0C0 solid;
+				padding-left: 10px;
+			}
+			
+			.Cart-Box-body {
+				margin-top: 10px;
+			}
+			
+			.Cart-Box-box {
+				border-bottom: 1px #808080 dashed;
+				height: 60px;
+			}
+			
+			.footer {
+				display: block;
+				position: fixed;
+				width: 100%;
+				z-index: 3;
+				bottom: 0px;
+				background: #fff;
+				line-height: 45px;
+				font-size: 15px;
+				border-top: 1px solid #e2e2e2;
+				height: 60px;
+				padding-top: 5px;
+				padding-right: 10px;
+				padding-left: 10px;
+			}
+			
+			.margin-bottom {
+				margin-bottom: 100px;
+			}
+			
+			.float-right {
+				float: right;
+			}
+			
+			.order-btn {
+				border: 0px;
+				color: #FFFFFF;
+				background-color: #FF9900;
+				width: 120px;
+				height: 45px;
+				border-radius: 45px;
+				box-shadow: 1px 2px 1px 1px rgba(0, 0, 0, 0.35);
+			}
+			/***
+		 * 支付部分
+		 */
+			
+			.Pay {
+				height: 1000px;
+				z-index: 5;
+				position: fixed;
+				display: none;
+			}
+			
+			.zw-box {
+				height: 400px;
+				z-index: -1;
+				background: #000000;
+				filter: alpha(opacity=20);
+				-moz-opacity: 0.2;
+				-khtml-opacity: 0.2;
+				opacity: 0.2;
+			}
+			
+			.Pay-box {
+				display: block;
+				position: fixed;
+				width: 100%;
+				bottom: 240px;
+			}
+			
+			.Pay-box-top {
+				background-color: #FFFFFF;
+				border-bottom: 1px solid #DDDDDD;
+				height: 50px;
+				text-align: center;
+				padding-top: 12px;
+			}
+			
+			.Pay-box-top .hint-text {
+				line-height: 30px;
+			}
+			
+			.Pay-box-top img {
+				position: absolute;
+				right: 15px;
+				width: 25px;
+				height: 25px;
+			}
+			
+			.Pay-box-input {
+				background-color: #FFFFFF;
+				height: 100px;
+			}
+			
+			.box-input {
+				padding-top: 20px;
+				width: 360px;
+				margin: 0px auto;
+			}
+			
+			.Pay-box-item1 {
+				width: 60px;
+				height: 50px;
+				float: left;
+				border: 1px solid #DDDDDD;
+				border-radius: 5px 0px 0px 5px;
+				text-align: center;
+				line-height: 60px;
+				font-size: 40px;
+				color: #333;
+			}
+			
+			.Pay-box-item2 {
+				width: 60px;
+				height: 50px;
+				float: left;
+				border: 1px solid #DDDDDD;
+				border-left: 0px;
+				text-align: center;
+				line-height: 60px;
+				font-size: 40px;
+				color: #333;
+			}
+			
+			.Pay-box-item3 {
+				width: 60px;
+				height: 50px;
+				float: left;
+				border: 1px solid #DDDDDD;
+				border-left: 0px;
+				text-align: center;
+				line-height: 60px;
+				font-size: 40px;
+				color: #333;
+			}
+			
+			.Pay-box-item4 {
+				width: 60px;
+				height: 50px;
+				float: left;
+				border: 1px solid #DDDDDD;
+				border-left: 0px;
+				text-align: center;
+				line-height: 60px;
+				font-size: 40px;
+				color: #333;
+			}
+			
+			.Pay-box-item5 {
+				width: 60px;
+				height: 50px;
+				float: left;
+				border: 1px solid #DDDDDD;
+				border-left: 0px;
+				border-right: 0px;
+				text-align: center;
+				line-height: 60px;
+				font-size: 40px;
+				color: #333;
+			}
+			
+			.Pay-box-item6 {
+				width: 60px;
+				height: 50px;
+				float: left;
+				border: 1px solid #DDDDDD;
+				border-radius: 0px 5px 5px 0px;
+				text-align: center;
+				line-height: 60px;
+				font-size: 40px;
+				color: #333;
+			}
+			
+			.Pay-box-foot {
+				display: block;
+				position: fixed;
+				width: 100%;
+				bottom: 0px;
+				background-color: #FFFFFF;
+				height: 240px;
+			}
+			
+			.Pay-box-code {
+				background-color: #FFFFFF;
+				text-align: center;
+			}
+			
+			.box-code-row {
+				text-align: center;
+			}
+			
+			.Pay-box-code1 {
+				width: 33.3%;
+				height: 60px;
+				float: left;
+				border: 1px solid #DDDDDD;
+				border-left: 0px;
+				font-size: 20px;
+				line-height: 60px;
+			}
+			
+			.Pay-box-code2 {
+				width: 33.3%;
+				height: 60px;
+				float: left;
+				border: 1px solid #DDDDDD;
+				border-left: 0px;
+				border-right: 0px;
+				font-size: 20px;
+				line-height: 60px;
+			}
+			
+			.Pay-box-code3 {
+				width: 33.4%;
+				height: 60px;
+				float: left;
+				border: 1px solid #DDDDDD;
+				border-right: 0px;
+				font-size: 20px;
+				line-height: 60px;
+			}
+			
+			.Pay-box-code4,
+			.Pay-box-code7,
+			.Pay-box-code10 {
+				width: 33.3%;
+				height: 60px;
+				float: left;
+				border: 1px solid #DDDDDD;
+				border-left: 0px;
+				border-top: 0px;
+				font-size: 20px;
+				line-height: 60px;
+			}
+			
+			.Pay-box-code5,
+			.Pay-box-code8,
+			.Pay-box-code0 {
+				width: 33.3%;
+				height: 60px;
+				float: left;
+				border: 1px solid #DDDDDD;
+				border-left: 0px;
+				border-right: 0px;
+				border-top: 0px;
+				font-size: 20px;
+				line-height: 60px;
+			}
+			
+			.Pay-box-code6,
+			.Pay-box-code9,
+			.Pay-box-codex {
+				width: 33.4%;
+				height: 60px;
+				float: left;
+				border: 1px solid #DDDDDD;
+				border-right: 0px;
+				border-top: 0px;
+				font-size: 20px;
+				line-height: 60px;
+			}
+			
+			.Pay-box-codex,
+			.Pay-box-code10 {
+				background-color: #eee;
+			}
+			
+			.box-code-row div:active {
+				background: #eee;
+			}
+		</style>
+		<style>
+			[v-cloak] {
+				display: none;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<span class="mui-action-back mui-icon mui-icon-arrowleft mui-pull-left" style="color: #FFFFFF;"></span>
+			<span class="title-text mui-action-back">取消</span>
+		</header>
+		<div class="mui-content">
+			<div class="Cart-Box">
+				<div class="Cart-Box-top" style="line-height: 30px;font-size: 20px;color: #666666;">
+					订单
+				</div>
+				<div class="Cart-Box-body">
+					<ul id="orderList" v-cloak class="mui-table-view mui-table-view-striped mui-table-view-condensed">
+						<li class="mui-table-view-cell" v-cloak v-for="(item,index) in items">
+							<div class="mui-table mui-row">
+								<div class="mui-table-cell mui-col-xs-2 mui-col-sm-2 mui-text-right" style="padding-right: 10px;padding-top: 5px;">
+									<img v-bind:src="item.goodsimg" style="width: 40px;height: 40px;vertical-align:text-top;border-radius:5px;">
+								</div>
+								<div class="mui-table-cell mui-col-xs-7 mui-col-sm-7">
+									<span class="name">{{item.goodsname}}</span>
+									<h5>能量：<span class="energy">{{item.goodsenergy}}</span>千卡</h5>
+									<p class="mui-h6 mui-ellipsis">单价：￥<span class="price">{{item.goodsprice}}</span></p>
+								</div>
+								<div class="mui-table-cell mui-col-xs-3 mui-col-sm-3 mui-text-right">
+									<span class="mui-h5">&nbsp;</span>
+									<p>x<span class="num">{{item.goodsnum}}</span></p>
+									<p>x{{item.goodsnum}}</p>
+									<p>￥{{totalenergy+item.goodsprice*item.goodsnum}}</p>
+								</div>
+							</div>
+						</li>
+					</ul>
+				</div>
+
+				<div class="Cart-Box-body">
+					<ul class="mui-table-view mui-table-view-striped mui-table-view-condensed">
+						<li class="mui-table-view-cell">
+							<div class="mui-table">
+								<div class="mui-table-cell mui-col-xs-8">
+									<h5 class="mui-ellipsis">此次可获得：</h5>
+								</div>
+								<div class="mui-table-cell mui-col-xs-4 mui-text-right" style="color: #666666;">
+									<span class="totalEnergy"></span>千卡
+								</div>
+
+							</div>
+						</li>
+						<li class="mui-table-view-cell">
+							<div id='showUserPicker' class="mui-table">
+								<div class="mui-table-cell mui-col-xs-7">
+									<h5 class="mui-ellipsis">积分抵用：</h5>
+								</div>
+								<div class="mui-table-cell mui-col-xs-5 mui-text-right">
+									<p class="mui-h4">-￥<span class="discountPay" id='discountResult'>0</span></p>
+
+								</div>
+
+							</div>
+
+						</li>
+
+						<li class="mui-table-view-cell">
+							<div class="mui-table">
+								<div class="mui-table-cell mui-col-xs-8">
+									<h5 class="mui-ellipsis">合计：</h5>
+								</div>
+								<div class="mui-table-cell mui-col-xs-4 mui-text-right">
+									<span class="mui-h4">￥<span id="realPay" class="totalSum"></span></span>
+								</div>
+
+							</div>
+						</li>
+					</ul>
+				</div>
+
+			</div>
+			<div class="Cart-Box">
+				<div class="Cart-Box-top" style="line-height: 30px;font-size: 20px;color: #666666;">
+					地址
+				</div>
+				<div class="Cart-Box-body">
+					<ul class="mui-table-view mui-table-view-striped mui-table-view-condensed">
+						<li id='showTimePicker' class="mui-table-view-cell">
+							<div class="mui-table">
+
+								<div class="mui-table-cell mui-col-xs-12 ">
+									<span class="mui-h4">送达时间：</span>
+									<span class="mui-h5" id="arrivetime"></span>
+									<span class="comtime"></span>
+								</div>
+
+							</div>
+
+						</li>
+						<li class="mui-table-view-cell" id="select-address">
+							<div class="mui-table">
+
+								<div class="mui-table-cell mui-col-xs-9 ">
+									<span class="mui-h4">地址：</span>
+									<span class="mui-h5" id="receiveName"><!--王某某--></span>
+									<span class="mui-h5" id="receiveTel"><!--18318565453--></span>
+									<span class="mui-h5" id="add_address"></span>
+									<p class="mui-h5">
+										<span id="receiveAddress"><!--广州大学华软软件学院--></span>
+										<span id="receiveBox"><!--华软G柜--></span>
+									</p>
+								</div>
+								<div class="mui-table-cell mui-col-xs-3 mui-text-right">
+									<div>
+										<img src="../../img/icon/address.png" style="width: 30px; height: 30px;vertical-align: top;" />
+									</div>
+
+								</div>
+
+							</div>
+
+						</li>
+					</ul>
+				</div>
+
+			</div>
+			<div class="Cart-Box margin-bottom">
+				<div class="Cart-Box-top" style="line-height: 30px;font-size: 20px;color: #666666;">
+					支付方式
+				</div>
+				<ul class="mui-table-view mui-table-view-radio">
+					<li id="radio-select" class="mui-table-view-cell mui-media mui-selected">
+						<a class="mui-navigate-right" pay-data="0">
+							<img class="mui-media-object mui-pull-left" src="../../img/appicon/appicon.png">
+							<div class="mui-media-body">
+								<b class="payway">余额 </b>
+								<p class='mui-ellipsis'>使用余额支付</p>
+							</div>
+
+						</a>
+					</li>
+					<li id="radio-select" class="mui-table-view-cell mui-media  ">
+						<a class="mui-navigate-right" pay-data="1">
+							<img class="mui-media-object mui-pull-left" src="../../img/wxpay/weixin.png">
+							<div class="mui-media-body">
+								<b class="payway">微信 </b>
+								<p class='mui-ellipsis'>推荐微信用户使用</p>
+							</div>
+						</a>
+					</li>
+					<li id="radio-select" class="mui-table-view-cell mui-media ">
+						<a class="mui-navigate-right" pay-data="2">
+							<img class="mui-media-object mui-pull-left" src="../../img/alipay/36x36.png">
+							<div class="mui-media-body">
+								<b class="payway">支付宝 </b>
+								<p class='mui-ellipsis'>推荐支付宝用户使用</p>
+							</div>
+
+						</a>
+					</li>
+
+				</ul>
+			</div>
+
+			<div class="Pay" id="Pay">
+
+				<div class="Pay-box">
+					<div class="zw-box">
+
+					</div>
+					<div class="Pay-box-top">
+
+						<span class="hint-text">请输入支付密码</span>
+						<span id="close-btn"><img src="../../img/icon/close.png" /></span>
+					</div>
+					<div class="Pay-box-input">
+						<div class="box-input">
+							<div class="Pay-box-item1"></div>
+							<div class="Pay-box-item2"></div>
+							<div class="Pay-box-item3"></div>
+							<div class="Pay-box-item4"></div>
+							<div class="Pay-box-item5"></div>
+							<div class="Pay-box-item6"></div>
+						</div>
+					</div>
+
+				</div>
+				<div class="Pay-box-foot">
+					<div class="Pay-box-code">
+						<div class="box-code-row">
+							<div class="Pay-box-code1">1</div>
+							<div class="Pay-box-code2">2</div>
+							<div class="Pay-box-code3">3</div>
+						</div>
+
+						<div class="box-code-row">
+							<div class="Pay-box-code4">4</div>
+							<div class="Pay-box-code5">5</div>
+							<div class="Pay-box-code6">6</div>
+						</div>
+
+						<div class="box-code-row">
+							<div class="Pay-box-code7">7</div>
+							<div class="Pay-box-code8">8</div>
+							<div class="Pay-box-code9">9</div>
+						</div>
+
+						<div class="box-code-row">
+							<div class="Pay-box-code10">&nbsp;</div>
+							<div class="Pay-box-code0">0</div>
+							<div class="Pay-box-codex">Del</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="footer">
+
+			<span class="mui-h3">实付：￥<span class="realPay">0.00<!--52.7--></span></span>
+			<button type="button" class="order-btn float-right" id="order-btn">确认下单</button>
+		</div>
+
+		</div>
+
+		<script src="../../js/mui.min.js"></script>
+		<!--vue-->
+		<script type="text/javascript" src="../../plugins/vue/vue.min.js"></script>
+		<script type="text/javascript" src="../../plugins/vue/vue-resource.min.js"></script>
+		<script src="../../js/jquery-3.1.1.js"></script>
+		<script type="text/javascript" src="../../js/app.js"></script>
+		<script type="text/javascript" src="../../js/config.js"></script>
+		<script type="text/javascript" src="../../js/mui.picker.js"></script>
+		<script type="text/javascript" src="../../js/mui.poppicker.js"></script>
+		<script>
+			mui.init();
+			mui.plusReady(function() {
+				var GoodsCartBox = new Vue({
+					el: '#orderList',
+					data: {
+						items: "",
+						surl: SERVER_URL,
+						totalenergy: 0,
+						totalpay: 0,
+					}
+				});
+				/*
+				 * 获取APP里的用户信息
+				 */
+				var state;
+				state = app.getState();
+				var page = plus.webview.currentWebview();
+				//接受上一页面传过来的值；
+				var order_idList = page.order_idList;
+				var order_priceList = page.order_priceList;
+				var order_energyList = page.order_energyList;
+				var order_numList = page.order_numList;
+				var cartJSON = page.cartJson;
+				console.log(JSON.stringify(cartJSON));
+				GoodsCartBox.items = cartJSON;
+				showGoodsDetail();
+				/*
+				 * 时间
+				 */
+				var todayDate = new Date();
+				var tomorrowDate = new Date();
+				var aftertomorrowDate =  new Date(); //后天
+
+				function showGoodsDetail() {
+					/*console.log(order_idList + order_nameList + order_priceList + order_priceList + order_numList);*/
+					var erergySum = 0;
+					var countSum = 0;
+					for(var i = 0; i < order_idList.length; i++) {
+						erergySum += order_energyList[i] * parseInt(order_numList[i]);
+						countSum += order_priceList[i] * parseInt(order_numList[i]);
+					}
+					$('.totalEnergy').html(erergySum);
+					$('.totalSum').html(countSum.toFixed(2));
+					/*var discountPay = $('.discountPay').text();*/
+
+					$('.realPay').html((countSum - $('.discountPay').text()).toFixed(2));
+				}
+				getAddress();
+				var ADDRESSFALG = false;
+				console.log(state.Account);
+
+				function getAddress() {
+					$.ajax({
+						url: SERVER_URL + 'GetAddress', //后台提供的接口
+						type: "get", //请求方式是post
+						data: {
+							account: state.Account,
+						},
+						dataType: "json", //数据类型是json型
+						success: function(data) {
+							/*console.log(JSON.stringify(data));*/
+							//成功时返回的data值，注意这个data是后台返回的值，上面的data是你要传给后台的值
+							if(data.code == 200) {
+								mui.each(data.data, function(index, item) {
+
+									$('#receiveName').html(item.delivername);
+									$('#receiveTel').html(item.delivertel);
+									$('#receiveAddress').html(item.address);
+									$('#receiveBox').html(item.deliverbox);
+									ADDRESSFALG = true; //表示有地址
+								});
+							} else {
+								$('#add_address').html('请添加地址');
+								ADDRESSFALG = false; //表示没有地址
+							}
+
+						},
+
+						error: function() {},
+						complete: function() {}
+
+					});
+				}
+
+				$(document).on('click', '#select-address', function() {
+					var w = plus.webview.create("../user/selectAddress.html");
+					/*	console.log(w);*/
+					w.show(); // 显示窗口				
+				});
+
+				/*
+				 * 支付方式选择
+				 * 0：余额
+				 * 1：微信
+				 * 2：支付宝
+				 */
+				var PAY_WAY = 0;
+				var PAY_WAY_TEXT = '余额支付';
+				$('.mui-navigate-right').click(function() {
+
+					PAY_WAY = $(this).attr('pay-data');
+					/*mui.alert(PAY_WAY);*/
+				});
+				/*
+				 * 余额支付
+				 */
+				function appPay() {
+					if(state.login) { //判断是否登录
+						$("#Pay").slideToggle("slow");
+					} else {
+						mui.alert('请先登录');
+						mui.openWindow({
+							url: '../user/login.html',
+							id: 'login',
+							show: {
+								aniShow: 'pop-in'
+							},
+							styles: {
+								popGesture: 'hide'
+							},
+							waiting: {
+								autoShow: false
+							}
+						});
+					}
+
+				}
+				/*
+				 * 微信支付
+				 */
+				function wxPay() {
+					mui.alert('微信支付暂未开通，请使用余额支付！');
+				}
+				/*
+				 * 支付宝支付
+				 */
+				function aliPay() {
+					mui.alert('支付宝支付暂未开通，请使用余额支付！');
+				}
+				//下单
+				$('#order-btn').click(function() {
+					console.log(ADDRESSFALG);
+					if(!ADDRESSFALG) {
+						mui.alert('请添加地址！');
+						return;
+					}
+					switch(PAY_WAY) {
+						case '0': //使用余额支付
+							appPay();
+							PAY_WAY_TEXT = '余额支付';
+							break;
+						case '1': //使用微信支付
+							wxPay();
+							PAY_WAY_TEXT = '微信支付';
+							break;
+						case '2': //使用支付宝支付
+							aliPay();
+							PAY_WAY_TEXT = '支付宝支付';
+							break;
+						default: //默认使用APP支付
+							appPay();
+							PAY_WAY_TEXT = '余额支付';
+							break;
+
+					}
+
+				});
+				var usePicker = new mui.PopPicker();
+				usePicker.setData([{
+					value: 0,
+					text: '不使用积分'
+				}, {
+					value: 1,
+					text: '100积分'
+				}, {
+					value: 2,
+					text: '200积分'
+				}, {
+
+					value: 3,
+					text: '300积分'
+				}]);
+				$('#showUserPicker').click(function() {
+
+					usePicker.show(function(items) {
+						$('.discountPay').html(JSON.stringify(items[0].value) + '.00');
+						var realPay = ($('.totalSum').text() - $('.discountPay').text()).toFixed(2);
+						$('.realPay').html(realPay >= 0 ? realPay : 0);
+
+					});
+				});
+				function getCurrenTime(){
+					var myDate = new Date();
+					var time = 
+					(todayDate.getHours() < 10 ? "0" + todayDate.getHours() : todayDate.getHours()) + ":" + (todayDate.getMinutes() < 10 ? "0" + todayDate.getMinutes() : todayDate.getMinutes());
+					return time;				
+				}
+				tomorrowDate.setDate(tomorrowDate.getDate() + 1);
+				aftertomorrowDate.setDate(aftertomorrowDate.getDate() + 2);
+				var dateJson = [{
+						value: todayDate.toLocaleDateString(),
+						text: '今天' + todayDate.toLocaleDateString(),
+						children: [{
+								value: (todayDate.getHours() < 10 ? "0" + todayDate.getHours() : todayDate.getHours()) + ":" + (todayDate.getMinutes() < 10 ? "0" + todayDate.getMinutes() : todayDate.getMinutes()),
+								text: getCurrenTime()+' 立即送 '
+							}, {
+								value: '08:30',
+								text: '07:30~08:30'
+							}, {
+								value: '12:00',
+								text: '11:30~12:00'
+							},
+							{
+								value: '18:00',
+								text: '17:30~18:00'
+							},
+							{
+								value: '21:00',
+								text: '20:30~21:00'
+							}
+						]
+					},
+					{
+						value: tomorrowDate.toLocaleDateString(),
+						text: '明天' + tomorrowDate.toLocaleDateString(),
+						children: [{
+								value: '08:30',
+								text: '07:30~08:30'
+							}, {
+								value: '12:00',
+								text: '11:30~12:00'
+							},
+							{
+								value: '18:00',
+								text: '17:30~18:00'
+							},
+							{
+								value: '21:00',
+								text: '20:30~21:00'
+							}
+						]
+					},
+					{
+						value: aftertomorrowDate.toLocaleDateString(),
+						text: '后天' + aftertomorrowDate.toLocaleDateString(),
+						children: [{
+								value: '08:30',
+								text: '07:30~08:30'
+							}, {
+								value: '12:00',
+								text: '11:30~12:00'
+							},
+							{
+								value: '18:00',
+								text: '17:30~18:00'
+							},
+							{
+								value: '21:00',
+								text: '20:30~21:00'
+							}
+						]
+					}
+				];
+				var timePicker = new mui.PopPicker({
+					layer: 2
+				});
+				timePicker.setData(dateJson);
+				$('#arrivetime').html(todayDate.toLocaleDateString() + '&nbsp;&nbsp;' + getCurrenTime()+' 立即送');
+				$('#showTimePicker').click(function() {
+					timePicker.show(function(items) {
+						$('#arrivetime').html(items[0].value + '&nbsp;&nbsp;' + items[1].text);
+
+					});
+				});
+				
+				function reAddress(e) {
+					getAddress();
+				};
+
+				//监听页面传输数据
+				window.addEventListener('reAddress', reAddress); //刷新地址
+
+				/*
+				 * ---------------------------------------------------------------
+				 * 支付弹出框部分
+				 */
+				var code_List = new Array();
+				var i = 0;
+				$('.Pay-box-code1').click(function() {
+
+					i++;
+					add(i, 1)
+				});
+				$('.Pay-box-code2').click(function() {
+					i++;
+					add(i, 2)
+				});
+				$('.Pay-box-code3').click(function() {
+					i++;
+					add(i, 3)
+				});
+				$('.Pay-box-code4').click(function() {
+					i++;
+					add(i, 4)
+				});
+				$('.Pay-box-code5').click(function() {
+					i++;
+					add(i, 5)
+				});
+				$('.Pay-box-code6').click(function() {
+					i++;
+					add(i, 6)
+				});
+				$('.Pay-box-code7').click(function() {
+					i++;
+					add(i, 7)
+				});
+				$('.Pay-box-code8').click(function() {
+					i++;
+					add(i, 8)
+				});
+				$('.Pay-box-code9').click(function() {
+					i++;
+					add(i, 9)
+				});
+				$('.Pay-box-code0').click(function() {
+					i++;
+					add(i, 0)
+				});
+				$('.Pay-box-codex').click(function() {
+					if(i >= 6) {
+						i = 6;
+					}
+					del(i);
+				});
+
+				function add($i, $code) {
+
+					$('.Pay-box-item' + $i).html('*');
+					if(i < 6) {
+						code_List.push($code);
+					} else if(i = 6) { //输入六位
+						code_List.push($code);
+						/*	console.log('gole');*/
+
+						/*
+						 * 进行支付校验
+						 */
+						toPay(code_List); //
+
+					}
+					/*console.log(code_List);*/
+				}
+
+				function del($i) {
+					code_List.pop();
+					/*console.log(code_List);*/
+					i--;
+					if(i <= 0) {
+						i = 0
+					}
+					if(i >= 6) {
+						i = 6
+					}
+					/*console.log(i);*/
+					$('.Pay-box-item' + $i).html('');
+				}
+				$('#close-btn').click(function() {
+					$("#Pay").slideToggle("slow");
+
+					clearCode(); //清空输入
+				});
+				/*
+				 * 清空输入的信息
+				 */
+				function clearCode() {
+					code_List = [];
+					console.log('数值是否清空:' + code_List);
+					i = 0;
+
+					for($i = 1; $i <= 6; $i++) {
+						$('.Pay-box-item' + $i).html('');
+					}
+				}
+
+				function submitWithPay($code) {
+					var discountPay = $('#discountResult').text();
+					var total = $('.totalSum').text();
+					var realPay = $('.realPay').text();
+					$.ajax({
+						url: SERVER_URL + 'AddOrderItem',
+						type: "post",
+						data: {
+							account: state.Account,
+							apppaycode: $code,
+							goodsidlist: order_idList.toString(),
+							goodsnumlist: order_numList.toString(),
+							payway: PAY_WAY_TEXT,
+							comtime: $('#arrivetime').text(),
+							name: $('#receiveName').text(),
+							tel: $('#receiveTel').text(),
+							address: $('#receiveAddress').text(),
+							box: $('#receiveBox').text(),
+							real: realPay,
+							discount: discountPay,
+							total: total,
+						},
+						dataType: "json",
+						success: function(data) {
+							console.log('接口返回信息：' + JSON.stringify(data));
+							if(data.code == 200) {
+								state.userblance = (parseFloat(state.userblance) - parseFloat(realPay)).toFixed(2);
+								state.userpoint = parseInt(state.userpoint) + parseInt(discountPay);
+								app.setState(state);
+								toSuccess(); //下单成功
+							} else {
+								mui.alert(data.msg);
+							}
+
+						},
+						error: function() {
+
+							plus.nativeUI.toast('下单失败');
+							window.location.reload();
+						},
+						complete: function() {}
+					});
+				}
+				/*
+				 * 进行支付校验
+				 */
+				function toPay(paycodeArr) {
+					var paycode = ''; //定义paycode字符串
+					for(var i = 0; i < paycodeArr.length; i++) {
+						paycode += paycodeArr[i];
+					}
+					clearCode(); //清空输入
+					/*console.log(paycode); //获取的支付密码
+					console.log(state.Account);*/
+					var discountPay = $('#discountResult').text();
+					var total = $('.totalSum').text();
+					var realPay = $('.realPay').text();
+					/*console.log('积分抵扣'+discountPay);//积分抵扣
+					console.log('合计：'+total);
+					console.log('实际支付：'+realPay);*/
+					/*
+					 * 请求服务器提交订单
+					 */
+					submitWithPay(paycode); //提供支付密码
+
+				}
+				/*
+				 * 跳转到成功界面
+				 */
+				function toSuccess() {
+					$("#Pay").slideToggle("slow");
+					mui.openWindow({
+						url: "payment_success.html", //跳转地址
+						id: "payment_success", //id
+						show: {
+							aniShow: "slide-in-right", //页面显示动画，默认为”slide-in-right“；
+							duration: 300, //页面动画持续时间，Android平台默认100毫秒，iOS平台默认200毫秒
+							autoShow: true //页面loaded事件发生后自动显示，默认为true
+						},
+						extras: {
+							real: $('.realPay').text() //自定义扩展参数，可以用来处理页面间传值
+						},
+						waiting: {
+							//title: '正在玩命搜索...' //等待对话框上显示的提示内容
+						}
+					});
+					plus.webview.currentWebview().hide();
+
+				}
+			});
+		</script>
+	</body>
+
+</html>

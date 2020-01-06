@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link rel="stylesheet" href="../../css/mui.min.css">
+		<link href="../../css/style.css" rel="stylesheet" />
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<span class="mui-action-back mui-icon mui-icon-arrowleft mui-pull-left" style="color: #FFFFFF;"></span>
+			<span class="title-text mui-action-back">版本更新</span>
+		</header>
+	</body>
+	<script src="../../js/mui.min.js "></script>
+	<script type="text/javascript" src="../../js/jquery-3.1.1.js"></script>
+	<script src="../../js/app.js"></script>
+	<script type="text/javascript" src="../../js/config.js"></script>
+	<script>
+		function plusReady() { // 获取本地应用资源版本号
+			var self = plus.webview.currentWebview();
+			var baiduWV = plus.webview.create(SERVER_URL, "web", {
+				top: "44px",
+				bottom: 0
+			});
+			self.append(baiduWV);
+		}
+		if(window.plus) {
+			plusReady();
+		} else {
+			document.addEventListener('plusready', plusReady, false);
+		}
+	</script>
+
+</html>

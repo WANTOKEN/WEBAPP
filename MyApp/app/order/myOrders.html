@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+		<link rel="stylesheet" href="../../css/mui.min.css">
+		<link rel="stylesheet" href="../../css/pulldown.css" />
+		<link href="../../css/style.css" rel="stylesheet" />
+
+		<style>
+
+		</style>
+	</head>
+
+	<body>
+
+		<style>
+			.head-bar-zhanwei {
+				height: 8px;
+			}
+			
+			.Order {
+				background-color: white;
+			}
+			
+			.mui-control-content {
+				min-height: 640px;
+			}
+			
+			.mui-control-content .mui-loading {
+				margin-top: 50px;
+			}
+			
+			.mui-segmented-control-negative {
+				border: 1px solid #FFCC33;
+			}
+			
+			.mui-segmented-control-negative .mui-control-item {
+				color: #FFCC00;
+				border-color: inherit;
+			}
+			
+			.mui-segmented-control-negative .mui-control-item.mui-active {
+				color: #fff;
+				background-color: #FFCC33;
+			}
+			
+			.mui-segmented-control-negative.mui-segmented-control-inverted .mui-control-item.mui-active {
+				font-weight: bold;
+				color: #FFCC33;
+				border-bottom: 1px solid #FFCC33;
+				background: none;
+			}
+			
+			.mui-segmented-control-negative.mui-segmented-control-inverted~.mui-slider-progress-bar {
+				background-color: #FFCC33;
+			}
+			
+			.order-item:nth-child(1) {
+				border: 0px solid #fff;
+			}
+			
+			.btn-reorder {
+				display: none;
+			}
+			
+			#sliderSegmentedControl {
+				position: fixed;
+				z-index: 999;
+				top: 44px;
+				background-color: white;
+			}
+			
+			#sliderProgressBar {
+				position: fixed;
+				z-index: 999;
+				top: 80px;
+			}
+			
+			.zhanwei {
+				height: 30px;
+			}
+			
+			.orderStatus {
+				font-size: 14px;
+				margin-right: 5px;
+				color: #FFFFFF;
+				background-color: #FFCC33;
+				border: 1px solid #FFCC33;
+				padding: 3px 5px;
+				border-radius: 5px;
+			}
+			
+			.goods-img-item {
+				width: 30px;
+				height: 30px;
+				border-radius: 5px;
+			}
+			
+			.goods-item {
+				border-bottom: 1px solid rgba(156, 156, 156, 0.6);
+				padding-top: 2px;
+			}
+			
+			.goods-item:active {
+				border-bottom: 1px solid #FFFFFF;
+			}
+		</style>
+		<style>
+			[v-cloak] {
+				display: none;
+			}
+		</style>
+		<header class="mui-bar mui-bar-nav">
+			<span class="mui-action-back mui-icon mui-icon-arrowleft mui-pull-left" style="color: #FFFFFF;"></span>
+			<span class="title-text mui-action-back">我的订单</span>
+
+		</header>
+		<div class="mui-content" style="background-color: #FFFFFF;">
+			<div class="Order">
+				<div id="slider" class="mui-slider" style="background-color: #FFFFFF;">
+					<div id="sliderSegmentedControl" class="mui-slider-indicator mui-segmented-control mui-segmented-control-inverted mui-segmented-control-negative">
+						<a class="mui-control-item mui-active" href="#item1mobile">
+							待配送
+						</a>
+						<a class="mui-control-item" href="#item2mobile">
+							配送中
+						</a>
+						<a class="mui-control-item" href="#item3mobile">
+							待取餐
+						</a>
+						<a class="mui-control-item" href="#item4mobile">
+							已完成
+						</a>
+					</div>
+					<div id="sliderProgressBar" class="mui-slider-progress-bar mui-col-xs-3"></div>
+					<div class="zhanwei">
+						<!--占位-->
+					</div>
+					<div class="mui-slider-group" id="Orders-Box">
+						<div id="item1mobile" class="mui-slider-item mui-control-content mui-active">
+							<div id="scroll1" class="mui-scroll-wrapper">
+								<div id="list1" class="mui-scroll">
+									<div class="mui-card" v-cloak v-for="(item,index) in data1">
+										<div class="mui-card-header" v-bind:data-oid="item.orderNumber">
+											<span class="mui-text-left" style="color: #666;font-size: 16px;">下单时间：<span style="color: #666;font-size: 16px;">{{item.orderTime}}</span></span>
+											<span class="orderStatus mui-text-right">{{item.orderStatus}}</span>
+										</div>
+										<div class="mui-card-content">
+											<div class="mui-card-content-inner">
+												<div v-cloak v-for="(goodsitem,index) in item.msg" style="height: 35px;" class="goods-item" v-bind:data-goodsid="goodsitem.goodsid">
+													<span class="mui-pull-left goods-img-item">
+														<img class="goods-img-item" v-bind:src="surl+goodsitem.goods_image">
+													</span>
+													<span style="line-height: 30px;color: #666;padding: 0 10px;">
+														{{goodsitem.goods_name}}
+													</span>
+													<span class="mui-pull-right" style="line-height: 30px;color: #666;padding: 0 10px;">
+														x{{goodsitem.goods_quantity}}
+													</span>
+													<span class="mui-pull-right" style="line-height: 30px;color: #666;padding: 0 10px;">
+														￥{{goodsitem.goods_price}}
+													</span>
+												</div>
+
+											</div>
+										</div>
+										<div class="mui-card-footer">
+											<span>请耐心等待哦！</span>
+											<button class="btn-reorder mui-btn-warning " v-bind:data-oid="item.orderNumber" style="display:block;" v-if="item.orderStatus == '请求取消中...'">恢复订单</button>
+											<button class="mui-btn-warning" style="display:block;" disable="disable" v-else-if="item.orderStatus == '请求恢复中...'">当前不可操作</button>
+											<button class="btn-cancle mui-btn-warning mui-btn-outlined" v-bind:data-oid="item.orderNumber" style="display:block;" v-else>取消订单</button>
+
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div id="item2mobile" class="mui-slider-item mui-control-content">
+							<div id="scroll2" class="mui-scroll-wrapper">
+								<div id="list2" class="mui-scroll">
+									<div class="mui-loading">
+										<div class="mui-spinner">
+										</div>
+									</div>
+									<div class="mui-card" v-cloak v-for="(item,index) in data2">
+										<div class="mui-card-header" v-bind:data-oid="item.orderNumber">
+											<span class="mui-text-left" style="color: #666;font-size: 16px;">下单时间：<span style="color: #666;font-size: 16px;">{{item.orderTime}}</span></span>
+											<span class="orderStatus mui-text-right">{{item.orderStatus}}</span>
+										</div>
+										<div class="mui-card-content">
+											<div class="mui-card-content-inner">
+												<div v-cloak v-for="(goodsitem,index) in item.msg" style="height: 35px;" class="goods-item" v-bind:data-goodsid="goodsitem.goodsid">
+													<span class="mui-pull-left goods-img-item">
+														<img class="goods-img-item" v-bind:src="surl+goodsitem.goods_image">
+													</span>
+													<span style="line-height: 30px;color: #666;padding: 0 10px;">
+														{{goodsitem.goods_name}}
+													</span>
+													<span class="mui-pull-right" style="line-height: 30px;color: #666;padding: 0 10px;">
+														x{{goodsitem.goods_quantity}}
+													</span>
+													<span class="mui-pull-right" style="line-height: 30px;color: #666;padding: 0 10px;">
+														{{goodsitem.goods_price}}
+													</span>
+												</div>
+
+											</div>
+										</div>
+										<div class="mui-card-footer">
+											<span>正十万火急赶来...</span>
+											<button class="btn-look mui-btn mui-btn-warning" v-bind:data-oid="item.orderNumber">查看订单</button>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div id="item3mobile" class="mui-slider-item mui-control-content">
+							<div id="scroll3" class="mui-scroll-wrapper">
+								<div id="list3" class="mui-scroll">
+									<div class="mui-loading">
+										<div class="mui-spinner">
+										</div>
+									</div>
+									<div class="mui-card" v-cloak v-for="(item,index) in data3">
+										<div class="mui-card-header" v-bind:data-oid="item.orderNumber">
+											<span class="mui-text-left" style="color: #666;font-size: 16px;">下单时间：<span style="color: #666;font-size: 16px;">{{item.orderTime}}</span></span>
+											<span class="orderStatus mui-text-right">{{item.orderStatus}}</span>
+										</div>
+										<div class="mui-card-content">
+											<div class="mui-card-content-inner">
+												<div v-cloak v-for="(goodsitem,index) in item.msg" style="height: 35px;" class="goods-item" v-bind:data-goodsid="goodsitem.goodsid">
+													<span class="mui-pull-left goods-img-item">
+														<img class="goods-img-item" v-bind:src="surl+goodsitem.goods_image">
+													</span>
+													<span style="line-height: 30px;color: #666;padding: 0 10px;">
+														{{goodsitem.goods_name}}
+													</span>
+													<span class="mui-pull-right" style="line-height: 30px;color: #666;padding: 0 10px;">
+														x{{goodsitem.goods_quantity}}
+													</span>
+													<span class="mui-pull-right" style="line-height: 30px;color: #666;padding: 0 10px;">
+														{{goodsitem.goods_price}}
+													</span>
+												</div>
+
+											</div>
+										</div>
+										<div class="mui-card-footer">
+											<span>取餐码：{{item.orderCode}}
+ 											</span>
+											<button class="btn-getfood mui-btn mui-btn-warning" v-bind:data-oid="item.orderNumber" v-bind:data-code="item.orderCode" v-if="item.orderStatus=='已送达'">取餐</button>
+											<button class="btn-ensure mui-btn mui-btn-warning" v-bind:data-oid="item.orderNumber" v-else>确认订单</button>
+										</div>
+									</div>
+								</div>
+							</div>
+
+						</div>
+						<div id="item4mobile" class="mui-slider-item mui-control-content">
+							<div id="scroll4" class="mui-scroll-wrapper">
+								<div id="list4" class="mui-scroll">
+									<div class="mui-loading">
+										<div class="mui-spinner">
+										</div>
+									</div>
+									<div class="mui-card" v-cloak v-for="(item,index) in data4">
+										<div class="mui-card-header" v-bind:data-oid="item.orderNumber">
+											<span class="mui-text-left" style="color: #666;font-size: 16px;">下单时间：<span style="color: #666;font-size: 16px;">{{item.orderTime}}</span></span>
+											<span class="orderStatus mui-text-right">{{item.orderStatus}}</span>
+										</div>
+										<div class="mui-card-content">
+											<div class="mui-card-content-inner">
+												<div v-cloak v-for="(goodsitem,index) in item.msg" style="height: 35px;" class="goods-item" v-bind:data-goodsid="goodsitem.goodsid">
+													<span class="mui-pull-left goods-img-item">
+														<img class="goods-img-item" v-bind:src="surl+goodsitem.goods_image">
+													</span>
+													<span style="line-height: 30px;color: #666;padding: 0 10px;">
+														{{goodsitem.goods_name}}
+													</span>
+													<span class="mui-pull-right" style="line-height: 30px;color: #666;padding: 0 10px;">
+														x{{goodsitem.goods_quantity}}
+													</span>
+													<span class="mui-pull-right" style="line-height: 30px;color: #666;padding: 0 10px;">
+														{{goodsitem.goods_price}}
+													</span>
+												</div>
+
+											</div>
+										</div>
+										<div class="mui-card-footer">
+											<span>取餐码：{{item.orderCode}}</span>
+											<button class="btn-del mui-btn mui-btn-red" v-bind:data-oid="item.orderNumber">删除订单</button>
+										</div>
+									</div>
+								</div>
+							</div>
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		</div>
+		<script src="../../js/mui.min.js"></script>
+		<!--vue-->
+		<script type="text/javascript" src="../../plugins/vue/vue.min.js"></script>
+		<script type="text/javascript" src="../../plugins/vue/vue-resource.min.js"></script>
+		<script src="../../js/jquery-3.1.1.js"></script>
+		<script type="text/javascript" src="../../js/app.js"></script>
+		<script type="text/javascript" src="../../js/config.js"></script>
+
+		<script>
+			mui.init({
+				swipeBack: false //启用右滑关闭功能
+			});
+			$('.mui-scroll-wrapper').scroll({
+				indicators: false //是否显示滚动条
+			});
+
+			var state = app.getState();
+			var datalist1;
+			var datalist2;
+			var datalist3;
+			var datalist4;
+			var ordersBox = new Vue({
+				el: '#Orders-Box',
+				data: {
+					data1: "",
+					data2: "",
+					data3: "",
+					data4: "",
+					surl: SERVER_URL,
+				},
+			});
+
+			function setPageHight($len) {
+
+				var minusheight = $('.zhanwei').height() + $('#sliderSegmentedControl').height();
+				var height = window.innerHeight - minusheight; //获取页面实际高度
+				/*				console.log($len + ',' + height);*/
+				$(".mui-control-content").css("min-height", ($len < height ? height : $len) + 'px');
+				/*				console.log($(".mui-control-content").height());*/
+
+			}
+			refreshInfo();
+			setTimeout(function() {
+				getOrdersMessage();
+				/*console.log('一分钟轮询');*/
+			}, 3000); //无论响应成功或失败，在若干秒后再询问一次服务器*/
+			function getOrdersMessage() {
+				$.ajax({
+					url: SERVER_URL + 'GetBoxMsg', //后台提供的接口
+					type: "get", //请求方式是post
+					data: {
+						account: state.Account
+					},
+					dataType: "json", //数据类型是json型
+					success: function(data) {
+						console.log(JSON.stringify(data));
+						//成功时返回的data值，注意这个data是后台返回的值，上面的data是你要传给后台的值
+						if(data.code == 200) {
+							$.each(data.data, function(index, item) {
+								app.SendNoticeBoard(index, item.title, item.infomsg);
+							});
+
+						}
+
+					},
+
+					error: function() {},
+					complete: function() {}
+				});
+			}
+			setTimeout(function() {
+				var li_height = $(document).find('#list1').height();
+				/*				console.log(li_height);*/
+				setPageHight(li_height);
+			}, 500);
+
+			function refreshInfo() {
+				$.ajax({
+					url: SERVER_URL + 'GetMyOrders',
+					type: "get",
+					data: {
+						account: state.Account,
+					},
+					dataType: "json",
+					success: function(data) {
+						console.log(JSON.stringify(data));
+						if(data.code == 200) {
+							datalist1 = data.data1;
+							datalist2 = data.data2;
+							datalist3 = data.data3;
+							datalist4 = data.data4;
+							ordersBox.data1 = data.data1;
+						} else {
+							/*mui.alert('获取失败！');*/
+						}
+
+					},
+					error: function() {
+						console.log('er');
+					},
+					complete: function() {
+
+					}
+				});
+			}
+
+			/*
+			 * 根据参数设置订单状态
+			 */
+			function setOrder($ordernum, $type) {
+				$.ajax({
+					url: SERVER_URL + 'SetOrderStatus',
+					type: "post",
+					data: {
+						account: state.Account,
+						type: $type,
+						ordernum: $ordernum,
+					},
+					dataType: "json",
+					success: function(data) {
+						console.log(JSON.stringify(data));
+						if(data.code == 200) {
+							/*	mui.alert(data.msg);*/
+						} else {
+							mui.alert(data.msg);
+						}
+
+					},
+					error: function() {
+
+					}
+
+				});
+
+			}
+			var item2 = document.getElementById('item2mobile');
+			var item3 = document.getElementById('item3mobile');
+			var item4 = document.getElementById('item4mobile');
+			mui('#list1').on('tap', '.btn-cancle', function(event) {
+				var elem = this;
+				var li = elem.parentNode.parentNode;
+				var ordernum = $(this).attr('data-oid').toString();
+				mui.confirm('确定取消？', '取消订单', btnArray, function(e) {
+					if(e.index == 0) {
+						setTimeout(function() {
+							setOrder(ordernum, 'cancel');
+							refreshInfo();
+						}, 500);
+						console.log(ordernum);
+
+						li.querySelector('.btn-cancle').style.display = "none";
+						li.querySelector('.btn-reorder').style.display = "block";
+
+					} else {
+
+					}
+				});
+
+			});
+			mui('#list1').on('tap', '.btn-reorder', function(event) {
+				var elem = this;
+				var li = elem.parentNode.parentNode;
+				var ordernum = $(this).attr('data-oid').toString();
+				mui.confirm('确定恢复？', '恢复订单', btnArray, function(e) {
+					if(e.index == 0) {
+						setOrder(ordernum, 'resume');
+						refreshInfo();
+						console.log(ordernum);
+					} else {
+
+					}
+				});
+
+			});
+			mui('#list2').on('tap', '.btn-look', function(event) {
+				var ordernum = $(this).attr('data-oid').toString();
+
+				console.log(ordernum);
+				openOrderDetail(ordernum);
+			});
+			mui('#list3').on('tap', '.btn-ensure', function(event) {
+				var ordernum = $(this).attr('data-oid').toString();
+				setOrder(ordernum, 'ensure');
+				var elem = this;
+				var li = elem.parentNode.parentNode;
+				li.parentNode.removeChild(li);
+				refreshInfo();
+				console.log(ordernum);
+			});
+			mui('#list4').on('tap', '.btn-del', function(event) {
+				var ordernum = $(this).attr('data-oid').toString();
+				var elem = this;
+				var li = elem.parentNode.parentNode;
+				mui.confirm('确认删除该条记录？', 'Tip', btnArray, function(e) {
+					if(e.index == 0) {
+						li.parentNode.removeChild(li);
+						setOrder(ordernum, 'del');
+						refreshInfo();
+					} else {
+
+					}
+				});
+				console.log(ordernum);
+			});
+
+			function doUserCommand($command, $orderid) {
+				$.ajax({
+					url: SERVER_URL + 'DoUserCommand', //后台提供的接口
+					type: "post", //请求方式是post
+					data: {
+						command: $command,
+						orderid: $orderid
+					},
+					dataType: "json", //数据类型是json型
+					success: function(data) {
+						console.log(JSON.stringify(data));
+						//成功时返回的data值，注意这个data是后台返回的值，上面的data是你要传给后台的值
+						mui.alert(data);
+					},
+					error: function() {},
+					complete: function() {
+
+					}
+
+				});
+			}
+			$(document).on('click', '.btn-getfood', function() {
+				var ordernum = $(this).attr('data-oid').toString();
+				var ordercode = $(this).attr('data-code').toString();
+				console.log(ordercode + ordernum);
+				doUserCommand(ordercode, ordernum);
+			});
+
+			$(document).on('click', '.goods-item', function() {
+				console.log($(this).attr('data-goodsid').toString());
+				mui.openWindow({
+					id: 'goodsDetail.html',
+					url: '../goods/goodsDetail.html',
+					show: {
+						aniShow: "slide-in-right", //页面显示动画，默认为”slide-in-right“；
+						duration: 300, //页面动画持续时间，Android平台默认100毫秒，iOS平台默认200毫秒
+						autoShow: true //页面loaded事件发生后自动显示，默认为true
+					},
+					extras: {
+						'goods_id': $(this).attr('data-goodsid').toString(),
+					},
+					waiting: {
+						autoShow: true,
+						title: '正在加载...', //等待对话框上显示的提示内容
+					}
+				});
+
+			});
+			/*
+			 * 查看订单详情
+			 */
+
+			mui('.mui-slider-group').on('tap', '.mui-card-header', function(event) {
+				var orderid = $(this).attr('data-oid').toString();
+				console.log(orderid);
+				openOrderDetail(orderid);
+			});
+
+			function openOrderDetail($orderid) {
+				mui.openWindow({
+					id: 'ordersDetail',
+					url: 'ordersDetail.html',
+
+					show: {
+						aniShow: "slide-in-right", //页面显示动画，默认为”slide-in-right“；
+						duration: 300, //页面动画持续时间，Android平台默认100毫秒，iOS平台默认200毫秒
+						autoShow: true //页面loaded事件发生后自动显示，默认为true
+					},
+					extras: {
+						ordernum: $orderid //自定义扩展参数，可以用来处理页面间传值
+					},
+					waiting: {
+						//title: '正在玩命搜索...' //等待对话框上显示的提示内容
+					}
+				});
+			}
+			var btnArray = ['确认', '取消'];
+			document.getElementById('slider').addEventListener('slide', function(e) {
+				if(e.detail.slideNumber === 0) {
+					console.log('1');
+					ordersBox.data1 = datalist1;
+					setTimeout(function() {
+						var len = $('#list1').height();
+						console.log(len);
+						setPageHight(len);
+					}, 500);
+
+				} else if(e.detail.slideNumber === 1) {
+					/*						console.log('2');*/
+					if(item2.querySelector('.mui-loading')) {
+						setTimeout(function() {
+							item2.querySelector('.mui-loading').remove();
+							ordersBox.data2 = datalist2;
+
+						}, 300);
+					}
+					setTimeout(function() {
+						var len = $('#list2').height();
+						setPageHight(len);
+					}, 500);
+
+				} else if(e.detail.slideNumber === 2) {
+					/*						console.log('3');*/
+					if(item3.querySelector('.mui-loading')) {
+						setTimeout(function() {
+							item3.querySelector('.mui-loading').remove();
+							ordersBox.data3 = datalist3;
+						}, 300);
+					}
+					setTimeout(function() {
+						var len = $('#list3').height();
+						/*						console.log(len);*/
+						setPageHight(len);
+					}, 500);
+
+				} else if(e.detail.slideNumber === 3) {
+					/*						console.log('4');*/
+					if(item4.querySelector('.mui-loading')) {
+						setTimeout(function() {
+							item4.querySelector('.mui-loading').remove();
+							ordersBox.data4 = datalist4;
+						}, 300);
+					}
+					setTimeout(function() {
+						var len = $('#list4').height();
+						setPageHight(len);
+					}, 500);
+
+				}
+			});
+			mui.plusReady(function() {
+				mui.each(document.querySelectorAll('.mui-content'), function(index, pullRefreshEl) {
+					mui(pullRefreshEl).pullToRefresh({
+						down: {
+							callback: function() {
+								var self = this;
+								window.location.reload();
+								setTimeout(function() {
+									self.endPullDownToRefresh();
+									self.refresh(true); //重新加载上拉
+								}, 1000);
+							}
+						}
+
+					});
+				});
+			});
+		</script>
+		<script src="../../js/mui.pullToRefresh.js"></script>
+		<script src="../../js/mui.pullToRefresh.material.js"></script>
+	</body>
+
+</html>

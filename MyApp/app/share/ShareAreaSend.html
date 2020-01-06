@@ -1,0 +1,943 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link rel="stylesheet" type="text/css" href="../../css/mui.min.css" />
+		<link href="../../css/style.css" rel="stylesheet" />
+		<link rel="stylesheet" href="../../css/iconfont.css" />
+
+		<style>
+			body {
+				background-color: #DDDDDD;
+				font-family: "微软雅黑";
+			}
+			
+			.input {
+				padding: 10px;
+				height: 120px;
+				margin-bottom: 0 !important;
+				padding-bottom: 0 !important;
+				color: #999999;
+				font: 17px "微软雅黑", Arial, Helvetica, sans-serif;
+				overflow-y: scroll;
+				-webkit-overflow-scrolling: touch;
+			}
+			
+			.input:empty::before {
+				content: attr(placeholder);
+			}
+			
+			.row {
+				width: 100%;
+				background-color: #fff;
+			}
+			
+			p {
+				padding: 10px 15px 0;
+			}
+			
+			.hidden {
+				display: none;
+			}
+			
+			.image-list {
+				width: 100%;
+				min-height: 120px;
+				background-size: cover;
+				padding: 10px 10px;
+				overflow: hidden;
+			}
+			
+			.image-item {
+				width: 100px;
+				height: 100px;
+				/*background-image: url(../images/iconfont-tianjia.png);*/
+				background-size: 100% 100%;
+				display: inline-block;
+				position: relative;
+				border-radius: 5px;
+				margin-right: 10px;
+				margin-bottom: 10px;
+				border: solid 1px #e8e8e8;
+				vertical-align: top;
+			}
+			
+			.image-item .file {
+				position: absolute;
+				left: 0px;
+				top: 0px;
+				width: 100%;
+				height: 100%;
+				opacity: 0;
+				cursor: pointer;
+				z-index: 0;
+			}
+			
+			.image-item.space {
+				border: none;
+			}
+			
+			.image-item .image-close {
+				position: absolute;
+				display: inline-block;
+				right: -6px;
+				top: -6px;
+				width: 20px;
+				height: 20px;
+				text-align: center;
+				line-height: 20px;
+				border-radius: 12px;
+				background-color: #FF5053;
+				color: #f3f3f3;
+				border: solid 1px #FF5053;
+				font-size: 9px;
+				font-weight: 200;
+				z-index: 1;
+			}
+			
+			.image-item .image-up {
+				height: 100px;
+				width: 100px;
+				border-radius: 10px;
+				line-height: 100px;
+				border: 1px solid #ccc;
+				color: #ccc;
+				display: inline-block;
+				text-align: center;
+			}
+			
+			.image-item .image-up:after {
+				font-family: "微软雅黑";
+				content: '+';
+				font-size: 60px;
+			}
+			
+			.image-item.space .image-close {
+				display: none;
+			}
+			
+			.mui-plus-stream .stream {
+				display: block;
+			}
+			
+			#submit {
+				color: #FFFFFF;
+				font-size: 16px;
+				height: 100%;
+				line-height: 45px;
+			}
+			
+			.tools-box {
+				padding: 5px;
+			}
+			
+			.tools-box span {
+				margin-left: 15px;
+			}
+			
+			.emo-box {
+				background-color: #ffffff;
+				position: fixed;
+				bottom: 10px;
+				height: 180px;
+				padding: 10px;
+				display: none;
+			}
+			
+			.emo-box img {
+				padding: 5px;
+				border: solid 1px #FFFFFF;
+			}
+			
+			.emo-box img:active {
+				border: solid 1px #FFCC00;
+			}
+			
+			.jianpan-btn {
+				display: none;
+			}
+			
+			.mui-slider-indicator {
+				position: absolute;
+				bottom: 0px;
+			}
+			
+			.located {
+				color: #666666;
+				vertical-align: baseline;
+			}
+		</style>
+		<style>
+			#mo {
+				display: none;
+				/*隐藏*/
+				width: 100%;
+				height: 100%;
+				position: fixed;
+				overflow: auto;
+				background-color: rgba(0, 0, 0, 0.7);
+				top: 0px;
+				left: 0px;
+				z-index: 100;
+			}
+			
+			#moimg {
+				display: block;
+				margin: 0 auto;
+				width: 100%;
+				max-width: 750px;
+			}
+			
+			#moimg {
+				-webkit-animation: first 1s;
+				-o-animation: first 1s;
+				animation: first 1s;
+			}
+			
+			@keyframes first {
+				from {
+					transform: scale(0.1);
+				}
+				to {
+					transform: scale(1);
+				}
+			}
+			
+			@media only screen and(max-width:750px) {
+				#moimg {
+					width: 100%;
+				}
+			}
+		</style>
+	</head>
+
+	<body>
+
+		<header class="mui-bar mui-bar-nav">
+			<span class="mui-action-back mui-icon mui-icon-close mui-pull-left" style="color: #FFFFFF;"></span>
+			<h1 class="mui-title" style="color: #FFFFFF;">发布内容</h1>
+			<span id="submit" class="mui-pull-right">发送</span>
+		</header>
+		<div class="mui-content" style="background-color: #DDDDDD;">
+			<div class="row mui-input-row" style="margin-bottom: 5px;">
+				<div id='content-area' contenteditable="true" class="mui-input-clear question input" placeholder="您有啥想分享哒#.#">
+
+				</div>
+				<div class="tools-box">
+					<span class="biaoqing-btn">
+						<i class="mui-icon iconfont icon-biaoqing" style="color: #FFCC99;font-size: 30px;"></i>
+					</span>
+					<span class="jianpan-btn">
+						<i class="mui-icon iconfont icon-jianpan" style="color: #FFCC99;font-size: 30px;"></i>
+					</span>
+					<span class="weizhi-btn">
+						<i class="mui-icon iconfont icon-dingwei" style="color: #FFCC99;font-size: 30px;"></i>
+					</span>
+					<span class="yuyin-btn">
+						<i class="mui-icon iconfont icon-yuyin2" style="color: #FFCC99;font-size: 30px;"></i>
+					</span>
+					
+				</div>
+				<div style="padding-left: 20px;padding-top: 1px;padding-bottom: 1px;">
+					
+					<span class="located">
+				</span>
+				</div>
+
+			</div>
+
+			<div id="image-list" class="row image-list">
+				<!--<div class="image-item" style="background-image: url(../img/apppay/logo3.png);">
+					<div class="image-close">X</div>
+					<div class="file"></div>
+				</div>-->
+				<div class="image-item space">
+					<div class="image-up"></div>
+				</div>
+
+			</div>
+
+		</div>
+		<div class="motai mui-fullscreen" id="mo">
+			<img class="motaiimg" id="moimg">
+		</div>
+		<div class="emo-box">
+			<div id="slider" class="mui-slider" style="width: 100%; height: 100%;">
+				<div class="mui-slider-group" style="height: 100%;">
+					<!-- 第一张 -->
+					<div class="mui-slider-item mui-row">
+						<div class="mui-col-sm-2">
+							<img src="../../face/1.gif" class="emobtn" style="height: 40px;width: 40px;">
+						</div>
+						<div class="mui-col-sm-2">
+							<img src="../../face/2.gif" class="emobtn" style="height: 40px;width: 40px;">
+						</div>
+						<div class="mui-col-sm-2">
+							<img src="../../face/3.gif" class="emobtn" style="height: 40px;width: 40px;">
+						</div>
+						<div class="mui-col-sm-2">
+							<img src="../../face/4.gif" class="emobtn" style="height: 40px;width: 40px;">
+						</div>
+						<div class="mui-col-sm-2">
+							<img src="../../face/5.gif" class="emobtn" style="height: 40px;width: 40px;">
+						</div>
+						<div class="mui-col-sm-2">
+							<img src="../../face/6.gif" class="emobtn" style="height: 40px;width: 40px;">
+						</div>
+						<div class="mui-col-sm-2">
+							<img src="../../face/7.gif" class="emobtn" style="height: 40px;width: 40px;">
+						</div>
+						<div class="mui-col-sm-2">
+							<img src="../../face/8.gif" class="emobtn" style="height: 40px;width: 40px;">
+						</div>
+						<div class="mui-col-sm-2">
+							<img src="../../face/9.gif" class="emobtn" style="height: 40px;width: 40px;">
+						</div>
+						<div class="mui-col-sm-2">
+							<img src="../../face/10.gif" class="emobtn" style="height: 40px;width: 40px;">
+						</div>
+						<div class="mui-col-sm-2">
+							<img src="../../face/11.gif" class="emobtn" style="height: 40px;width: 40px;">
+						</div>
+						<div class="mui-col-sm-2">
+							<img src="../../face/12.gif" class="emobtn" style="height: 40px;width: 40px;">
+						</div>
+						<div class="mui-col-sm-2">
+							<img src="../../face/13.gif" class="emobtn" style="height: 40px;width: 40px;">
+						</div>
+						<div class="mui-col-sm-2">
+							<img src="../../face/14.gif" class="emobtn" style="height: 40px;width: 40px;">
+						</div>
+						<div class="mui-col-sm-2">
+							<img src="../../face/15.gif" class="emobtn" style="height: 40px;width: 40px;">
+						</div>
+						<div class="mui-col-sm-2">
+							<img src="../../face/16.gif" class="emobtn" style="height: 40px;width: 40px;">
+						</div>
+						<div class="mui-col-sm-2">
+							<img src="../../face/17.gif" class="emobtn" style="height: 40px;width: 40px;">
+						</div>
+						<div class="mui-col-sm-2">
+							<span class="mui-icon mui-icon-close-filled" style="color: #B6B6B6;padding: 10px;"></span>
+						</div>
+					</div>
+					<!-- 第二张 -->
+					<div class="mui-slider-item mui-row">
+						<div class="mui-col-sm-2">
+							<img src="../../face/18.gif" class="emobtn" style="height: 40px;width: 40px;">
+						</div>
+						<div class="mui-col-sm-2">
+							<img src="../../face/19.gif" class="emobtn" style="height: 40px;width: 40px;">
+						</div>
+						<div class="mui-col-sm-2">
+							<img src="../../face/20.gif" class="emobtn" style="height: 40px;width: 40px;">
+						</div>
+						<div class="mui-col-sm-2">
+							<img src="../../face/21.gif" class="emobtn" style="height: 40px;width: 40px;">
+						</div>
+						<div class="mui-col-sm-2">
+							<img src="../../face/22.gif" class="emobtn" style="height: 40px;width: 40px;">
+						</div>
+						<div class="mui-col-sm-2">
+							<img src="../../face/23.gif" class="emobtn" style="height: 40px;width: 40px;">
+						</div>
+						<div class="mui-col-sm-2">
+							<img src="../../face/24.gif" class="emobtn" style="height: 40px;width: 40px;">
+						</div>
+						<div class="mui-col-sm-2">
+							<img src="../../face/25.gif" class="emobtn" style="height: 40px;width: 40px;">
+						</div>
+						<div class="mui-col-sm-2">
+							<img src="../../face/26.gif" class="emobtn" style="height: 40px;width: 40px;">
+						</div>
+						<div class="mui-col-sm-2">
+							<img src="../../face/27.gif" class="emobtn" style="height: 40px;width: 40px;">
+						</div>
+						<div class="mui-col-sm-2">
+							<img src="../../face/28.gif" class="emobtn" style="height: 40px;width: 40px;">
+						</div>
+						<div class="mui-col-sm-2">
+							<img src="../../face/29.gif" class="emobtn" style="height: 40px;width: 40px;">
+						</div>
+						<div class="mui-col-sm-2">
+							<img src="../../face/30.gif" class="emobtn" style="height: 40px;width: 40px;">
+						</div>
+						<div class="mui-col-sm-2">
+							<img src="../../face/31.gif" class="emobtn" style="height: 40px;width: 40px;">
+						</div>
+						<div class="mui-col-sm-2">
+							<img src="../../face/32.gif" class="emobtn" style="height: 40px;width: 40px;">
+						</div>
+						<div class="mui-col-sm-2">
+							<img src="../../face/33.gif" class="emobtn" style="height: 40px;width: 40px;">
+						</div>
+						<div class="mui-col-sm-2">
+							<img src="../../face/34.gif" class="emobtn" style="height: 40px;width: 40px;">
+						</div>
+						<div class="mui-col-sm-2">
+							<span class="mui-icon mui-icon-close-filled" style="color: #B6B6B6;padding: 10px;"></span>
+						</div>
+					</div>
+					<!-- 第三张 -->
+					<div class="mui-slider-item mui-row">
+						<div class="mui-col-sm-2"><img src="../../face/35.gif" class="emobtn" style="height: 40px;width: 40px;" /></div>
+						<div class="mui-col-sm-2"><img src="../../face/36.gif" class="emobtn" style="height: 40px;width: 40px;" /></div>
+						<div class="mui-col-sm-2"><img src="../../face/37.gif" class="emobtn" style="height: 40px;width: 40px;" /></div>
+						<div class="mui-col-sm-2"><img src="../../face/38.gif" class="emobtn" style="height: 40px;width: 40px;" /></div>
+						<div class="mui-col-sm-2"><img src="../../face/39.gif" class="emobtn" style="height: 40px;width: 40px;" /></div>
+						<div class="mui-col-sm-2"><img src="../../face/40.gif" class="emobtn" style="height: 40px;width: 40px;" /></div>
+						<div class="mui-col-sm-2"><img src="../../face/41.gif" class="emobtn" style="height: 40px;width: 40px;" /></div>
+						<div class="mui-col-sm-2"><img src="../../face/42.gif" class="emobtn" style="height: 40px;width: 40px;" /></div>
+						<div class="mui-col-sm-2"><img src="../../face/43.gif" class="emobtn" style="height: 40px;width: 40px;" /></div>
+						<div class="mui-col-sm-2"><img src="../../face/44.gif" class="emobtn" style="height: 40px;width: 40px;" /></div>
+						<div class="mui-col-sm-2"><img src="../../face/45.gif" class="emobtn" style="height: 40px;width: 40px;" /></div>
+						<div class="mui-col-sm-2"><img src="../../face/46.gif" class="emobtn" style="height: 40px;width: 40px;" /></div>
+						<div class="mui-col-sm-2"><img src="../../face/47.gif" class="emobtn" style="height: 40px;width: 40px;" /></div>
+						<div class="mui-col-sm-2"><img src="../../face/48.gif" class="emobtn" style="height: 40px;width: 40px;" /></div>
+						<div class="mui-col-sm-2"><img src="../../face/49.gif" class="emobtn" style="height: 40px;width: 40px;" /></div>
+						<div class="mui-col-sm-2"><img src="../../face/50.gif" class="emobtn" style="height: 40px;width: 40px;" /></div>
+						<div class="mui-col-sm-2"><img src="../../face/51.gif" class="emobtn" style="height: 40px;width: 40px;" /></div>
+						<div class="mui-col-sm-2"><span class="mui-icon mui-icon-close-filled" style="color: #B6B6B6;padding: 10px;"></span></div>
+					</div>
+					<div class="mui-slider-item mui-row">
+						<div class="mui-col-sm-2"><img src="../../face/51.gif" class="emobtn" style="height: 40px;width: 40px;" /></div>
+						<div class="mui-col-sm-2"><img src="../../face/52.gif" class="emobtn" style="height: 40px;width: 40px;" /></div>
+						<div class="mui-col-sm-2"><img src="../../face/53.gif" class="emobtn" style="height: 40px;width: 40px;" /></div>
+						<div class="mui-col-sm-2"><img src="../../face/54.gif" class="emobtn" style="height: 40px;width: 40px;" /></div>
+						<div class="mui-col-sm-2"><img src="../../face/55.gif" class="emobtn" style="height: 40px;width: 40px;" /></div>
+						<div class="mui-col-sm-2"><img src="../../face/56.gif" class="emobtn" style="height: 40px;width: 40px;" /></div>
+						<div class="mui-col-sm-2"><img src="../../face/57.gif" class="emobtn" style="height: 40px;width: 40px;" /></div>
+						<div class="mui-col-sm-2"><img src="../../face/58.gif" class="emobtn" style="height: 40px;width: 40px;" /></div>
+						<div class="mui-col-sm-2"><img src="../../face/59.gif" class="emobtn" style="height: 40px;width: 40px;" /></div>
+						<div class="mui-col-sm-2"><img src="../../face/60.gif" class="emobtn" style="height: 40px;width: 40px;" /></div>
+						<div class="mui-col-sm-2"><img src="../../face/61.gif" class="emobtn" style="height: 40px;width: 40px;" /></div>
+						<div class="mui-col-sm-2"><img src="../../face/62.gif" class="emobtn" style="height: 40px;width: 40px;" /></div>
+						<div class="mui-col-sm-2"><img src="../../face/63.gif" class="emobtn" style="height: 40px;width: 40px;" /></div>
+						<div class="mui-col-sm-2"><img src="../../face/64.gif" class="emobtn" style="height: 40px;width: 40px;" /></div>
+						<div class="mui-col-sm-2"><img src="../../face/65.gif" class="emobtn" style="height: 40px;width: 40px;" /></div>
+						<div class="mui-col-sm-2"><img src="../../face/66.gif" class="emobtn" style="height: 40px;width: 40px;" /></div>
+						<div class="mui-col-sm-2"><img src="../../face/67.gif" class="emobtn" style="height: 40px;width: 40px;" /></div>
+						<div class="mui-col-sm-2"><span class="mui-icon mui-icon-close-filled" style="color: #B6B6B6;padding: 10px;"></span></div>
+					</div>
+					<div class="mui-slider-item mui-row">
+						<div class="mui-col-sm-2"><img src="../../face/68.gif" class="emobtn" style="height: 40px;width: 40px;" /></div>
+						<div class="mui-col-sm-2"><img src="../../face/69.gif" class="emobtn" style="height: 40px;width: 40px;" /></div>
+						<div class="mui-col-sm-2"><img src="../../face/70.gif" class="emobtn" style="height: 40px;width: 40px;" /></div>
+						<div class="mui-col-sm-2"><img src="../../face/71.gif" class="emobtn" style="height: 40px;width: 40px;" /></div>
+						<div class="mui-col-sm-2"><img src="../../face/72.gif" class="emobtn" style="height: 40px;width: 40px;" /></div>
+						<div class="mui-col-sm-2"><img src="../../face/73.gif" class="emobtn" style="height: 40px;width: 40px;" /></div>
+						<div class="mui-col-sm-2"><img src="../../face/74.gif" class="emobtn" style="height: 40px;width: 40px;" /></div>
+						<div class="mui-col-sm-2"><img src="../../face/75.gif" class="emobtn" style="height: 40px;width: 40px;" /></div>
+						<div class="mui-col-sm-2"><img src="../../face/dangao.gif" class="emobtn" style="height: 40px;width: 40px;" /></div>
+						<div class="mui-col-sm-2"><img src="../../face/geili.gif" class="emobtn" style="height: 40px;width: 40px;" /></div>
+						<div class="mui-col-sm-2"><img src="../../face/caonima.gif" class="emobtn" style="height: 40px;width: 40px;" /></div>
+						<div class="mui-col-sm-2"><img src="../../face/shenma.gif" class="emobtn" style="height: 40px;width: 40px;" /></div>
+						<div class="mui-col-sm-2"><img src="../../face/xiongmao.gif" class="emobtn" style="height: 40px;width: 40px;" /></div>
+						<div class="mui-col-sm-2"><img src="../../face/tuzi.gif" class="emobtn" style="height: 40px;width: 40px;" /></div>
+						<div class="mui-col-sm-2"><img src="../../face/zhu.gif" class="emobtn" style="height: 40px;width: 40px;" /></div>
+						<div class="mui-col-sm-2"><img src="../../face/fuyun.gif" class="emobtn" style="height: 40px;width: 40px;" /></div>
+						<div class="mui-col-sm-2"><img src="../../face/fahongbao.gif" class="emobtn" style="height: 40px;width: 40px;" /></div>
+						<div class="mui-col-sm-2"><span class="mui-icon mui-icon-close-filled" style="color: #B6B6B6;padding: 10px;"></span></div>
+					</div>
+				</div>
+				<div class="mui-slider-indicator">
+					<div class="mui-indicator mui-active"></div>
+					<div class="mui-indicator"></div>
+					<div class="mui-indicator"></div>
+					<div class="mui-indicator"></div>
+					<div class="mui-indicator"></div>
+				</div>
+				<div id="show"></div>
+			</div>
+		</div>
+		<div style=" background-color: #ffffff;position: absolute;bottom: 0px; "></div>
+
+		<script src="../../js/mui.min.js "></script>
+		<script type="text/javascript " src="../../js/jquery-3.1.1.js "></script>
+		<script type="text/javascript " src="../../js/app.js "></script>
+		<script type="text/javascript " src="../../js/config.js "></script>
+		<script type="text/javascript ">
+			var preimg_falg = false; //是否点了大图
+			var motai = document.getElementById('mo')
+			var moimg = document.getElementById("moimg")
+			moimg.ondblclick = function() {
+				motai.style.display = "none";
+				plus.navigator.setFullscreen(false);
+				preimg_falg = false;
+			}
+			mui.init({
+				beforeback: function() {
+					plus.navigator.setFullscreen(false);
+				}
+			});
+			mui.back = function() {
+				if(preimg_falg) {
+					console.log(preimg_falg);
+					motai.style.display = "none";
+					plus.navigator.setFullscreen(false);
+					preimg_falg = false;
+				} else {
+					plus.webview.currentWebview().close();
+				}
+			}
+			mui('.mui-scroll-wrapper').scroll();
+			$(document).on('click', '.mui-icon-close-filled', function() {
+				$('#content-area').focus();
+				$('#content-area').find('img').last().remove();
+
+			});
+			mui.plusReady(function() {
+				var originalHeight = document.documentElement.clientHeight || document.body.clientHeight;
+				window.onresize = function() {
+					//软键盘弹起与隐藏  都会引起窗口的高度发生变化
+					var resizeHeight = document.documentElement.clientHeight || document.body.clientHeight;
+					if(resizeHeight * 1 < originalHeight * 1) { //resizeHeight<originalHeight证明窗口被挤压了
+						plus.webview.currentWebview().setStyle({
+							height: originalHeight
+						});
+					}
+				}
+
+				function insertHtmlAtCaret(html) {
+					var sel, range;
+					if(window.getSelection) {
+						// IE9 and non-IE
+						sel = window.getSelection();
+						if(sel.getRangeAt && sel.rangeCount) {
+							range = sel.getRangeAt(0);
+							range.deleteContents();
+							// Range.createContextualFragment() would be useful here but is
+							// non-standard and not supported in all browsers (IE9, for one)
+							var el = document.createElement("div");
+							el.innerHTML = html;
+							var frag = document.createDocumentFragment(),
+								node, lastNode;
+							while((node = el.firstChild)) {
+								lastNode = frag.appendChild(node);
+							}
+							range.insertNode(frag);
+							// Preserve the selection
+							if(lastNode) {
+								range = range.cloneRange();
+								range.setStartAfter(lastNode);
+								range.collapse(true);
+								sel.removeAllRanges();
+								sel.addRange(range);
+							}
+						}
+					} else if(document.selection && document.selection.type != "Control ") {
+						// IE < 9
+						document.selection.createRange().pasteHTML(html);
+					}
+				}
+				/*document.getElementById('content-area').focus();*/
+				$(document).on('click', '.emobtn', function() {
+					var img_emo = $(this).attr('src');
+					var emohtml = '<img src=" ' + img_emo + ' ">';
+					document.getElementById('content-area').focus();
+					insertHtmlAtCaret(emohtml);
+					document.activeElement.blur(); //隐藏输入法
+				});
+
+				$("#content-area").click(function() {
+					$('.emo-box').css("display", "none");
+					$('.biaoqing-btn').css("display", "inline-block");
+					$('.jianpan-btn').css("display", "none");
+					$('#content-area').focus();
+
+				});
+				$(document).on('click', '.biaoqing-btn', function() {
+					$('.emo-box').css("display", "block");
+					$('.biaoqing-btn').css("display", "none");
+					$('.jianpan-btn').css("display", "inline-block");
+					document.activeElement.blur(); //隐藏输入法
+
+				});
+				$(document).on('click', '.jianpan-btn', function() {
+					$('.emo-box').css("display", "none");
+					$('.biaoqing-btn').css("display", "inline-block");
+					$('.jianpan-btn').css("display", "none");
+					$('#content-area').focus();
+				});
+				$(document).on('click', '.yuyin-btn', function() {
+					startRecognize();
+				});
+				//語音
+				function startRecognize() {
+					var options = {};
+					options.engine = 'iFly';
+					options.punctuation = false; // 是否需要标点符号
+					console.log("开始语音识别：");
+					plus.speech.startRecognize(options, function(s) {
+						console.log(s);
+						insertHtmlAtCaret(s);
+					}, function(e) {
+						console.log("语音识别失败：" + e.message);
+						alert("语音识别失败：" + e.message);
+					});
+					setTimeout(stopRecognize, 10000);
+				}
+				//  停止语音输入
+				function stopRecognize() {
+					plus.speech.stopRecognize();
+				}
+				//位置
+				$(document).on('click', '.weizhi-btn', function() {
+					mui.openWindow({
+						url: "../other/map2.html", //跳转地址
+						id: "map2.html", //id
+						show: {
+							aniShow: "slide-in-right", //页面显示动画，默认为”slide-in-right“；
+							duration: 300, //页面动画持续时间，Android平台默认100毫秒，iOS平台默认200毫秒
+							autoShow: true //页面loaded事件发生后自动显示，默认为true
+						},
+						extras: {
+							//自定义扩展参数，可以用来处理页面间传值
+						},
+						waiting: {
+							//title: '正在玩命搜索...' //等待对话框上显示的提示内容
+						}
+					});
+
+				});
+				var total = 0;
+				var index = 1;
+				var size = 0;
+				var state = app.getState();
+				var url = SERVER_URL + 'SendShare';
+				var files = [];
+				var uploader = null;
+				/**
+				 *提交成功之后，恢复表单项 
+				 */
+				function clearForm() {
+					files = [];
+					index = 0;
+					size = 0;
+					total = 0;
+					$('#content-area').html('');
+					$(document).find('.img-has').remove();
+
+				};
+				//判断九张已满
+				function isNinePic() {
+					console.log("图片数量： " + total);
+					if(total >= 9) {
+						$(document).find('.space').hide();
+
+					} else {
+						$(document).find('.space').show();
+					}
+				}
+
+				function addFile(path) {
+					console.log(index);
+					console.log(path);
+					files.push({ name: "images " + index, path: path, id: "img- " + index });
+					console.log(JSON.stringify(files));
+					index++;
+					total++; //图片数量
+					/*console.log("图片数量： " + total);*/
+					isNinePic();
+				};
+
+				function replaceFile($hindex, path) { //更换
+					/*console.log(index);
+					console.log(path);
+					console.log($hindex);*/
+					files.splice($hindex - 1, 1, { name: "images" + index, path: path });
+					console.log(JSON.stringify(files));
+					index++;
+					/*console.log("图片数量： " + total);*/
+					isNinePic();
+				};
+
+				function imghtml(url) {
+					var html = '';
+					html += '<div class="image-item img-has"  style="background-image: url( ' + url + '); ">';
+					html += '<div class="image-close">X</div>';
+					html += '<div class="file"><img src="' + url + '" data-preview-src="" data-preview-group="2"></div>';
+					html += '</div>';
+					return html;
+				}
+				$(document).on('click', '.file', function() {
+					var domObj = this;
+					var img_pre_url = $(this).find('img').attr('src');
+					console.log(img_pre_url);
+					var hindex = $(this).index('.file');
+					/*					console.log(hindex);*/
+					plus.nativeUI.actionSheet({
+						cancel: "取消",
+						buttons: [{
+								title: "拍照"
+							}, {
+								title: "从相册中选择"
+							},
+							{
+								title: "查看大图"
+							}
+						]
+					}, function(e) {
+						//1 是拍照  2 从相册中选择
+						switch(e.index) {
+							case 1:
+								appendByCamera2(domObj, hindex);
+								break;
+							case 2:
+								appendByGallery2(domObj, hindex);
+								break;
+							case 3:
+								watchBigImg(img_pre_url);
+								break;
+						}
+					});
+
+				});
+				$(document).on('click', '.image-close', function() {
+					var dindex = $(this).index('.image-close');
+					console.log("close " + dindex);
+					$(this).parent().remove();
+					files.splice(dindex, 1);
+					console.log(JSON.stringify(files));
+					total--;
+					/*console.log("图片数量： " + total);*/
+					isNinePic();
+				});
+				$(document).on('click', '.image-up', function() {
+					plus.nativeUI.actionSheet({
+						cancel: "取消",
+						buttons: [{
+							title: "拍照"
+						}, {
+							title: "从相册中选择"
+						}]
+					}, function(e) {
+						//1 是拍照  2 从相册中选择
+						switch(e.index) {
+							case 1:
+								appendByCamera();
+								break;
+							case 2:
+								appendByGallery();
+								break;
+						}
+					});
+
+				});
+
+				function appendByCamera() {
+					plus.camera.getCamera().captureImage(function(e) {
+						plus.io.resolveLocalFileSystemURL(e, function(entry) {
+							var path = entry.toLocalURL();
+							/*console.log('path:'+path);*/
+							var name = path.substr(path.lastIndexOf('/') + 1);
+							plus.zip.compressImage({
+								src: path,
+								dst: '_doc/' + name,
+								overwrite: true,
+								quality: 50
+							}, function(zip) {
+								size += zip.size
+								console.log("filesize: " + zip.size + ",totalsize: " + size);
+								if(size > (10 * 1024 * 1024)) {
+									return mui.toast('文件超大,请重新选择~');
+								}
+								addFile(zip.target);
+								console.log(zip.target);
+								$('.space').before(imghtml(zip.target));
+
+							}, function(zipe) {
+								mui.toast('压缩失败！')
+							});
+						}, function(e) {
+							mui.toast("读取拍照文件错误：" + e.message);
+						});
+					});
+				}
+
+				function appendByGallery() {
+					setTimeout(function() {
+						plus.gallery.pick(function(e) {
+							for(var i in e.files) {
+								console.log(e.files[i]);
+								var name = e.files[i].substr(e.files[i].lastIndexOf('/') + 1);
+								console.log("name: " + name);
+								plus.zip.compressImage({
+									src: e.files[i],
+									dst: '_doc/' + name,
+									overwrite: true,
+									quality: 50
+								}, function(zip) {
+									size += zip.size
+									console.log("filesize: " + zip.size + ",totalsize: " + size);
+									if(size > (10 * 1024 * 1024)) {
+										return mui.toast('文件超大,请重新选择~');
+									}
+									addFile(zip.target);
+									console.log(zip.target);
+									$('.space').before(imghtml(zip.target));
+
+								}, function(zipe) {
+									mui.toast('压缩失败！')
+								});
+
+							}
+
+						}, function(e) {
+							mui.toast(e.message);
+						}, {
+							filter: "image ",
+							multiple: true,
+							maximum: (9 - total),
+							system: false,
+							onmaxed: function() {
+								plus.nativeUI.alert('最多只能选择' + (9 - total) + '张图片');
+							}
+						});
+
+					}, 0);
+				}
+
+				function watchBigImg($img_pre_url) { //查看大图
+					preimg_falg = true;
+					plus.navigator.setFullscreen(true);
+					motai.style.display = "block"
+					moimg.src = $img_pre_url
+				}
+
+				function appendByCamera2($domObj, $index) {
+					plus.camera.getCamera().captureImage(function(e) {
+						plus.io.resolveLocalFileSystemURL(e, function(entry) {
+							var path = entry.toLocalURL();
+							/*console.log('path:'+path);*/
+							var name = path.substr(path.lastIndexOf('/') + 1);
+							plus.zip.compressImage({
+								src: path,
+								dst: '_doc/' + name,
+								overwrite: true,
+								quality: 50
+							}, function(zip) {
+								size += zip.size
+								console.log("filesize: " + zip.size + ",totalsize: " + size);
+								if(size > (10 * 1024 * 1024)) {
+									return mui.toast('文件超大,请重新选择~');
+								}
+								replaceFile($index, zip.target);
+								console.log(zip.target);
+								$($domObj).parent().before(imghtml(zip.target)); //插入
+								$($domObj).parent().remove(); //删除
+
+							}, function(zipe) {
+								mui.toast('压缩失败！')
+							});
+						}, function(e) {
+							mui.toast("读取拍照文件错误：" + e.message);
+						});
+					});
+				}
+
+				function appendByGallery2($domObj, $index) {
+					setTimeout(function() {
+						plus.gallery.pick(function(e) {
+							var name = e.substr(e.lastIndexOf('/') + 1);
+							console.log("name: " + name);
+							plus.zip.compressImage({
+								src: e,
+								dst: '_doc/' + name,
+								overwrite: true,
+								quality: 50
+							}, function(zip) {
+								size += zip.size
+								console.log("filesize: " + zip.size + ",totalsize: " + size);
+								if(size > (10 * 1024 * 1024)) {
+									return mui.toast('文件超大,请重新选择~');
+								}
+								replaceFile($index, zip.target);
+								console.log(zip.target);
+								$($domObj).parent().before(imghtml(zip.target)); //插入
+								$($domObj).parent().remove(); //删除
+
+							}, function(zipe) {
+								mui.toast('压缩失败！')
+							});
+
+						}, function(e) {
+							mui.toast(e.message);
+						}, {});
+
+					}, 0);
+				}
+				$(document).on('click', '#submit', function() {
+					console.log(state.Account);
+					var areacontent = $('#content-area').html();
+					if(areacontent == '') {
+						mui.toast('请输入内容~');
+						return;
+					}
+					console.log(JSON.stringify(files));
+					console.log(areacontent);
+					send(mui.extend({}, {
+						images: files,
+						account: state.Account,
+						contenttext: areacontent
+					}));
+				});
+
+				function send(content) {
+					uploader = plus.uploader.createUpload(url, {
+						method: 'POST'
+					}, function(upload, status) {
+						//			plus.nativeUI.closeWaiting()
+						console.log(status);
+						console.log("upload: " + upload.responseText);
+						if(status == 200) {
+							var data = JSON.parse(upload.responseText);
+							//上传成功，重置表单
+							if(data.code == 200) {
+								mui.toast('发布成功~')
+								console.log("upload success ");
+								//					clearForm();
+							}
+						} else {
+							console.log("upload fail ");
+						}
+
+					});
+					//添加上传数据
+					mui.each(content, function(index, element) {
+						if(index !== 'images') {
+							console.log("addData: " + index + ", " + element);
+							//				console.log(index);
+							uploader.addData(index, element)
+						}
+					});
+					//添加上传文件
+					mui.each(files, function(index, element) {
+						var f = files[index];
+						console.log("addFile: " + JSON.stringify(f));
+						console.log('name:' + f.name);
+						uploader.addFile(f.path, {
+							key: f.name
+						});
+					});
+					//开始上传任务
+					uploader.start();
+					mui.alert("发布成功，点击确定关闭 ", "发布内容 ", "确定 ", function() {
+						clearForm();
+						/*mui.back();*/
+					});
+
+				};
+			});
+			window.addEventListener("relocate",
+				function(e) {
+					console.log(e.detail.locate);
+					var lhtml = '<span class="mui-icon iconfont icon-shouhuodizhi" style="color: #666666;font-size: 20px;"></span>';
+					$('.located').html(lhtml+e.detail.locate);
+				});
+		</script>
+	</body>
+
+</html>

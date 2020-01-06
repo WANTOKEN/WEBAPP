@@ -1,0 +1,862 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link rel="stylesheet" href="../../css/mui.min.css">
+		<link rel="stylesheet" href="../../css/pulldown.css" />
+		<link rel="stylesheet" href="../../css/iconfont.css" />
+
+		<style>
+		html,
+			body {
+				background-color: #DDDDDD;
+				font-family: "微软雅黑";
+			}
+			
+			.mui-bar-nav {
+				background-color: #FFCC33;
+			}
+			
+			.locate-text {
+				color: white;
+				float: left;
+				font-size: 16px;
+				height: 100%;
+				line-height: 45px;
+			}
+			
+			.head-bar-center {
+				float: left;
+				width: 65%;
+				padding-right: 5px;
+				height: 100%;
+				padding-left: 5px;
+				padding-bottom: 5px;
+				line-height: 45px;
+				line-height: 45px;
+				position: relative;
+			}
+			
+			.head-bar-input i {
+				font-size: 16px;
+				color: #FFCC33;
+				position: absolute;
+				bottom: 7px;
+				left: 5px;
+			}
+			
+			.head-bar-input {
+				position: absolute;
+				background-color: #FFFFFF;
+				border-radius: 5px;
+				height: 30px;
+				width: 100%;
+				bottom: 7px;
+				left: 10px;
+			}
+			
+			.hint-text {
+				line-height: 30px;
+				vertical-align: top;
+				font-size: 14px;
+				color: #dadada;
+			}
+			
+			.head-bar-icon-l {
+				padding-left: 5px;
+				float: left;
+				height: 30px;
+				line-height: 30px;
+				padding-right: 10px;
+			}
+			
+			#slider img {
+				height: 200px;
+			}
+			
+			.Commonly-box {
+				padding-top: 10px;
+				margin-top: 6px;
+				height: 100px;
+				background: white;
+				border-radius: 0px;
+			}
+			
+			.Commonly-used {
+				width: 90%;
+				margin: auto;
+			}
+			
+			.Commonly-used .Commonly-item {
+				float: left;
+				width: 23.5%;
+				font-family: "微软雅黑";
+				color: #B6B6B6;
+				text-align: center;
+				font-size: 12px;
+				margin-left: 2%;
+			}
+			
+			.Commonly-used .Commonly-item:nth-child(1) {
+				margin-left: 0;
+			}
+			
+			.Commonly-used .Commonly-item img {
+				width: 50px;
+			}
+			
+			.Order-Box {
+				width: 100%;
+				margin-top: 9px;
+				height: 150px;
+				background-color: white;
+			}
+			
+			.Order-Box-img {
+				width: 40%;
+				height: 150px;
+				float: left;
+			}
+			
+			.Order-Box-img img {
+				width: 90%;
+				height: 120px;
+				float: left;
+				margin-left: 10%;
+				margin-top: 10%;
+				border-radius: 5px;
+			}
+			
+			.Order-Box-span {
+				width: 60%;
+				height: 150px;
+				float: left;
+			}
+			
+			.Order-Box-span .item-text-top {
+				padding-top: 5%;
+				text-align: center;
+				height: 50%;
+			}
+			
+			.text-title {
+				font-family: "微软雅黑";
+			}
+			
+			.Order-Box-span .item-btn-foot {
+				padding-top: 0%;
+				text-align: center;
+				height: 50%;
+			}
+			
+			.item-btn {
+				width: 125px;
+				height: 50px;
+				color: white;
+				background-color: #FF6633;
+				border: 0px;
+				border-radius: 25px;
+			}
+			/*Recommend-Box*/
+			
+			.Recommend-Box {
+				margin-top: 9px;
+				width: 100%;
+				height: 100%;
+				background-color: white;
+				padding-left: 2%;
+				padding-right: 2%;
+				padding-bottom: 10%;
+			}
+			
+			.Recommend-Box .Recommend-Box-title {
+				padding-top: 2%;
+				text-align: center;
+			}
+			
+			.Recommend-Box-title-text {
+				color: #FFCC00;
+			}
+			
+			.Recommend-Box-Content {
+				position: relative;
+				margin-top: 10px;
+				width: 100%;
+				height: 150px;
+				padding-top: 2%;
+				padding-left: 2%;
+				text-align: center;
+				border-radius: 15px;
+				box-shadow: 1px 2px 3px 1px rgba(0, 0, 0, 0.35);
+			}
+			
+			.Recommend-Box-Content .Recommend-Box-Content-img {
+				width: 43%;
+				float: left;
+			}
+			
+			.Recommend-Box-Content .Recommend-Box-Content-img img {
+				width: 100%;
+				height: 130px;
+			}
+			
+			.Recommend-Box-Content-text {
+				padding-top: 2%;
+				padding-left: 3%;
+				text-align: left;
+				width: 55%;
+				float: left;
+			}
+			
+			.money-text {
+				position: absolute;
+				bottom: 20px;
+				color: #FF9900;
+			}
+			
+			.hui-wrap {
+				width: 100%;
+			}
+			
+			.hui-flex {
+				display: flex;
+			}
+			
+			.hui-scroll-news {
+				height: 28px;
+				line-height: 28px;
+				margin: 10px;
+			}
+			
+			.hui-scroll-news-items {
+				height: 28px;
+				line-height: 28px;
+				white-space: nowrap;
+				text-overflow: ellipsis;
+				display: none;
+			}
+			
+			.hui-scroll-news-items:first-child {
+				display: block;
+			}
+			
+			.hui-scroll-news-items>a {
+				display: block;
+				overflow: hidden;
+				line-height: 28px;
+				white-space: nowrap;
+				text-overflow: ellipsis;
+			}
+			
+			@keyframes hui-scroll-news-h0 {
+				0% {
+					height: 28px;
+				}
+				100% {
+					height: 0px;
+				}
+			}
+			
+			@-webkit-keyframes hui-scroll-news-h0 {
+				0% {
+					height: 28px;
+				}
+				100% {
+					height: 0px;
+				}
+			}
+			
+			100% {
+				-webkit-transform: rotate(360deg);
+			}
+		}
+		@-moz-keyframes hui-scroll-news-h0 {
+			0% {
+				height: 28px;
+			}
+			
+			100% {
+				height: 0px;
+			}
+		}
+		@-o-keyframes hui-scroll-news-h0 {
+			0% {
+				height: 28px;
+			}
+			
+			100% {
+				height: 0px;
+			}
+		}
+		.hui-scroll-news-h0 {
+			animation: hui-scroll-news-h0 600ms linear forwards;
+			-webkit-animation: hui-scroll-news-h0 600ms linear forwards;
+			-moz-animation: hui-scroll-news-h0 600ms forwards linear;
+			-o-animation: hui-scroll-news-h0 600ms forwards linear;
+			display: block;
+		}
+		</style>
+		<style>
+			[v-cloak] {
+				display: none;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<span class="mui-icon iconfont icon-shouhuodizhi mui-pull-left" style="color: #FFFFFF;"></span>
+			<span class="locate-text ">广州市</span>
+			<span class="head-bar-center">
+				<span id="search" class="head-bar-input">
+					 <i class="mui-icon iconfont icon-31sousuo" >
+					</i>
+					<span class="hint-text">营养套餐、特色餐点</span>
+			</span>
+			</span>
+			<span class="mui-icon iconfont icon-saoma mui-pull-right" id="scan" style="color: #FFFFFF;">
+			</span>
+		</header>
+		<div class="mui-content">
+			<!--<div class="head-bar">
+				
+			</div>-->
+			<div class="head-bar-zhanwei">
+				<!--占位-->
+			</div>
+
+			<!--
+            	作者：1136717125@qq.com
+            	时间：2018-07-16
+            	描述：轮播图
+            -->
+			<div id="slider" class="mui-slider">
+				<div class="mui-slider-group mui-slider-loop">
+					<!-- 额外增加的一个节点(循环轮播：第一个节点是最后一张轮播) -->
+					<div class="mui-slider-item mui-slider-item-duplicate">
+						<a href="#" class="imgindex1">
+							<img src="../../resource/1.jpg">
+							<p class="mui-slider-title">睡觉打鼾吃什么好？</p>
+						</a>
+					</div>
+					<div class="mui-slider-item">
+						<a href="#" class="imgindex2">
+							<img src="../../resource/2.jpg">
+							<p class="mui-slider-title">考前三大忌，这些坑你不要踩</p>
+						</a>
+					</div>
+					<div class="mui-slider-item">
+						<a href="#" class="imgindex3">
+							<img src="../../resource/3.jpg">
+							<p class="mui-slider-title">办公室常备3类健康零食</p>
+						</a>
+					</div>
+					<div class="mui-slider-item">
+						<a href="#" class="imgindex4">
+							<img src="../../resource/4.jpg">
+							<p class="mui-slider-title">橘子吃多变“小黄人”?</p>
+						</a>
+					</div>
+					<div class="mui-slider-item">
+						<a href="#" class="imgindex1">
+							<img src="../../resource/1.jpg">
+							<p class="mui-slider-title">睡觉打鼾吃什么好？</p>
+						</a>
+					</div>
+					<!-- 额外增加的一个节点(循环轮播：最后一个节点是第一张轮播) -->
+					<div class="mui-slider-item mui-slider-item-duplicate">
+						<a href="#" class="imgindex2">
+							<img src="../../resource/2.jpg">
+							<p class="mui-slider-title">考前三大忌，这些坑你不要踩</p>
+						</a>
+					</div>
+				</div>
+				<div class="mui-slider-indicator mui-text-right">
+					<div class="mui-indicator mui-active"></div>
+					<div class="mui-indicator"></div>
+					<div class="mui-indicator"></div>
+					<div class="mui-indicator"></div>
+				</div>
+			</div>
+			<!--
+            	作者：1136717125@qq.com
+            	时间：2018-07-16
+            	描述：链接
+            -->
+			<div class="hui-wrap">
+				<div style="background:#FFF; padding:0px 15px; margin:10px;" class="hui-flex">
+					<div style="height:46px; width:20px;">
+						<img src="../../img/icon/spiker.png" width="20" style="padding:13px 0px;" />
+					</div>
+					<div class="hui-scroll-news" id="scrollnew1">
+
+					</div>
+				</div>
+			</div>
+			<div class="Commonly-box">
+				<div class="Commonly-used">
+					<div class="Commonly-item" data-type="美味搜索" id="use-item1">
+						<img src="../../img/index/index_1.png" />
+						<div>美味搜索</div>
+					</div>
+					<div class="Commonly-item" data-type="商家合作" id="use-item2">
+						<img src="../../img/index/index_2.png" />
+						<div>商家合作</div>
+					</div>
+					<div class="Commonly-item" data-type="品牌加盟" id="use-item3">
+						<img src="../../img/index/index_3.png" />
+						<div>品牌加盟</div>
+					</div>
+					<div class="Commonly-item" data-type="关于我们" id="use-item4">
+						<img src="../../img/index/index_us.png" />
+						<div>关于我们</div>
+					</div>
+				</div>
+			</div>
+			<!--
+            	作者：1136717125@qq.com
+            	时间：2018-07-16
+            	描述：点餐入口
+            -->
+			<div class="Order-Box">
+				<div class="Order-Box-img">
+					<img src="../../resource/ad.png" />
+				</div>
+				<div class="Order-Box-span">
+					<div class="item-text-top">
+						<h1 class="text-title">能量之旅</h1>
+					</div>
+					<div class="item-btn-foot">
+						<button type="button" class="item-btn">
+					开始点餐
+					</button>
+					</div>
+				</div>
+
+			</div>
+			<!--
+            	作者：1136717125@qq.com
+            	时间：2018-07-16
+            	描述：首页推荐，根据销量排序
+            -->
+			<div class="Recommend-Box" id="Recommend-Box" v-cloak>
+				<div class="Recommend-Box-title">
+					<font class="Recommend-Box-title-text" style="font-size: 18px;">————热门美味————</font>
+				</div>
+				<div class="Recommend-Box-Content" v-bind:data-id="item.goodsid" v-cloak v-for="(item,index) in items">
+					<div class="Recommend-Box-Content-img">
+						<img id="goodsImage" v-bind:src="surl+item.goodsimage" />
+					</div>
+					<div class="Recommend-Box-Content-text">
+						<p id="goodsName" style="color: #666666;font-size: 18px;">{{item.goodsname}}</p>
+						<p id="goodsEnergy">能量：{{item.goodsenergy}}千卡</p>
+						<h4 id="goodsPrice" class="money-text">￥{{item.goodsprice}}</h4>
+					</div>
+				</div>
+			</div>
+	</body>
+
+	<script src="../../js/mui.min.js"></script>
+	<!--vue-->
+	<script type="text/javascript" src="../../plugins/vue/vue.min.js"></script>
+	<script type="text/javascript" src="../../plugins/vue/vue-resource.min.js"></script>
+	<script type="text/javascript" src="../../js/jquery-3.1.1.js"></script>
+	<script type="text/javascript" src="../../js/config.js"></script>
+	<script type="text/javascript" src="../../js/app.js"></script>
+	<script>
+		mui.init({
+			swipeBack: true //启用右滑关闭功能
+		});
+
+		mui.plusReady(function() {
+			var RecommendBox = new Vue({
+				el: '#Recommend-Box',
+				data: {
+					items: "",
+					surl: SERVER_URL,
+				}
+			});
+			var state = app.getState();
+
+			function getOrdersMessage() {
+				$.ajax({
+					url: SERVER_URL + 'GetBoxMsg', //后台提供的接口
+					type: "get", //请求方式是post
+					data: {
+						account: state.Account
+					},
+					dataType: "json", //数据类型是json型
+					success: function(data) {
+						console.log(JSON.stringify(data));
+						//成功时返回的data值，注意这个data是后台返回的值，上面的data是你要传给后台的值
+						if(data.code == 200) {
+							$.each(data.data, function(index, item) {
+								app.SendNoticeBoard(index, item.title, item.infomsg);
+							});
+
+						}
+
+					},
+
+					error: function() {},
+					complete: function() {}
+				});
+			}
+			initData();
+
+			function initData() {
+				getOrdersMessage();
+				getdaymessage();
+				appIndex();
+				getIndex();
+			}
+			setTimeout(function() {
+				getOrdersMessage();
+				/*console.log('一分钟轮询');*/
+			}, 60000); //无论响应成功或失败，在若干秒后再询问一次服务器*/
+
+			var slider = mui("#slider");
+			slider.slider({
+				interval: 3000
+			});
+
+			var search = document.getElementById("search");
+			search.addEventListener("tap", function(e) {
+				mui.openWindow({
+					url: "../goods/search.html", //跳转地址
+					id: "search", //id
+					show: {
+						aniShow: "slide-in-right", //页面显示动画，默认为”slide-in-right“；
+						duration: 300, //页面动画持续时间，Android平台默认100毫秒，iOS平台默认200毫秒
+						autoShow: true //页面loaded事件发生后自动显示，默认为true
+					},
+					extras: {
+						text1: '123' //自定义扩展参数，可以用来处理页面间传值
+					},
+					waiting: {
+						//title: '正在玩命搜索...' //等待对话框上显示的提示内容
+					}
+				});
+
+			});
+
+			function appIndex() {
+				$.ajax({
+					url: SERVER_URL + 'AppIndex', //后台提供的接口
+					type: "get", //请求方式是post
+					data: {
+
+					},
+					dataType: "json", //数据类型是json型
+					success: function(data) {
+						/*					console.log(JSON.stringify(data));*/
+						//成功时返回的data值，注意这个data是后台返回的值，上面的data是你要传给后台的值
+						mui.each(data, function(index, item) {
+							var html = ''
+							html += '<img src="' + SERVER_URL + item.indeximg + '" data-id="' + item.indexnumber + '">';
+							html += '<p class="mui-slider-title">' + item.indextitle + '</p>';
+							$('.imgindex' + (index + 1)).html(html);
+						});
+
+					},
+
+					error: function() {},
+					complete: function() {}
+
+				});
+			}
+
+			newsid("#scrollnew1", 3000);
+
+			function newsid(domId, speed) {
+				if(!speed) { speed = 3000; }
+				var dom = $(domId);
+
+				if(dom.length < 1) { return false; }
+				setInterval(function() {
+					var firstNews = dom.find('.hui-scroll-news-items').eq(0);
+
+					firstNews.addClass('hui-scroll-news-h0');
+					setTimeout(function() {
+						firstNews.removeClass('hui-scroll-news-h0');
+						firstNews.appendTo(dom);
+					}, 800);
+				}, speed);
+			}
+
+			function getdaymessage() {
+				$('#scrollnew1').html('');
+				$.ajax({
+					url: SERVER_URL + 'AppIndexText', //后台提供的接口
+					type: "get", //请求方式是post
+					data: {
+
+					},
+					dataType: "json", //数据类型是json型
+					success: function(data) {
+						/*						console.log(JSON.stringify(data));*/
+						//成功时返回的data值，注意这个data是后台返回的值，上面的data是你要传给后台的值
+						mui.each(data, function(index, item) {
+							var html = '';
+							html += '<div class="hui-scroll-news-items">';
+							html += item.text;
+							html += '</div>';
+
+							$('#scrollnew1').append(html);
+						});
+
+					},
+
+					error: function() {},
+					complete: function() {
+						/*setTimeout(function() {
+							getdaymessage();
+							console.log('10秒轮询');
+						}, 10000); //无论响应成功或失败，在若干秒后再询问一次服务器*/
+					}
+
+				});
+			}
+
+			function getIndex() {
+				mui.ajax(SERVER_URL + 'GetIndex', {
+					data: {
+
+					},
+					dataType: 'json', //服务器返回json格式数据
+					type: 'get', //HTTP请求类型
+					timeout: 3000, //超时时间设置为3秒；
+					headers: { 'Content-Type': 'application/json' },
+					success: function(data) {
+						RecommendBox.items = data;
+						//服务器返回响应，根据响应结果，分析是否登录成功；
+						/*					console.log(JSON.stringify(data));*/
+					},
+					error: function(xhr, type, errorThrown) {
+						//异常处理；
+						mui.toast('请检查网络哦!');
+					}
+				});
+			}
+
+			$(document).on('click', '.mui-slider-item img', function() {
+				console.log($(this).attr('data-id'));
+				mui.openWindow({
+					id: 'homeDetail.html',
+					url: 'homeDetail.html',
+					show: {
+						aniShow: "slide-in-right", //页面显示动画，默认为”slide-in-right“；
+						duration: 300, //页面动画持续时间，Android平台默认100毫秒，iOS平台默认200毫秒
+						autoShow: true //页面loaded事件发生后自动显示，默认为true
+					},
+					extras: {
+						'indexid': $(this).attr('data-id').toString(),
+					},
+					waiting: {
+						autoShow: true,
+						title: '正在加载...', //等待对话框上显示的提示内容
+					}
+				});
+
+			});
+			$('.item-btn').on('tap', function() {
+				mui.openWindow({
+					url: "../goods/OrderPage.html", //跳转地址
+					id: "OrderPage", //id
+					show: {
+						aniShow: "zoom-fade-out", //页面显示动画，默认为”slide-in-right“；
+						duration: 300, //页面动画持续时间，Android平台默认100毫秒，iOS平台默认200毫秒
+						autoShow: true //页面loaded事件发生后自动显示，默认为true
+					},
+					extras: {
+						//自定义扩展参数，可以用来处理页面间传值
+					},
+					waiting: {
+						//title: '正在玩命搜索...' //等待对话框上显示的提示内容
+					}
+				});
+
+			});
+			$(document).on('click', '.Recommend-Box-Content', function() {
+				console.log($(this).attr('data-id').toString());
+				mui.openWindow({
+					id: 'goodsDetail.html',
+					url: '../goods/goodsDetail.html',
+					show: {
+						aniShow: "slide-in-right", //页面显示动画，默认为”slide-in-right“；
+						duration: 300, //页面动画持续时间，Android平台默认100毫秒，iOS平台默认200毫秒
+						autoShow: true //页面loaded事件发生后自动显示，默认为true
+					},
+					extras: {
+						'goods_id': $(this).attr('data-id').toString(),
+					},
+					waiting: {
+						autoShow: true,
+						title: '正在加载...', //等待对话框上显示的提示内容
+					}
+				});
+
+			});
+
+			$('#scan').on('tap', function() {
+				mui.openWindow({
+					id: 'QRcode.html',
+					url: '../other/QRcode.html',
+					show: {
+						aniShow: "zoom-fade-out", //页面显示动画，默认为”slide-in-right“；
+						duration: 300, //页面动画持续时间，Android平台默认100毫秒，iOS平台默认200毫秒
+						autoShow: true //页面loaded事件发生后自动显示，默认为true
+					}
+
+				});
+
+			});
+			$('.locate-text').on('tap', function() {
+				mui.openWindow({
+					url: "../other/map.html", //跳转地址
+					id: "map.html", //id
+					show: {
+						aniShow: "slide-in-right", //页面显示动画，默认为”slide-in-right“；
+						duration: 300, //页面动画持续时间，Android平台默认100毫秒，iOS平台默认200毫秒
+						autoShow: true //页面loaded事件发生后自动显示，默认为true
+					},
+					extras: {
+						//自定义扩展参数，可以用来处理页面间传值
+					},
+					waiting: {
+						//title: '正在玩命搜索...' //等待对话框上显示的提示内容
+					}
+				});
+
+			});
+
+			$(document).on('click', '#use-item1', function() {
+				mui.toast("该功能暂未开放！");
+			});
+			$(document).on('click', '#use-item2', function() {
+				mui.toast("该功能暂未开放！");
+			});
+			$(document).on('click', '#use-item3', function() {
+				mui.toast("该功能暂未开放！");
+			});
+			$(document).on('click', '#use-item4', function() {
+				mui.toast("该功能暂未开放！");
+			});
+			var dtask = null;
+			var wgtVer = null;
+
+			/*checkUpdate();*/
+
+			function downApp() {
+				mui.toast("已转到后台下载");
+				var wgtUrl = SERVER_URL + "downloads/app.apk";
+				dtask = plus.downloader.createDownload(wgtUrl, { filename: "_doc/update/" }, function(d, status) {
+					if(status == 200) {
+						clearInterval(i);
+						console.log("下载成功：" + d.filename);
+						installWgt(path); //安装
+					} else {
+						console.log("下载失败！");
+						plus.nativeUI.alert("下载失败！");
+					}
+					plus.nativeUI.closeWaiting();
+				});
+				dtask.start();
+				var i = setInterval(function() {
+					//计算当前的下载进度
+					var totalSize = dtask.totalSize;
+					var downloadedSize = dtask.downloadedSize;
+					var daxiaoa = downloadedSize / totalSize;
+					var baifenbiw = Math.round(daxiaoa * 100);
+					var baifenbi = (Math.round(daxiaoa * 100)) + "%";
+					console.log(baifenbi);
+				}, 2000); //1000为1秒钟
+			}
+			// 检测更新  
+			function checkUpdate() {
+				plus.runtime.getProperty(plus.runtime.appid, function(inf) {
+					wgtVer = inf.version;
+					console.log("当前应用版本：" + wgtVer);
+				});
+				var checkUrl = SERVER_URL + "checkupdate";
+				$.ajax({
+					url: checkUrl,
+					type: "post",
+					data: {
+						version: wgtVer,
+					},
+					dataType: "json",
+					success: function(data) {
+						console.log(JSON.stringify(data));
+						var version = parseFloat(data).toFixed(1);
+						console.log(version);
+						console.log(wgtVer);
+						if(wgtVer < data) {
+							console.log('下载');
+							var btnArray = ['下载', '取消'];
+							mui.confirm('检测到有新版本', '版本更新', btnArray, function(e) {
+								if(e.index == 1) {
+									console.log(1);
+								} else {
+									console.log(2);
+									downApp();
+								}
+							})
+						} else {
+
+						}
+					},
+					error: function() {},
+					complete: function() {}
+				});
+			}
+			// 更新应用资源  
+			function installWgt(path) {
+				plus.nativeUI.showWaiting("正在安装...");
+				plus.runtime.install(path, {}, function() {
+					plus.nativeUI.closeWaiting();
+					console.log("安装文件成功！");
+					plus.nativeUI.alert("更新完成！", function() {
+						plus.runtime.restart();
+					});
+				}, function(e) {
+					plus.nativeUI.closeWaiting();
+					console.log("安装文件失败[" + e.code + "]：" + e.message);
+					plus.nativeUI.alert("安装文件失败");
+				});
+			}
+			mui.each(document.querySelectorAll('.mui-content'), function(index, pullRefreshEl) {
+				mui(pullRefreshEl).pullToRefresh({
+					down: {
+						callback: function() {
+							var self = this;
+							initData();
+
+							setTimeout(function() {
+								console.log('下拉' + index);
+								self.endPullDownToRefresh();
+								self.refresh(true); //重新加载上拉
+							}, 1000);
+						}
+					}
+
+				});
+			});
+		});
+
+		window.addEventListener("relocate",
+			function(e) {
+				console.log(e.detail.locate);
+				$('.locate-text').html(e.detail.locate);
+
+			});
+	</script>
+	<script src="../../js/mui.pullToRefresh.js"></script>
+	<script src="../../js/mui.pullToRefresh.material.js"></script>
+	</body>
+
+</html>

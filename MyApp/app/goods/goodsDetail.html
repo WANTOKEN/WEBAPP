@@ -1,0 +1,581 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../../css/mui.min.css" rel="stylesheet" />
+		<link href="../../css/style.css" rel="stylesheet" />
+		<link rel="stylesheet" href="../../css/preimg.css" />
+		<style>
+			.Goods-Recomend-Box {
+				/*padding-top: 50px;*/
+				background-color: #FFFFCC;
+				height: 300px;
+			}
+			
+			.Goods-Recomend-Box-img {
+				height: 100%;
+				width: 100%;
+				text-align: center;
+			}
+			
+			.Goods-Recomend-Box-img img {
+				width: 100%;
+				height: 100%;
+			}
+			
+			.yellow {
+				background-color: #FFFFCC;
+			}
+			
+			.write {
+				background-color: #FFFFFF;
+			}
+			
+			.Goods-Box-Box {
+				width: 100%;
+				text-align: center;
+				padding-top: 10px;
+				border-top: 1px solid #efeff4;
+				border-bottom: 1px solid #efeff4;
+			}
+			
+			.Goods-Box-Cont {
+				padding-left: 10px;
+				padding-right: 10px;
+			}
+			
+			.Goods-Box-Cont p {
+				margin-left: 30px;
+				text-align: justify;
+				margin-right: 30px;
+			}
+			
+			.Goods-Box-Cont-Table {
+				padding-top: 10px;
+				height: 150px;
+			}
+			
+			.col-1 {
+				width: 15%;
+				float: left;
+				border-right: 1px solid #efeff4;
+			}
+			
+			.col-2 {
+				width: 14%;
+				float: left;
+			}
+			
+			.item-1 {
+				width: 100%;
+				padding-left: 5px;
+				padding-right: 5px;
+				padding-top: 10px;
+				padding-bottom: 5px;
+			}
+			
+			.item-txt-title {
+				/*text-align: left;*/
+				font-size: 12px;
+				color: #868686;
+				font-weight: bold;
+			}
+			
+			.item-txt {
+				/*text-align: left;*/
+				font-size: 12px;
+				color: #868686;
+			}
+			/*图表*/
+			
+			.chart {
+				height: 200px;
+				margin: 0px;
+				padding: 0px;
+			}
+			
+			.transport-time1 {
+				font-size: 15px;
+				font-family: "楷体";
+				color: #868686;
+				text-align: center;
+				/*border-bottom: 1px solid #E1E1E1;*/
+				padding-bottom: 10px;
+			}
+			
+			.transport-time2 {
+				padding-top: 10px;
+				font-size: 15px;
+				font-family: "楷体";
+				color: #868686;
+				text-align: center;
+				/*border-bottom: 1px solid #E1E1E1;*/
+				padding-bottom: 10px;
+			}
+			
+			.day {
+				margin-top: 5px;
+				margin-bottom: 5px;
+				margin-left: 20%;
+				margin-right: 20%;
+				color: #FFFFFF;
+				border-radius: 20px;
+			}
+			
+			.yellowtime {
+				background-color: #FFCC00;
+			}
+			
+			.buletime {
+				background-color: #66CCFF;
+			}
+			
+			.Goods-Box-Foot {
+				width: 100%;
+				height: 60px;
+				text-align: center;
+				padding-top: 10px;
+				display: block;
+				position: fixed;
+				width: 100%;
+				z-index: 3;
+				bottom: 0px;
+				color: #FF9900;
+				background: #fff;
+			}
+			
+			.order-btn {
+				border: 0px;
+				color: #FFFFFF;
+				background-color: #FF9900;
+				width: 140px;
+				height: 45px;
+				border-radius: 45px;
+				box-shadow: 1px 2px 1px 1px rgba(0, 0, 0, 0.35);
+			}
+			
+			#imgdivlist {
+				padding-top: 8px;
+				padding-bottom: 8px;
+			}
+			
+			#imgdivlist img {
+				width: 100%;
+				max-height: 300px;
+			}
+		</style>
+		<style>
+			[v-cloak] {
+				display: none;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<span class="mui-action-back mui-icon mui-icon-arrowleft mui-pull-left" style="color: #FFFFFF;"></span>
+			<span class="title-text mui-action-back">餐品详情</span>
+		</header>
+		<div class="mui-content">
+			<!--
+            	作者：1136717125@qq.com
+            	时间：2018-07-18
+            	描述：餐品详情顶部介绍
+            -->
+			<div class="Goods-Recomend-Box">
+				<div class="Goods-Recomend-Box-img">
+					<img id="goodsimg" data-preview-src="">
+				</div>
+
+			</div>
+
+			<!--
+            	作者：1136717125@qq.com
+            	时间：2018-07-18
+            	描述：餐品详情成分说明
+            -->
+			<div class="Goods-Box-Box write">
+				<!--<div class="Goods-Box-Title">
+					<p>BASE FACES</p>
+					<h4>基本介绍</h4>
+				</div>
+				<div class="Goods-Box-Cont" style="text-align: left;padding-left: 10%;padding-right: 10%;">
+					<br>
+					<span>
+						<b>品名：</b><font id="goodsname" style=" color: #868686;"></font>
+					</span>
+					<span style="float: right;">
+						<b>英文名称：</b><font id="goodsenname" style=" color: #868686;"></font>
+					</span>
+
+					<br /><br />
+					<span>
+						<b>单价：</b><font id="goodseprice" style=" color: #868686;"></font>
+					</span>
+					<span style="float: right;">
+						<b>类型：</b><font id="goodstype" style=" color: #868686;"></font>
+					</span>
+
+				</div>
+				<br>-->
+				<div class="Goods-Box-Title">
+					<p>RECOMMEND REASON</p>
+					<h4>推荐理由</h4>
+				</div>
+				<div class="Goods-Box-Cont">
+					<p id="nutrecom">妈妈都推荐你吃，你就买吧</p>
+
+				</div>
+				<div class="Goods-Box-Title">
+					<p>NUTRITION VALUE</p>
+					<h4>营养价值</h4>
+				</div>
+				<div class="Goods-Box-Cont">
+					<p id="nutvalue">
+					</p>
+
+				</div>
+			</div>
+			<div class="Goods-Box-Box write" id="imgdivbox">
+				<div class="Goods-Box-Title">
+					<p>IMAGE PREVIEW</p>
+					<h4>图片预览</h4>
+				</div>
+				<div class="Goods-Box-Cont" id="imgdivlist">
+				</div>
+			</div>
+			<div class="Goods-Box-Box write">
+				<div class="Goods-Box-Title">
+					<p>NUTRITION FACES</p>
+					<h4>营养成分</h4>
+				</div>
+				<div class="Goods-Box-Cont">
+					<div class="Goods-Box-Cont-Table" id="nutritiondata">
+						<div class="mui-row" style="text-align: center;">
+							<div class="mui-col-sm-4 mui-col-xs-4 item-txt-title">
+								项目
+							</div>
+							<div class="mui-col-sm-4 mui-col-xs-4 item-txt-title">
+								每100克
+							</div>
+							<div class="mui-col-sm-4 mui-col-xs-4 item-txt-title">
+								NRV%
+							</div>
+						</div>
+						<div class="mui-row" v-for="item in items" v-cloak>
+							<div class="mui-col-sm-4 mui-col-xs-4 item-txt">
+								{{item.itemname}}
+							</div>
+							<div class="mui-col-sm-4 mui-col-xs-4 item-txt">
+								{{item.itemnum}}
+							</div>
+							<div class="mui-col-sm-4 mui-col-xs-4 item-txt">
+								{{item.itemnrv}}
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="chart" id="barChart"></div>
+			</div>
+			<!--
+            	作者：1136717125@qq.com
+            	时间：2018-07-18
+            	描述：材料成分
+            -->
+			<div class="Goods-Box-Box write">
+				<div class="Goods-Box-Title">
+					<p>MATERIAL FACES</p>
+					<h4>材料成分</h4>
+				</div>
+				<div class="Goods-Box-Cont">
+					<div class="chart" id="pieChart">
+					</div>
+				</div>
+			</div>
+			<!--
+            	作者：1136717125@qq.com
+            	时间：2018-07-18
+            	描述：配送提示
+            -->
+			<div class="Goods-Box-Box write">
+				<div class="Goods-Box-Title">
+					<p>TRANSPORT TIME</p>
+					<h4>配送时间</h4>
+				</div>
+				<div class="Goods-Box-Cont">
+					<div class="transport-time1">
+						<i>即点即送</i><br>
+						<font>当天20：00前点餐，2小时内送达</font><br>
+						<!--<div class="day yellowtime">
+							<span>MON</span>
+							<span>TUE</span>
+							<span>WED</span>
+							<span>THU</span>
+							<span>FRI</span>
+							<span>SAT</span>
+							<span>SUN</span>
+						</div>-->
+						<font>配送时间：周一至周日（仅限部分地区）</font><br>
+
+					</div>
+
+					<div class="transport-time2">
+						<i>次日配送</i><br>
+						<font>今天20：00前点餐，可于明天送达</font><br>
+
+						<!--<div class="day buletime">
+							<span>MON</span>
+							<span>TUE</span>
+							<span>WED</span>
+							<span>THU</span>
+							<span>FRI</span>
+							<span>SAT</span>
+							<span>SUN</span>
+						</div>-->
+						<font>配送时间：周一至周日（仅限部分地区）</font><br>
+						<font>早餐送达时间：07：00-08：30</font><br>
+						<font>午餐送达时间：11：00-12：30</font><br>
+						<font>晚餐送达时间：17：30-19：30</font><br>
+						<font>加餐送达时间：21：30-22：00</font><br>
+					</div>
+				</div>
+			</div>
+			<div style="height: 60px;"></div>
+			<div class="Goods-Box-Foot write">
+				<button class="order-btn">
+					<!--￥3.00预定-->
+				</button>
+			</div>
+
+		</div>
+		<script src="../../js/mui.min.js"></script>
+		<!--vue-->
+		<script type="text/javascript" src="../../plugins/vue/vue.min.js"></script>
+		<script type="text/javascript" src="../../plugins/vue/vue-resource.min.js"></script>
+		<script src="../../js/jquery-3.1.1.js"></script>
+		<script type="text/javascript" src="../../js/config.js"></script>
+		<script src="../../js/mui.zoom.js"></script>
+		<script src="../../js/mui.previewimage.js"></script>
+
+		<script>
+			mui.previewImage();
+		</script>
+
+		<script src="../../libs/echarts-all.js"></script>
+
+		<script type="text/javascript">
+			mui.init();
+			mui.plusReady(function() {
+				var nutri = new Vue({
+					el: '#nutritiondata',
+					data: {
+						items: ""
+					},
+
+				});
+
+				//获取当前窗体对象
+				var page = plus.webview.currentWebview();
+				//接受上一页面传过来的值；
+				var goods_id = page.goods_id;
+				var goods_name;
+				var goods_enery;
+				var goods_price;
+				console.log(goods_id);
+				showGoodsDetail();
+
+				function showGoodsDetail() {
+					var wt = plus.nativeUI.showWaiting();
+					$.ajax({
+						url: SERVER_URL + 'Getgoodsdetail', //后台提供的接口
+						type: "post", //请求方式是post
+						data: {
+							goodsid: goods_id,
+						},
+						dataType: "json", //数据类型是json型
+						success: function(data) {
+							console.log(JSON.stringify(data));
+							//成功时返回的data值，注意这个data是后台返回的值，上面的data是你要传给后台的值
+							mui.each(data.data, function(index, item) {
+								$('#goodsimg').attr('src', SERVER_URL + item.goodsimage);
+								$('.title-text').html(item.goodsname);
+								$('.order-btn').html('￥' + item.goodsprice + '预定');
+								/*$('#goodsenname').html(item.goodsenname);
+								
+								$('#goodstype').html(item.goodstype);*/
+
+								$('#nutrecom').html("&nbsp;&nbsp;&nbsp;&nbsp;" + item.goodsrecom);
+								$('#nutvalue').html("&nbsp;&nbsp;&nbsp;&nbsp;" + item.goodsnutrition);
+								
+								goods_name = item.goodsname;
+								goods_price = item.goodsprice;
+								goods_enery = item.goodsenergy;
+
+								/*console.log(goods_price);
+								console.log(goods_enery);*/
+							});
+							//放置图片
+							$('#imgdivlist').html('');
+							$('#imgdivlist').html(setImg(data.data3));
+							nutri.items = data.data1;
+							var jsonData = data.data2;
+							setchart(jsonData);
+							var jsonBarData = data.databar
+							setbarChart(jsonBarData.name, jsonBarData.num, jsonBarData.nrv);
+							wt.close();
+						},
+
+						error: function() {
+							mui.alert("网络访问异常！");
+							wt.close();
+						},
+						complete: function() {}
+
+					});
+
+					function setImg(data) {
+						var html = '';
+						$.each(data, function(index, item) {
+							if(index > 0) {
+								$('#imgdivbox').css('display', 'block');
+								html += '<img src=' + SERVER_URL + item.goodsimg + ' data-preview-src="" data-preview-group="2">';
+							} else {
+								$('#imgdivbox').css('display', 'none');
+							}
+
+						});
+						return html;
+					}
+
+					function setbarChart(name, num, nrv) {
+						/*console.log(jsonData);*/
+						/*var name = jsonData.name;
+						var num = jsonData.num;
+						var nrv = jsonData.nrv;*/
+						var pieChart = echarts.init(document.getElementById('barChart'));
+						var option = {
+							legend: {
+								data: ['100g', 'NRV%']
+							},
+							grid: {
+								x: 35,
+								x2: 10,
+								y: 30,
+								y2: 25
+							},
+							toolbox: {
+								show: false,
+								feature: {
+									mark: {
+										show: true
+									},
+									dataView: {
+										show: true,
+										readOnly: false
+									},
+									magicType: {
+										show: true,
+										type: 'bar'
+									},
+									restore: {
+										show: true
+									},
+									saveAsImage: {
+										show: true
+									}
+								}
+							},
+							calculable: false,
+							xAxis: [{
+								type: 'category',
+								data: name
+							}],
+							yAxis: [{
+								type: 'value',
+								splitArea: {
+									show: true
+								}
+							}],
+							series: [{
+								name: '100g',
+								type: 'bar',
+								data: num
+							}, {
+								name: 'NRV%',
+								type: 'bar',
+								data: nrv
+							}]
+						};
+						pieChart.setOption(option);
+					}
+
+					function setchart(jsonData) {
+						//console.log(jsonData);
+						var pieChart = echarts.init(document.getElementById('pieChart'));
+						var option = {
+							calculable: false,
+							series: [{
+								name: '组成成分',
+								type: 'pie',
+								radius: '65%',
+								center: ['50%', '50%'],
+								data: jsonData
+							}]
+						};
+						pieChart.setOption(option);
+					}
+
+				}
+				
+				$(document).on('click', '.order-btn', function() {
+					var cartJson = []; //定义购物出JSON数据
+					console.log('下单');
+					var order_idList = new Array();
+					var order_priceList = new Array();
+					var order_nameList = new Array();
+					var order_numList = new Array();
+					var order_energyList = new Array();
+					order_idList.push(goods_id);
+					order_nameList.push(goods_name);
+					order_priceList.push(goods_price);
+					order_energyList.push(goods_enery);
+					order_numList.push("1");
+					cartJson.push({
+								'goodsid': goods_id, //ID
+								'goodsimg':$('#goodsimg').attr('src').toString(),
+								'goodsname': goods_name, //名称
+								'goodsprice': goods_price, //单价
+								'goodsenergy': goods_enery, //能量
+								'goodsnum': 1, //数量
+							});
+					mui.openWindow({
+						id: 'cartDetail.html',
+						url: '../order/cartDetail.html',
+						show: {
+							aniShow: "slide-in-right", //页面显示动画，默认为”slide-in-right“；
+							duration: 300, //页面动画持续时间，Android平台默认100毫秒，iOS平台默认200毫秒
+							autoShow: true //页面loaded事件发生后自动显示，默认为true
+						},
+						extras: {
+							'order_idList': order_idList,
+							'order_nameList': order_nameList,
+							'order_priceList': order_priceList,
+							'order_energyList': order_energyList,
+							'order_numList': order_numList,
+							'cartJson':cartJson
+						},
+						waiting: {
+							autoShow: true,
+							title: '正在加载...', //等待对话框上显示的提示内容
+						}
+					});
+				});
+			});
+		</script>
+
+	</body>
+
+</html>

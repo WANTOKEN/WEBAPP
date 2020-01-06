@@ -1,0 +1,301 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../../css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" href="../../css/pulldown.css" />
+		<link href="../../css/style.css" rel="stylesheet" />
+		<style>
+			html,
+			body {
+				font-family: "微软雅黑";
+				background-color: #FFFFFF;
+			}	
+			.Address-Box {
+				background-color: white;
+			}
+			
+			.defalut-address {
+				float: right;
+				color: #007AFF;
+				font-size: 14px;
+				line-height: 20 px;
+			}
+			
+			#addAddress {
+				color: #FFFFFF;
+				font-size: 16px;
+				height: 100%;
+				line-height: 45px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<span class="mui-action-back mui-icon mui-icon-arrowleft mui-pull-left" style="color: #FFFFFF;"></span>
+			<span class="title-text mui-action-back">我的地址</span>
+			<span id="addAddress" class="mui-pull-right">新增</span>
+
+		</header>
+
+		<div class="mui-content" style="min-height: 600px;background-color: #FFFFFF;">
+
+			<div class="Address-Box">
+				<ul class="mui-table-view" id="OA_task_1">
+
+				</ul>
+
+			</div>
+		</div>
+
+	</body>
+	<script src="../../js/mui.min.js"></script>
+	<script src="../../js/jquery-3.1.1.js"></script>
+	<script type="text/javascript" src="../../js/app.js"></script>
+	<script type="text/javascript" src="../../js/config.js"></script>
+	<script type="text/javascript">
+		mui.init();
+		mui.plusReady(function() {
+
+			var state;
+			state = app.getState();
+			/*console.log(state.Account);*/
+			$.ajax({
+				url: SERVER_URL + 'GetAllAddress',
+				type: "post",
+				data: {
+					account: state.Account,
+
+				},
+				dataType: "json",
+				success: function(data) {
+					/*console.log(JSON.stringify(data));*/
+					if(data.code == 200) {
+						mui.each(data.data, function(index, item) {
+							var html = '';
+							html += '<li class="mui-table-view-cell mui-media">';
+							html += '<div class="mui-slider-left mui-disabled">';
+							html += '<a class="mui-btn mui-btn-primary">设为默认</a>';
+							html += '</div>';
+							html += '<div class="mui-slider-right mui-disabled">';
+							html += '<a class="mui-btn mui-btn-purple">修改</a>';
+							html += '<a class="mui-btn mui-btn-grey">删除</a>';
+							html += '</div>';
+							html += '<div class="mui-slider-handle">';
+							html += '<div class="mui-media-body">';
+							html += '<span class="address">' + item.address + '</span>';
+							html += '<span style="display:none;" class="ad-id">' + item.addressid + '</span>';
+							html += '<span class="defalut-address"></span>';
+							html += '<p class="mui-ellipsis">';
+							html += '<span class="delivername">' + item.delivername + '</span>';
+							html += '<span>&nbsp;</span>';
+							html += '<span class="delivertel">' + item.delivertel + '</span>';
+							html += '<span>&nbsp;</span>';
+							html += '<span class="deliverbox">' + item.deliverbox + '</span>';
+							html += '</p>';
+							html += '</div>';
+							html += '</div>';
+							html += '</li>';
+							$('#OA_task_1').append(html);
+						});
+
+					} else {
+
+					}
+					setdefalut();
+				},
+				error: function() {
+
+				},
+				complete: function() {}
+			});
+			mui('#OA_task_1').on('tap', '.mui-btn-grey', function(event) {
+				var elem = this;
+				var li = elem.parentNode.parentNode;
+				mui.confirm('确认删除该条地址？', '提示', btnArray, function(e) {
+					if(e.index == 0) {
+						li.parentNode.removeChild(li);
+						console.log($(li).find('.ad-id').text());
+						delAddresss($(li).find('.ad-id').text());
+					} else {
+						setTimeout(function() {
+							mui.swipeoutClose(li);
+						}, 0);
+					}
+				});
+			});
+			mui('#OA_task_1').on('tap', '.mui-btn-purple', function(event) {
+				var elem = this;
+				var li = elem.parentNode.parentNode;
+				regAddress($(li).find('.ad-id').text(),
+					$(li).find('.address').text(),
+					$(li).find('.delivername').text(),
+					$(li).find('.delivertel').text(),
+					$(li).find('.deliverbox').text()
+				);
+				mui.swipeoutClose(li);
+			});
+			mui('#OA_task_1').on('tap', '.mui-btn-primary', function(event) {
+				var elem = this;
+				var li = elem.parentNode.parentNode.parentNode;
+				var li2 = elem.parentNode.parentNode; //关闭使用
+				mui.confirm('确认设为默认？', '提示', btnArray, function(e) {
+					if(e.index == 0) {
+						var fir = document.getElementById("OA_task_1").querySelector('li:first-child'); //获取第一个节点
+						li.insertBefore(li2, fir);
+
+						updefalut($("ul li:first").find('.ad-id').text());
+						setTimeout(function() {
+							mui.swipeoutClose(li2);
+						}, 0);
+					} else {
+						setTimeout(function() {
+							mui.swipeoutClose(li2);
+						}, 0);
+					}
+				});
+			});
+			$(document).on('click', '.mui-table-view-cell', function(event) {
+				var elem = this;
+				var li = elem.parentNode;
+				var li2 = elem; //关闭使用
+				mui.confirm('确认设为默认？', 'Tip', btnArray, function(e) {
+					if(e.index == 0) {
+						var fir = document.getElementById("OA_task_1").querySelector('li:first-child'); //获取第一个节点
+						li.insertBefore(li2, fir);
+
+						updefalut($("ul li:first").find('.ad-id').text());
+						setTimeout(function() {
+							mui.swipeoutClose(li2);
+						}, 0);
+					} else {
+						setTimeout(function() {
+							mui.swipeoutClose(li2);
+						}, 0);
+					}
+				});
+			});
+			var btnArray = ['确认', '取消'];
+
+			setdefalut();
+
+			var myAddress_reg = mui.preload({
+				"id": 'myAddress_reg',
+				"url": 'myAddress_reg.html'
+			});
+
+			function delAddresss(adid) {
+				$.ajax({
+					url: SERVER_URL + 'DelAddress',
+					type: "post",
+					data: {
+						account: state.Account,
+						adid: adid,
+					},
+					dataType: "json",
+					success: function(data) {
+						/*console.log(JSON.stringify(data));*/
+						if(data.code == 200) {
+							mui.toast(data.msg);
+							setdefalut(); //设置默认地址
+						} else {
+							mui.alert(data.msg);
+						}
+
+					},
+					error: function() {
+
+					},
+
+				});
+			}
+
+			function regAddress(adid, a1, a2, a3, a4) {
+				console.log(adid + a1 + a2 + a3 + a4);
+				mui.fire(myAddress_reg, 'getDetail', {
+					'addressid': adid,
+					'address': a1,
+					'name': a2,
+					'tel': a3,
+					'box': a4,
+				});
+				mui.openWindow({
+					id: 'myAddress_reg',
+
+					show: {
+						aniShow: 'pop-in'
+					},
+					styles: {
+						popGesture: 'hide'
+					},
+
+					waiting: {
+						autoShow: false
+					}
+				});
+
+			}
+
+			function updefalut(adid) {
+				/*console.log(adid);*/
+				$.ajax({
+					url: SERVER_URL + 'SetAddress',
+					type: "post",
+					data: {
+						account: state.Account,
+						adid: adid,
+					},
+					dataType: "json",
+					success: function(data) {
+						/*console.log(JSON.stringify(data));*/
+						if(data.code == 200) {
+							mui.toast(data.msg);
+							setdefalut(); //设置默认地址
+						} else {
+							mui.alert(data.msg);
+						}
+
+					},
+					error: function() {
+
+					},
+
+				});
+			}
+
+			function setdefalut() {
+				$("ul li").find('.defalut-address').html('');
+				$("ul li:first").find('.defalut-address').html('默认地址');
+			}
+
+			$('#addAddress').click(function() {
+				mui.openWindow({
+					id: 'myAddress_add',
+					url: 'myAddress_add.html',
+					show: {
+						aniShow: 'pop-in'
+					},
+					styles: {
+						popGesture: 'hide'
+					},
+					waiting: {
+						autoShow: false
+					}
+				});
+			});
+
+		});
+
+		window.addEventListener('refresh', function(e) { //执行刷新
+			location.reload();
+		});
+	</script>
+	<script src="../../js/mui.pullToRefresh.js"></script>
+	<script src="../../js/mui.pullToRefresh.material.js"></script>
+	<script type="text/javascript" src="../../js/pulldown.js"></script>
+
+</html>

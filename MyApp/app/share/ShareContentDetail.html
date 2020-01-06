@@ -1,0 +1,816 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link rel="stylesheet" href="../../css/mui.min.css">
+		<link rel="stylesheet" href="../../css/pulldown.css" />
+		<link rel="stylesheet" href="../../css/iconfont.css" />
+		<link rel="stylesheet" href="../../css/preimg.css" />
+
+		<style>
+			html,
+			body {
+				background-color: #FFFFFF;
+				font-family: "微软雅黑";
+			}
+			
+			.mui-bar-nav {
+				background-color: #FFCC33;
+			}
+			
+			.Share-Box {
+				background-color: #DDDDDD;
+			}
+			
+			.Share-Box-item {
+				margin-bottom: 10px;
+				background-color: #FFFFFF;
+			}
+			
+			.share-header,
+			.share-footer {
+				position: relative;
+				display: -webkit-box;
+				display: -webkit-flex;
+				display: flex;
+				min-height: 44px;
+				padding: 10px 15px;
+				-webkit-box-pack: justify;
+				-webkit-justify-content: space-between;
+				justify-content: space-between;
+				-webkit-box-align: center;
+				-webkit-align-items: center;
+				align-items: center;
+			}
+			
+			.share-footer {
+				color: #CDD3D8;
+				margin-bottom: 10px;
+				border-top: 1px dashed #DDDDDD;
+			}
+			
+			.share-header {
+				font-size: 17px;
+				border-radius: 2px 2px 0 0;
+			}
+			
+			.share-header:after {
+				top: auto;
+				bottom: 0;
+			}
+			
+			.share-header>img:first-child {
+				font-size: 0;
+				line-height: 0;
+				float: left;
+				width: 45px;
+				height: 45px;
+			}
+			
+			.share-media {
+				vertical-align: bottom;
+				color: #fff;
+				background-position: center;
+				background-size: cover;
+			}
+			
+			.share-header.share-media {
+				display: block;
+				padding: 10px;
+			}
+			
+			.share-body {
+				font-size: 14px;
+				font-weight: 500;
+				line-height: 20px;
+				margin-bottom: 1px;
+				margin-left: 60px;
+				color: #333;
+				padding-top: 5px;
+			}
+			
+			.share-body p {
+				font-size: 13px;
+				margin-bottom: 0;
+			}
+			
+			.share-content-text {
+				padding: 3px 10px;
+				word-wrap: break-word;
+				color: #464646;
+			}
+			
+			.user-img {
+				border-radius: 45px;
+			}
+			
+			i:active {
+				color: #007aff;
+			}
+			
+			.share-content-img {
+				padding: 5px;
+			}
+			
+			.share-content-img div {
+				padding: 1px;
+			}
+			
+			.share-content-img img {
+				width: 100%;
+				height: 140px;
+				border-radius: 5px;
+			}
+			
+			.Share-Comment-Box {
+				background-color: #666;
+			}
+			
+			.Share-Comment-Box-header {
+				background-color: #FFFFFF;
+				color: #666666;
+				height: 45px;
+				line-height: 45px;
+				padding-left: 10px;
+				border-bottom-color: currentColor;
+			}
+			
+			.Share-Comment-Box-body {
+				background-color: #FFFFFF;
+				color: #666666;
+				padding-left: 0px;
+			}
+			
+			.comment-media {
+				vertical-align: bottom;
+				background-position: center;
+				background-size: cover;
+				display: block;
+				padding: 10px 10px 1px 10px;
+				font-size: 17px;
+				border-bottom-color: currentColor;
+			}
+			
+			.comment-media>img:first-child {
+				font-size: 0;
+				line-height: 0;
+				float: left;
+				width: 45px;
+				height: 45px;
+			}
+			
+			.comment-media:after {
+				top: auto;
+				bottom: 0;
+			}
+			
+			.comment-body {
+				font-size: 14px;
+				font-weight: 500;
+				line-height: 20px;
+				margin-left: 60px;
+				color: #333;
+				padding-top: 3px;
+				padding-bottom: 5px;
+				/*	border-bottom: 1px dashed #DDDDDD;*/
+			}
+			
+			.comment-text {
+				padding-bottom: 5px;
+				font-size: 16px;
+			}
+			
+			.comment-reply {
+				border-left: 1px solid #DDDDDD;
+				padding: 1px 10px 5px 5px;
+			}
+			
+			.reply_per_from {
+				color: #999999;
+			}
+			
+			.reply_per_to {
+				color: #999999;
+			}
+			
+			.catmore {
+				padding-left: 6px;
+				color: #999999;
+			}
+			
+			.time {
+				color: #999999;
+				font-size: 11px;
+			}
+			
+			.floor {
+				padding-left: 10px;
+				color: #999999;
+				font-size: 14px;
+			}
+			
+			.WatchMore {
+				line-height: 45px;
+				text-align: center;
+				width: 100%;
+				height: 45px;
+				color: #999999;
+				background-color: #FFFFFF;
+			}
+			
+			.bottommsg {
+				line-height: 45px;
+				text-align: center;
+				width: 100%;
+				height: 45px;
+				color: #999999;
+				background-color: #FFFFFF;
+			}
+			
+			.Replay-bottom {
+				position: fixed;
+				background-color: #EFEFEF;
+				width: 100%;
+				height: 50px;
+				/*text-align: center;*/
+				padding: 5px;
+				bottom: 0px;
+			}
+			/*.Replay-bottom>span:first-child {
+				color: #929292;
+				padding-left: 10px;
+				padding-right: 10px;
+			}*/
+			
+			.replay-input {
+				border-radius: 10px;
+				background-color: #FFFFFF;
+				padding: 0px 40px 0px 10px;
+				font-size: 16px;
+				color: #666666;
+			}
+			
+			.head-bar-center {
+				float: left;
+				width: 65%;
+				padding-right: 5px;
+				height: 100%;
+				padding-left: 5px;
+				padding-bottom: 5px;
+				line-height: 45px;
+				line-height: 45px;
+				position: relative;
+			}
+			
+			.head-bar-input {
+				position: absolute;
+				background-color: #FFFFFF;
+				border-radius: 5px;
+				height: 30px;
+				width: 100%;
+				bottom: 10px;
+				left: 10px;
+			}
+			
+			.head-bar-input i {
+				font-size: 16px;
+				color: #FFCC33;
+				position: absolute;
+				bottom: 7px;
+				left: 5px;
+			}
+			
+			.head-bar-input input {
+				width: 100%;
+				min-height: 28px;
+				float: left;
+				border: 0px;
+				font-size: 14px;
+				color: #666666;
+				overflow-y: scroll;
+				-webkit-overflow-scrolling: touch;
+			}
+			
+			.hint-text {
+				line-height: 30px;
+				vertical-align: top;
+				font-size: 14px;
+				color: #dadada;
+			}
+			
+			input::-webkit-input-placeholder {
+				font-size: 14px;
+				color: #dadada;
+			}
+			
+			input:-moz-placeholder {
+				/* Mozilla Firefox 4 to 18 */
+				font-size: 14px;
+				color: #dadada;
+			}
+			
+			input::-moz-placeholder {
+				/* Mozilla Firefox 19+ */
+				font-size: 14px;
+				color: #dadada;
+			}
+			
+			input:-ms-input-placeholder {
+				/* Internet Explorer 10+ */
+				font-size: 14px;
+				color: #dadada;
+			}
+			
+			.icon-xin {
+				color: #DD524D;
+			}
+			
+			.xin-btn:active {
+				color: #DD524D;
+				transform: scale(1.5, 1.5);
+				transition: transform 0.1s;
+			}
+			
+			.icon-xin-fill {
+				color: #DD524D;
+			}
+			
+			.likecount {
+				vertical-align: text-top;
+			}
+			
+			.pinglun-btn {
+				color: #666;
+			}
+			
+			.pinglun-btn:active {
+				color: #93D1FF;
+				transform: scale(1.5, 1.5);
+				transition: transform 0.1s;
+			}
+			
+			.liulan-btn {
+				color: #666;
+			}
+			
+			.reply-btn {
+				color: #66CCFF;
+			}
+		</style>
+		<style>
+			[v-cloak] {
+				display: none;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<span class="mui-action-back mui-icon mui-icon-arrowleft mui-pull-left" style="color: #FFFFFF;"></span>
+			<h1 class="mui-title" style="color: #FFFFFF;">详情</h1>
+
+		</header>
+		<div class="mui-content">
+			<div class="head-bar-zhanwei">
+				<!--占位-->
+			</div>
+			<div id="Share-Box" v-cloak>
+				<div class="Share-Box-item" v-cloak v-for="share in items">
+					<div class="share-header share-media">
+						<img v-bind:src="surl+share.userData.userimage" class="user-img" />
+						<div class="share-body">
+							<span>{{share.userData.username}}</span>
+							<span class="mui-pull-right del" style="color: #999999;padding-right: 10px;" v-if="share.userData.userid==userid" v-bind:data-sid="share.id">删除</span>
+							<p>{{share.time}}</p>
+						</div>
+					</div>
+					<div class="share-content">
+						<div class="share-content-text" v-html="share.content"></div>
+						<div class="share-content-img mui-row">
+							<div class="mui-col-xs-4 mui-col-sm-4" v-for="imgitem in share.imgdata">
+								<img v-bind:src="surl+imgitem.img" data-preview-src="" data-preview-group="1">
+							</div>
+						</div>
+					</div>
+					<div class="share-footer">
+						<span class="mui-col-xs-4 mui-col-sm-4 mui-icon iconfont icon-liulan liulan-btn" v-if="share.visitcount>0" style="text-align: center;" v-bind:data-sid="share.id">
+							<font style="font-size: 14px;vertical-align: text-top;">{{share.visitcount}}</font></span>
+						<span class="mui-col-xs-4 mui-col-sm-4 mui-icon iconfont icon-liulan liulan-btn" v-if="share.visitcount<1" style="text-align: center;" v-bind:data-sid="share.id">
+							<font style="font-size: 14px;vertical-align: text-top;">浏览</font></span>
+						<span class="mui-col-xs-4 mui-col-sm-4 mui-icon iconfont icon-pinglun pinglun-btn" v-if="share.commentcount>0" style="text-align: center;" v-bind:data-sid="share.id">
+							<font style = "font-size:14px;vertical-align: text-top;" >{{share.commentcount}}</font></span >
+							<span class="mui-col-xs-4 mui-col-sm-4 mui-icon iconfont icon-pinglun pinglun-btn" v-if="share.commentcount<1" style="text-align: center;" v-bind:data-sid="share.id">
+							<font style = "font-size:14px;vertical-align: text-top;" >评论</font></span >
+							<span class="mui-col-xs-4 mui-col-sm-4 mui-icon iconfont icon-xin-fill xin-btn" v-if="share.likecount>0" style="text-align: center;" v-bind:data-sid="share.id">
+							<font style="font-size: 14px;" class="likecount">{{share.likecount}}</font>
+							</span>
+						<span class="mui-col-xs-4 mui-col-sm-4 mui-icon iconfont icon-xin xin-btn" v-if="share.likecount<1" style="text-align: center;" v-bind:data-sid="share.id">
+							<font style="font-size: 14px;" class="likecount">点赞</font>
+							</span>
+						</span>
+					</div>
+				</div>
+
+			</div>
+
+			<div class="Share-Comment-Box" id="comment-media" v-cloak>
+				<!--评论区-->
+				<div v-if="items!=null">
+					<div class="Share-Comment-Box-header" v-cloak v-if="items.length > 0">评论{{items.length}}条</div>
+					<div class="Share-Comment-Box-body">
+						<div class="comment-media" v-cloak v-for="(item,index) in items">
+							<img v-bind:src="surl+item.userimg" class="user-img" />
+							<div class="comment-body">
+								<span class="comper" v-bind:data-pid="item.id" v-bind:data-uid="item.userid">{{item.username}}</span>
+								<!--评论start-->
+								<span class="mui-icon iconfont icon-pinglun mui-pull-right reply-btn" style="font-size: 20px;padding-bottom: 1px;padding-right: 10px;">
+									
+								</span>
+								<!--评论end-->
+								<!--点赞-->
+								<span class="mui-pull-right mui-icon iconfont icon-xin-fill xin-btn" v-if="item.likecount>0" style="padding-right: 10px;" v-bind:data-sid="item.id">
+							<font style="font-size: 14px;" class="likecount">{{item.likecount}}</font>
+							</span>
+								<span class="mui-pull-right mui-icon iconfont icon-xin xin-btn" v-if="item.likecount<1" style="padding-right: 10px;" v-bind:data-sid="item.id">
+							<font style="font-size: 14px;" class="likecount"></font>
+							</span>
+								<!--点赞-->
+
+								<p><span class="time">{{item.time}}</span><span class="floor">{{items.length-index}}楼</span></p>
+								<div class="comment-text">{{item.content}}
+								</div>
+								<div class="comment-reply" v-if="item.replydata!==null" v-for="reply in item.replydata">
+									<div v-if="reply.reply_form_p[0].userid!==reply.reply_to_p[0].userid">
+										<span><img v-bind:src="surl+reply.reply_form_p[0].userimage" style="height: 18px;width: 18px;border-radius:18px;vertical-align: middle;"></span>
+										<span class="reply_per_from" v-bind:data-pid="item.id" v-bind:data-uid="reply.reply_to_p[0].userid">{{reply.reply_form_p[0].username}}</span> 回复
+										<span><img v-bind:src="surl+reply.reply_to_p[0].userimage" style="height: 18px;width: 18px;border-radius:18px;vertical-align: middle;"></span>
+										<span class="reply_per_to">{{reply.reply_to_p[0].username}}</span>:
+										<span v-html="reply.reply_context"></span>
+									</div>
+									<div v-if="reply.reply_form_p[0].userid==reply.reply_to_p[0].userid">
+										<span><img v-bind:src="surl+reply.reply_form_p[0].userimage" style="height: 18px;width: 18px;border-radius:18px;vertical-align: middle;"></span>
+										<span class="reply_per_from" v-bind:data-pid="item.id" v-bind:data-uid="reply.reply_to_p[0].userid">{{reply.reply_form_p[0].username}}</span>:
+										<span v-html="reply.reply_context"></span>
+									</div>
+
+								</div>
+								<div v-if="item.replydata!=null">
+									<div class="catmore" v-if="item.replydata.length<1">暂无回复</div>
+									<div class="catmore" v-if="item.replydata.length<5&&item.replydata.length>0">共{{item.replydata.length}}条回复</div>
+									<div class="catmore" v-if="item.replydata.length>5">共{{item.replydata.length}}条回复，查看更多↓</div>
+								</div>
+
+							</div>
+						</div>
+					</div>
+					<div v-if="items.length > 10">
+						<div class="WatchMore">查看更多</div>
+					</div>
+					<div v-if="items.length>0&&items.length<=10">
+						<div class="bottommsg">没有更多了</div>
+					</div>
+				</div>
+
+				<div v-if="items==null">
+					<div class="bottommsg">暂无评论</div>
+				</div>
+			</div>
+
+			<div style="height: 50px;width: 100%;background-color: #FFFFFF;">
+				<!--占位-->
+			</div>
+			<div class="Replay-bottom">
+				<span class="mui-icon iconfont icon-biaoqing mui-pull-left" style="color: #999999;line-height: 40px;font-size: 30px;"></span>
+				<span class="head-bar-center">
+				<span class="head-bar-input">
+				<input type="text" id="input-reply" placeholder="说两句吧" value=""/>
+				</span>
+				</span>
+				<span class="mui-pull-right" id="send-btn-false" style="color: #DDDDDD;line-height: 40px;padding-left: 10px;padding-right: 15px;">
+			发送
+			</span>
+				<span class="mui-pull-right" id="send-btn-true" style="color: #666666;line-height: 40px;padding-left: 10px;padding-right: 15px;display: none;">
+			发送
+			</span>
+			</div>
+
+		</div>
+	</body>
+	<script src="../../js/mui.min.js"></script>
+	<!--vue-->
+	<script type="text/javascript" src="../../plugins/vue/vue.min.js"></script>
+	<script type="text/javascript" src="../../plugins/vue/vue-resource.min.js"></script>
+	<script type="text/javascript" src="../../js/jquery-3.1.1.js"></script>
+	<script type="text/javascript" src="../../js/config.js"></script>
+	<script type="text/javascript" src="../../js/app.js"></script>
+
+	<script src="../../js/mui.zoom.js"></script>
+	<script src="../../js/mui.previewimage.js"></script>
+
+	<script>
+		document.querySelector("input").addEventListener("input", function() {
+			var content_text = $(this).val();
+			if(content_text !== '') {
+				/*	console.log(content_text);*/
+				$('#send-btn-true').css('display', 'inline-block');
+				$('#send-btn-false').css('display', 'none');
+			} else {
+				$('#send-btn-false').css('display', 'inline-block');
+				$('#send-btn-true').css('display', 'none');
+			}
+
+		});
+		mui.init();
+		mui.previewImage();
+		mui.plusReady(function() {
+			var page = plus.webview.currentWebview();
+			//接受上一页面传过来的值；
+			var sid = page.sid;
+			var state = app.getState();
+			var comper = null; //评论人
+			var pid = null; //评论ID
+			var type = 0; //0：评论，1：回复
+			var to_id = null; //被回复人
+			var form_id = state.Account; //回复人
+			var userid = state.Account;
+			console.log(sid);
+			var shareBox = new Vue({
+				el: '#Share-Box',
+				data: {
+					items: "",
+					surl: SERVER_URL,
+					userid:userid,
+				},
+
+			});
+			var com = new Vue({
+				el: '#comment-media',
+				data: {
+					items: "",
+					surl: SERVER_URL,
+				},
+
+			});
+
+			
+			showShareData(sid, state.Account);
+			getAllComment(sid);
+
+			function clearAll() {
+				comper = null;
+				pid = null;
+				type = 0;
+				$('#input-reply').val('');
+				$('#input-reply').attr('placeholder', '说两句吧');
+			}
+			$(document).on('click', '.reply-btn', function() {
+				$('#input-reply').focus();
+				comper = $(this).parent().find('.comper').text();
+				pid = $(this).parent().find('.comper').attr('data-pid');
+				to_id = $(this).parent().find('.comper').attr('data-uid');
+				console.log(comper + pid);
+				if(comper !== null) {
+					type = 1;
+					$('#input-reply').attr('placeholder', '回复' + comper);
+				}
+
+			});
+			$(document).on('click', '.reply_per_from', function() {
+				$('#input-reply').focus();
+				comper = $(this).text();
+				pid = $(this).attr('data-pid');
+				to_id = $(this).attr('data-uid');
+				console.log(comper + pid);
+				if(comper !== null) {
+					type = 1;
+					$('#input-reply').attr('placeholder', '回复' + comper);
+				}
+
+			});
+
+			$(document).on('click', '.pinglun-btn', function() {
+				$('#input-reply').focus();
+				type = 0;
+				$('#input-reply').attr('placeholder', '说两句吧');
+				console.log(sid);
+			});
+			$(document).on('click', '.del', function() {
+				var sid = $(this).attr('data-sid');
+				console.log(sid);
+				DelOneShare(sid);
+			});
+			$(document).on('click', '#send-btn-true', function() {
+				var content_text = $('#input-reply').val();
+				switch(type) {
+					case 0:
+						console.log('评论');
+						sendComment(sid, content_text, state.Account);
+						break;
+					case 1:
+						console.log('回复');
+						sendReply(pid, content_text, form_id, to_id);
+						break;
+				}
+
+			});
+			$(document).on('click', '.xin-btn', function() {
+				var sid = $(this).attr('data-sid');
+				$(this).removeClass('xin-icon');
+				var likecount = $(this).find('.likecount').text();
+
+				if(isNaN(likecount) || likecount == null || likecount == '') {
+					likecount = 0;
+				}
+
+				console.log(likecount)
+				likecount = parseInt(likecount);
+				$(this).addClass('icon-xin-fill');
+				likecount += 1;
+				sendLike(sid, userid);
+				$(this).find('.likecount').html(likecount);
+			});
+
+			function sendLike($lid, $uid) {
+				$.ajax({
+					url: SERVER_URL + 'SendLike', //后台提供的接口
+					type: "post", //请求方式是post
+					data: {
+						'likeid': $lid,
+						'userid': $uid
+					},
+					dataType: "json", //数据类型是json型
+					success: function(data) {
+						console.log(JSON.stringify(data));
+						//成功时返回的data值，注意这个data是后台返回的值，上面的data是你要传给后台的值
+
+					},
+
+					error: function() {
+						mui.alert("网络访问异常！");
+					},
+					complete: function() {}
+
+				});
+			}
+
+			function sendReply($comid, $content, $form_user, $to_user) {
+				console.log($comid + $content + $form_user + $to_user);
+				$.ajax({
+					url: SERVER_URL + 'SendReply', //后台提供的接口
+					type: "post", //请求方式是post
+					data: {
+						'comid': $comid,
+						'content': $content,
+						'form_user': $form_user,
+						'to_user': $to_user
+
+					},
+					dataType: "json", //数据类型是json型 
+					success: function(data) {
+						/*console.log(JSON.stringify(data));*/
+						//成功时返回的data值，注意这个data是后台返回的值，上面的data是你要传给后台的值
+						mui.toast(data.msg);
+					},
+					error: function() {
+						mui.alert("网络访问异常！");
+					},
+					complete: function() {
+						clearAll();
+						getAllComment(sid);
+					}
+
+				});
+			}
+
+			function sendComment($sid, $content_text, $userid) {
+				console.log($sid + $content_text + $userid);
+				$.ajax({
+					url: SERVER_URL + 'SendComment', //后台提供的接口
+					type: "post", //请求方式是post
+					data: {
+						'account': $userid,
+						'contenttext': $content_text,
+						'shareid': $sid
+					},
+					dataType: "json", //数据类型是json型 
+					success: function(data) {
+						/*console.log(JSON.stringify(data));*/
+						//成功时返回的data值，注意这个data是后台返回的值，上面的data是你要传给后台的值
+						mui.toast(data.msg);
+					},
+					error: function() {
+						mui.alert("网络访问异常！");
+					},
+					complete: function() {
+						clearAll();
+						getAllComment(sid);
+					}
+
+				});
+			}
+
+			function getAllComment($sid) {
+				$.ajax({
+					url: SERVER_URL + 'GetAllComment', //后台提供的接口
+					type: "get", //请求方式是post
+					data: {
+						'shareid': $sid
+					},
+					dataType: "json", //数据类型是json型 
+					success: function(data) {
+						/*console.log(JSON.stringify(data));*/
+						//成功时返回的data值，注意这个data是后台返回的值，上面的data是你要传给后台的值
+						com.items = data.data;
+						console.log(JSON.stringify(com.items));
+
+					},
+
+					error: function() {
+						mui.alert("网络访问异常！");
+					},
+					complete: function() {
+						clearAll();
+					}
+
+				});
+			}
+
+			function showShareData($sid, $userid) {
+				console.log($userid);
+				$.ajax({
+					url: SERVER_URL + 'GetOneShare', //后台提供的接口
+					type: "get", //请求方式是post
+					data: {
+						'userid': $userid,
+						'shareid': $sid
+					},
+					dataType: "json", //数据类型是json型 
+					success: function(data) {
+						console.log(JSON.stringify(data));
+						shareBox.items = data;
+						//成功时返回的data值，注意这个data是后台返回的值，上面的data是你要传给后台的值
+
+						//放置图片
+
+					},
+
+					error: function() {
+						mui.alert("网络访问异常！");
+					},
+					complete: function() {}
+
+				});
+			}
+			//删除
+			function DelOneShare($sid) {
+				$.ajax({
+					url: SERVER_URL + 'DelOneShare', //后台提供的接口
+					type: "post", //请求方式是post
+					data: {
+						'shareid': $sid,
+					},
+					dataType: "json", //数据类型是json型
+					success: function(data) {
+						console.log(JSON.stringify(data));
+						//成功时返回的data值，注意这个data是后台返回的值，上面的data是你要传给后台的值
+						/*showShareData();*/
+						mui.toast('删除成功');
+						mui.back();
+					},
+
+					error: function() {
+						mui.alert("网络访问异常！");
+					},
+					complete: function() {}
+
+				});
+			}
+			mui.each(document.querySelectorAll('.mui-content'), function(index, pullRefreshEl) {
+				mui(pullRefreshEl).pullToRefresh({
+					down: {
+						callback: function() {
+							var self = this;
+							showShareData(sid, state.Account);
+							getAllComment(sid);
+							setTimeout(function() {
+								console.log('下拉' + index);
+								self.endPullDownToRefresh();
+								self.refresh(true); //重新加载上拉
+							}, 1000);
+						}
+					},
+				});
+			});
+
+		});
+	</script>
+	<script src="../../js/mui.pullToRefresh.js"></script>
+	<script src="../../js/mui.pullToRefresh.material.js"></script>
+
+	</body>
+
+</html>

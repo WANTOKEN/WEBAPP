@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link rel="stylesheet" href="../../css/mui.min.css">
+		<link rel="stylesheet" href="../../css/pulldown.css" />
+		<link rel="stylesheet" href="../../css/iconfont.css" />
+		<link rel="stylesheet" href="../../css/preimg.css" />
+		<style>
+			html,
+			body {
+				background-color: #FFFFFF;
+				font-family: "微软雅黑";
+			}
+			
+			.mui-bar-nav {
+				background-color: #FFCC33;
+			}
+			
+			.Share-Box {
+				background-color: #DDDDDD;
+			}
+			
+			.Share-Box-item {
+				margin-bottom: 10px;
+				background-color: #FFFFFF;
+				border-bottom: 10px solid #F5F5F5;
+			}
+			
+			.share-header,
+			.share-footer {
+				position: relative;
+				display: -webkit-box;
+				display: -webkit-flex;
+				display: flex;
+				min-height: 44px;
+				padding: 10px 15px;
+				-webkit-box-pack: justify;
+				-webkit-justify-content: space-between;
+				justify-content: space-between;
+				-webkit-box-align: center;
+				-webkit-align-items: center;
+				align-items: center;
+			}
+			
+			.share-footer {
+				color: #CDD3D8;
+				border-top: 1px dashed #DDDDDD;
+			}
+			
+			.share-header {
+				font-size: 17px;
+				border-radius: 2px 2px 0 0;
+			}
+			
+			.share-header:after {
+				top: auto;
+				bottom: 0;
+			}
+			
+			.share-header>img:first-child {
+				font-size: 0;
+				line-height: 0;
+				float: left;
+				width: 45px;
+				height: 45px;
+			}
+			
+			.share-media {
+				vertical-align: bottom;
+				color: #fff;
+				background-position: center;
+				background-size: cover;
+			}
+			
+			.share-header.share-media {
+				display: block;
+				padding: 10px;
+			}
+			
+			.share-body {
+				font-size: 14px;
+				font-weight: 500;
+				line-height: 20px;
+				margin-bottom: 0;
+				margin-left: 60px;
+				color: #333;
+				padding-top: 5px;
+			}
+			
+			.share-body p {
+				font-size: 13px;
+				margin-bottom: 0;
+			}
+			
+			.share-content-text {
+				padding: 3px 10px;
+				word-wrap: break-word;
+				color: #464646;
+			}
+			
+			.user-img {
+				border-radius: 45px;
+			}
+			
+			.fit-bottom {
+				position: fixed;
+				background-color: transparent;
+				width: 60px;
+				height: 60px;
+				text-align: center;
+				line-height: 60px;
+				bottom: 40px;
+				right: 40px;
+			}
+			
+			.share-content-img {
+				padding: 5px;
+			}
+			
+			.share-content-img div {
+				padding: 1px;
+			}
+			
+			.share-content-img img {
+				width: 100%;
+				height: 140px;
+				border-radius: 5px;
+			}
+			
+			.icon-xin {
+				color: #DD524D;
+			}
+			
+			.xin-btn:active {
+				color: #DD524D;
+				transform: scale(1.5, 1.5);
+				transition: transform 0.1s;
+			}
+			
+			.icon-xin-fill {
+				color: #DD524D;
+			}
+			
+			.likecount {
+				vertical-align: text-top;
+			}
+			
+			.pinglun-btn {
+				color: #666;
+			}
+			
+			.pinglun-btn:active {
+				color: #93D1FF;
+				transform: scale(1.5, 1.5);
+				transition: transform 0.1s;
+			}
+			
+			.liulan-btn {
+				color: #666;
+			}
+			
+			.liulan-btn:active {
+				color: #666;
+				transform: scale(1.5, 1.5);
+				transition: transform 0.1s;
+			}
+		</style>
+		<style>
+			[v-cloak] {
+				display: none;
+			}
+		</style>
+	</head>
+
+	<body style="background-color: #FFFFFF;">
+		<header class="mui-bar mui-bar-nav">
+			<h1 class="mui-title" style="color: #FFFFFF;">时膳社区</h1>
+
+		</header>
+		<div class="mui-content" style="background-color: #FFFFFF;">
+
+			<!--<div class="head-bar">
+				
+			</div>-->
+			<div class="head-bar-zhanwei">
+				<!--占位-->
+			</div>
+			<div id="Share-Box" v-cloak>
+				<div class="Share-Box-item" v-cloak v-for="(share,index) in items">
+					<div class="share-header share-media">
+						<img v-bind:src="surl+share.userData.userimage" class="user-img" />
+						<div class="share-body">
+							<span>{{share.userData.username}}</span>
+							<span class="mui-pull-right del" style="color: #999999;padding-right: 10px;" v-if="share.userData.userid==userid" v-bind:data-sid="share.sid">删除</span>
+							<p>{{share.time}}</p>
+						</div>
+					</div>
+					<div class="share-content">
+						<div class="share-content-text" v-html="share.content"></div>
+						<div class="share-content-img mui-row">
+							<div class="mui-col-xs-4 mui-col-sm-4" v-for="imgitem in share.imgdata">
+								<img v-bind:src="surl+imgitem.img" data-preview-src="" v-bind:data-preview-group="index">
+							</div>
+						</div>
+					</div>
+					<div class="share-footer">
+						<span class="mui-col-xs-4 mui-col-sm-4 mui-icon iconfont icon-liulan liulan-btn" v-if="share.visitcount>0" style="text-align: center;" v-bind:data-sid="share.sid">
+							<font style="font-size: 14px;vertical-align: text-top;">{{share.visitcount}}</font></span>
+						<span class="mui-col-xs-4 mui-col-sm-4 mui-icon iconfont icon-liulan liulan-btn" v-if="share.visitcount<1" style="text-align: center;" v-bind:data-sid="share.sid">
+							<font style="font-size: 14px;vertical-align: text-top;">浏览</font></span>
+						<span class="mui-col-xs-4 mui-col-sm-4 mui-icon iconfont icon-pinglun pinglun-btn" v-if="share.commentcount>0" style="text-align: center;" v-bind:data-sid="share.sid">
+							<font style = "font-size:14px;vertical-align: text-top;" >{{share.commentcount}}</font></span >
+							<span class="mui-col-xs-4 mui-col-sm-4 mui-icon iconfont icon-pinglun pinglun-btn" v-if="share.commentcount<1" style="text-align: center;" v-bind:data-sid="share.sid">
+							<font style = "font-size:14px;vertical-align: text-top;" >评论</font></span >
+							<span class="mui-col-xs-4 mui-col-sm-4 mui-icon iconfont icon-xin-fill xin-btn" v-if="share.likecount>0" style="text-align: center;" v-bind:data-sid="share.sid">
+							<font style="font-size: 14px;" class="likecount">{{share.likecount}}</font>
+							</span>
+						<span class="mui-col-xs-4 mui-col-sm-4 mui-icon iconfont icon-xin xin-btn" v-if="share.likecount<1" style="text-align: center;" v-bind:data-sid="share.sid">
+							<font style="font-size: 14px;" class="likecount">点赞</font>
+							</span>
+						</span>
+					</div>
+				</div>
+
+			</div>
+
+			<div class="fit-bottom">
+				<i class="mui-icon iconfont icon-jiahao-fill mui-pull-right" id="send" style="color: #FFCC33;font-size: 60px;"></i>
+			</div>
+
+		</div>
+	</body>
+
+	<script src="../../js/mui.min.js"></script>
+	<!--vue-->
+	<script type="text/javascript" src="../../plugins/vue/vue.min.js"></script>
+	<script type="text/javascript" src="../../plugins/vue/vue-resource.min.js"></script>
+	<script type="text/javascript" src="../../js/jquery-3.1.1.js"></script>
+	<script type="text/javascript" src="../../js/config.js"></script>
+	<script type="text/javascript" src="../../js/app.js"></script>
+	<script src="../../js/mui.zoom.js"></script>
+	<script src="../../js/mui.previewimage.js"></script>
+
+	<script>
+		mui.init();
+		mui.previewImage();
+		mui.plusReady(function() {
+			var state = app.getState();
+			var userid = state.Account;
+			var list = []; //新增的数据数组JSON
+			var shareBox = new Vue({
+				el: '#Share-Box',
+				data: {
+					items: "",
+					surl: SERVER_URL,
+					userid: userid,
+				},
+
+			});
+
+			//数据初始化
+			showShareData();
+
+			function showShareData() {
+				$.ajax({
+					url: SERVER_URL + 'GetShare', //后台提供的接口
+					type: "get", //请求方式是post
+					data: {
+
+					},
+					dataType: "json", //数据类型是json型
+					success: function(data) {
+						console.log(JSON.stringify(data));
+						//成功时返回的data值，注意这个data是后台返回的值，上面的data是你要传给后台的值
+						shareBox.items = null;
+						shareBox.items = data;
+						//放置图片
+
+					},
+
+					error: function() {
+						mui.alert("网络访问异常！");
+					},
+					complete: function() {}
+
+				});
+			}
+
+			function extend(obj1, obj2) {
+				//将obj2追加到obj1
+				for(var i = 0; i < obj2.length; i++) {
+					obj1.push(obj2[i]);
+				}
+			}
+
+			function getMoreShare($qindex, $self) {
+				list = [];
+				$.ajax({
+					url: SERVER_URL + 'GetMoreShare', //后台提供的接口
+					type: "get", //请求方式是post
+					data: {
+						'index': $qindex,
+					},
+					dataType: "json", //数据类型是json型
+					success: function(data) {
+						console.log(JSON.stringify(data));
+						//成功时返回的data值，注意这个data是后台返回的值，上面的data是你要传给后台的值
+						if(data !== null) {
+							list = data;
+							extend(shareBox.items, list);
+						} else {
+							$self.endPullUpToRefresh(true);
+
+						}
+
+						//放置图片
+
+					},
+
+					error: function() {
+						mui.alert("网络访问异常！");
+					},
+					complete: function() {}
+
+				});
+			}
+
+			function sendLike($lid, $uid) {
+				$.ajax({
+					url: SERVER_URL + 'SendLike', //后台提供的接口
+					type: "post", //请求方式是post
+					data: {
+						'likeid': $lid,
+						'userid': $uid
+					},
+					dataType: "json", //数据类型是json型
+					success: function(data) {
+						/*console.log(JSON.stringify(data));*/
+						//成功时返回的data值，注意这个data是后台返回的值，上面的data是你要传给后台的值
+
+					},
+
+					error: function() {
+						mui.alert("网络访问异常！");
+					},
+					complete: function() {}
+
+				});
+			}
+			//删除
+			function DelOneShare($sid) {
+				$.ajax({
+					url: SERVER_URL + 'DelOneShare', //后台提供的接口
+					type: "post", //请求方式是post
+					data: {
+						'shareid': $sid,
+					},
+					dataType: "json", //数据类型是json型
+					success: function(data) {
+						console.log(JSON.stringify(data));
+						//成功时返回的data值，注意这个data是后台返回的值，上面的data是你要传给后台的值
+						showShareData();
+					},
+
+					error: function() {
+						mui.alert("网络访问异常！");
+					},
+					complete: function() {}
+
+				});
+			}
+
+			$(document).on('click', '#send', function() {
+				sendContent();
+			});
+			$(document).on('click', '.del', function() {
+				var sid = $(this).attr('data-sid');
+				console.log(sid);
+				DelOneShare(sid);
+			});
+			$(document).on('click', '.pinglun-btn', function() {
+				var sid = $(this).attr('data-sid');
+				console.log(sid);
+				watchContent(sid);
+			});
+			$(document).on('click', '.liulan-btn', function() {
+				var sid = $(this).attr('data-sid');
+				console.log(sid);
+				watchContent(sid);
+			});
+
+			$(document).on('click', '.xin-btn', function() {
+				var sid = $(this).attr('data-sid');
+				$(this).removeClass('xin-icon');
+				var likecount = $(this).find('.likecount').text();
+				if(isNaN(likecount)) {
+					likecount = 0;
+
+				}
+				likecount = parseInt(likecount);
+				$(this).addClass('icon-xin-fill');
+				likecount += 1;
+				sendLike(sid, userid);
+				$(this).find('.likecount').html(likecount);
+			});
+
+			function watchContent($id) {
+				mui.openWindow({
+					url: "ShareContentDetail.html", //跳转地址
+					id: "ShareContentDetail", //id
+					show: {
+						aniShow: "zoom-fade-out", //页面显示动画，默认为”slide-in-right“；
+						duration: 300, //页面动画持续时间，Android平台默认100毫秒，iOS平台默认200毫秒
+						autoShow: true //页面loaded事件发生后自动显示，默认为true
+					},
+					extras: {
+						'sid': $id,
+					},
+					waiting: {
+						//title: '正在玩命搜索...' //等待对话框上显示的提示内容
+					}
+				});
+			}
+
+			function sendContent() {
+				mui.openWindow({
+					url: "ShareAreaSend.html", //跳转地址
+					id: "ShareAreaSend", //id
+					show: {
+						aniShow: "zoom-fade-out", //页面显示动画，默认为”slide-in-right“；
+						duration: 300, //页面动画持续时间，Android平台默认100毫秒，iOS平台默认200毫秒
+						autoShow: true //页面loaded事件发生后自动显示，默认为true
+					},
+					extras: {
+						//自定义扩展参数，可以用来处理页面间传值
+					},
+					waiting: {
+						//title: '正在玩命搜索...' //等待对话框上显示的提示内容
+					}
+				});
+			}
+
+			mui.each(document.querySelectorAll('.mui-content'), function(index, pullRefreshEl) {
+				mui(pullRefreshEl).pullToRefresh({
+					down: {
+						callback: function() {
+							var self = this;
+							showShareData();
+							setTimeout(function() {
+								console.log('下拉' + index);
+								self.endPullDownToRefresh();
+								self.refresh(true); //重新加载上拉
+							}, 1000);
+						}
+					},
+					up: {
+						callback: function() {
+							var self = this;
+							console.log(shareBox.items);
+							var qindex = shareBox.items.length;
+							var jsonData = shareBox.items[shareBox.items.length - 1]; //获取最后一个JSON数据
+							console.log(JSON.stringify(jsonData));
+							var qid = jsonData['id'];
+							console.log(qid); //获取ID
+							getMoreShare(qid, self);
+							var lindex = shareBox.items.length;
+							setTimeout(function() {
+								self.endPullUpToRefresh();
+							}, 1000);
+
+						}
+					}
+
+				});
+			});
+		});
+	</script>
+	<script src="../../js/mui.pullToRefresh.js"></script>
+	<script src="../../js/mui.pullToRefresh.material.js"></script>
+	</body>
+
+</html>

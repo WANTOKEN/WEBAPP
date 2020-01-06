@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+		<link rel="stylesheet" href="../../css/mui.min.css">
+		<link href="../../css/style.css" rel="stylesheet" />
+		<link rel="stylesheet" href="../../css/iconfont.css" />
+		<style>
+			#imgdiv {
+				width: 100%;
+				background: #000000;
+				margin:auto 0px;
+			}
+			#imgdiv img{
+				width: 100%;
+				height: 100%;
+			}
+		</style>
+
+	</head>
+
+	<body style="background-color:#000000;" id="body">
+		<header class="mui-bar mui-bar-nav">
+			<span class="mui-action-back mui-icon mui-icon-arrowleft mui-pull-left" style="color: #FFFFFF;"></span>
+			<span class="title-text mui-action-back">头像</span>
+			<span class="mui-icon mui-icon-more-filled mui-pull-right" style="color:#FFFFFF;font-weight: bold;" id="open-select"></span>
+		</header>
+		<div class="mui-content" style="background-color: #000000;">
+			<div id="imgdiv">
+				<img id="img" src="../../img/appicon/appicon.png" />
+			</div>
+
+		</div>
+		<script src="../../js/mui.min.js "></script>
+		<script src="../../js/app.js"></script>
+		<script type="text/javascript" src="../../js/jquery-3.1.1.js"></script>
+		<script type="text/javascript" src="../../js/config.js"></script>
+
+		<script>
+			var state = app.getState();
+			
+			var height = window.innerHeight; //获取页面实际高度
+			var width = window.innerWidth;
+			document.getElementById("body").style.height = height+'px';
+			document.getElementById("body").style.width = width +'px';
+			document.getElementById("img").style.height =  width +'px';
+			document.getElementById("img").style.width =  width +'px';
+			console.log(height+':'+width);
+			var paTop = (height-100-width)/2;
+			console.log(paTop);
+			document.getElementById("imgdiv").style.paddingTop = paTop+'px';
+			$('#img').attr('src', state.head);
+			mui.init();
+			mui.plusReady(function() {
+
+				$('#open-select').click(function() {
+					plus.nativeUI.actionSheet({
+						cancel: "取消",
+						buttons: [{
+							title: "拍照"
+						}, {
+							title: "从相册中选择"
+						}]
+					}, function(e) {
+						//1 是拍照  2 从相册中选择
+						switch(e.index) {
+							case 1:
+								appendByCamera();
+								break;
+							case 2:
+								appendByGallery();
+								break;
+						}
+					});
+				});
+
+				// 拍照添加文件
+				function appendByCamera() {
+					plus.camera.getCamera().captureImage(function(e) {
+						plus.io.resolveLocalFileSystemURL(e, function(entry) {
+							var path = entry.toLocalURL();
+							cutImage(path);
+							/*	console.log('path:'+path);*/
+						}, function(e) {
+							mui.toast("读取拍照文件错误：" + e.message);
+						});
+					});
+				}
+
+				// 相册选取照片
+				function appendByGallery() {
+					plus.gallery.pick(function(path) {
+						cutImage(path);
+					});
+				}
+
+				function cutImage(path) {
+					mui.openWindow({
+						url: 'cutimg.html',
+						id: 'cutimg',
+						extras: {
+							path: path,
+						},
+						show: {
+							aniShow: 'zoom-fade-in',
+							duration: 800
+						},
+						waiting: {
+							autoShow: true
+						}
+					});
+				}
+
+				function update_head_img(e) {
+					var my_icon = e.detail.img;
+					$("#img").attr('src', my_icon);
+					state.head = my_icon;
+					console.log(state.head);
+					app.setState(state);
+					var preView = plus.webview.getWebviewById('app/InfoPage.html');
+					console.log(preView);
+					mui.fire(preView, 'refashInfo', {
+
+					});
+					var preView2 = plus.webview.getWebviewById('myInfoDetail.html');
+					console.log(preView2);
+					mui.fire(preView2, 'refashInfo', {
+
+					});
+					app.baseImgFile(state.userid, my_icon, 50, function(data) {
+						console.log('data.target：' + data.target);
+						upload(data.target);
+					});
+				}
+				// 上传文件
+				function upload(imgpath) {
+					console.log('imgpath：' + imgpath);
+					/*console.log(state.userid);*/
+					var wt = plus.nativeUI.showWaiting();
+					var task = plus.uploader.createUpload(SERVER_URL + 'UploadHead', {
+							method: "POST"
+						},
+						function(t, status) { //上传完成
+							if(status == 200) {
+								console.log(t.responseText)
+								var data = JSON.parse(t.responseText);
+								if(data.code == 200) {
+									state.head = SERVER_URL + data.url;
+									console.log(state.head);
+									app.setState(state);
+									wt.close(); //关闭等待提示按钮
+									plus.nativeUI.toast(data.msg);
+
+								} else {
+									/*mui.alert(data.msg);*/
+									wt.close(); //关闭等待提示按钮
+								}
+
+							} else {
+								alert("上传失败：" + status);
+								wt.close(); //关闭等待提示按钮
+							}
+						}
+					);
+					//添加其他参数
+
+					task.addData('userid', state.userid);
+					task.addFile(imgpath, {
+						key: "head"
+					});
+					task.start();
+				}
+				window.addEventListener("updateHeadImg", update_head_img);
+			});
+		</script>
+	</body>
+
+</html>

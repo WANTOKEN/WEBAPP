@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+		<link rel="stylesheet" href="../../css/mui.min.css">
+		<link href="../../css/style.css" rel="stylesheet" />
+		<style>
+			.mui-table-view:after {
+				height: 0;
+			}
+			
+			.head-bar-zhanwei {
+				height: 8px;
+			}
+		</style>
+		<link rel="stylesheet" type="text/css" href="../../css/feedback-page.css" />
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<span class="mui-action-back mui-icon mui-icon-arrowleft mui-pull-left" style="color: #FFFFFF;"></span>
+			<span class="title-text mui-action-back">设置</span>
+
+		</header>
+		<div class="mui-content">
+			<div class="head-bar-zhanwei">
+				<!--占位-->
+			</div>
+
+			<ul class="mui-table-view mui-table-view-chevron">
+				<li class="mui-table-view-cell">
+					<a id="notice" href="#notifications_disturb" class="mui-navigate-right">新消息通知</a>
+				</li>
+				<li class="mui-table-view-cell">
+					<a id="rate" class="mui-navigate-right">应用评分</a>
+				</li>
+				<li class="mui-table-view-cell">
+					<a id="share" class="mui-navigate-right">应用分享</a>
+				</li>
+				<li class="mui-table-view-cell">
+					<a id="tel" class="mui-navigate-right">客服电话</a>
+				</li>
+				<li class="mui-table-view-cell">
+					<a id="feedback-btn" href="#feedback" class="mui-navigate-right">问题反馈</a>
+				</li>
+			</ul>
+			<ul class="mui-table-view mui-table-view-chevron">
+				<li class="mui-table-view-cell">
+					<a id="checkApp" class="mui-navigate-right">版本更新</a>
+				</li>
+			</ul>
+			<div class="head-bar-zhanwei">
+				<!--占位-->
+			</div>
+			<ul class="mui-table-view">
+				<li class="mui-table-view-cell" style="text-align: center;">
+					<a id='exit'>退出</a>
+				</li>
+			</ul>
+		</div>
+
+	</body>
+	<script src="../../js/mui.min.js "></script>
+	<script src="../../js/app.js"></script>
+	<script type="text/javascript" src="../../js/config.js"></script>
+	<script type="text/javascript" src="../../js/jquery-3.1.1.js"></script>
+	<script>
+		mui.plusReady(function() {
+			var dtask = null;
+			var wgtVer = null;
+			plus.runtime.getProperty(plus.runtime.appid, function(inf) {
+				wgtVer = inf.version;
+				console.log("当前应用版本：" + wgtVer);
+			});
+			//分享链接点击事件
+			document.getElementById("checkApp").addEventListener('tap', function() {
+				checkUpdate();
+
+			});
+
+			function downApp() {
+				var wgtUrl = SERVER_URL + "downloads/app.apk";
+				dtask = plus.downloader.createDownload(wgtUrl, { filename: "_doc/update/" }, function(d, status) {
+					if(status == 200) {
+						clearInterval(i);
+						console.log("下载成功：" + d.filename);
+						installWgt(path); //安装
+					} else {
+						console.log("下载失败！");
+						plus.nativeUI.alert("下载失败！");
+					}
+					plus.nativeUI.closeWaiting();
+				});
+				dtask.start();
+				var i = setInterval(function() {
+					//计算当前的下载进度
+					var totalSize = dtask.totalSize;
+					var downloadedSize = dtask.downloadedSize;
+					var daxiaoa = downloadedSize / totalSize;
+					var baifenbiw = Math.round(daxiaoa * 100);
+					var baifenbi = (Math.round(daxiaoa * 100)) + "%";
+					console.log(baifenbi);
+					/*	plus.nativeUI.showWaiting(baifenbi);*/
+					mui('body').progressbar({
+						progress: baifenbiw
+					}).show();
+				}, 2000); //1000为1秒钟
+			}
+			// 检测更新  
+			function checkUpdate() {
+				var checkUrl = SERVER_URL + "checkupdate";
+				$.ajax({
+					url: checkUrl,
+					type: "post",
+					data: {
+						version: wgtVer,
+					},
+					dataType: "json",
+					success: function(data) {
+						console.log(JSON.stringify(data));
+						var version = parseFloat(data).toFixed(1);
+						console.log(version);
+						console.log(wgtVer);
+						if(wgtVer < data) {
+							console.log('下载');
+							var btnArray = ['下载', '取消'];
+							mui.confirm('检测到有新版本', '版本更新', btnArray, function(e) {
+								if(e.index == 1) {
+									console.log(1);
+								} else {
+									console.log(2);
+									downApp();
+								}
+							})
+						} else {
+							mui.alert("当前已是最新版本");
+						}
+					},
+					error: function() {},
+					complete: function() {}
+				});
+			}
+			// 更新应用资源  
+			function installWgt(path) {
+				plus.nativeUI.showWaiting("正在安装...");
+				plus.runtime.install(path, {}, function() {
+					plus.nativeUI.closeWaiting();
+					console.log("安装文件成功！");
+					plus.nativeUI.alert("更新完成！", function() {
+						plus.runtime.restart();
+					});
+				}, function(e) {
+					plus.nativeUI.closeWaiting();
+					console.log("安装文件失败[" + e.code + "]：" + e.message);
+					plus.nativeUI.alert("安装文件失败");
+				});
+			}
+			document.getElementById("share").addEventListener('tap', function() {
+				var ids = [{
+						id: "weixin",
+						ex: "WXSceneSession"
+					}, {
+						id: "weixin",
+						ex: "WXSceneTimeline"
+					}, {
+						id: "sinaweibo"
+					}, {
+						id: "qq"
+					}],
+					bts = [{
+						title: "发送给微信好友"
+					}, {
+						title: "分享到微信朋友圈"
+					}, {
+						title: "分享到新浪微博"
+					}, {
+						title: "分享到QQ"
+					}];
+				plus.nativeUI.actionSheet({
+					cancel: "取消",
+					buttons: bts
+				}, function(e) {
+
+				});
+			});
+
+			function shareMessage(share, ex) {
+
+			}
+
+			//客服电话
+			document.getElementById("tel").addEventListener('tap', function() {
+				plus.device.dial("18318565453");
+			});
+			//退出操作******************
+			document.getElementById('exit').addEventListener('tap', function() {
+				if(mui.os.ios) {
+					app.setState({});
+					var settings = app.getSettings();
+					settings.autoLogin = false;
+					app.setSettings(settings); //设置不自动登录
+					console.log(JSON.stringify(settings));
+					plus.runtime.restart(); //重启应用
+					return;
+				}
+				var btnArray = [{
+					title: "注销当前账号"
+				}, {
+					title: "直接关闭应用"
+				}];
+				plus.nativeUI.actionSheet({
+					cancel: "取消",
+					buttons: btnArray
+				}, function(event) {
+					var index = event.index;
+					switch(index) {
+						case 1:
+							var settings = app.getSettings();
+							settings.autoLogin = false;
+							app.setSettings(settings); //设置不自动登录
+							console.log(JSON.stringify(settings));
+							plus.runtime.restart(); //重启应用
+							break;
+						case 2:
+							plus.runtime.quit();
+							break;
+					}
+				});
+			}, false);
+		});
+	</script>
+
+</html>

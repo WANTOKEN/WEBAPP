@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<link rel="stylesheet" href="../../css/mui.min.css" />
+		<link rel="stylesheet" href="../../css/pulldown.css" />
+		<link href="../../css/style.css" rel="stylesheet" />
+		<style>
+			.info-box {
+				padding-top: 10px;
+				margin-top: 0px;
+				width: 100%;
+				height: 100px;
+				background-color: #FFF;
+			}
+			
+			.info-box:active {
+				background: #eee;
+			}
+			
+			.inof-head {
+				float: right;
+				width: 80px;
+				height: 80px;
+				margin-left: 23px;
+				border: 3px solid #EEEEEE;
+				border-radius: 40px;
+				background: white;
+			}
+			
+			.head-img {
+				
+				height: 100%;
+				width: 100%;
+				border-radius: 40px;
+				
+			}
+			
+			.name-ph {
+				margin-top: 15px;
+				float: left;
+				padding-left: 20px;
+				font-family: "微软雅黑";
+			}
+			
+			.name {
+				color: #333333;
+				font-size: 23px;
+				margin-bottom: 13px;
+			}
+			
+			.ph {
+				color: rgb(156, 156, 156);
+				font-size: 15px;
+			}
+			
+			.icon {
+				height: 160px;
+				line-height: 80px;
+				margin-right: 9px;
+				float: right;
+				color: rgb(156, 156, 156);
+			}
+			
+			.order-box {
+				width: 100%;
+				margin-top: 15px;
+				background: while;
+			}
+			
+			.order-title {
+				padding-left: 18px;
+				height: 50px;
+				background: white;
+				border-bottom: 1px solid #eee;
+			}
+			
+			.order-title:active {
+				background: #eee;
+			}
+			
+			.order-title div:nth-child(1) {
+				height: 50px;
+				float: left;
+				line-height: 50px;
+			}
+			
+			.order-title .mui-icon {
+				line-height: 49px;
+				height: 40px;
+				position: absolute;
+				right: 10px;
+				font-size: 20px;
+				color: rgb(156, 156, 156);
+			}
+			
+			.look-allorder {
+				color: rgb(156, 156, 156);
+				margin-right: 10px;
+				line-height: 50px;
+				height: 50px;
+				float: right;
+			}
+			
+			.order-con {
+				height: 50px;
+				width: 100%;
+				background: white;
+			}
+			
+			.order-item {
+				float: left;
+				width: 33.3333%;
+				height: 22px;
+				line-height: 22px;
+				text-align: center;
+				border-left: 1px solid #ccc;
+				margin-top: 14px;
+			}
+			
+			.order-item:nth-child(1) {
+				border: 0px solid #fff;
+			}
+			
+			.teb-box {
+				margin-top: 20px;
+				background: white;
+			}
+			
+			.teb-item {
+				height: 50px;
+			}
+			
+			.teb-item:active {
+				background: #eee;
+			}
+			
+			.teb-item-ico {
+				width: 50px;
+				height: 50px;
+				float: left;
+				line-height: 50px;
+				padding-top: 10px;
+				padding-left: 10px;
+			}
+			
+			.teb-item-ico img {
+				width: 28px;
+				height: 28px;
+			}
+			
+			.teb-item-text {
+				float: left;
+				height: 50px;
+				line-height: 50px;
+				border-bottom: 1px solid #ccc;
+			}
+			
+			.teb-item:nth-last-child(1) .teb-item-text {
+				border-bottom: 0px solid #ccc;
+			}
+			
+			.teb-item-text .mui-icon {
+				float: right;
+				height: 50px;
+				line-height: 48px;
+				margin-right: 10px;
+				font-size: 20px;
+				color: rgb(156, 156, 156);
+			}
+			
+			#setting {
+				color: #000000;
+				font-size: 16px;
+				height: 100%;
+				line-height: 45px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+
+			<span class="title-text mui-action-back" style="color: #FFFFFF;">我的</span>
+			<span id="setting" class="mui-pull-right" style="color: #FFFFFF;">设置</span>
+		</header>
+		<div class="mui-content">
+			<div class="head-bar-zhanwei" style="height: 5px;">
+				<!--占位-->
+			</div>
+			<div class="info-box" id="info-btn">
+				<div class="icon">
+					<span class="mui-icon mui-icon-arrowright"></span>
+				</div>
+				<div class="inof-head">
+					<img class="head-img" src="../../img/appicon/appicon.png" />
+				</div>
+				<div class="name-ph">
+					<div class="name"></div>
+					<div class="ph"></div>
+				</div>
+
+			</div>
+
+			<div class="order-box" id="lookMyOrders">
+				<div class="order-title">
+					<div>我的订单</div>
+
+					<div class="mui-icon mui-icon-arrowright"></div>
+					<div class="look-allorder">查看所有订单</div>
+				</div>
+
+			</div>
+
+			<div class="teb-box">
+
+				<div class="teb-item" id="paycount">
+					<div class="teb-item-ico"><img src="../../img/icon/blance.png"></div>
+					<div class="teb-item-text">余额
+
+						<div class="mui-icon mui-icon-arrowright"></div>
+
+						<div class="look-allorder">
+							<span class="balance">0.00</span>
+						</div>
+					</div>
+				</div>
+				<div class="teb-item" id="point">
+					<div class="teb-item-ico"><img src="../../img/icon/point1.png"></div>
+					<div class="teb-item-text">积分
+						<div class="mui-icon mui-icon-arrowright"></div>
+						<div class="look-allorder">
+							<span class="userpoint">
+							30000积分
+						</span>
+
+						</div>
+					</div>
+				</div>
+				<div class="teb-item" id="sport">
+					<div class="teb-item-ico"><img src="../../img/icon/walk.png"></div>
+
+					<div class="teb-item-text">运动
+						<div class="mui-icon mui-icon-arrowright"></div>
+						<div class="look-allorder"><span class="foot-step"></span>步</div>
+					</div>
+				</div>
+			</div>
+			<div class="teb-box">
+
+				<div class="teb-item" id="addressManager">
+					<div class="teb-item-ico"><img src="../../img/icon/address.png"></div>
+					<div class="teb-item-text">地址管理
+						<div class="mui-icon mui-icon-arrowright"></div>
+					</div>
+				</div>
+				<div class="teb-item" id="alermManager">
+					<div class="teb-item-ico"><img src="../../img/icon/clock.png"></div>
+					<div class="teb-item-text">下单闹钟
+						<div class="mui-icon mui-icon-arrowright"></div>
+					</div>
+				</div>
+				<div class="teb-item" id="responseManager">
+					<div class="teb-item-ico"><img src="../../img/icon/comment.png"></div>
+					<div class="teb-item-text">评价反馈
+						<div class="mui-icon mui-icon-arrowright"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script type="text/javascript" src="../../js/jquery-3.1.1.js"></script>
+		<script type="text/javascript" src="../../js/mui.min.js"></script>
+		<script type="text/javascript" src="../../js/app.js"></script>
+		<script>
+			setInterval(function() {
+				$('.teb-item-text').css('width', ($('.teb-box').width() - 60) + 'px');
+			}, 1);
+			var state;
+
+			function refashInfo() {
+				state = app.getState();
+				$(".head-img").attr('src', state.head);
+				$('.name').html(state.Name);
+				$('.ph').html('ID:' + state.Account);
+				$('.balance').html(state.userblance)
+				$('.userpoint').html(state.userpoint + '积分')
+			}
+			refashInfo();
+			window.addEventListener("refashInfo", refashInfo);
+
+			mui.plusReady(function() {
+				var value = localStorage.getItem(state.Account + 'foot') == null ? 0 : localStorage.getItem(state.Account + 'foot');
+				$(".foot-step").html(value);
+
+				function openPageWindow(window_id, window_url) {
+
+					mui.openWindow({
+						id: window_id, //id
+						url: window_url, //跳转地址
+						show: {
+							aniShow: "slide-in-right", //页面显示动画，默认为”slide-in-right“；
+							duration: 300, //页面动画持续时间，Android平台默认100毫秒，iOS平台默认200毫秒
+							autoShow: true //页面loaded事件发生后自动显示，默认为true
+						},
+						extras: {
+
+						},
+						waiting: {
+
+						}
+					});
+				}
+
+				var myorderButton = document.getElementById('lookMyOrders');
+				var InfoDefaltButton = document.getElementById('InfoDefalt');
+
+				$(document).on('click', '#point', function(event) {
+					openPageWindow('user_point.html', 'user_point.html');
+				});
+				$(document).on('click', '#lookMyOrders', function(event) {
+
+					openPageWindow('myOrders.html', '../order/myOrders.html');
+				});
+				$(document).on('click', '#paycount', function(event) {
+					openPageWindow('user_balance.html', 'user_balance.html');
+				});
+				$(document).on('click', '#addressManager', function(event) {
+					openPageWindow('myAddress.html', 'myAddress.html');
+				});
+				$(document).on('click', '#info-btn', function(event) {
+					openPageWindow('myInfoDetail.html', 'myInfoDetail.html');
+				});
+				$(document).on('click', '#setting', function(event) {
+					openPageWindow('setting.html', '../other/setting.html');
+				});
+				$(document).on('click', '#responseManager', function(event) {
+					openPageWindow('ResponsePage.html', 'ResponsePage.html');
+				});
+				$(document).on('click', '#sport', function(event) {
+					openPageWindow('SportPage.html', '../sport/SportPage.html');
+				});
+				
+				$(document).on('click', '#alermManager', function(event) {
+					mui.toast('该功能暂未开放！');
+				});
+				window.addEventListener("updateHeadImg", function(e) {
+					state = app.getState();
+					$(".head-img").attr('src', e.detail.head);
+				});
+			});
+		</script>
+		<script src="../../js/mui.pullToRefresh.js"></script>
+		<script src="../../js/mui.pullToRefresh.material.js"></script>
+		<script type="text/javascript" src="../../js/pulldown.js"></script>
+	</body>
+
+</html>
